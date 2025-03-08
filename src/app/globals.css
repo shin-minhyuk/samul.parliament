@@ -11,7 +11,9 @@
   --color-nature-earth: #795548; /* 대지의 갈색 */
   --color-nature-spring: #8bc34a; /* 봄의 연한 녹색 */
 
-  --animate-wiggle: wiggle 0.2s ease-in-out;
+  --animate-wiggle: wiggle 0.2s ease-in-out forwards;
+  --animate-rotate-in: rotateIn 1.4s ease-in-out forwards;
+  --animate-slide-up: slide-up 0.7s ease-in-out;
 
   @keyframes wiggle {
     0% {
@@ -24,7 +26,20 @@
     }
   }
 
-  --animate-slide-up: slide-up 0.7s ease-in-out;
+  @keyframes rotateIn {
+    0% {
+      transform: rotate(-180deg);
+      opacity: 0;
+    }
+    50% {
+      transform: rotate(-180deg);
+      opacity: 0;
+    }
+    100% {
+      transform: rotate(0);
+      opacity: 1;
+    }
+  }
 
   @keyframes slide-up {
     0% {
