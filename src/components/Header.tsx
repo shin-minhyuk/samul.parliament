@@ -13,7 +13,7 @@ export default function Header() {
       <header className="fixed top-0 right-0 left-0 z-30 flex flex-col">
         {/* Announcement Banner */}
         {isBannerVisible && (
-          <div className="relative flex animate-pulse items-center justify-center gap-2 border-b border-gray-200 bg-black px-4 py-2 text-center text-sm text-white">
+          <div className="border-nature-forest/20 bg-nature-forest/10 text-nature-forest relative flex animate-pulse items-center justify-center gap-2 border-b px-4 py-2 text-center text-sm">
             <Clock className="h-4 w-4" />
             <p>
               <span className="font-semibold">컨퍼런스 일정:</span> 2025년 10월
@@ -21,7 +21,7 @@ export default function Header() {
             </p>
             <button
               onClick={() => setIsBannerVisible(false)}
-              className="absolute right-2 rounded-full p-1 transition-colors hover:bg-white/10"
+              className="hover:bg-nature-forest/10 absolute right-2 rounded-full p-1 transition-colors"
               aria-label="배너 닫기"
             >
               <X className="h-4 w-4" />
@@ -30,23 +30,22 @@ export default function Header() {
         )}
 
         {/* Main Header */}
-        <div className="flex h-16 items-center justify-between border-b border-gray-200 bg-black px-4">
+        <div className="border-nature-forest/20 flex h-16 items-center justify-between border-b bg-white/80 px-4 backdrop-blur-sm">
           {/* Left - Sidebar Button */}
           <button
-            className="rounded-lg p-2 text-white transition-colors hover:bg-white/10"
+            className="text-nature-forest hover:bg-nature-forest/10 rounded-lg p-2 transition-colors"
             onClick={() => setIsSidebarOpen(true)}
           >
             <Menu className="h-6 w-6" />
           </button>
 
           {/* Center - Title */}
-          <h1 className="text-xl font-semibold text-white">2025 사물의 의회</h1>
+          <h1 className="text-nature-forest text-xl font-semibold">
+            2025 사물의 의회
+          </h1>
 
           {/* Right - Apply Button */}
-          <button
-            type="button"
-            className="bg-p-lavender hover:bg-p-lime rounded-full px-4 py-2 text-sm font-semibold text-[#171717] transition-all hover:scale-105"
-          >
+          <button className="bg-nature-leaf hover:bg-nature-spring hover:animate-wiggle rounded-full px-4 py-2 text-sm font-semibold text-white transition-all">
             신청하기
           </button>
         </div>

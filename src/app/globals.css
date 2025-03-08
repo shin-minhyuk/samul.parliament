@@ -5,14 +5,22 @@
   --color-p-lime: #ccff00;
   --color-p-electric: #00ffff;
 
-  --animate-wiggle: wiggle 0.3s ease-in-out;
+  --color-nature-leaf: #4caf50; /* 신선한 잎사귀 녹색 */
+  --color-nature-forest: #2e7d32; /* 깊은 숲 녹색 */
+  --color-nature-sky: #03a9f4; /* 맑은 하늘 파란색 */
+  --color-nature-earth: #795548; /* 대지의 갈색 */
+  --color-nature-spring: #8bc34a; /* 봄의 연한 녹색 */
+
+  --animate-wiggle: wiggle 0.2s ease-in-out;
 
   @keyframes wiggle {
     0% {
       transform: rotate(0deg);
+      opacity: 0.5;
     }
     50% {
       transform: rotate(-1deg);
+      opacity: 1;
     }
   }
 
@@ -31,8 +39,8 @@
 }
 
 :root {
-  --background: #171717;
-  --foreground: #ffffff;
+  --background: #f5f9f2; /* 매우 연한 민트 그린 */
+  --foreground: #2c4a3e; /* 깊은 포레스트 그린 */
 }
 
 body {
