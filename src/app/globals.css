@@ -15,6 +15,19 @@
       transform: rotate(-1deg);
     }
   }
+
+  --animate-slide-up: slide-up 0.7s ease-in-out;
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
 
 :root {
