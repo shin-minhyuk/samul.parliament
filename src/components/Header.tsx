@@ -45,7 +45,7 @@ export default function Header() {
           </h1>
 
           {/* Right - Apply Button */}
-          <button className="bg-nature-leaf hover:bg-nature-spring hover:animate-wiggle rounded-full px-4 py-2 text-sm font-semibold text-white transition-all">
+          <button className="bg-nature-leaf hover:bg-nature-spring rounded-full px-4 py-2 text-sm font-semibold text-white transition-all hover:scale-105">
             신청하기
           </button>
         </div>

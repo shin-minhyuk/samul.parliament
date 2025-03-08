@@ -10,7 +10,7 @@ export default function Home() {
           <div className="animate-slide-up">
             <div className="group hover:animate-wiggle flex flex-col gap-4 text-8xl font-bold">
               <p>2025 Environment</p>
-              <p className="text-nature-forest group-hover:text-nature-spring transform text-9xl transition-all duration-100">
+              <p className="text-nature-forest group-hover:text-nature-spring transform text-9xl font-[900] transition-all duration-100">
                 사물과 인간
               </p>
               <p>함께 논의하는 새로운 미래</p>
@@ -22,12 +22,15 @@ export default function Home() {
         <section className="h-[440px] border border-red-500">
           {/* 서브 배너 */}
           <div className="bg-nature-forest relative flex h-[360px] items-center justify-center text-white">
-            <div className="flex flex-col gap-4">
-              <p>함께 고민해요</p>
-              <p className="text-nature-forest group-hover:text-nature-spring transform text-9xl transition-all duration-100">
-                사물과 인간
+            <div className="flex flex-col gap-4 text-center text-2xl">
+              <p className="font-semibold">함께 고민하는 시간</p>
+              <p className="text-5xl font-bold">
+                비인간 존재들의 <span className="text-nature-spring">권리</span>
+                와 <span className="text-nature-spring">발언권</span>을 고민하다
               </p>
-              <p>함께 논의하는 새로운 미래</p>
+              <p className="text-xl font-bold opacity-50">
+                2025 사물의 의회 주제 : 미래의 공존을 위한 새로운 논의
+              </p>
             </div>
 
             {/* 참가버튼 */}
