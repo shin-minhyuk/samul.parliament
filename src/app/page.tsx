@@ -8,38 +8,41 @@ export default function Home() {
       <Header />
       <main className="pt-24">
         {/* 히어로 배너 */}
-        <section className="flex h-[600px] items-center justify-center overflow-hidden">
+        <section className="flex min-h-[400px] items-center justify-center overflow-hidden px-4 md:h-[600px]">
           <div className="animate-slide-up">
-            <div className="group hover:animate-wiggle flex flex-col gap-4 text-8xl font-bold">
-              <p>2025 Environment</p>
-              <p className="text-nature-forest group-hover:text-nature-spring transform text-9xl font-[900] transition-all duration-100">
+            <div className="group hover:animate-wiggle flex flex-col gap-2 text-center md:gap-4 md:text-left">
+              <p className="text-4xl font-bold md:text-8xl">2025 Environment</p>
+              <p className="text-nature-forest group-hover:text-nature-spring transform text-5xl font-[900] transition-all duration-100 md:text-9xl">
                 사물과 인간
               </p>
-              <p>함께 논의하는 새로운 미래</p>
+              <p className="text-3xl font-bold md:text-8xl">
+                함께 논의하는 새로운 미래
+              </p>
             </div>
           </div>
         </section>
 
         {/* 서브 배너 */}
-        <section className="h-[440px]">
-          {/* 서브 배너 */}
+        <section className="h-[320px] md:h-[440px]">
           <div>
-            <div className="bg-nature-forest border-nature-spring relative flex h-[360px] items-center justify-center border-y-[20px] text-white">
-              <div className="animate-slide-up flex flex-col gap-4 text-center text-2xl">
-                <p className="font-semibold">함께 고민하는 시간</p>
-                <p className="text-5xl font-bold">
+            <div className="bg-nature-forest border-nature-spring relative flex h-[280px] items-center justify-center border-y-[12px] px-4 text-white md:h-[360px] md:border-y-[20px]">
+              <div className="animate-slide-up flex flex-col gap-4 text-center">
+                <p className="text-lg font-semibold md:text-2xl">
+                  함께 고민하는 시간
+                </p>
+                <p className="text-2xl font-bold md:text-5xl">
                   비인간 존재들의{" "}
                   <span className="text-nature-spring">권리</span>와
                   <span className="text-nature-spring">발언권</span>을 고민하다
                 </p>
-                <p className="text-xl font-bold opacity-50">
+                <p className="text-base font-bold opacity-50 md:text-xl">
                   2025 사물의 의회 주제 : 미래의 공존을 위한 새로운 논의
                 </p>
               </div>
 
               {/* 참가버튼 */}
-              <button className="animate-rotate-in bg-nature-leaf hover:bg-nature-spring hover:animate-wiggle text-md absolute right-0 bottom-[-50px] left-0 mx-auto h-[100px] w-[100px] rounded-full px-4 py-2 font-bold text-white transition-all">
-                <p>신청하기</p>
+              <button className="animate-rotate-in bg-nature-leaf hover:bg-nature-spring hover:animate-wiggle absolute right-0 bottom-[-40px] left-0 mx-auto h-[80px] w-[80px] rounded-full px-4 py-2 font-bold text-white transition-all md:bottom-[-50px] md:h-[100px] md:w-[100px]">
+                <p className="text-sm md:text-base">신청하기</p>
               </button>
             </div>
           </div>
