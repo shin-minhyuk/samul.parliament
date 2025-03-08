@@ -13,19 +13,21 @@ export default function Header() {
       <header className="fixed top-0 right-0 left-0 z-30 flex flex-col">
         {/* Announcement Banner */}
         {isBannerVisible && (
-          <div className="border-nature-forest/20 bg-nature-forest/10 text-nature-forest relative flex animate-pulse items-center justify-center gap-2 border-b px-4 py-2 text-center text-sm">
-            <Clock className="h-4 w-4" />
-            <p>
-              <span className="font-semibold">컨퍼런스 일정:</span> 2025년 10월
-              15일 (월) 12:00 - 18:00 KST
-            </p>
-            <button
-              onClick={() => setIsBannerVisible(false)}
-              className="hover:bg-nature-forest/10 absolute right-2 rounded-full p-1 transition-colors"
-              aria-label="배너 닫기"
-            >
-              <X className="h-4 w-4" />
-            </button>
+          <div className="border-nature-forest/20 text-nature-forest relative border-b bg-white/60 px-4 py-2 text-center text-sm">
+            <div className="flex animate-pulse items-center justify-center gap-2">
+              <Clock className="h-4 w-4" />
+              <p>
+                <span className="font-semibold">컨퍼런스 일정:</span> 2025년
+                10월 15일 (월) 12:00 - 18:00 KST
+              </p>
+              <button
+                onClick={() => setIsBannerVisible(false)}
+                className="hover:bg-nature-forest/10 absolute right-2 rounded-full p-1 transition-colors"
+                aria-label="배너 닫기"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
           </div>
         )}
 
