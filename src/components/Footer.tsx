@@ -77,7 +77,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="bg-nature-forest hover:bg-nature-spring rounded-lg px-4 py-2 text-sm text-white transition-colors"
+                className="bg-nature-forest hover:bg-nature-spring rounded-lg px-4 py-2 text-sm whitespace-nowrap text-white transition-colors"
               >
                 구독
               </button>
@@ -87,7 +87,7 @@ export default function Footer() {
 
         {/* 카피라이트 */}
         <div className="border-nature-forest/10 mt-12 border-t pt-8 text-center text-sm text-gray-600">
-          <p>© 2024 사물의 의회. All rights reserved.</p>
+          <p>© 2025 사물의 의회. All rights reserved.</p>
         </div>
       </div>
     </footer>

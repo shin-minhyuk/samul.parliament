@@ -8,7 +8,7 @@ export default function Home() {
       <Header />
       <main className="pt-24">
         {/* 히어로 배너 */}
-        <section className="flex h-[600px] items-center justify-center overflow-hidden border border-red-500">
+        <section className="flex h-[600px] items-center justify-center overflow-hidden">
           <div className="animate-slide-up">
             <div className="group hover:animate-wiggle flex flex-col gap-4 text-8xl font-bold">
               <p>2025 Environment</p>
@@ -21,7 +21,7 @@ export default function Home() {
         </section>
 
         {/* 서브 배너 */}
-        <section className="h-[440px] border border-red-500">
+        <section className="h-[440px]">
           {/* 서브 배너 */}
           <div>
             <div className="bg-nature-forest border-nature-spring relative flex h-[360px] items-center justify-center border-y-[20px] text-white">
