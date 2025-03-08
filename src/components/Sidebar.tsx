@@ -75,6 +75,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       >
         <div className="p-4">
           <button
+            type="button"
             onClick={onClose}
             className="hover:bg-nature-forest/10 absolute top-2 right-2 rounded-full p-1 transition-colors"
             aria-label="사이드바 닫기"
@@ -89,6 +90,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                   {item.subItems ? (
                     <div className="overflow-hidden rounded-lg">
                       <button
+                        type="button"
                         onClick={() => toggleAccordion(index)}
                         className="hover:bg-nature-forest/10 flex w-full items-center justify-between rounded-lg p-2 transition-colors"
                       >

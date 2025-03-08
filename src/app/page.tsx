@@ -1,6 +1,9 @@
+"use client";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, Leaf, Users, Globe } from "lucide-react";
+import { openExternalLink } from "@/utils/navigation";
 
 export default function Home() {
   return (
@@ -41,8 +44,16 @@ export default function Home() {
               </div>
 
               {/* 참가버튼 */}
-              <button className="animate-rotate-in bg-nature-leaf hover:bg-nature-spring hover:animate-wiggle absolute right-0 bottom-[-40px] left-0 mx-auto h-[80px] w-[80px] rounded-full px-4 py-2 font-bold text-white transition-all md:bottom-[-50px] md:h-[100px] md:w-[100px]">
-                <p className="text-sm md:text-base">신청하기</p>
+              <button
+                type="button"
+                onClick={() =>
+                  openExternalLink("https://www.instagram.com/samuluiuihoe")
+                }
+                className="animate-rotate-in bg-nature-leaf hover:bg-nature-spring absolute right-0 bottom-[-40px] left-0 mx-auto h-[80px] w-[80px] rounded-full px-4 py-2 font-bold text-white transition-all hover:scale-105 md:bottom-[-50px] md:h-[100px] md:w-[100px]"
+              >
+                <p className="text-sm font-bold whitespace-nowrap md:text-base">
+                  신청하기
+                </p>
               </button>
             </div>
           </div>

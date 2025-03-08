@@ -3,6 +3,7 @@
 import { Menu, Clock, X } from "lucide-react";
 import { useState } from "react";
 import Sidebar from "./Sidebar";
+import { openExternalLink } from "@/utils/navigation";
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -47,7 +48,13 @@ export default function Header() {
           </h1>
 
           {/* Right - Apply Button */}
-          <button className="bg-nature-leaf hover:bg-nature-spring rounded-full px-4 py-2 text-sm font-semibold text-white transition-all hover:scale-105">
+          <button
+            type="button"
+            className="bg-nature-leaf hover:bg-nature-spring rounded-full px-4 py-2 text-sm font-semibold text-white transition-all hover:scale-105"
+            onClick={() =>
+              openExternalLink("https://www.instagram.com/samuluiuihoe")
+            }
+          >
             신청하기
           </button>
         </div>
