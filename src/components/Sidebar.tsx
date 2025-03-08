@@ -61,7 +61,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
     <>
       {/* Backdrop */}
       <div
-        className={`bg-nature-forest/20 fixed inset-0 z-40 transition-all duration-300 ${
+        className={`bg-nature-forest/20 fixed inset-0 z-40 backdrop-blur-lg transition-all duration-300 ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={onClose}
