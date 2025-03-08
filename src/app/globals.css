@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+@theme {
+  --color-p-lavender: #b667f1;
+  --color-p-lime: #ccff00;
+  --color-p-electric: #00ffff;
+
+  --animate-wiggle: wiggle 0.3s ease-in-out;
+
+  @keyframes wiggle {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-1deg);
+    }
+  }
+}
+
 :root {
   --background: #171717;
   --foreground: #ffffff;

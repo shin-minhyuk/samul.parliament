@@ -43,7 +43,10 @@ export default function Header() {
           <h1 className="text-xl font-semibold text-white">2025 사물의 의회</h1>
 
           {/* Right - Apply Button */}
-          <button className="rounded-full bg-[#f54fdc] px-4 py-2 text-[#171717] transition-colors hover:bg-[#e9e76f]">
+          <button
+            type="button"
+            className="bg-p-lavender hover:bg-p-lime rounded-full px-4 py-2 text-sm font-semibold text-[#171717] transition-all hover:scale-105"
+          >
             신청하기
           </button>
         </div>
