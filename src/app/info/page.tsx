@@ -151,7 +151,7 @@ export default function InfoPage() {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="whitespace-nowrap">
                   <tr className="border-nature-forest/20 border-b">
                     <td className="px-4 py-3">1단계</td>
                     <td className="px-4 py-3">1월 ~ 8월</td>
@@ -171,6 +171,28 @@ export default function InfoPage() {
                   </tr>
                 </tbody>
               </table>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-nature-forest mb-4 text-2xl font-bold md:text-3xl">
+            조직 구성
+          </h2>
+          <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
+            <p className="mb-4">
+              사물의 의회는 위원장, 학술 위원회, 운영 위원회, 인간/비인간
+              대표단, 사무국으로 구성되어 있습니다. 각 조직의 구성원과 역할,
+              의사결정 구조에 대한 자세한 내용은 조직 구성도 페이지에서 확인하실
+              수 있습니다.
+            </p>
+            <div className="flex justify-center">
+              <a
+                href="/organization"
+                className="bg-nature-spring hover:bg-nature-forest mt-2 inline-block rounded-full px-6 py-3 font-semibold text-white transition-all"
+              >
+                조직 구성도 보기
+              </a>
             </div>
           </div>
         </section>

@@ -10,8 +10,8 @@ import {
   Megaphone,
   FolderArchive,
   FileText,
-  Image,
-  Video,
+  Image as ImageIcon,
+  Video as VideoIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -64,8 +64,8 @@ const MENU_ITEMS: MenuItem[] = [
     title: "아카이브",
     icon: <FolderArchive size={20} />,
     subItems: [
-      { title: "사진", href: "/archive/photos", icon: <Image size={18} /> },
-      { title: "영상", href: "/archive/videos", icon: <Video size={18} /> },
+      { title: "사진", href: "/archive/photos", icon: <ImageIcon size={18} /> },
+      { title: "영상", href: "/archive/videos", icon: <VideoIcon size={18} /> },
     ],
   },
 ];
