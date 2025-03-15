@@ -18,8 +18,9 @@ export default function KakaoMap({
 
   useEffect(() => {
     // API 키 확인
-    const apiKey = process.env.NEXT_PUBLIC_KAKAO_MAPS_API_KEY;
-    if (!apiKey) {
+    const { NEXT_PUBLIC_KAKAO_MAPS_API_KEY } = process.env;
+
+    if (!NEXT_PUBLIC_KAKAO_MAPS_API_KEY) {
       console.error("Kakao Maps API 키가 설정되지 않았습니다.");
       setError("API 키가 설정되지 않았습니다.");
       return;
@@ -30,7 +31,7 @@ export default function KakaoMap({
     // Kakao Maps API 로드
     const mapScript = document.createElement("script");
     mapScript.async = true;
-    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false`;
+    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${NEXT_PUBLIC_KAKAO_MAPS_API_KEY}&autoload=false`;
 
     const onLoadError = () => {
       console.error("Kakao Maps API 로딩 실패");

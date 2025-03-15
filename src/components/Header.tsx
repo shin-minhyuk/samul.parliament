@@ -3,10 +3,10 @@
 import { Menu, Clock, X } from "lucide-react";
 import { useState } from "react";
 import Sidebar from "./Sidebar";
-import { openExternalLink } from "@/utils/navigation";
 import Link from "next/link";
 import { useBanner } from "@/context/BannerContext";
 import { Button } from "./Button";
+import { openExternalLink } from "@/util/url";
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

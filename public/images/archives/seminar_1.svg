@@ -1,0 +1,17 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#f0f0f0"/>
+  <text x="400" y="100" font-family="Arial" font-size="32" text-anchor="middle" fill="#333">사물의 의회 사전 설명회</text>
+  <text x="400" y="150" font-family="Arial" font-size="20" text-anchor="middle" fill="#666">2023년 12월 30일</text>
+  
+  <rect x="150" y="200" width="500" height="300" fill="#fff" stroke="#ddd" stroke-width="2"/>
+  
+  <circle cx="250" cy="300" r="50" fill="#6495ED"/>
+  <circle cx="400" cy="300" r="50" fill="#9ACD32"/>
+  <circle cx="550" cy="300" r="50" fill="#FFA500"/>
+  
+  <text x="250" y="420" font-family="Arial" font-size="16" text-anchor="middle" fill="#333">참가자</text>
+  <text x="400" y="420" font-family="Arial" font-size="16" text-anchor="middle" fill="#333">발표자</text>
+  <text x="550" y="420" font-family="Arial" font-size="16" text-anchor="middle" fill="#333">진행자</text>
+  
+  <text x="400" y="520" font-family="Arial" font-size="14" text-anchor="middle" fill="#999">테스트용 이미지입니다</text>
+</svg> 

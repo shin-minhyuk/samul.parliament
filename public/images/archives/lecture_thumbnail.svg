@@ -1,0 +1,13 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#000"/>
+  
+  <!-- 비디오 플레이 버튼 -->
+  <circle cx="400" cy="225" r="70" fill="#fff" fill-opacity="0.2"/>
+  <polygon points="380,195 380,255 430,225" fill="#fff"/>
+  
+  <text x="400" y="100" font-family="Arial" font-size="32" text-anchor="middle" fill="#fff">기후위기 특별 강연회</text>
+  <text x="400" y="150" font-family="Arial" font-size="24" text-anchor="middle" fill="#ccc">김지구 교수</text>
+  <text x="400" y="350" font-family="Arial" font-size="20" text-anchor="middle" fill="#fff">인간중심주의를 넘어선 기후위기 대응 방안</text>
+  
+  <text x="400" y="420" font-family="Arial" font-size="14" text-anchor="middle" fill="#999">테스트용 썸네일 이미지입니다</text>
+</svg> 

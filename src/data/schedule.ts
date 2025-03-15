@@ -25,7 +25,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
   {
     id: 1,
     title: "사물의 의회 사전 설명회",
-    date: "2023-12-30",
+    date: "2025-05-10",
     startTime: "14:00",
     endTime: "16:00",
     location: "서울숲 컨퍼런스센터 소회의실",
@@ -36,7 +36,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
   {
     id: 2,
     title: "기후위기 특별 강연회",
-    date: "2024-02-05",
+    date: "2025-06-05",
     startTime: "14:00",
     endTime: "16:00",
     location: "서울숲 컨퍼런스센터 대회의실",
@@ -48,7 +48,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
   {
     id: 3,
     title: "비인간 존재 대변인 워크숍",
-    date: "2024-02-15",
+    date: "2025-06-15",
     startTime: "13:00",
     endTime: "17:00",
     location: "서울숲 컨퍼런스센터 소회의실",
@@ -58,7 +58,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
   {
     id: 4,
     title: "참가자 오리엔테이션",
-    date: "2024-03-20",
+    date: "2025-09-01",
     startTime: "10:00",
     endTime: "12:00",
     location: "서울숲 컨퍼런스센터 대회의실",
@@ -69,7 +69,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
   {
     id: 5,
     title: "기후위기 현장 답사",
-    date: "2024-04-10",
+    date: "2025-09-10",
     startTime: "09:00",
     endTime: "17:00",
     location: "한강 생태공원, 서울 에너지드림센터",
@@ -80,7 +80,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
   {
     id: 6,
     title: "의제 설정 워크숍",
-    date: "2024-04-25",
+    date: "2025-09-15",
     startTime: "13:00",
     endTime: "17:00",
     location: "서울숲 컨퍼런스센터 소회의실",
@@ -90,7 +90,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
   {
     id: 7,
     title: "사물의 의회 1차 본회의",
-    date: "2024-05-15",
+    date: "2025-10-01",
     startTime: "10:00",
     endTime: "17:00",
     location: "서울숲 컨퍼런스센터 대회의실",
@@ -101,7 +101,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
   {
     id: 8,
     title: "사물의 의회 2차 본회의",
-    date: "2024-06-01",
+    date: "2025-10-15",
     startTime: "10:00",
     endTime: "17:00",
     location: "서울숲 컨퍼런스센터 대회의실",
@@ -112,7 +112,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
   {
     id: 9,
     title: "결과 정리 워크숍",
-    date: "2024-06-15",
+    date: "2025-10-30",
     startTime: "13:00",
     endTime: "17:00",
     location: "서울숲 컨퍼런스센터 소회의실",
@@ -122,7 +122,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
   {
     id: 10,
     title: "사물의 의회 결과 발표회",
-    date: "2024-06-30",
+    date: "2025-11-15",
     startTime: "14:00",
     endTime: "17:00",
     location: "서울숲 컨퍼런스센터 대회의실",

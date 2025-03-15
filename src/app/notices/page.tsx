@@ -83,7 +83,7 @@ export default function NoticesPage() {
               onClick={handleLoadMore}
               className="bg-nature-spring hover:bg-nature-forest flex items-center gap-2 rounded-full px-6 py-2 font-medium text-white transition-all"
             >
-              더 보기
+              더 보기 ({visibleCount}/{NOTICES.length})
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>

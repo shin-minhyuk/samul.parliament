@@ -10,8 +10,8 @@ import {
   Megaphone,
   FolderArchive,
   FileText,
-  Image as ImageIcon,
-  Video as VideoIcon,
+  // Image as ImageIcon,
+  // Video as VideoIcon,
   HelpCircle,
   Calendar,
 } from "lucide-react";
@@ -65,10 +65,11 @@ const MENU_ITEMS: MenuItem[] = [
   {
     title: "아카이브",
     icon: <FolderArchive size={20} />,
-    subItems: [
-      { title: "사진", href: "/archive/photos", icon: <ImageIcon size={18} /> },
-      { title: "영상", href: "/archive/videos", icon: <VideoIcon size={18} /> },
-    ],
+    href: "/archive",
+    // subItems: [
+    //   { title: "사진", href: "/archive/photos", icon: <ImageIcon size={18} /> },
+    //   { title: "영상", href: "/archive/videos", icon: <VideoIcon size={18} /> },
+    // ],
   },
   {
     title: "FAQ",

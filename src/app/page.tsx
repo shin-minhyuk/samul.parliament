@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight, Leaf, Users, Globe } from "lucide-react";
-import { openExternalLink } from "@/utils/navigation";
+import { openExternalLink } from "@/util/url";
 import { Button } from "@/components/Button";
 
 export default function Home() {
