@@ -12,6 +12,8 @@ import {
   FileText,
   Image as ImageIcon,
   Video as VideoIcon,
+  HelpCircle,
+  Calendar,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -67,6 +69,16 @@ const MENU_ITEMS: MenuItem[] = [
       { title: "사진", href: "/archive/photos", icon: <ImageIcon size={18} /> },
       { title: "영상", href: "/archive/videos", icon: <VideoIcon size={18} /> },
     ],
+  },
+  {
+    title: "FAQ",
+    icon: <HelpCircle size={20} />,
+    href: "/faq",
+  },
+  {
+    title: "일정",
+    icon: <Calendar size={20} />,
+    href: "/schedule",
   },
 ];
 
