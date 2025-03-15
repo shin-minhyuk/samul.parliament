@@ -58,7 +58,7 @@ export default function Header() {
               openExternalLink("https://www.instagram.com/samuluiuihoe")
             }
           >
-            신청하기
+            지원하기
           </Button>
         </div>
       </header>

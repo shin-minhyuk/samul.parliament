@@ -47,7 +47,7 @@ export default function Home() {
               }
               className="animate-rotate-in absolute right-0 bottom-[-40px] left-0 mx-auto h-[80px] w-[80px] hover:scale-105 md:bottom-[-50px] md:h-[100px] md:w-[100px]"
             >
-              <p className="text-sm whitespace-nowrap md:text-base">신청하기</p>
+              <p className="text-sm md:text-base">지원하기</p>
             </Button>
           </div>
         </div>
