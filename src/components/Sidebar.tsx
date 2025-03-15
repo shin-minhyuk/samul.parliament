@@ -1,6 +1,18 @@
 "use client";
 
-import { X, ChevronDown, Home, Info, FileText, Mail } from "lucide-react";
+import {
+  X,
+  ChevronDown,
+  Landmark,
+  Users,
+  UserPlus,
+  MapPin,
+  Megaphone,
+  FolderArchive,
+  FileText,
+  Image,
+  Video,
+} from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import React from "react";
@@ -14,42 +26,52 @@ interface MenuItem {
   title: string;
   icon: React.ReactElement;
   href?: string;
-  subItems?: { title: string; href: string }[];
+  subItems?: { title: string; href: string; icon?: React.ReactElement }[];
 }
+
+const MENU_ITEMS: MenuItem[] = [
+  {
+    title: "사물의 의회",
+    icon: <Landmark size={20} />,
+    href: "/info",
+  },
+  {
+    title: "조직위원회",
+    icon: <Users size={20} />,
+    href: "/organization",
+  },
+  {
+    title: "참가자 모집",
+    icon: <UserPlus size={20} />,
+    href: "/recruitment",
+  },
+  {
+    title: "장소 안내",
+    icon: <MapPin size={20} />,
+    href: "/location",
+  },
+  {
+    title: "모집요강",
+    icon: <FileText size={20} />,
+    href: "/guidelines",
+  },
+  {
+    title: "공지사항",
+    icon: <Megaphone size={20} />,
+    href: "/notices",
+  },
+  {
+    title: "아카이브",
+    icon: <FolderArchive size={20} />,
+    subItems: [
+      { title: "사진", href: "/archive/photos", icon: <Image size={18} /> },
+      { title: "영상", href: "/archive/videos", icon: <Video size={18} /> },
+    ],
+  },
+];
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
-
-  const menuItems: MenuItem[] = [
-    {
-      title: "홈",
-      icon: <Home className="h-5 w-5" />,
-      href: "/",
-    },
-    {
-      title: "소개",
-      icon: <Info className="h-5 w-5" />,
-      subItems: [
-        { title: "행사 소개", href: "/about/event" },
-        { title: "연사 소개", href: "/about/speakers" },
-        { title: "장소 안내", href: "/about/location" },
-      ],
-    },
-    {
-      title: "프로그램",
-      icon: <FileText className="h-5 w-5" />,
-      subItems: [
-        { title: "컨퍼런스 일정", href: "/program/schedule" },
-        { title: "세션 소개", href: "/program/sessions" },
-        { title: "워크샵", href: "/program/workshops" },
-      ],
-    },
-    {
-      title: "문의하기",
-      icon: <Mail className="h-5 w-5" />,
-      href: "/contact",
-    },
-  ];
 
   const toggleAccordion = (index: number) => {
     setExpandedItems((prev) =>
@@ -85,7 +107,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
           <nav className="mt-8">
             <ul className="space-y-2">
-              {menuItems.map((item, index) => (
+              {MENU_ITEMS.map((item, index) => (
                 <li key={item.title}>
                   {item.subItems ? (
                     <div className="overflow-hidden rounded-lg">
@@ -117,8 +139,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                               <li key={subItem.title}>
                                 <Link
                                   href={subItem.href}
-                                  className="hover:bg-nature-forest/10 block rounded-lg p-2 text-sm transition-colors"
+                                  className="hover:bg-nature-forest/10 flex items-center gap-2 rounded-lg p-2 text-sm transition-colors"
                                 >
+                                  {subItem.icon}
                                   {subItem.title}
                                 </Link>
                               </li>

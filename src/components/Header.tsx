@@ -4,6 +4,7 @@ import { Menu, Clock, X } from "lucide-react";
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 import { openExternalLink } from "@/utils/navigation";
+import Link from "next/link";
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function Header() {
 
           {/* Center - Title */}
           <h1 className="text-nature-forest text-xl font-semibold">
-            2025 사물의 의회
+            <Link href="/">2025 사물의 의회</Link>
           </h1>
 
           {/* Right - Apply Button */}
