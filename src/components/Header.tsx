@@ -5,17 +5,19 @@ import { useState } from "react";
 import Sidebar from "./Sidebar";
 import { openExternalLink } from "@/utils/navigation";
 import Link from "next/link";
+import { useBanner } from "@/context/BannerContext";
+import { Button } from "./Button";
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isBannerVisible, setIsBannerVisible] = useState(true);
+  const { isBannerVisible, setIsBannerVisible } = useBanner();
 
   return (
     <>
       <header className="fixed top-0 right-0 left-0 z-30 flex flex-col">
         {/* Announcement Banner */}
         {isBannerVisible && (
-          <div className="border-nature-forest/20 text-nature-forest relative border-b bg-white/60 px-4 py-2 text-center text-sm">
+          <div className="border-nature-forest/20 text-nature-forest relative border-b bg-white/60 px-4 py-2 text-center text-sm backdrop-blur-md">
             <div className="flex animate-pulse items-center justify-center gap-2">
               <Clock className="h-4 w-4" />
               <p>
@@ -44,20 +46,20 @@ export default function Header() {
           </button>
 
           {/* Center - Title */}
-          <h1 className="text-nature-forest text-xl font-semibold">
+          <h1 className="text-nature-forest hover:text-nature-spring text-xl font-semibold">
             <Link href="/">2025 사물의 의회</Link>
           </h1>
 
           {/* Right - Apply Button */}
-          <button
+          <Button
             type="button"
-            className="bg-nature-leaf hover:bg-nature-spring rounded-full px-4 py-2 text-sm font-semibold text-white transition-all hover:scale-105"
+            className="text-sm hover:scale-105"
             onClick={() =>
               openExternalLink("https://www.instagram.com/samuluiuihoe")
             }
           >
             신청하기
-          </button>
+          </Button>
         </div>
       </header>
 
