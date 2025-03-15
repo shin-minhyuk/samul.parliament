@@ -140,6 +140,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                                 <Link
                                   href={subItem.href}
                                   className="hover:bg-nature-forest/10 flex items-center gap-2 rounded-lg p-2 text-sm transition-colors"
+                                  onClick={onClose}
                                 >
                                   {subItem.icon}
                                   {subItem.title}
@@ -154,6 +155,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                     <Link
                       href={item.href!}
                       className="hover:bg-nature-forest/10 flex items-center gap-2 rounded-lg p-2 transition-colors"
+                      onClick={onClose}
                     >
                       {item.icon}
                       {item.title}

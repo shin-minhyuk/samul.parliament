@@ -94,7 +94,7 @@ export default function LocationPage() {
               </p>
               <div className="mt-4 flex gap-2">
                 <a
-                  href="https://map.kakao.com"
+                  href="https://map.kakao.com/link/to/서울숲%20컨퍼런스센터,37.5443,127.0444"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-nature-spring hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
@@ -102,7 +102,7 @@ export default function LocationPage() {
                   카카오맵으로 보기
                 </a>
                 <a
-                  href="https://maps.google.com"
+                  href="https://maps.google.com/maps?q=37.5443,127.0444"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-nature-leaf hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"

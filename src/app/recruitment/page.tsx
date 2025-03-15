@@ -223,10 +223,10 @@ export default function RecruitmentPage() {
                   지원하기
                 </a>
                 <Link
-                  href="/info"
+                  href="/guidelines"
                   className="rounded-full bg-white/20 px-8 py-3 font-semibold text-white transition-all hover:bg-white/30"
                 >
-                  사물의 의회 자세히 알아보기
+                  모집 요강 보기
                 </Link>
                 <Link
                   href="/location"
