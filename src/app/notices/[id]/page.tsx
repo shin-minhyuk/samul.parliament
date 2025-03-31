@@ -1,21 +1,78 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Megaphone, Calendar, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
-import { NOTICES, formatDate } from "@/data";
+import { formatDate } from "@/data";
+import { getNoticeById } from "@/services/noticeService";
+import { Notice } from "@/types";
 
 export default function NoticeDetailPage() {
   const params = useParams();
-  const noticeId = parseInt(params.id as string);
+  const noticeId = params.id as string;
 
-  // 해당 ID의 공지사항 찾기
-  const notice = NOTICES.find((n) => n.id === noticeId);
+  const [notice, setNotice] = useState<Notice | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // 공지사항이 없으면 404 페이지로 이동
+  useEffect(() => {
+    const fetchNotice = async () => {
+      try {
+        setLoading(true);
+        const noticeData = await getNoticeById(noticeId);
+
+        if (!noticeData) {
+          notFound();
+          return;
+        }
+
+        setNotice(noticeData);
+        setLoading(false);
+      } catch (err) {
+        console.error("공지사항을 불러오는 중 오류가 발생했습니다:", err);
+        setError("공지사항을 불러오는 중 오류가 발생했습니다.");
+        setLoading(false);
+      }
+    };
+
+    fetchNotice();
+  }, [noticeId]);
+
+  if (loading) {
+    return (
+      <div className="container mx-auto flex items-center justify-center py-16 md:py-24">
+        <div className="text-center">
+          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-t-4 border-solid border-blue-500"></div>
+          <p>공지사항을 불러오는 중...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto py-16 md:py-24">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-8">
+            <Link
+              href="/notices"
+              className="text-nature-spring flex items-center gap-1 text-sm font-medium hover:underline"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              공지사항 목록으로 돌아가기
+            </Link>
+          </div>
+          <div className="rounded-xl bg-red-50 p-8 text-red-700">
+            <p>{error}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (!notice) {
-    notFound();
+    return null; // notFound()가 호출되었거나 처리 중인 경우
   }
 
   return (
@@ -35,12 +92,12 @@ export default function NoticeDetailPage() {
         {/* 공지사항 상세 내용 */}
         <div
           className={`rounded-xl bg-white p-8 shadow-md ${
-            notice.isImportant ? "border-nature-spring border-l-4" : ""
+            notice.important ? "border-nature-spring border-l-4" : ""
           }`}
         >
           <div className="mb-6 flex items-start justify-between">
             <div className="flex items-center gap-3">
-              {notice.isImportant && (
+              {notice.important && (
                 <div className="bg-nature-spring rounded-full p-1.5 text-white">
                   <Megaphone className="h-5 w-5" />
                 </div>
@@ -60,26 +117,15 @@ export default function NoticeDetailPage() {
           </div>
         </div>
 
-        {/* 이전/다음 공지사항 네비게이션 */}
+        {/* 목록으로 돌아가기 버튼 */}
         <div className="mt-12 flex justify-between">
-          {noticeId > 1 && (
-            <Link
-              href={`/notices/${noticeId - 1}`}
-              className="text-nature-spring flex items-center gap-1 text-sm font-medium hover:underline"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              이전 공지사항
-            </Link>
-          )}
-          {noticeId < NOTICES.length && (
-            <Link
-              href={`/notices/${noticeId + 1}`}
-              className="text-nature-spring ml-auto flex items-center gap-1 text-sm font-medium hover:underline"
-            >
-              다음 공지사항
-              <ArrowLeft className="h-4 w-4 rotate-180" />
-            </Link>
-          )}
+          <Link
+            href="/notices"
+            className="text-nature-spring flex items-center gap-1 text-sm font-medium hover:underline"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            목록으로 돌아가기
+          </Link>
         </div>
       </div>
     </div>

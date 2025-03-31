@@ -1,31 +1,82 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
-import { ARCHIVE_ITEMS, ARCHIVE_TYPES, formatArchiveDate } from "@/data";
+import { ARCHIVE_TYPES, formatArchiveDate } from "@/data";
+import { getArchiveItemById } from "@/services/archiveService";
+import { ArchiveItem } from "@/types";
 
 export default function ArchiveDetailPage() {
   const params = useParams();
-  const id = Number(params.id);
+  const id = params.id as string;
 
-  // 아카이브 항목 찾기
-  const archiveItem = ARCHIVE_ITEMS.find((item) => item.id === id);
+  const [archiveItem, setArchiveItem] = useState<ArchiveItem | null>(null);
+  const [relatedItems, setRelatedItems] = useState<ArchiveItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchArchiveItem = async () => {
+      try {
+        setLoading(true);
+        const item = await getArchiveItemById(id);
+
+        if (!item) {
+          notFound();
+          return;
+        }
+
+        setArchiveItem(item);
+
+        // 관련 항목은 아직 구현되지 않았음
+        // 실제 제품에서는 태그나 카테고리를 기반으로 관련 항목을 가져오는 기능 구현 필요
+        setRelatedItems([]);
+
+        setLoading(false);
+      } catch (err) {
+        console.error("아카이브 항목을 불러오는 중 오류가 발생했습니다:", err);
+        setError("아카이브 항목을 불러오는 중 오류가 발생했습니다.");
+        setLoading(false);
+      }
+    };
+
+    fetchArchiveItem();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="container mx-auto flex items-center justify-center py-16">
+        <div className="text-center">
+          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-t-4 border-solid border-blue-500"></div>
+          <p>아카이브 항목을 불러오는 중...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <Link
+          href="/archive"
+          className="mb-6 inline-flex items-center text-blue-500 hover:text-blue-700"
+        >
+          <ArrowLeft size={16} className="mr-1" /> 아카이브 목록으로 돌아가기
+        </Link>
+        <div className="rounded-lg bg-red-50 p-6 text-red-700">
+          <p>{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   // 항목이 없으면 404
   if (!archiveItem) {
-    notFound();
+    return null; // notFound()가 호출되었거나 처리 중인 경우
   }
-
-  // 이전/다음 항목 찾기
-  const currentIndex = ARCHIVE_ITEMS.findIndex((item) => item.id === id);
-  const prevItem = currentIndex > 0 ? ARCHIVE_ITEMS[currentIndex - 1] : null;
-  const nextItem =
-    currentIndex < ARCHIVE_ITEMS.length - 1
-      ? ARCHIVE_ITEMS[currentIndex + 1]
-      : null;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -97,79 +148,48 @@ export default function ArchiveDetailPage() {
         </div>
       </div>
 
-      {/* 이전/다음 아카이브 항목 네비게이션 */}
-      <div className="mt-8 flex justify-between">
-        <div>
-          {prevItem && (
-            <Link
-              href={`/archive/${prevItem.id}`}
-              className="inline-flex items-center rounded-md bg-gray-100 px-4 py-2 text-gray-700 transition-colors hover:bg-gray-200"
-            >
-              <ArrowLeft size={16} className="mr-2" /> 이전: {prevItem.title}
-            </Link>
-          )}
-        </div>
-        <div>
-          {nextItem && (
-            <Link
-              href={`/archive/${nextItem.id}`}
-              className="inline-flex items-center rounded-md bg-gray-100 px-4 py-2 text-gray-700 transition-colors hover:bg-gray-200"
-            >
-              다음: {nextItem.title}{" "}
-              <ArrowLeft size={16} className="ml-2 rotate-180 transform" />
-            </Link>
-          )}
-        </div>
-      </div>
-
-      {/* 관련 아카이브 항목 */}
-      {archiveItem.tags && archiveItem.tags.length > 0 && (
+      {/* 관련 아카이브 항목 섹션 - 현재는 비활성화됨 */}
+      {relatedItems.length > 0 && (
         <div className="mt-12">
           <h2 className="mb-4 text-xl font-bold">관련 아카이브</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {ARCHIVE_ITEMS.filter(
-              (item) =>
-                item.id !== archiveItem.id &&
-                item.tags?.some((tag) => archiveItem.tags?.includes(tag)),
-            )
-              .slice(0, 3)
-              .map((item) => (
-                <Link
-                  key={item.id}
-                  href={`/archive/${item.id}`}
-                  className="overflow-hidden rounded-lg border shadow-sm transition-shadow hover:shadow-md"
-                >
-                  <div className="relative h-32 bg-gray-100">
-                    {item.type === "image" && (
-                      <Image
-                        src={item.url}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                      />
-                    )}
-                    {item.type === "video" && item.thumbnailUrl && (
-                      <Image
-                        src={item.thumbnailUrl}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                      />
-                    )}
-                    <div className="bg-opacity-50 absolute top-2 right-2 rounded bg-black px-2 py-1 text-xs text-white">
-                      {ARCHIVE_TYPES.find((t) => t.id === item.type)?.name}
-                    </div>
+            {relatedItems.map((item) => (
+              <Link
+                key={item.id}
+                href={`/archive/${item.id}`}
+                className="overflow-hidden rounded-lg border shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="relative h-32 bg-gray-100">
+                  {item.type === "image" && (
+                    <Image
+                      src={item.url}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
+                  {item.type === "video" && item.thumbnailUrl && (
+                    <Image
+                      src={item.thumbnailUrl}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
+                  <div className="bg-opacity-50 absolute top-2 right-2 rounded bg-black px-2 py-1 text-xs text-white">
+                    {ARCHIVE_TYPES.find((t) => t.id === item.type)?.name}
                   </div>
-                  <div className="p-3">
-                    <h3 className="line-clamp-1 text-sm font-medium">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1 line-clamp-1 text-xs text-gray-500">
-                      {formatArchiveDate(item.date)}
-                    </p>
-                  </div>
-                </Link>
-              ))}
+                </div>
+                <div className="p-3">
+                  <h3 className="line-clamp-1 text-sm font-medium">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 line-clamp-1 text-xs text-gray-500">
+                    {formatArchiveDate(item.date)}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       )}

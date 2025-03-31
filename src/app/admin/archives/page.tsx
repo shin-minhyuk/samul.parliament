@@ -64,11 +64,7 @@ export default function AdminArchivesPage() {
         imageFileName = fileNameWithParams.split("?")[0];
       }
 
-      await deleteArchiveItem(
-        id,
-        imageFileName,
-        type === "image" && isFirebaseStorageUrl,
-      );
+      await deleteArchiveItem(id, imageFileName);
       setArchives(archives.filter((archive) => archive.id !== id));
       alert("아카이브 항목이 삭제되었습니다.");
     } catch (error) {
