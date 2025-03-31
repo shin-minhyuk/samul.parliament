@@ -7,7 +7,6 @@ import {
   Calendar,
   HelpCircle,
   Archive,
-  Image as ImageIcon,
   Settings,
 } from "lucide-react";
 
@@ -40,13 +39,6 @@ export default function AdminDashboard() {
       description: "아카이브 항목을 추가, 수정, 삭제합니다.",
       link: "/admin/archives",
       color: "bg-orange-50 border-orange-200",
-    },
-    {
-      title: "이미지 업로드",
-      icon: <ImageIcon className="h-8 w-8 text-pink-500" />,
-      description: "웹사이트에 사용될 이미지를 업로드합니다.",
-      link: "/admin/images",
-      color: "bg-pink-50 border-pink-200",
     },
     {
       title: "설정",

@@ -35,20 +35,26 @@ export interface ScheduleEvent {
   updatedAt?: Date;
 }
 
-// 아카이브 타입 정의
+// 아카이브 항목 타입
 export interface ArchiveItem {
   id: string;
   title: string;
+  date: string; // YYYY-MM-DD 형식
   description: string;
-  date: string;
-  category: string;
   type: "image" | "video";
-  url: string;
-  thumbnailUrl?: string;
-  tags?: string[];
+  url: string; // 이미지 경로 또는 비디오 URL
+  thumbnailUrl?: string; // 썸네일 이미지 경로 (비디오의 경우)
+  tags?: string[]; // 태그 목록
+  category?: "event" | "research" | "media" | "other"; // 카테고리
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+// 아카이브 카테고리 타입
+export type ArchiveCategory = "event" | "research" | "media" | "other";
+
+// 아카이브 타입
+export type ArchiveType = "image" | "video";
 
 // 카테고리 타입 정의
 export interface Category {
