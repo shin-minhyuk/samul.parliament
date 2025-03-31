@@ -154,3 +154,28 @@ export async function deleteArchiveItem(
     throw error;
   }
 }
+
+// 정적 데이터를 Firebase로 마이그레이션
+export async function migrateArchivesToFirebase(archives: ArchiveItem[]) {
+  try {
+    const batch = [];
+
+    for (const archive of archives) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { id, ...archiveData } = archive;
+      batch.push(
+        addDoc(collection(db, COLLECTION_NAME), {
+          ...archiveData,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+        }),
+      );
+    }
+
+    await Promise.all(batch);
+    return true;
+  } catch (error) {
+    console.error("Error migrating archives: ", error);
+    throw error;
+  }
+}
