@@ -48,19 +48,36 @@ export default function AdminArchivesPage() {
     }
 
     try {
-      // 이미지 파일 이름 추출 (image 타입인 경우만)
+      // 이미지 파일 이름 추출 (image 타입이고 Firebase Storage URL인 경우만)
       let imageFileName: string | undefined = undefined;
-      if (type === "image" && url) {
+
+      // Firebase Storage URL인지 확인 (firebasestorage.googleapis.com이 포함된 경우)
+      const isFirebaseStorageUrl = url.includes(
+        "firebasestorage.googleapis.com",
+      );
+
+      if (type === "image" && isFirebaseStorageUrl && url) {
+        // Firebase Storage URL에서 파일명 추출
         const urlParts = url.split("/");
-        imageFileName = urlParts[urlParts.length - 1];
+        const fileNameWithParams = urlParts[urlParts.length - 1];
+        // 파라미터 제거
+        imageFileName = fileNameWithParams.split("?")[0];
       }
 
-      await deleteArchiveItem(id, imageFileName, type === "image");
+      await deleteArchiveItem(
+        id,
+        imageFileName,
+        type === "image" && isFirebaseStorageUrl,
+      );
       setArchives(archives.filter((archive) => archive.id !== id));
       alert("아카이브 항목이 삭제되었습니다.");
     } catch (error) {
       console.error("Error deleting archive:", error);
-      alert("아카이브 항목 삭제 중 오류가 발생했습니다.");
+      // 이미지 삭제 오류가 발생해도 Firestore 문서는 삭제 성공할 수 있으므로 UI는 업데이트
+      setArchives(archives.filter((archive) => archive.id !== id));
+      alert(
+        "아카이브 항목은 삭제되었지만, 이미지 삭제 중 오류가 발생했습니다.",
+      );
     }
   };
 

@@ -144,8 +144,13 @@ export async function deleteArchiveItem(
 
     // Storage에서 이미지 삭제(필요한 경우)
     if (imageFileName && isImageType) {
-      const imageRef = ref(storage, `archives/${imageFileName}`);
-      await deleteObject(imageRef);
+      try {
+        const imageRef = ref(storage, `archives/${imageFileName}`);
+        await deleteObject(imageRef);
+      } catch (storageError) {
+        console.error("Error deleting image from storage:", storageError);
+        // 이미지 삭제 오류는 무시하고 계속 진행 (문서 삭제는 성공)
+      }
     }
 
     return true;
