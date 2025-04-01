@@ -17,13 +17,15 @@ import {
 import { ScheduleEvent } from "@/types";
 import { EVENT_TYPES } from "@/data/schedule";
 
+type ScheduleCategory = "event" | "research" | "media" | "other";
+
 export default function AdminSchedulePage() {
   const [schedules, setSchedules] = useState<ScheduleEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState<string | null>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
-  const [typeFilter, setTypeFilter] = useState<string | null>(null);
+  const [typeFilter, setTypeFilter] = useState<ScheduleCategory | "all">("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   // 일정 데이터 불러오기
@@ -144,6 +146,24 @@ export default function AdminSchedulePage() {
         </div>
 
         <div className="flex items-center space-x-2 md:w-auto">
+          <span className="text-sm font-medium text-gray-500">카테고리:</span>
+          <select
+            value={typeFilter}
+            onChange={(e) =>
+              setTypeFilter(e.target.value as ScheduleCategory | "all")
+            }
+            className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+          >
+            <option value="all">전체</option>
+            {EVENT_TYPES.map((type) => (
+              <option key={type.id} value={type.id}>
+                {type.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex items-center space-x-2 md:w-auto">
           <span className="text-sm font-medium text-gray-500">정렬:</span>
           <button
             onClick={toggleSortOrder}
@@ -152,22 +172,6 @@ export default function AdminSchedulePage() {
             <ArrowUpDown className="mr-2 h-4 w-4" />
             {sortOrder === "desc" ? "최신순" : "과거순"}
           </button>
-        </div>
-
-        <div className="flex items-center space-x-2 md:w-auto">
-          <span className="text-sm font-medium text-gray-500">유형:</span>
-          <select
-            value={typeFilter || ""}
-            onChange={(e) => setTypeFilter(e.target.value || null)}
-            className="rounded-md border border-gray-300 px-3 py-2 text-sm"
-          >
-            <option value="">전체</option>
-            {EVENT_TYPES.map((type) => (
-              <option key={type.id} value={type.id}>
-                {type.name}
-              </option>
-            ))}
-          </select>
         </div>
       </div>
 
@@ -193,9 +197,9 @@ export default function AdminSchedulePage() {
                 검색어 지우기
               </button>
             )}
-            {typeFilter && (
+            {typeFilter !== "all" && (
               <button
-                onClick={() => setTypeFilter(null)}
+                onClick={() => setTypeFilter("all")}
                 className="text-blue-500 hover:text-blue-700"
               >
                 유형 필터 지우기

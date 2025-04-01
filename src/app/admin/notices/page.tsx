@@ -110,8 +110,18 @@ export default function AdminNoticesPage() {
       ) : error ? (
         <div className="rounded-lg bg-red-50 p-4 text-red-700">{error}</div>
       ) : filteredNotices.length === 0 ? (
-        <div className="rounded-lg bg-gray-50 p-12 text-center">
-          <p className="text-lg text-gray-500">공지사항이 없습니다.</p>
+        <div className="rounded-md bg-gray-50 p-8 text-center">
+          <p className="text-gray-500">검색 결과가 없습니다.</p>
+          {searchQuery && (
+            <div className="mt-2 flex flex-wrap justify-center gap-2">
+              <button
+                onClick={() => setSearchQuery("")}
+                className="text-blue-500 hover:text-blue-700"
+              >
+                검색어 지우기
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <div className="overflow-hidden rounded-lg border bg-white shadow">

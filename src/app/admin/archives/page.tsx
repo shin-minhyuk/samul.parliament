@@ -178,7 +178,37 @@ export default function AdminArchivesPage() {
         </div>
       ) : error ? (
         <div className="rounded-lg bg-red-50 p-4 text-red-700">{error}</div>
-      ) : filteredArchives.length > 0 ? (
+      ) : filteredArchives.length === 0 ? (
+        <div className="rounded-md bg-gray-50 p-8 text-center">
+          <p className="text-gray-500">검색 결과가 없습니다.</p>
+          <div className="mt-2 flex flex-wrap justify-center gap-2">
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="text-blue-500 hover:text-blue-700"
+              >
+                검색어 지우기
+              </button>
+            )}
+            {selectedCategory !== "all" && (
+              <button
+                onClick={() => setSelectedCategory("all")}
+                className="text-blue-500 hover:text-blue-700"
+              >
+                카테고리 필터 지우기
+              </button>
+            )}
+            {selectedType !== "all" && (
+              <button
+                onClick={() => setSelectedType("all")}
+                className="text-blue-500 hover:text-blue-700"
+              >
+                유형 필터 지우기
+              </button>
+            )}
+          </div>
+        </div>
+      ) : (
         <div className="overflow-hidden rounded-lg border bg-white shadow">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
@@ -313,16 +343,6 @@ export default function AdminArchivesPage() {
               ))}
             </tbody>
           </table>
-        </div>
-      ) : (
-        <div className="rounded-lg bg-gray-50 p-12 text-center">
-          <p className="text-lg text-gray-500">아카이브 항목이 없습니다.</p>
-          <Link
-            href="/admin/archives/new"
-            className="mt-4 inline-block rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-          >
-            첫 아카이브 항목 추가하기
-          </Link>
         </div>
       )}
     </div>
