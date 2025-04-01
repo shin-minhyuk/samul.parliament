@@ -69,16 +69,14 @@ export default function AdminNoticesPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Link
+        href="/admin/dashboard"
+        className="mb-2 inline-flex items-center text-blue-500 hover:text-blue-700"
+      >
+        <ChevronLeft size={16} className="mr-1" /> 대시보드로 돌아가기
+      </Link>
       <div className="mb-6 flex items-center justify-between">
-        <div>
-          <Link
-            href="/admin/dashboard"
-            className="mb-2 inline-flex items-center text-blue-500 hover:text-blue-700"
-          >
-            <ChevronLeft size={16} className="mr-1" /> 대시보드로 돌아가기
-          </Link>
-          <h1 className="text-2xl font-bold">공지사항 관리</h1>
-        </div>
+        <h1 className="text-2xl font-bold">공지사항 관리</h1>
         <Link
           href="/admin/notices/new"
           className="inline-flex items-center rounded-md bg-blue-500 px-4 py-2 text-white transition-colors hover:bg-blue-600"

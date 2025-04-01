@@ -112,24 +112,20 @@ export default function AdminSchedulePage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Link
+        href="/admin/dashboard"
+        className="mb-2 inline-flex items-center text-blue-500 hover:text-blue-700"
+      >
+        <ChevronLeft size={16} className="mr-1" /> 대시보드로 돌아가기
+      </Link>
       <div className="mb-6 flex items-center justify-between">
-        <div>
-          <Link
-            href="/admin/dashboard"
-            className="mb-2 inline-flex items-center text-blue-500 hover:text-blue-700"
-          >
-            <ChevronLeft size={16} className="mr-1" /> 대시보드로 돌아가기
-          </Link>
-          <h1 className="text-2xl font-bold">일정 관리</h1>
-        </div>
-        <div className="flex space-x-2">
-          <Link
-            href="/admin/schedule/new"
-            className="flex items-center rounded-md bg-green-500 px-4 py-2 text-white hover:bg-green-600"
-          >
-            <Plus className="mr-2 h-4 w-4" />새 일정 추가
-          </Link>
-        </div>
+        <h1 className="text-2xl font-bold">일정 관리</h1>
+        <Link
+          href="/admin/schedule/new"
+          className="flex items-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+        >
+          <Plus className="mr-2 h-4 w-4" />새 일정 추가
+        </Link>
       </div>
 
       {/* 검색 및 필터 - 아카이브 스타일로 수정 */}
