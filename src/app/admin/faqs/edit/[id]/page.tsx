@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter, useParams, notFound } from "next/navigation";
 import Link from "next/link";
-import { ChevronLeft, Save, Loader2, X } from "lucide-react";
+import { ChevronLeft, Loader2, X } from "lucide-react";
 import { getFaqById, updateFaq } from "@/services/faqService";
 import { FAQ } from "@/types";
 import { FAQ_CATEGORIES } from "@/data"; // Import FAQ categories
