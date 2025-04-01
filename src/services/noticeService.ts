@@ -124,28 +124,3 @@ export async function deleteNotice(id: string) {
     throw error;
   }
 }
-
-// 정적 데이터를 Firebase로 마이그레이션
-export async function migrateNoticesToFirebase(notices: Notice[]) {
-  try {
-    const batch = [];
-
-    for (const notice of notices) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { id, ...noticeData } = notice;
-      batch.push(
-        addDoc(collection(db, COLLECTION_NAME), {
-          ...noticeData,
-          createdAt: serverTimestamp(),
-          updatedAt: serverTimestamp(),
-        }),
-      );
-    }
-
-    await Promise.all(batch);
-    return true;
-  } catch (error) {
-    console.error("Error migrating notices: ", error);
-    throw error;
-  }
-}

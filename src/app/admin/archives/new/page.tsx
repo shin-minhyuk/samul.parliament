@@ -370,7 +370,7 @@ export default function NewArchivePage() {
                 id="tags"
                 value={tagInput}
                 onChange={(e) => setTagInput(e.target.value)}
-                onKeyPress={(e) =>
+                onKeyDown={(e) =>
                   e.key === "Enter" && (e.preventDefault(), handleAddTag())
                 }
                 placeholder="태그 입력 후 Enter 또는 추가 버튼 클릭"

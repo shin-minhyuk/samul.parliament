@@ -1,32 +1,57 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { ChevronDown, ChevronUp, Search } from "lucide-react";
-import { FAQS, FAQ_CATEGORIES } from "@/data";
+import { FAQ } from "@/types";
+import { getFaqs } from "@/services/faqService";
+import { FAQ_CATEGORIES } from "@/data";
+import { Loader2 } from "lucide-react";
 
-export default function FAQPage() {
-  // 상태 관리
+export default function FaqPage() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
-  const [expandedItems, setExpandedItems] = useState<number[]>([]);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // 카테고리 필터링
-  const filteredFaqs = FAQS.filter((faq) => {
-    // 검색어 필터링
-    const matchesSearch =
-      searchQuery === "" ||
-      faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
+  const [faqs, setFaqs] = useState<FAQ[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-    // 카테고리 필터링
-    const matchesCategory =
-      activeCategory === "all" || faq.category === activeCategory;
+  useEffect(() => {
+    const fetchFaqs = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const fetchedFaqs = await getFaqs();
+        setFaqs(fetchedFaqs);
+      } catch (err) {
+        console.error("Error fetching FAQs:", err);
+        setError(
+          "FAQ 데이터를 불러오는 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return matchesSearch && matchesCategory;
-  });
+    fetchFaqs();
+  }, []);
 
-  // 아코디언 토글 함수
-  const toggleAccordion = (id: number) => {
+  const filteredFaqs = useMemo(() => {
+    return faqs.filter((faq) => {
+      const matchesSearchTerm =
+        searchQuery === "" ||
+        faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (faq.answer &&
+          faq.answer.toLowerCase().includes(searchQuery.toLowerCase()));
+
+      const matchesCategory =
+        activeCategory === "all" || faq.category === activeCategory;
+
+      return matchesCategory && matchesSearchTerm;
+    });
+  }, [faqs, activeCategory, searchQuery]);
+
+  const toggleAccordion = (id: string) => {
     setExpandedItems((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
     );
@@ -44,9 +69,7 @@ export default function FAQPage() {
           </p>
         </div>
 
-        {/* 검색 및 필터 */}
         <div className="mb-8 space-y-4">
-          {/* 검색 */}
           <div className="relative">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <Search className="h-5 w-5 text-gray-400" />
@@ -60,7 +83,6 @@ export default function FAQPage() {
             />
           </div>
 
-          {/* 카테고리 필터 */}
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setActiveCategory("all")}
@@ -88,9 +110,18 @@ export default function FAQPage() {
           </div>
         </div>
 
-        {/* FAQ 목록 */}
         <div className="space-y-4">
-          {filteredFaqs.length === 0 ? (
+          {loading ? (
+            <div className="flex h-64 items-center justify-center">
+              <Loader2 className="text-primary h-8 w-8 animate-spin" />
+              <p className="ml-2">FAQ를 불러오는 중...</p>
+            </div>
+          ) : error ? (
+            <div className="rounded-lg bg-red-50 p-8 text-center text-red-600">
+              <p className="text-lg">오류 발생</p>
+              <p className="mt-2 text-sm">{error}</p>
+            </div>
+          ) : filteredFaqs.length === 0 ? (
             <div className="rounded-lg bg-gray-50 p-8 text-center">
               <p className="text-lg text-gray-500">검색 결과가 없습니다.</p>
               <p className="mt-2 text-sm text-gray-400">
@@ -116,9 +147,14 @@ export default function FAQPage() {
                 </button>
                 {expandedItems.includes(faq.id) && (
                   <div className="border-t border-gray-200 bg-gray-50 p-6">
-                    <div className="whitespace-pre-line text-gray-700">
-                      {faq.answer}
-                    </div>
+                    {faq.answer ? (
+                      <div
+                        className="prose dark:prose-invert max-w-none whitespace-pre-line text-gray-700"
+                        dangerouslySetInnerHTML={{ __html: faq.answer }}
+                      />
+                    ) : (
+                      <p className="text-gray-500 italic">답변이 없습니다.</p>
+                    )}
                     <div className="mt-4 text-right">
                       <span className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600">
                         {

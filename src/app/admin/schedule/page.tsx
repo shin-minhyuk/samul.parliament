@@ -70,9 +70,6 @@ export default function AdminSchedulePage() {
   // 필터링된 및 정렬된 일정 목록
   const filteredSchedules = schedules
     .filter((schedule) => {
-      // 유형 필터링
-      const matchesType = typeFilter === null || schedule.type === typeFilter;
-
       // 검색어 필터링
       const matchesSearch =
         searchQuery === "" ||
@@ -82,6 +79,9 @@ export default function AdminSchedulePage() {
             .toLowerCase()
             .includes(searchQuery.toLowerCase())) ||
         schedule.location.toLowerCase().includes(searchQuery.toLowerCase());
+
+      // 유형 필터링
+      const matchesType = typeFilter === "all" || schedule.type === typeFilter;
 
       return matchesType && matchesSearch;
     })
