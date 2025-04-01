@@ -124,45 +124,51 @@ export default function AdminArchivesPage() {
         </Link>
       </div>
 
-      <div className="mb-6">
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="아카이브 검색..."
-            className="w-full rounded-lg border p-3 pr-4 pl-10"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <Search className="absolute top-3 left-3 text-gray-400" size={20} />
+      <div className="mb-6 flex flex-col space-y-4 md:flex-row md:items-center md:space-y-0 md:space-x-4">
+        <div className="relative flex-grow">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="아카이브 검색 (제목, 설명, 태그)"
+              className="w-full rounded-md border border-gray-300 py-2 pr-4 pl-10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <Search className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" />
+          </div>
         </div>
-      </div>
 
-      <div className="mb-6 flex flex-wrap items-center gap-4">
-        <select
-          value={selectedCategory}
-          onChange={(e) =>
-            handleCategoryChange(e.target.value as ArchiveCategory | "all")
-          }
-          className="rounded border border-gray-300 px-3 py-2 text-sm"
-        >
-          <option value="all">모든 카테고리</option>
-          <option value="event">행사</option>
-          <option value="research">연구</option>
-          <option value="media">미디어</option>
-          <option value="other">기타</option>
-        </select>
+        <div className="flex items-center space-x-2 md:w-auto">
+          <span className="text-sm font-medium text-gray-500">카테고리:</span>
+          <select
+            value={selectedCategory}
+            onChange={(e) =>
+              handleCategoryChange(e.target.value as ArchiveCategory | "all")
+            }
+            className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+          >
+            <option value="all">전체</option>
+            <option value="event">행사</option>
+            <option value="research">연구</option>
+            <option value="media">미디어</option>
+            <option value="other">기타</option>
+          </select>
+        </div>
 
-        <select
-          value={selectedType}
-          onChange={(e) =>
-            handleTypeChange(e.target.value as ArchiveType | "all")
-          }
-          className="rounded border border-gray-300 px-3 py-2 text-sm"
-        >
-          <option value="all">모든 타입</option>
-          <option value="image">사진</option>
-          <option value="video">영상</option>
-        </select>
+        <div className="flex items-center space-x-2 md:w-auto">
+          <span className="text-sm font-medium text-gray-500">타입:</span>
+          <select
+            value={selectedType}
+            onChange={(e) =>
+              handleTypeChange(e.target.value as ArchiveType | "all")
+            }
+            className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+          >
+            <option value="all">전체</option>
+            <option value="image">사진</option>
+            <option value="video">영상</option>
+          </select>
+        </div>
       </div>
 
       {loading ? (

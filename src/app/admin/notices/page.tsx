@@ -87,16 +87,18 @@ export default function AdminNoticesPage() {
         </Link>
       </div>
 
-      <div className="mb-6">
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="공지사항 검색..."
-            className="w-full rounded-lg border p-3 pr-4 pl-10"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <Search className="absolute top-3 left-3 text-gray-400" size={20} />
+      <div className="mb-6 flex flex-col space-y-4 md:flex-row md:items-center md:space-y-0 md:space-x-4">
+        <div className="relative flex-grow">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="공지사항 검색 (제목, 내용)"
+              className="w-full rounded-md border border-gray-300 py-2 pr-4 pl-10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <Search className="absolute top-2.5 left-3 h-5 w-5 text-gray-400" />
+          </div>
         </div>
       </div>
 
