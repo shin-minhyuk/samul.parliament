@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Loader2 } from "lucide-react";
 import NoticeForm from "@/components/admin/NoticeForm";
 // Firebase 연동 시 주석 해제
 import { getNoticeById, updateNotice } from "@/services/noticeService";
@@ -73,12 +73,10 @@ export default function EditNoticePage() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-center py-12">
-          <div className="text-center">
-            <div className="mb-4 h-12 w-12 animate-spin rounded-full border-t-4 border-solid border-blue-500"></div>
-            <p>공지사항을 불러오는 중...</p>
-          </div>
+      <div className="container mx-auto flex items-center justify-center p-4 py-12">
+        <div className="text-center">
+          <Loader2 className="mx-auto mb-4 h-12 w-12 animate-spin text-blue-500" />
+          <p>공지사항을 불러오는 중...</p>
         </div>
       </div>
     );
@@ -96,7 +94,9 @@ export default function EditNoticePage() {
             돌아가기
           </Link>
         </div>
-        <div className="rounded-lg bg-red-50 p-4 text-red-700">{error}</div>
+        <div className="rounded-lg border border-red-300 bg-red-50 p-4 text-red-800">
+          {error}
+        </div>
       </div>
     );
   }
@@ -113,7 +113,7 @@ export default function EditNoticePage() {
             돌아가기
           </Link>
         </div>
-        <div className="rounded-lg bg-yellow-50 p-4 text-yellow-700">
+        <div className="rounded-lg border border-yellow-300 bg-yellow-50 p-4 text-yellow-800">
           공지사항을 찾을 수 없습니다.
         </div>
       </div>

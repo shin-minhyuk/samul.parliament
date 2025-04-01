@@ -86,16 +86,13 @@ export default function NoticeForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {error && (
-        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700">
+        <div className="rounded-lg border border-red-300 bg-red-50 p-4 text-red-800">
           {error}
         </div>
       )}
 
       <div>
-        <label
-          htmlFor="title"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="title" className="mb-2 block font-medium text-gray-700">
           제목 <span className="text-red-500">*</span>
         </label>
         <input
@@ -104,16 +101,13 @@ export default function NoticeForm({
           name="title"
           value={formData.title}
           onChange={handleChange}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+          className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
           required
         />
       </div>
 
       <div>
-        <label
-          htmlFor="date"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="date" className="mb-2 block font-medium text-gray-700">
           날짜 <span className="text-red-500">*</span>
         </label>
         <input
@@ -122,7 +116,7 @@ export default function NoticeForm({
           name="date"
           value={formData.date}
           onChange={handleChange}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+          className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
           required
         />
       </div>
@@ -130,7 +124,7 @@ export default function NoticeForm({
       <div>
         <label
           htmlFor="category"
-          className="block text-sm font-medium text-gray-700"
+          className="mb-2 block font-medium text-gray-700"
         >
           카테고리
         </label>
@@ -139,7 +133,7 @@ export default function NoticeForm({
           name="category"
           value={formData.category}
           onChange={handleChange}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+          className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
         >
           <option value="">선택하세요</option>
           <option value="event">행사</option>
@@ -171,7 +165,7 @@ export default function NoticeForm({
       <div>
         <label
           htmlFor="content"
-          className="block text-sm font-medium text-gray-700"
+          className="mb-2 block font-medium text-gray-700"
         >
           내용 <span className="text-red-500">*</span>
         </label>
@@ -181,7 +175,7 @@ export default function NoticeForm({
           value={formData.content}
           onChange={handleChange}
           rows={10}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+          className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
           required
         />
       </div>
