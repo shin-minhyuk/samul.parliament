@@ -320,7 +320,7 @@ export default function AdminArchivesPage() {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex space-x-2">
                       <Link
-                        href={`/admin/archives/${archive.id}`}
+                        href={`/admin/archives/edit/${archive.id}`}
                         className="rounded p-1 text-blue-500 hover:bg-blue-100"
                       >
                         <Edit size={18} />
