@@ -12,9 +12,9 @@ import {
   Save,
   Loader2,
 } from "lucide-react";
-import { EVENT_TYPES } from "@/data";
 import { createScheduleEvent } from "@/services/scheduleService";
 import { ScheduleEvent } from "@/types";
+import { EVENT_TYPES } from "@/constants/const";
 
 export default function AddScheduleEventPage() {
   const router = useRouter();

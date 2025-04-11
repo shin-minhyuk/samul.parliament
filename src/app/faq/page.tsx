@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { ChevronDown, ChevronUp, Search } from "lucide-react";
 import { FAQ } from "@/types";
 import { getFaqs } from "@/services/faqService";
-import { FAQ_CATEGORIES } from "@/data";
+import { FAQ_CATEGORIES } from "@/constants/const";
 import { Loader2 } from "lucide-react";
 
 export default function FaqPage() {

@@ -5,9 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
-import { ARCHIVE_TYPES, formatArchiveDate } from "@/data";
+import { ARCHIVE_TYPES } from "@/constants/const";
 import { getArchiveItemById } from "@/services/archiveService";
 import { ArchiveItem } from "@/types";
+import { formatArchiveDate } from "@/util/date";
 
 export default function ArchiveDetailPage() {
   const params = useParams();

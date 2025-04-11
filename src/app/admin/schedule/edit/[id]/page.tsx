@@ -12,12 +12,21 @@ import {
   Save,
   Loader2,
 } from "lucide-react";
-import { EVENT_TYPES } from "@/data";
+// import { EVENT_TYPES } from "@/constants/const";
 import {
   getScheduleEventById,
   updateScheduleEvent,
 } from "@/services/scheduleService";
 import { ScheduleEvent } from "@/types";
+
+// 일정 유형 정의 (직접 정의)
+const EVENT_TYPES = [
+  { id: "workshop", name: "워크숍", color: "bg-blue-500" },
+  { id: "meeting", name: "회의", color: "bg-green-500" },
+  { id: "seminar", name: "세미나", color: "bg-purple-500" },
+  { id: "fieldtrip", name: "현장 답사", color: "bg-amber-500" },
+  { id: "other", name: "기타", color: "bg-gray-500" },
+];
 
 export default function EditScheduleEventPage() {
   const router = useRouter();

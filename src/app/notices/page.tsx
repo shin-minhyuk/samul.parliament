@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Megaphone, Calendar, ArrowRight, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { formatDate } from "@/data";
+import { formatDate } from "@/util/date";
 import { getNotices } from "@/services/noticeService";
 import { Notice } from "@/types";
 import { QueryDocumentSnapshot, DocumentData } from "firebase/firestore";

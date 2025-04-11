@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { getFaqs, deleteFaq } from "@/services/faqService";
 import { FAQ } from "@/types";
-import { FAQ_CATEGORIES } from "@/data"; // Import FAQ categories
+import { FAQ_CATEGORIES } from "@/constants/const"; // Import FAQ categories
 
 export default function AdminFaqsPage() {
   const [faqs, setFaqs] = useState<FAQ[]>([]);

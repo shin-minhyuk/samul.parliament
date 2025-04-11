@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { Calendar, Clock, MapPin, Tag } from "lucide-react";
-import { EVENT_TYPES, formatEventDate, formatEventTime } from "@/data";
+import { EVENT_TYPES } from "@/constants/const";
 import { getScheduleEvents } from "@/services/scheduleService";
 import { ScheduleEvent } from "@/types";
+import { formatEventDate, formatEventTime } from "@/util/date";
 
 export default function SchedulePage() {
   // 상태 관리

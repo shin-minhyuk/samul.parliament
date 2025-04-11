@@ -15,7 +15,7 @@ import {
   deleteScheduleEvent,
 } from "@/services/scheduleService";
 import { ScheduleEvent } from "@/types";
-import { EVENT_TYPES } from "@/data/schedule";
+import { EVENT_TYPES } from "@/constants/const";
 
 type ScheduleCategory = "event" | "research" | "media" | "other";
 

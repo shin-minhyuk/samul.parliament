@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ChevronLeft, Loader2, X } from "lucide-react";
 import { createFaq } from "@/services/faqService";
 import { FAQ } from "@/types";
-import { FAQ_CATEGORIES } from "@/data"; // Import FAQ categories
+import { FAQ_CATEGORIES } from "@/constants/const";
 
 export default function AddFaqPage() {
   const router = useRouter();

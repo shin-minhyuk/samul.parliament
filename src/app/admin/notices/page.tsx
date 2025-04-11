@@ -6,7 +6,7 @@ import { Plus, Edit, Trash2, ChevronLeft, Search } from "lucide-react";
 // Firebase 연동 시 주석 해제
 import { getNotices, deleteNotice } from "@/services/noticeService";
 import { Notice } from "@/types";
-import { formatDate } from "@/data";
+import { formatDate } from "@/util/date";
 
 export default function AdminNoticesPage() {
   const [notices, setNotices] = useState<Notice[]>([]);

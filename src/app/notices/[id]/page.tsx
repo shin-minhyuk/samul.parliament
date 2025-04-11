@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Megaphone, Calendar, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
-import { formatDate } from "@/data";
+import { formatDate } from "@/util/date";
 import { getNoticeById } from "@/services/noticeService";
 import { Notice } from "@/types";
 
