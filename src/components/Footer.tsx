@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -46,13 +46,13 @@ export default function Footer() {
           <div>
             <h4 className="text-nature-forest mb-4 font-semibold">연락처</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li className="flex items-center gap-2">
+              {/* <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
                 <span>02-123-4567</span>
-              </li>
+              </li> */}
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                <span>contact@samuluiuihoe.com</span>
+                <span>samul.parliament@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />

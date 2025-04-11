@@ -215,7 +215,7 @@ export default function RecruitmentPage() {
               </div>
               <div className="flex flex-col items-center gap-4 md:flex-row">
                 <a
-                  href="https://www.instagram.com/samuluiuihoe"
+                  href="https://www.instagram.com/samul.parliament"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-nature-spring rounded-full bg-white px-8 py-3 font-semibold transition-all hover:bg-white/90"

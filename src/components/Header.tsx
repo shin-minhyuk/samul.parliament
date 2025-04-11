@@ -55,7 +55,7 @@ export default function Header() {
             type="button"
             className="text-sm hover:scale-105"
             onClick={() =>
-              openExternalLink("https://www.instagram.com/samuluiuihoe")
+              openExternalLink("https://www.instagram.com/samul.parliament")
             }
           >
             지원하기

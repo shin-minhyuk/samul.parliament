@@ -43,7 +43,7 @@ export default function Home() {
             <Button
               type="button"
               onClick={() =>
-                openExternalLink("https://www.instagram.com/samuluiuihoe")
+                openExternalLink("https://www.instagram.com/samul.parliament")
               }
               className="animate-rotate-in absolute right-0 bottom-[-40px] left-0 mx-auto h-[80px] w-[80px] hover:scale-105 md:bottom-[-50px] md:h-[100px] md:w-[100px]"
             >

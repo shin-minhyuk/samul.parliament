@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  FileText,
-  Users,
-  Calendar,
-  CheckCircle,
-  Mail,
-  Phone,
-} from "lucide-react";
+import { FileText, Users, Calendar, CheckCircle, Mail } from "lucide-react";
 
 export default function GuidelinesPage() {
   return (
@@ -305,16 +298,16 @@ export default function GuidelinesPage() {
                 <Mail className="mt-1 h-5 w-5 flex-shrink-0 text-gray-500" />
                 <div>
                   <span className="font-medium">이메일:</span>{" "}
-                  info@samuluiuihoe.org
+                  samul.parliament@gmail.com
                 </div>
               </li>
-              <li className="flex items-start gap-3">
+              {/* <li className="flex items-start gap-3">
                 <Phone className="mt-1 h-5 w-5 flex-shrink-0 text-gray-500" />
                 <div>
                   <span className="font-medium">전화:</span> 02-123-4567 (평일
                   10:00-17:00)
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </section>
@@ -322,7 +315,7 @@ export default function GuidelinesPage() {
         {/* 지원하기 버튼 */}
         <div className="flex justify-center">
           <a
-            href="https://www.instagram.com/samuluiuihoe"
+            href="https://www.instagram.com/samul.parliament"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-nature-spring hover:bg-nature-forest rounded-full px-10 py-4 text-lg font-semibold text-white transition-all"
