@@ -38,28 +38,32 @@ export default function Header() {
         {/* Main Header */}
         <div className="border-nature-forest/20 flex h-16 items-center justify-between border-b bg-white/80 px-4 backdrop-blur-sm">
           {/* Left - Sidebar Button */}
-          <button
-            className="text-nature-forest hover:bg-nature-forest/10 rounded-lg p-2 transition-colors"
-            onClick={() => setIsSidebarOpen(true)}
-          >
-            <Menu className="h-6 w-6" />
-          </button>
+          <div className="w-[100px]">
+            <button
+              className="text-nature-forest hover:bg-nature-forest/10 rounded-lg p-2 transition-colors"
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </div>
 
           {/* Center - Title */}
-          <h1 className="text-nature-forest hover:text-nature-spring text-xl font-semibold">
-            <Link href="/">2025 사물의 의회</Link>
+          <h1 className="text-nature-forest hover:text-nature-spring mb-1 -rotate-4 text-xl font-semibold md:text-3xl">
+            <Link href="/">사물의 의회</Link>
           </h1>
 
           {/* Right - Apply Button */}
-          <Button
-            type="button"
-            className="text-sm hover:scale-105"
-            onClick={() =>
-              openExternalLink("https://www.instagram.com/samul.parliament")
-            }
-          >
-            지원하기
-          </Button>
+          <div className="w-[100px] text-end">
+            <Button
+              type="button"
+              className="text-sm hover:scale-105"
+              onClick={() =>
+                openExternalLink("https://www.instagram.com/samul.parliament")
+              }
+            >
+              지원하기
+            </Button>
+          </div>
         </div>
       </header>
 

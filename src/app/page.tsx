@@ -10,14 +10,12 @@ export default function Home() {
       {/* 히어로 배너 */}
       <section className="flex min-h-[400px] items-center justify-center overflow-hidden px-4 md:h-[600px]">
         <div className="animate-slide-up">
-          <div className="group hover:animate-wiggle flex flex-col gap-2 text-center md:gap-4 md:text-left">
-            <h2 className="text-4xl font-bold md:text-8xl">2025 Environment</h2>
-            <h1 className="text-nature-forest group-hover:text-nature-spring transform text-5xl font-[900] transition-all duration-100 md:text-9xl">
+          <div className="group hover:animate-wiggle flex -rotate-4 flex-col gap-2 text-center md:gap-4 md:text-left">
+            <h2 className="text-4xl md:text-7xl">2025 Environment</h2>
+            <h1 className="text-nature-forest group-hover:text-nature-spring transform text-5xl font-[900] transition-all duration-100 md:text-8xl">
               사물과 인간
             </h1>
-            <h2 className="text-3xl font-bold md:text-8xl">
-              함께 논의하는 새로운 미래
-            </h2>
+            <h2 className="text-3xl md:text-7xl">함께 논의하는 새로운 미래</h2>
           </div>
         </div>
       </section>
@@ -45,9 +43,9 @@ export default function Home() {
               onClick={() =>
                 openExternalLink("https://www.instagram.com/samul.parliament")
               }
-              className="animate-rotate-in absolute right-0 bottom-[-40px] left-0 mx-auto h-[80px] w-[80px] hover:scale-105 md:bottom-[-50px] md:h-[100px] md:w-[100px]"
+              className="animate-rotate-in absolute right-0 bottom-[-40px] left-0 mx-auto h-[80px] w-[80px] p-0 hover:scale-105 md:bottom-[-50px] md:h-[100px] md:w-[100px]"
             >
-              <p className="text-sm md:text-base">지원하기</p>
+              <p className="text-sm text-nowrap md:text-base">지원하기</p>
             </Button>
           </div>
         </div>

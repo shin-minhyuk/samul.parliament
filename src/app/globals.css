@@ -3,23 +3,12 @@
 /* Pretendard 폰트 */
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
-/* GmarketSans 폰트 */
 @font-face {
-  font-family: "GmarketSans";
-  font-weight: 500;
+  font-family: "PartialSansKR-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
   font-style: normal;
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
-    format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "GmarketSans";
-  font-weight: 700;
-  font-style: normal;
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
-    format("woff");
-  font-display: swap;
 }
 
 @theme {
@@ -33,6 +22,17 @@
   --color-nature-earth: #795548; /* 대지의 갈색 */
   --color-nature-spring: #8bc34a; /* 봄의 연한 녹색 */
 
+  /* 피그마 컬러 참고 */
+  --color-primary-100: #d9d9ff;
+  --color-primary-200: #b3b3ff;
+  --color-primary-300: #8080ff;
+  --color-primary-400: #6666ff;
+  --color-primary-500: #4831d4; /* 메인 컬러 */
+  --color-primary-600: #3c29b6;
+  --color-primary-700: #312198;
+  --color-primary-800: #25197a;
+  --color-primary-900: #1a115c;
+
   --animate-wiggle: wiggle 0.2s ease-in-out forwards;
   --animate-rotate-in: rotateIn 1.4s ease-in-out forwards;
   --animate-slide-up: slide-up 0.7s ease-in-out;
@@ -43,7 +43,7 @@
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
     "Malgun Gothic", sans-serif;
 
-  --font-title: "GmarketSans", "Pretendard", sans-serif;
+  --font-title: "PartialSansKR-Regular", "Pretendard", sans-serif;
 
   @keyframes wiggle {
     0% {
@@ -102,5 +102,5 @@ h4,
 h5,
 h6 {
   font-family: var(--font-title);
-  font-weight: 700;
+  font-weight: 500;
 }
