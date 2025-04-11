@@ -10,7 +10,7 @@ export default function Home() {
       {/* 히어로 배너 */}
       <section className="flex min-h-[400px] items-center justify-center overflow-hidden px-4 md:h-[600px]">
         <div className="animate-slide-up">
-          <div className="group hover:animate-wiggle flex -rotate-4 flex-col gap-2 text-center md:gap-4 md:text-left">
+          <div className="group hover:animate-wiggle flex flex-col gap-2 text-center md:gap-4 md:text-left">
             <h2 className="text-4xl md:text-7xl">2025 Environment</h2>
             <h1 className="text-nature-forest group-hover:text-nature-spring transform text-5xl font-[900] transition-all duration-100 md:text-8xl">
               사물과 인간
