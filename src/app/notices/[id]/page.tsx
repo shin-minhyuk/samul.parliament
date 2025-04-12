@@ -57,7 +57,7 @@ export default function NoticeDetailPage() {
           <div className="mb-8">
             <Link
               href="/notices"
-              className="text-nature-spring flex items-center gap-1 text-sm font-medium hover:underline"
+              className="text-ocean-surf flex items-center gap-1 text-sm font-medium hover:underline"
             >
               <ArrowLeft className="h-4 w-4" />
               공지사항 목록으로 돌아가기
@@ -82,7 +82,7 @@ export default function NoticeDetailPage() {
         <div className="mb-8">
           <Link
             href="/notices"
-            className="text-nature-spring flex items-center gap-1 text-sm font-medium hover:underline"
+            className="text-ocean-surf flex items-center gap-1 text-sm font-medium hover:underline"
           >
             <ArrowLeft className="h-4 w-4" />
             공지사항 목록으로 돌아가기
@@ -98,11 +98,11 @@ export default function NoticeDetailPage() {
           <div className="mb-6 flex items-start justify-between">
             <div className="flex items-center gap-3">
               {notice.important && (
-                <div className="bg-nature-spring rounded-full p-1.5 text-white">
+                <div className="bg-primary-500 rounded-full p-1.5 text-white">
                   <Megaphone className="h-5 w-5" />
                 </div>
               )}
-              <h1 className="text-nature-forest text-2xl font-bold md:text-3xl">
+              <h1 className="text-ocean-deep text-2xl font-bold md:text-3xl">
                 {notice.title}
               </h1>
             </div>
@@ -121,7 +121,7 @@ export default function NoticeDetailPage() {
         <div className="mt-12 flex justify-between">
           <Link
             href="/notices"
-            className="text-nature-spring flex items-center gap-1 text-sm font-medium hover:underline"
+            className="text-ocean-surf flex items-center gap-1 text-sm font-medium hover:underline"
           >
             <ArrowLeft className="h-4 w-4" />
             목록으로 돌아가기

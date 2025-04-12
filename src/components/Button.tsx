@@ -10,7 +10,7 @@ export function Button({ children, ...props }: ButtonProps) {
     <button
       {...props}
       className={twMerge(
-        "bg-nature-leaf font-title hover:bg-nature-spring rounded-full px-4 py-2 text-white transition-all",
+        "bg-ocean-blue font-title hover:bg-primary-500 rounded-full px-4 py-2 text-white transition-all",
         props.className,
       )}
     >

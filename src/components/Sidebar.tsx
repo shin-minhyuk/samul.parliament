@@ -96,7 +96,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
     <>
       {/* Backdrop */}
       <div
-        className={`bg-nature-forest/20 fixed inset-0 z-40 backdrop-blur-lg transition-all duration-300 ${
+        className={`bg-ocean-deep/20 fixed inset-0 z-40 backdrop-blur-lg transition-all duration-300 ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={onClose}
@@ -104,7 +104,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       {/* Sidebar */}
       <div
-        className={`border-nature-forest/20 text-nature-forest fixed top-0 left-0 z-50 h-full w-64 transform border-r bg-white/80 shadow-lg backdrop-blur-sm transition-transform duration-300 ease-in-out ${
+        className={`border-ocean-blue/20 text-ocean-deep fixed top-0 left-0 z-50 h-full w-64 transform border-r bg-white/80 shadow-lg backdrop-blur-sm transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -112,7 +112,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           <button
             type="button"
             onClick={onClose}
-            className="hover:bg-nature-forest/10 absolute top-2 right-2 rounded-full p-1 transition-colors"
+            className="hover:bg-ocean-deep/10 absolute top-2 right-2 rounded-full p-1 transition-colors"
             aria-label="사이드바 닫기"
           >
             <X className="h-6 w-6" />
@@ -127,7 +127,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                       <button
                         type="button"
                         onClick={() => toggleAccordion(index)}
-                        className="hover:bg-nature-forest/10 flex w-full items-center justify-between rounded-lg p-2 transition-colors"
+                        className="hover:bg-ocean-deep/10 flex w-full items-center justify-between rounded-lg p-2 transition-colors"
                       >
                         <span className="flex items-center gap-2">
                           {item.icon}
@@ -147,12 +147,12 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                         }`}
                       >
                         <div className="overflow-hidden">
-                          <ul className="border-nature-forest/20 ml-4 space-y-1 border-l pt-1 pl-4">
+                          <ul className="border-ocean-blue/20 ml-4 space-y-1 border-l pt-1 pl-4">
                             {item.subItems.map((subItem) => (
                               <li key={subItem.title}>
                                 <Link
                                   href={subItem.href}
-                                  className="hover:bg-nature-forest/10 flex items-center gap-2 rounded-lg p-2 text-sm transition-colors"
+                                  className="hover:bg-ocean-deep/10 flex items-center gap-2 rounded-lg p-2 text-sm transition-colors"
                                   onClick={onClose}
                                 >
                                   {subItem.icon}
@@ -167,7 +167,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                   ) : (
                     <Link
                       href={item.href!}
-                      className="hover:bg-nature-forest/10 flex items-center gap-2 rounded-lg p-2 transition-colors"
+                      className="hover:bg-ocean-deep/10 flex items-center gap-2 rounded-lg p-2 transition-colors"
                       onClick={onClose}
                     >
                       {item.icon}

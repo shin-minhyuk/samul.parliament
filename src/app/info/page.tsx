@@ -4,12 +4,12 @@ export default function InfoPage() {
   return (
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="mx-auto max-w-4xl">
-        <h1 className="text-nature-forest mb-8 text-4xl font-bold md:text-5xl">
+        <h1 className="text-ocean-deep mb-8 text-4xl font-bold md:text-5xl">
           사물의 의회 소개
         </h1>
 
         <section className="mb-12">
-          <h2 className="text-nature-forest mb-4 text-2xl font-bold md:text-3xl">
+          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
             연구 배경
           </h2>
           <div className="prose prose-lg max-w-none">
@@ -37,7 +37,7 @@ export default function InfoPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-nature-forest mb-4 text-2xl font-bold md:text-3xl">
+          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
             사물의 의회란?
           </h2>
           <div className="prose prose-lg max-w-none">
@@ -57,7 +57,7 @@ export default function InfoPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-nature-forest mb-4 text-2xl font-bold md:text-3xl">
+          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
             연구 목적 및 기대효과
           </h2>
           <div className="prose prose-lg max-w-none">
@@ -77,7 +77,7 @@ export default function InfoPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-nature-forest mb-4 text-2xl font-bold md:text-3xl">
+          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
             진행 방식
           </h2>
           <div className="prose prose-lg max-w-none">
@@ -86,12 +86,12 @@ export default function InfoPage() {
               의회를 개최하는 단계 그리고 3) 행사 이후에 보고서 등의 결과물을
               만들어 내는 단계인 세 단계로 나누어 진행됩니다.
             </p>
-            <h3 className="text-nature-spring mt-6 mb-2 text-xl font-bold">
+            <h3 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
               참여 그룹
             </h3>
             <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
               <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
-                <h4 className="text-nature-forest mb-2 text-lg font-bold">
+                <h4 className="text-ocean-deep mb-2 text-lg font-bold">
                   인간 그룹
                 </h4>
                 <ul className="list-disc space-y-1 pl-5">
@@ -103,7 +103,7 @@ export default function InfoPage() {
                 </ul>
               </div>
               <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
-                <h4 className="text-nature-forest mb-2 text-lg font-bold">
+                <h4 className="text-ocean-deep mb-2 text-lg font-bold">
                   비인간 그룹
                 </h4>
                 <ul className="list-disc space-y-1 pl-5">
@@ -118,7 +118,7 @@ export default function InfoPage() {
             <p className="mb-4">
               각 그룹은 당사자, 사회과학자, 활동가, 시민, 학생으로 구성됩니다.
             </p>
-            <h3 className="text-nature-spring mt-6 mb-2 text-xl font-bold">
+            <h3 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
               회의 진행
             </h3>
             <p className="mb-4">
@@ -132,34 +132,34 @@ export default function InfoPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-nature-forest mb-4 text-2xl font-bold md:text-3xl">
+          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
             연구 일정
           </h2>
           <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
             <div className="overflow-x-auto">
               <table className="min-w-full">
                 <thead>
-                  <tr className="border-nature-forest/20 border-b">
-                    <th className="text-nature-forest px-4 py-2 text-left">
+                  <tr className="border-ocean-deep/20 border-b">
+                    <th className="text-ocean-deep px-4 py-2 text-left">
                       단계
                     </th>
-                    <th className="text-nature-forest px-4 py-2 text-left">
+                    <th className="text-ocean-deep px-4 py-2 text-left">
                       기간
                     </th>
-                    <th className="text-nature-forest px-4 py-2 text-left">
+                    <th className="text-ocean-deep px-4 py-2 text-left">
                       내용
                     </th>
                   </tr>
                 </thead>
                 <tbody className="whitespace-nowrap">
-                  <tr className="border-nature-forest/20 border-b">
+                  <tr className="border-ocean-deep/20 border-b">
                     <td className="px-4 py-3">1단계</td>
                     <td className="px-4 py-3">1월 ~ 8월</td>
                     <td className="px-4 py-3">
                       준비 단계, 회의 준비, 참여자 섭외, 예비모임
                     </td>
                   </tr>
-                  <tr className="border-nature-forest/20 border-b">
+                  <tr className="border-ocean-deep/20 border-b">
                     <td className="px-4 py-3">2단계</td>
                     <td className="px-4 py-3">9월 ~ 10월</td>
                     <td className="px-4 py-3">사물의 의회 개최</td>
@@ -176,7 +176,7 @@ export default function InfoPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-nature-forest mb-4 text-2xl font-bold md:text-3xl">
+          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
             조직 구성
           </h2>
           <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
@@ -189,7 +189,7 @@ export default function InfoPage() {
             <div className="flex justify-center">
               <a
                 href="/organization"
-                className="bg-nature-spring hover:bg-nature-forest mt-2 inline-block rounded-full px-6 py-3 font-semibold text-white transition-all"
+                className="bg-primary-500 hover:bg-nature-forest mt-2 inline-block rounded-full px-6 py-3 font-semibold text-white transition-all"
               >
                 조직 구성도 보기
               </a>
@@ -198,7 +198,7 @@ export default function InfoPage() {
         </section>
 
         <section>
-          <h2 className="text-nature-forest mb-4 text-2xl font-bold md:text-3xl">
+          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
             참고 문헌
           </h2>
           <div className="prose prose-lg max-w-none">

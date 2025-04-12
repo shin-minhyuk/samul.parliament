@@ -14,7 +14,7 @@ export default function RecruitmentPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="mx-auto max-w-5xl">
         <div className="mb-12 text-center">
-          <h1 className="text-nature-forest mb-4 text-4xl font-bold md:text-5xl">
+          <h1 className="text-primary-500 mb-4 text-4xl font-bold md:text-5xl">
             2025 사물의 의회 참가자 모집
           </h1>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
@@ -25,7 +25,7 @@ export default function RecruitmentPage() {
 
         {/* 모집 개요 */}
         <section className="mb-16">
-          <div className="bg-nature-forest relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
+          <div className="bg-ocean-deep relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
             <div className="relative z-10">
               <h2 className="mb-6 text-3xl font-bold">모집 개요</h2>
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -63,19 +63,17 @@ export default function RecruitmentPage() {
 
         {/* 모집 분야 */}
         <section className="mb-16">
-          <h2 className="text-nature-forest mb-8 text-center text-3xl font-bold">
+          <h2 className="text-primary-500 mb-8 text-center text-3xl font-bold">
             모집 분야
           </h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* 인간 그룹 */}
             <div className="group rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl">
               <div className="mb-4 flex items-center gap-3">
-                <div className="bg-nature-spring rounded-full p-2 text-white">
+                <div className="bg-ocean-surf rounded-full p-2 text-white">
                   <Users className="h-6 w-6" />
                 </div>
-                <h3 className="text-nature-forest text-xl font-bold">
-                  인간 그룹
-                </h3>
+                <h3 className="text-ocean-deep text-xl font-bold">인간 그룹</h3>
               </div>
               <ul className="mb-4 list-disc space-y-2 pl-5">
                 <li>도시 / 농촌 대표</li>
@@ -92,10 +90,10 @@ export default function RecruitmentPage() {
             {/* 비인간 그룹 */}
             <div className="group rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl">
               <div className="mb-4 flex items-center gap-3">
-                <div className="bg-nature-leaf rounded-full p-2 text-white">
+                <div className="bg-ocean-blue rounded-full p-2 text-white">
                   <Globe className="h-6 w-6" />
                 </div>
-                <h3 className="text-nature-forest text-xl font-bold">
+                <h3 className="text-ocean-deep text-xl font-bold">
                   비인간 그룹 대변인
                 </h3>
               </div>
@@ -112,8 +110,8 @@ export default function RecruitmentPage() {
             </div>
           </div>
 
-          <div className="bg-nature-spring/10 mt-8 rounded-xl p-6">
-            <h3 className="text-nature-forest mb-3 text-xl font-bold">
+          <div className="bg-ocean-surf/10 mt-8 rounded-xl p-6">
+            <h3 className="text-ocean-deep mb-3 text-xl font-bold">
               지원 자격
             </h3>
             <ul className="list-disc space-y-1 pl-5">
@@ -129,15 +127,15 @@ export default function RecruitmentPage() {
 
         {/* 참여 혜택 */}
         <section className="mb-16">
-          <h2 className="text-nature-forest mb-8 text-center text-3xl font-bold">
+          <h2 className="text-primary-500 mb-8 text-center text-3xl font-bold">
             참여 혜택
           </h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="rounded-xl bg-white/80 p-5 shadow-md backdrop-blur-sm">
-              <div className="bg-nature-forest/10 mb-4 inline-block rounded-full p-3">
-                <MessageCircle className="text-nature-forest h-6 w-6" />
+              <div className="bg-ocean-blue/10 mb-4 inline-block rounded-full p-3">
+                <MessageCircle className="text-primary-500 h-6 w-6" />
               </div>
-              <h3 className="text-nature-forest mb-2 text-lg font-bold">
+              <h3 className="text-ocean-deep mb-2 text-lg font-bold">
                 목소리를 낼 기회
               </h3>
               <p className="text-sm text-gray-600">
@@ -147,10 +145,10 @@ export default function RecruitmentPage() {
             </div>
 
             <div className="rounded-xl bg-white/80 p-5 shadow-md backdrop-blur-sm">
-              <div className="bg-nature-forest/10 mb-4 inline-block rounded-full p-3">
-                <Users className="text-nature-forest h-6 w-6" />
+              <div className="bg-ocean-blue/10 mb-4 inline-block rounded-full p-3">
+                <Users className="text-primary-500 h-6 w-6" />
               </div>
-              <h3 className="text-nature-forest mb-2 text-lg font-bold">
+              <h3 className="text-ocean-deep mb-2 text-lg font-bold">
                 네트워킹
               </h3>
               <p className="text-sm text-gray-600">
@@ -160,10 +158,10 @@ export default function RecruitmentPage() {
             </div>
 
             <div className="rounded-xl bg-white/80 p-5 shadow-md backdrop-blur-sm">
-              <div className="bg-nature-forest/10 mb-4 inline-block rounded-full p-3">
-                <FileText className="text-nature-forest h-6 w-6" />
+              <div className="bg-ocean-blue/10 mb-4 inline-block rounded-full p-3">
+                <FileText className="text-primary-500 h-6 w-6" />
               </div>
-              <h3 className="text-nature-forest mb-2 text-lg font-bold">
+              <h3 className="text-ocean-deep mb-2 text-lg font-bold">
                 연구 참여
               </h3>
               <p className="text-sm text-gray-600">
@@ -176,7 +174,7 @@ export default function RecruitmentPage() {
 
         {/* 지원 방법 */}
         <section className="mb-16">
-          <div className="bg-nature-spring relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
+          <div className="bg-primary-500 relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
             <div className="relative z-10">
               <h2 className="mb-6 text-3xl font-bold">지원 방법</h2>
               <div className="mb-6 space-y-4">
@@ -218,7 +216,7 @@ export default function RecruitmentPage() {
                   href="https://www.instagram.com/samul.parliament"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-nature-spring rounded-full bg-white px-8 py-3 font-semibold transition-all hover:bg-white/90"
+                  className="text-primary-600 rounded-full bg-white px-8 py-3 font-semibold transition-all hover:bg-white/90"
                 >
                   지원하기
                 </a>
@@ -241,13 +239,13 @@ export default function RecruitmentPage() {
 
         {/* FAQ */}
         <section>
-          <h2 className="text-nature-forest mb-8 text-center text-3xl font-bold">
+          <h2 className="text-primary-500 mb-8 text-center text-3xl font-bold">
             자주 묻는 질문
           </h2>
           <div className="rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm">
             <div className="divide-y">
               <div className="py-4">
-                <h3 className="text-nature-forest mb-2 text-lg font-semibold">
+                <h3 className="text-ocean-deep mb-2 text-lg font-semibold">
                   전문 지식이 없어도 참여할 수 있나요?
                 </h3>
                 <p className="text-gray-600">
@@ -257,7 +255,7 @@ export default function RecruitmentPage() {
                 </p>
               </div>
               <div className="py-4">
-                <h3 className="text-nature-forest mb-2 text-lg font-semibold">
+                <h3 className="text-ocean-deep mb-2 text-lg font-semibold">
                   비인간 존재를 어떻게 대변하나요?
                 </h3>
                 <p className="text-gray-600">
@@ -268,7 +266,7 @@ export default function RecruitmentPage() {
                 </p>
               </div>
               <div className="py-4">
-                <h3 className="text-nature-forest mb-2 text-lg font-semibold">
+                <h3 className="text-ocean-deep mb-2 text-lg font-semibold">
                   참가 비용이 있나요?
                 </h3>
                 <p className="text-gray-600">
@@ -276,7 +274,7 @@ export default function RecruitmentPage() {
                 </p>
               </div>
               <div className="py-4">
-                <h3 className="text-nature-forest mb-2 text-lg font-semibold">
+                <h3 className="text-ocean-deep mb-2 text-lg font-semibold">
                   회의 결과물은 어떻게 활용되나요?
                 </h3>
                 <p className="text-gray-600">

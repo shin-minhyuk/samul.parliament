@@ -61,7 +61,7 @@ export default function FaqPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12 text-center">
-          <h1 className="text-nature-forest mb-4 text-4xl font-bold md:text-5xl">
+          <h1 className="text-ocean-deep mb-4 text-4xl font-bold md:text-5xl">
             자주 묻는 질문
           </h1>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
@@ -76,7 +76,7 @@ export default function FaqPage() {
             </div>
             <input
               type="text"
-              className="focus:border-nature-spring focus:ring-nature-spring block w-full rounded-lg border border-gray-300 bg-white p-4 pl-10 text-gray-900"
+              className="focus:border-ocean-surf focus:ring-nature-spring block w-full rounded-lg border border-gray-300 bg-white p-4 pl-10 text-gray-900"
               placeholder="질문 검색하기..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}

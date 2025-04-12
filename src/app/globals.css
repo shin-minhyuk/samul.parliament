@@ -16,22 +16,23 @@
   --color-p-lime: #ccff00;
   --color-p-electric: #00ffff;
 
-  --color-nature-leaf: #4caf50; /* 신선한 잎사귀 녹색 */
-  --color-nature-forest: #2e7d32; /* 깊은 숲 녹색 */
-  --color-nature-sky: #03a9f4; /* 맑은 하늘 파란색 */
-  --color-nature-earth: #795548; /* 대지의 갈색 */
-  --color-nature-spring: #8bc34a; /* 봄의 연한 녹색 */
+  /* 바다 색상 팔레트 */
+  --color-ocean-deep: #05445e; /* 깊은 바다 남색 */
+  --color-ocean-blue: #0892d0; /* 선명한 바다 파란색 */
+  --color-ocean-surf: #75e6da; /* 파도 민트색 */
+  --color-ocean-foam: #d4f1f9; /* 거품 연한 하늘색 */
+  --color-ocean-coral: #ff7f50; /* 산호색 액센트 */
 
   /* 피그마 컬러 참고 */
-  --color-primary-100: #d9d9ff;
-  --color-primary-200: #b3b3ff;
-  --color-primary-300: #8080ff;
-  --color-primary-400: #6666ff;
-  --color-primary-500: #4831d4; /* 메인 컬러 */
-  --color-primary-600: #3c29b6;
-  --color-primary-700: #312198;
-  --color-primary-800: #25197a;
-  --color-primary-900: #1a115c;
+  --color-primary-100: #d6d8ff;
+  --color-primary-200: #b0b4ff;
+  --color-primary-300: #868dff;
+  --color-primary-400: #5c65ff;
+  --color-primary-500: #262fdb; /* 메인 컬러 */
+  --color-primary-600: #2026ba;
+  --color-primary-700: #1a1e99;
+  --color-primary-800: #151778;
+  --color-primary-900: #0f1057;
 
   --animate-wiggle: wiggle 0.2s ease-in-out forwards;
   --animate-rotate-in: rotateIn 1.4s ease-in-out forwards;
@@ -84,8 +85,8 @@
 }
 
 :root {
-  --background: #f5f9f2; /* 매우 연한 민트 그린 */
-  --foreground: #2c4a3e; /* 깊은 포레스트 그린 */
+  --background: #f0f8ff; /* 연한 하늘빛 배경 */
+  --foreground: #05445e; /* 깊은 바다 남색 텍스트 */
 }
 
 body {

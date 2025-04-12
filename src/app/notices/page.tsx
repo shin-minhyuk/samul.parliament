@@ -66,7 +66,7 @@ export default function NoticesPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12 text-center">
-          <h1 className="text-nature-forest mb-4 text-4xl font-bold md:text-5xl">
+          <h1 className="text-ocean-deep mb-4 text-4xl font-bold md:text-5xl">
             공지사항
           </h1>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
@@ -111,11 +111,11 @@ export default function NoticesPage() {
                 <div className="mb-4 flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     {notice.important && (
-                      <div className="bg-nature-spring rounded-full p-1.5 text-white">
+                      <div className="bg-primary-500 rounded-full p-1.5 text-white">
                         <Megaphone className="h-4 w-4" />
                       </div>
                     )}
-                    <h2 className="text-nature-forest text-xl font-bold">
+                    <h2 className="text-ocean-deep text-xl font-bold">
                       {notice.title}
                     </h2>
                   </div>
@@ -132,7 +132,7 @@ export default function NoticesPage() {
                 <div className="mt-4 flex justify-end">
                   <Link
                     href={`/notices/${notice.id}`}
-                    className="text-nature-spring flex items-center gap-1 text-sm font-medium hover:underline"
+                    className="text-ocean-surf flex items-center gap-1 text-sm font-medium hover:underline"
                   >
                     자세히 보기
                     <ArrowRight className="h-4 w-4" />

@@ -6,7 +6,7 @@ export default function GuidelinesPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12 text-center">
-          <h1 className="text-nature-forest mb-4 text-4xl font-bold md:text-5xl">
+          <h1 className="text-ocean-deep mb-4 text-4xl font-bold md:text-5xl">
             2025 사물의 의회 모집요강
           </h1>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
@@ -18,10 +18,10 @@ export default function GuidelinesPage() {
         {/* 모집 개요 */}
         <section className="mb-12">
           <div className="mb-4 flex items-center gap-3">
-            <div className="bg-nature-forest rounded-full p-2 text-white">
+            <div className="bg-ocean-deep rounded-full p-2 text-white">
               <FileText className="h-6 w-6" />
             </div>
-            <h2 className="text-nature-forest text-2xl font-bold">모집 개요</h2>
+            <h2 className="text-ocean-deep text-2xl font-bold">모집 개요</h2>
           </div>
           <div className="rounded-xl bg-white p-6 shadow-md">
             <p className="mb-4">
@@ -31,7 +31,7 @@ export default function GuidelinesPage() {
             </p>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
-                <h3 className="text-nature-forest mb-2 text-lg font-semibold">
+                <h3 className="text-ocean-deep mb-2 text-lg font-semibold">
                   행사 일정
                 </h3>
                 <ul className="space-y-2 text-gray-700">
@@ -59,7 +59,7 @@ export default function GuidelinesPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-nature-forest mb-2 text-lg font-semibold">
+                <h3 className="text-ocean-deep mb-2 text-lg font-semibold">
                   모집 기간
                 </h3>
                 <ul className="space-y-2 text-gray-700">
@@ -93,10 +93,10 @@ export default function GuidelinesPage() {
         {/* 모집 분야 */}
         <section className="mb-12">
           <div className="mb-4 flex items-center gap-3">
-            <div className="bg-nature-spring rounded-full p-2 text-white">
+            <div className="bg-primary-500 rounded-full p-2 text-white">
               <Users className="h-6 w-6" />
             </div>
-            <h2 className="text-nature-forest text-2xl font-bold">모집 분야</h2>
+            <h2 className="text-ocean-deep text-2xl font-bold">모집 분야</h2>
           </div>
           <div className="rounded-xl bg-white p-6 shadow-md">
             <p className="mb-6">
@@ -104,7 +104,7 @@ export default function GuidelinesPage() {
               대변인으로 구성됩니다. 아래 분야별로 참가자를 모집합니다.
             </p>
 
-            <h3 className="text-nature-forest mb-3 text-xl font-semibold">
+            <h3 className="text-ocean-deep mb-3 text-xl font-semibold">
               인간 그룹 (총 15명)
             </h3>
             <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -129,7 +129,7 @@ export default function GuidelinesPage() {
               </div>
             </div>
 
-            <h3 className="text-nature-forest mb-3 text-xl font-semibold">
+            <h3 className="text-ocean-deep mb-3 text-xl font-semibold">
               비인간 그룹 대변인 (총 15명)
             </h3>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -160,15 +160,15 @@ export default function GuidelinesPage() {
         {/* 지원 자격 및 방법 */}
         <section className="mb-12">
           <div className="mb-4 flex items-center gap-3">
-            <div className="bg-nature-leaf rounded-full p-2 text-white">
+            <div className="bg-ocean-blue rounded-full p-2 text-white">
               <CheckCircle className="h-6 w-6" />
             </div>
-            <h2 className="text-nature-forest text-2xl font-bold">
+            <h2 className="text-ocean-deep text-2xl font-bold">
               지원 자격 및 방법
             </h2>
           </div>
           <div className="rounded-xl bg-white p-6 shadow-md">
-            <h3 className="text-nature-forest mb-3 text-xl font-semibold">
+            <h3 className="text-ocean-deep mb-3 text-xl font-semibold">
               지원 자격
             </h3>
             <ul className="mb-6 list-disc space-y-2 pl-5 text-gray-700">
@@ -186,7 +186,7 @@ export default function GuidelinesPage() {
               </li>
             </ul>
 
-            <h3 className="text-nature-forest mb-3 text-xl font-semibold">
+            <h3 className="text-ocean-deep mb-3 text-xl font-semibold">
               지원 방법
             </h3>
             <ol className="mb-6 list-decimal space-y-3 pl-5 text-gray-700">
@@ -224,7 +224,7 @@ export default function GuidelinesPage() {
               </li>
             </ol>
 
-            <div className="bg-nature-spring/10 rounded-lg p-4">
+            <div className="bg-primary-500/10 rounded-lg p-4">
               <h4 className="mb-2 font-medium">제출 서류</h4>
               <ul className="list-disc space-y-1 pl-5 text-gray-700">
                 <li>온라인 지원서 (기본 인적사항, 지원 분야, 참여 동기 등)</li>
@@ -239,10 +239,10 @@ export default function GuidelinesPage() {
         {/* 참가자 혜택 */}
         <section className="mb-12">
           <div className="mb-4 flex items-center gap-3">
-            <div className="bg-nature-forest rounded-full p-2 text-white">
+            <div className="bg-ocean-deep rounded-full p-2 text-white">
               <CheckCircle className="h-6 w-6" />
             </div>
-            <h2 className="text-nature-forest text-2xl font-bold">
+            <h2 className="text-ocean-deep text-2xl font-bold">
               참가자 혜택
             </h2>
           </div>
@@ -287,10 +287,10 @@ export default function GuidelinesPage() {
         {/* 문의처 */}
         <section className="mb-12">
           <div className="mb-4 flex items-center gap-3">
-            <div className="bg-nature-spring rounded-full p-2 text-white">
+            <div className="bg-primary-500 rounded-full p-2 text-white">
               <Mail className="h-6 w-6" />
             </div>
-            <h2 className="text-nature-forest text-2xl font-bold">문의처</h2>
+            <h2 className="text-ocean-deep text-2xl font-bold">문의처</h2>
           </div>
           <div className="rounded-xl bg-white p-6 shadow-md">
             <ul className="space-y-3 text-gray-700">
@@ -318,7 +318,7 @@ export default function GuidelinesPage() {
             href="https://www.instagram.com/samul.parliament"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-nature-spring hover:bg-nature-forest rounded-full px-10 py-4 text-lg font-semibold text-white transition-all"
+            className="bg-primary-500 hover:bg-nature-forest rounded-full px-10 py-4 text-lg font-semibold text-white transition-all"
           >
             지원하기
           </a>

@@ -17,7 +17,7 @@ export default function Header() {
       <header className="fixed top-0 right-0 left-0 z-30 flex flex-col">
         {/* Announcement Banner */}
         {isBannerVisible && (
-          <div className="border-nature-forest/20 text-nature-forest relative border-b bg-white/60 px-4 py-2 text-center text-sm backdrop-blur-md">
+          <div className="border-ocean-deep/20 text-ocean-deep relative border-b bg-white/60 px-4 py-2 text-center text-sm backdrop-blur-md">
             <div className="flex animate-pulse items-center justify-center gap-2">
               <Clock className="h-4 w-4" />
               <p>
@@ -26,7 +26,7 @@ export default function Header() {
               </p>
               <button
                 onClick={() => setIsBannerVisible(false)}
-                className="hover:bg-nature-forest/10 absolute right-2 rounded-full p-1 transition-colors"
+                className="hover:bg-ocean-deep/10 absolute right-2 rounded-full p-1 transition-colors"
                 aria-label="배너 닫기"
               >
                 <X className="h-4 w-4" />
@@ -36,11 +36,11 @@ export default function Header() {
         )}
 
         {/* Main Header */}
-        <div className="border-nature-forest/20 flex h-16 items-center justify-between border-b bg-white/80 px-4 backdrop-blur-sm">
+        <div className="border-ocean-blue/20 flex h-16 items-center justify-between border-b bg-white/80 px-4 backdrop-blur-sm">
           {/* Left - Sidebar Button */}
           <div className="w-[100px]">
             <button
-              className="text-nature-forest hover:bg-nature-forest/10 rounded-lg p-2 transition-colors"
+              className="text-ocean-deep hover:bg-ocean-deep/10 rounded-lg p-2 transition-colors"
               onClick={() => setIsSidebarOpen(true)}
             >
               <Menu className="h-6 w-6" />
@@ -48,7 +48,7 @@ export default function Header() {
           </div>
 
           {/* Center - Title */}
-          <h1 className="text-nature-forest hover:text-nature-spring mb-1 -rotate-4 text-xl font-semibold md:text-3xl">
+          <h1 className="text-primary-500 hover:text-primary-400 mb-1 -rotate-4 text-xl font-semibold md:text-3xl">
             <Link href="/">사물의 의회</Link>
           </h1>
 

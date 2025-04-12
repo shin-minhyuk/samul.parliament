@@ -20,7 +20,7 @@ export default function LocationPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="mx-auto max-w-5xl">
         <div className="mb-12 text-center">
-          <h1 className="text-nature-forest mb-4 text-4xl font-bold md:text-5xl">
+          <h1 className="text-ocean-deep mb-4 text-4xl font-bold md:text-5xl">
             사물의 의회 장소 안내
           </h1>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
@@ -31,7 +31,7 @@ export default function LocationPage() {
 
         {/* 장소 개요 */}
         <section className="mb-16">
-          <div className="bg-nature-forest relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
+          <div className="bg-ocean-deep relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
             <div className="relative z-10">
               <h2 className="mb-6 text-3xl font-bold">장소 개요</h2>
               <div className="flex flex-col gap-4 md:flex-row md:gap-8">
@@ -70,7 +70,7 @@ export default function LocationPage() {
 
         {/* 지도 */}
         <section className="mb-16">
-          <h2 className="text-nature-forest mb-8 text-center text-3xl font-bold">
+          <h2 className="text-ocean-deep mb-8 text-center text-3xl font-bold">
             위치 안내
           </h2>
           <div className="overflow-hidden rounded-xl bg-white shadow-lg">
@@ -84,8 +84,8 @@ export default function LocationPage() {
             </div>
             <div className="p-6">
               <div className="flex items-center gap-2">
-                <MapPin className="text-nature-spring h-5 w-5" />
-                <h3 className="text-nature-forest text-lg font-bold">
+                <MapPin className="text-ocean-surf h-5 w-5" />
+                <h3 className="text-ocean-deep text-lg font-bold">
                   서울숲 컨퍼런스센터
                 </h3>
               </div>
@@ -97,7 +97,7 @@ export default function LocationPage() {
                   href="https://map.kakao.com/link/to/서울숲%20컨퍼런스센터,37.5443,127.0444"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-nature-spring hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
+                  className="bg-primary-500 hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
                 >
                   카카오맵으로 보기
                 </a>
@@ -105,7 +105,7 @@ export default function LocationPage() {
                   href="https://maps.google.com/maps?q=37.5443,127.0444"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-nature-leaf hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
+                  className="bg-ocean-blue hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
                 >
                   구글맵으로 보기
                 </a>
@@ -116,17 +116,17 @@ export default function LocationPage() {
 
         {/* 교통편 안내 */}
         <section className="mb-16">
-          <h2 className="text-nature-forest mb-8 text-center text-3xl font-bold">
+          <h2 className="text-ocean-deep mb-8 text-center text-3xl font-bold">
             교통편 안내
           </h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {/* 지하철 */}
             <div className="rounded-xl bg-white p-6 shadow-md">
               <div className="mb-4 flex items-center gap-3">
-                <div className="bg-nature-spring rounded-full p-2 text-white">
+                <div className="bg-primary-500 rounded-full p-2 text-white">
                   <Train className="h-6 w-6" />
                 </div>
-                <h3 className="text-nature-forest text-xl font-bold">지하철</h3>
+                <h3 className="text-ocean-deep text-xl font-bold">지하철</h3>
               </div>
               <ul className="space-y-2 text-gray-600">
                 <li>
@@ -147,10 +147,10 @@ export default function LocationPage() {
             {/* 버스 */}
             <div className="rounded-xl bg-white p-6 shadow-md">
               <div className="mb-4 flex items-center gap-3">
-                <div className="bg-nature-leaf rounded-full p-2 text-white">
+                <div className="bg-ocean-blue rounded-full p-2 text-white">
                   <Bus className="h-6 w-6" />
                 </div>
-                <h3 className="text-nature-forest text-xl font-bold">버스</h3>
+                <h3 className="text-ocean-deep text-xl font-bold">버스</h3>
               </div>
               <ul className="space-y-2 text-gray-600">
                 <li>
@@ -169,10 +169,10 @@ export default function LocationPage() {
             {/* 자가용 */}
             <div className="rounded-xl bg-white p-6 shadow-md">
               <div className="mb-4 flex items-center gap-3">
-                <div className="bg-nature-forest rounded-full p-2 text-white">
+                <div className="bg-ocean-deep rounded-full p-2 text-white">
                   <Car className="h-6 w-6" />
                 </div>
-                <h3 className="text-nature-forest text-xl font-bold">자가용</h3>
+                <h3 className="text-ocean-deep text-xl font-bold">자가용</h3>
               </div>
               <ul className="space-y-2 text-gray-600">
                 <li>내비게이션에 &apos;서울숲 컨퍼런스센터&apos; 검색</li>
@@ -195,17 +195,17 @@ export default function LocationPage() {
 
         {/* 주변 시설 */}
         <section className="mb-16">
-          <h2 className="text-nature-forest mb-8 text-center text-3xl font-bold">
+          <h2 className="text-ocean-deep mb-8 text-center text-3xl font-bold">
             주변 시설 안내
           </h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* 카페 및 식당 */}
             <div className="rounded-xl bg-white p-6 shadow-md">
               <div className="mb-4 flex items-center gap-3">
-                <div className="bg-nature-spring rounded-full p-2 text-white">
+                <div className="bg-primary-500 rounded-full p-2 text-white">
                   <Coffee className="h-6 w-6" />
                 </div>
-                <h3 className="text-nature-forest text-xl font-bold">
+                <h3 className="text-ocean-deep text-xl font-bold">
                   카페 및 식당
                 </h3>
               </div>
@@ -228,10 +228,10 @@ export default function LocationPage() {
             {/* 숙박 */}
             <div className="rounded-xl bg-white p-6 shadow-md">
               <div className="mb-4 flex items-center gap-3">
-                <div className="bg-nature-leaf rounded-full p-2 text-white">
+                <div className="bg-ocean-blue rounded-full p-2 text-white">
                   <Hotel className="h-6 w-6" />
                 </div>
-                <h3 className="text-nature-forest text-xl font-bold">숙박</h3>
+                <h3 className="text-ocean-deep text-xl font-bold">숙박</h3>
               </div>
               <ul className="space-y-2 text-gray-600">
                 <li>
@@ -257,12 +257,12 @@ export default function LocationPage() {
 
         {/* 추가 정보 */}
         <section>
-          <div className="bg-nature-spring/10 rounded-xl p-6">
+          <div className="bg-primary-500/10 rounded-xl p-6">
             <div className="mb-4 flex items-center gap-3">
-              <div className="bg-nature-forest rounded-full p-2 text-white">
+              <div className="bg-ocean-deep rounded-full p-2 text-white">
                 <Info className="h-6 w-6" />
               </div>
-              <h3 className="text-nature-forest text-xl font-bold">
+              <h3 className="text-ocean-deep text-xl font-bold">
                 추가 안내사항
               </h3>
             </div>
@@ -272,13 +272,14 @@ export default function LocationPage() {
               <li>중식과 다과가 제공됩니다.</li>
               <li>행사장 내 와이파이가 무료로 제공됩니다.</li>
               <li>
-                행사 관련 문의사항은 이메일(info@samuluiuihoe.org)로 연락주세요.
+                행사 관련 문의사항은 이메일(samul.parliament@gmail.com)로
+                연락주세요.
               </li>
             </ul>
             <div className="mt-6 flex justify-center">
               <Link
                 href="/recruitment"
-                className="bg-nature-spring hover:bg-nature-forest rounded-full px-8 py-3 font-semibold text-white transition-all"
+                className="bg-primary-500 hover:bg-nature-forest rounded-full px-8 py-3 font-semibold text-white transition-all"
               >
                 참가 신청하기
               </Link>

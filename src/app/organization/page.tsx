@@ -4,42 +4,42 @@ export default function OrganizationPage() {
   return (
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="mx-auto max-w-5xl">
-        <h1 className="text-nature-forest mb-8 text-4xl font-bold md:text-5xl">
+        <h1 className="text-ocean-deep mb-8 text-4xl font-bold md:text-5xl">
           조직 구성도
         </h1>
 
         <section className="mb-12">
-          <h2 className="text-nature-forest mb-6 text-2xl font-bold md:text-3xl">
+          <h2 className="text-ocean-deep mb-6 text-2xl font-bold md:text-3xl">
             조직 위원회 구성
           </h2>
 
           {/* 조직도 다이어그램 */}
           <div className="mb-10 overflow-hidden rounded-xl bg-white/90 p-6 shadow-lg backdrop-blur-sm">
             <div className="flex flex-col items-center">
-              <div className="bg-nature-forest mb-6 w-64 rounded-lg p-4 text-center text-white">
+              <div className="bg-ocean-deep mb-6 w-64 rounded-lg p-4 text-center text-white">
                 <h3 className="text-xl font-bold">위원장</h3>
                 <p>김태우 (서울대학교 인류학과)</p>
               </div>
 
-              <div className="bg-nature-forest mb-6 h-10 w-1"></div>
+              <div className="bg-ocean-deep mb-6 h-10 w-1"></div>
 
               <div className="mb-8 grid w-full grid-cols-1 gap-4 md:grid-cols-3">
-                <div className="bg-nature-spring rounded-lg p-4 text-center text-white">
+                <div className="bg-primary-500 rounded-lg p-4 text-center text-white">
                   <h3 className="text-lg font-bold">학술 위원회</h3>
                 </div>
-                <div className="bg-nature-spring rounded-lg p-4 text-center text-white">
+                <div className="bg-primary-500 rounded-lg p-4 text-center text-white">
                   <h3 className="text-lg font-bold">운영 위원회</h3>
                 </div>
-                <div className="bg-nature-spring rounded-lg p-4 text-center text-white">
+                <div className="bg-primary-500 rounded-lg p-4 text-center text-white">
                   <h3 className="text-lg font-bold">사무국</h3>
                 </div>
               </div>
 
               <div className="mb-6 grid w-full grid-cols-1 gap-4 md:grid-cols-2">
-                <div className="bg-nature-leaf/80 rounded-lg p-4 text-center text-white">
+                <div className="bg-ocean-blue/80 rounded-lg p-4 text-center text-white">
                   <h3 className="text-lg font-bold">인간 대표단</h3>
                 </div>
-                <div className="bg-nature-leaf/80 rounded-lg p-4 text-center text-white">
+                <div className="bg-ocean-blue/80 rounded-lg p-4 text-center text-white">
                   <h3 className="text-lg font-bold">비인간 대표단</h3>
                 </div>
               </div>
@@ -48,8 +48,8 @@ export default function OrganizationPage() {
 
           {/* 상세 구성원 */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div className="bg-nature-forest/5 rounded-lg p-5 shadow-md">
-              <h3 className="text-nature-forest mb-4 text-xl font-bold">
+            <div className="bg-ocean-deep/5 rounded-lg p-5 shadow-md">
+              <h3 className="text-ocean-deep mb-4 text-xl font-bold">
                 위원장
               </h3>
               <div className="space-y-3">
@@ -69,8 +69,8 @@ export default function OrganizationPage() {
               </div>
             </div>
 
-            <div className="bg-nature-forest/5 rounded-lg p-5 shadow-md">
-              <h3 className="text-nature-forest mb-4 text-xl font-bold">
+            <div className="bg-ocean-deep/5 rounded-lg p-5 shadow-md">
+              <h3 className="text-ocean-deep mb-4 text-xl font-bold">
                 학술 위원회
               </h3>
               <div className="space-y-3">
@@ -111,8 +111,8 @@ export default function OrganizationPage() {
               </div>
             </div>
 
-            <div className="bg-nature-forest/5 rounded-lg p-5 shadow-md">
-              <h3 className="text-nature-forest mb-4 text-xl font-bold">
+            <div className="bg-ocean-deep/5 rounded-lg p-5 shadow-md">
+              <h3 className="text-ocean-deep mb-4 text-xl font-bold">
                 운영 위원회
               </h3>
               <div className="space-y-3">
@@ -151,8 +151,8 @@ export default function OrganizationPage() {
               </div>
             </div>
 
-            <div className="bg-nature-forest/5 rounded-lg p-5 shadow-md">
-              <h3 className="text-nature-forest mb-4 text-xl font-bold">
+            <div className="bg-ocean-deep/5 rounded-lg p-5 shadow-md">
+              <h3 className="text-ocean-deep mb-4 text-xl font-bold">
                 비인간 대표단
               </h3>
               <div className="space-y-3">
@@ -195,8 +195,8 @@ export default function OrganizationPage() {
               </div>
             </div>
 
-            <div className="bg-nature-forest/5 rounded-lg p-5 shadow-md">
-              <h3 className="text-nature-forest mb-4 text-xl font-bold">
+            <div className="bg-ocean-deep/5 rounded-lg p-5 shadow-md">
+              <h3 className="text-ocean-deep mb-4 text-xl font-bold">
                 인간 대표단
               </h3>
               <div className="space-y-3">
@@ -245,8 +245,8 @@ export default function OrganizationPage() {
               </div>
             </div>
 
-            <div className="bg-nature-forest/5 rounded-lg p-5 shadow-md">
-              <h3 className="text-nature-forest mb-4 text-xl font-bold">
+            <div className="bg-ocean-deep/5 rounded-lg p-5 shadow-md">
+              <h3 className="text-ocean-deep mb-4 text-xl font-bold">
                 사무국
               </h3>
               <div className="space-y-3">
@@ -287,13 +287,13 @@ export default function OrganizationPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-nature-forest mb-6 text-2xl font-bold md:text-3xl">
+          <h2 className="text-ocean-deep mb-6 text-2xl font-bold md:text-3xl">
             조직 위원회 역할
           </h2>
           <div className="rounded-lg bg-white/90 p-6 shadow-lg backdrop-blur-sm">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
-                <h3 className="text-nature-spring mb-4 text-xl font-bold">
+                <h3 className="text-ocean-surf mb-4 text-xl font-bold">
                   학술 위원회
                 </h3>
                 <ul className="list-disc space-y-2 pl-5">
@@ -306,7 +306,7 @@ export default function OrganizationPage() {
               </div>
 
               <div>
-                <h3 className="text-nature-spring mb-4 text-xl font-bold">
+                <h3 className="text-ocean-surf mb-4 text-xl font-bold">
                   운영 위원회
                 </h3>
                 <ul className="list-disc space-y-2 pl-5">
@@ -319,7 +319,7 @@ export default function OrganizationPage() {
               </div>
 
               <div>
-                <h3 className="text-nature-spring mb-4 text-xl font-bold">
+                <h3 className="text-ocean-surf mb-4 text-xl font-bold">
                   인간/비인간 대표단
                 </h3>
                 <ul className="list-disc space-y-2 pl-5">
@@ -332,7 +332,7 @@ export default function OrganizationPage() {
               </div>
 
               <div>
-                <h3 className="text-nature-spring mb-4 text-xl font-bold">
+                <h3 className="text-ocean-surf mb-4 text-xl font-bold">
                   사무국
                 </h3>
                 <ul className="list-disc space-y-2 pl-5">
@@ -348,12 +348,12 @@ export default function OrganizationPage() {
         </section>
 
         <section>
-          <h2 className="text-nature-forest mb-6 text-2xl font-bold md:text-3xl">
+          <h2 className="text-ocean-deep mb-6 text-2xl font-bold md:text-3xl">
             의사결정 구조
           </h2>
           <div className="rounded-lg bg-white/90 p-6 shadow-lg backdrop-blur-sm">
             <div className="mb-6">
-              <h3 className="text-nature-spring mb-4 text-xl font-bold">
+              <h3 className="text-ocean-surf mb-4 text-xl font-bold">
                 의사결정 프로세스
               </h3>
               <ol className="list-decimal space-y-3 pl-5">
@@ -388,7 +388,7 @@ export default function OrganizationPage() {
             </div>
 
             <div>
-              <h3 className="text-nature-spring mb-4 text-xl font-bold">
+              <h3 className="text-ocean-surf mb-4 text-xl font-bold">
                 의견 수렴 방식
               </h3>
               <ul className="list-disc space-y-2 pl-5">

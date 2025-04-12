@@ -12,7 +12,7 @@ export default function Home() {
         <div className="animate-slide-up">
           <div className="group hover:animate-wiggle flex flex-col gap-2 text-center md:gap-4 md:text-left">
             <h2 className="text-4xl md:text-7xl">2025 Environment</h2>
-            <h1 className="text-nature-forest group-hover:text-nature-spring transform text-5xl font-[900] transition-all duration-100 md:text-8xl">
+            <h1 className="text-primary-500 group-hover:text-primary-400 transform text-5xl font-[900] transition-all duration-100 md:text-8xl">
               사물과 인간
             </h1>
             <h2 className="text-3xl md:text-7xl">함께 논의하는 새로운 미래</h2>
@@ -23,14 +23,14 @@ export default function Home() {
       {/* 서브 배너 */}
       <section className="h-[320px] md:h-[440px]">
         <div>
-          <div className="bg-nature-forest border-nature-spring relative flex h-[280px] items-center justify-center border-y-[12px] px-4 text-white md:h-[360px] md:border-y-[20px]">
+          <div className="bg-ocean-deep border-ocean-surf relative flex h-[280px] items-center justify-center border-y-[12px] px-4 text-white md:h-[360px] md:border-y-[20px]">
             <div className="animate-slide-up flex flex-col gap-4 text-center">
               <h3 className="text-lg font-semibold md:text-2xl">
                 함께 고민하는 시간
               </h3>
               <h2 className="text-2xl font-bold md:text-5xl">
-                비인간 존재들의 <span className="text-nature-spring">권리</span>
-                와 <span className="text-nature-spring">발언권</span>을 고민하다
+                비인간 존재들의 <span className="text-ocean-surf">권리</span>와{" "}
+                <span className="text-ocean-surf">발언권</span>을 고민하다
               </h2>
               <p className="text-base font-bold opacity-50 md:text-xl">
                 2025 사물의 의회 주제 : 미래의 공존을 위한 새로운 논의
@@ -80,7 +80,7 @@ export default function Home() {
               <br className="hidden md:block" />더 나은 미래를 위한 우리의
               여정에 함께해주세요.
             </p>
-            <button className="hover:text-nature-forest mt-4 rounded-full bg-white/20 px-8 py-3 font-semibold backdrop-blur-sm transition-all hover:bg-white">
+            <button className="hover:text-primary-500 mt-4 rounded-full bg-white/20 px-8 py-3 font-semibold backdrop-blur-sm transition-all hover:bg-white">
               더 알아보기
             </button>
           </div>
@@ -93,10 +93,10 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {/* 카드 1 */}
             <div className="group rounded-2xl bg-white/80 p-8 shadow-lg backdrop-blur-sm transition-all hover:scale-105">
-              <div className="bg-nature-forest/10 mb-6 inline-block rounded-full p-3">
-                <Leaf className="text-nature-forest h-8 w-8" />
+              <div className="bg-ocean-blue/10 mb-6 inline-block rounded-full p-3">
+                <Leaf className="text-ocean-deep h-8 w-8" />
               </div>
-              <h3 className="text-nature-forest mb-4 text-2xl font-bold">
+              <h3 className="text-primary-500 mb-4 text-2xl font-bold">
                 환경 보호
               </h3>
               <p className="mb-6 text-gray-600">
@@ -104,7 +104,7 @@ export default function Home() {
               </p>
               <a
                 href=""
-                className="group/link text-nature-forest inline-flex items-center"
+                className="group/link text-ocean-blue inline-flex items-center"
               >
                 자세히 보기
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
@@ -113,10 +113,10 @@ export default function Home() {
 
             {/* 카드 2 */}
             <div className="group rounded-2xl bg-white/80 p-8 shadow-lg backdrop-blur-sm transition-all hover:scale-105">
-              <div className="bg-nature-forest/10 mb-6 inline-block rounded-full p-3">
-                <Users className="text-nature-forest h-8 w-8" />
+              <div className="bg-ocean-blue/10 mb-6 inline-block rounded-full p-3">
+                <Users className="text-ocean-deep h-8 w-8" />
               </div>
-              <h3 className="text-nature-forest mb-4 text-2xl font-bold">
+              <h3 className="text-primary-500 mb-4 text-2xl font-bold">
                 커뮤니티
               </h3>
               <p className="mb-6 text-gray-600">
@@ -125,7 +125,7 @@ export default function Home() {
               </p>
               <a
                 href="#"
-                className="group/link text-nature-forest inline-flex items-center"
+                className="group/link text-ocean-blue inline-flex items-center"
               >
                 자세히 보기
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
@@ -134,10 +134,10 @@ export default function Home() {
 
             {/* 카드 3 */}
             <div className="group rounded-2xl bg-white/80 p-8 shadow-lg backdrop-blur-sm transition-all hover:scale-105">
-              <div className="bg-nature-forest/10 mb-6 inline-block rounded-full p-3">
-                <Globe className="text-nature-forest h-8 w-8" />
+              <div className="bg-ocean-blue/10 mb-6 inline-block rounded-full p-3">
+                <Globe className="text-ocean-deep h-8 w-8" />
               </div>
-              <h3 className="text-nature-forest mb-4 text-2xl font-bold">
+              <h3 className="text-primary-500 mb-4 text-2xl font-bold">
                 글로벌 협력
               </h3>
               <p className="mb-6 text-gray-600">
@@ -146,7 +146,7 @@ export default function Home() {
               </p>
               <a
                 href="#"
-                className="group/link text-nature-forest inline-flex items-center"
+                className="group/link text-ocean-blue inline-flex items-center"
               >
                 자세히 보기
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />

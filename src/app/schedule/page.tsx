@@ -73,7 +73,7 @@ export default function SchedulePage() {
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h1 className="text-nature-forest mb-4 text-4xl font-bold md:text-5xl">
+            <h1 className="text-ocean-deep mb-4 text-4xl font-bold md:text-5xl">
               행사 일정
             </h1>
           </div>
@@ -89,7 +89,7 @@ export default function SchedulePage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12 text-center">
-          <h1 className="text-nature-forest mb-4 text-4xl font-bold md:text-5xl">
+          <h1 className="text-ocean-deep mb-4 text-4xl font-bold md:text-5xl">
             행사 일정
           </h1>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
@@ -142,7 +142,7 @@ export default function SchedulePage() {
               <div key={date} className="relative">
                 {/* 날짜 헤더 */}
                 <div className="mb-4 flex items-center">
-                  <div className="bg-nature-spring mr-4 flex h-12 w-12 items-center justify-center rounded-full text-white">
+                  <div className="bg-primary-500 mr-4 flex h-12 w-12 items-center justify-center rounded-full text-white">
                     <Calendar className="h-6 w-6" />
                   </div>
                   <h2 className="text-xl font-bold">{formatEventDate(date)}</h2>
@@ -157,7 +157,7 @@ export default function SchedulePage() {
                         event.important ? "border-nature-spring border-l-4" : ""
                       }`}
                     >
-                      <h3 className="text-nature-forest mb-3 text-xl font-bold">
+                      <h3 className="text-ocean-deep mb-3 text-xl font-bold">
                         {event.title}
                       </h3>
 
