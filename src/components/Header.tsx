@@ -48,9 +48,12 @@ export default function Header() {
           </div>
 
           {/* Center - Title */}
-          <h1 className="text-primary-500 hover:text-primary-400 mb-1 -rotate-4 text-xl font-semibold md:text-3xl">
+          <div
+            className="text-primary-500 hover:text-primary-400 mb-1 -rotate-4 text-xl md:text-3xl"
+            style={{ fontFamily: "var(--font-logo)" }}
+          >
             <Link href="/">사물의 의회</Link>
-          </h1>
+          </div>
 
           {/* Right - Apply Button */}
           <div className="w-[100px] text-end">

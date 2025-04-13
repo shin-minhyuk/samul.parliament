@@ -7,7 +7,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* 로고 및 설명 */}
           <div className="space-y-4">
-            <h3 className="text-primary-500 text-xl font-bold">사물의 의회</h3>
+            <h3
+              className="text-primary-500 text-xl font-bold"
+              style={{ fontFamily: "var(--font-logo)" }}
+            >
+              사물의 의회
+            </h3>
             <p className="text-sm text-gray-600">
               우리는 자연과 기술이 조화롭게 공존하는 미래를 만들어갑니다.
             </p>

@@ -3,6 +3,7 @@
 import { ArrowRight, Leaf, Users, Globe } from "lucide-react";
 import { openExternalLink } from "@/util/url";
 import { Button } from "@/components/Button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -81,7 +82,7 @@ export default function Home() {
               여정에 함께해주세요.
             </p>
             <button className="hover:text-primary-500 mt-4 rounded-full bg-white/20 px-8 py-3 font-semibold backdrop-blur-sm transition-all hover:bg-white">
-              더 알아보기
+              <Link href="/info">더 알아보기</Link>
             </button>
           </div>
         </div>
@@ -123,13 +124,13 @@ export default function Home() {
                 환경 보호에 관심 있는 사람들이 모여 아이디어를 공유하고
                 토론합니다.
               </p>
-              <a
-                href="#"
+              <Link
+                href="https://www.instagram.com/samul.parliament"
                 className="group/link text-ocean-blue inline-flex items-center"
               >
                 자세히 보기
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-              </a>
+              </Link>
             </div>
 
             {/* 카드 3 */}
