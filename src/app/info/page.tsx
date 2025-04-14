@@ -1,28 +1,4 @@
 import React from "react";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "사물의 의회 소개 | 사물의 의회 2025",
-  description:
-    "사물의 의회는 인간 아닌 존재들이 가진 권리와 행위성을 인정하고 그 목소리를 드러내는 실험입니다. 연구 배경, 목적, 진행 방식에 대해 알아보세요.",
-  openGraph: {
-    title: "사물의 의회 소개 | 사물의 의회 2025",
-    description:
-      "기후위기 극복을 위한 탈인간중심주의 대안, 사물의 의회를 소개합니다.",
-    url: "https://samul-parliament.com/info",
-    type: "article",
-  },
-  keywords: [
-    "사물의 의회",
-    "비인간 존재",
-    "탈인간중심주의",
-    "브뤼노 라투르",
-    "기후위기",
-    "대안",
-    "연구",
-    "기후헌법",
-  ],
-};
 
 export default function InfoPage() {
   return (
