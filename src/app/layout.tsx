@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     maximumScale: 1,
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
+    google: process.env.GOOGLE_SITE_VERIFICATION || "",
   },
   alternates: {
     canonical: "https://samuluiuihoe.vercel.app",
