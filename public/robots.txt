@@ -1,0 +1,11 @@
+# https://samuluiuihoe.vercel.app/robots.txt
+# 사물의 의회 2025 사이트에 대한 크롤링 규칙
+
+User-agent: *
+Allow: /
+
+# 관리자 페이지는 크롤링 금지
+Disallow: /admin/
+
+# sitemap 위치
+Sitemap: https://samuluiuihoe.vercel.app/sitemap.xml 
