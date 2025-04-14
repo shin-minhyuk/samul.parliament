@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "사물의 의회",
     images: [
       {
-        url: "/public/images/twitter-image.png",
+        url: "/images/twitter-image.png",
         width: 1200,
         height: 630,
         alt: "사물의 의회 2025",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "사물의 의회 2025 | 미래의 공존을 위한 새로운 논의",
     description: "비인간 존재들의 권리와 발언권을 고민하는 '사물의 의회 2025'",
-    images: ["/public/images/twitter-image.png"],
+    images: ["/images/twitter-image.png"],
   },
   robots: {
     index: true,
@@ -64,6 +64,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || "",
+    other: {
+      "naver-site-verification": [process.env.NAVER_SITE_VERIFICATION || ""],
+    },
   },
   alternates: {
     canonical: "https://samuluiuihoe.vercel.app",
