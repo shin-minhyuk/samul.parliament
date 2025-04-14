@@ -1,4 +1,5 @@
 import { Mail, MapPin } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -18,24 +19,24 @@ export default function Footer() {
             <h4 className="text-ocean-blue mb-4 font-semibold">빠른 링크</h4>
             <ul className="space-y-2 text-sm text-gray-600">
               <li>
-                <a href="#" className="hover:text-ocean-blue">
+                <Link href="/info" className="hover:text-ocean-blue">
                   행사 소개
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-ocean-blue">
-                  연사 소개
-                </a>
+                <Link href="/organization" className="hover:text-ocean-blue">
+                  조직 구성
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-ocean-blue">
+                <Link href="/schedule" className="hover:text-ocean-blue">
                   프로그램
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-ocean-blue">
+                <Link href="/recruitment" className="hover:text-ocean-blue">
                   참가 신청
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

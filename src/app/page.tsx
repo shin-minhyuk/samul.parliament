@@ -62,6 +62,7 @@ export default function Home() {
             muted
             playsInline
             className="h-full w-full object-cover"
+            aria-label="자연과 기술이 조화롭게 공존하는 미래를 보여주는 영상"
           >
             <source src="/videos/20250309_0200.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -103,13 +104,13 @@ export default function Home() {
               <p className="mb-6 text-gray-600">
                 지속 가능한 미래를 위한 환경 보호 활동과 기술 혁신을 논의합니다.
               </p>
-              <a
-                href=""
+              <Link
+                href="/info"
                 className="group/link text-ocean-blue inline-flex items-center"
               >
                 자세히 보기
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-              </a>
+              </Link>
             </div>
 
             {/* 카드 2 */}
@@ -145,13 +146,13 @@ export default function Home() {
                 전 세계의 환경 전문가들과 함께 글로벌 환경 문제 해결방안을
                 모색합니다.
               </p>
-              <a
-                href="#"
+              <Link
+                href="/organization"
                 className="group/link text-ocean-blue inline-flex items-center"
               >
                 자세히 보기
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

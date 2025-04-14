@@ -13,4 +13,6 @@ Allow: /
 Disallow: /admin/
 
 # sitemap 위치
-Sitemap: https://samuluiuihoe.vercel.app/sitemap.xml 
+Sitemap: https://samuluiuihoe.vercel.app/sitemap.xml
+
+# 네이버 검색 최적화
