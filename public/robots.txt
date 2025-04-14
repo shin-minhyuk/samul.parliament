@@ -1,7 +1,12 @@
 # https://samuluiuihoe.vercel.app/robots.txt
 # 사물의 의회 2025 사이트에 대한 크롤링 규칙
 
+# 모든 검색엔진
 User-agent: *
+Allow: /
+
+# 네이버 검색로봇
+User-agent: Yeti
 Allow: /
 
 # 관리자 페이지는 크롤링 금지
