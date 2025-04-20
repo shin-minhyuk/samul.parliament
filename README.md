@@ -5,6 +5,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
+## 📄 프로젝트 소개
+
 "사물의 의회 2025"는 비인간 존재들의 권리와 발언권을 고민하는 환경 컨퍼런스 웹사이트입니다. 프랑스 철학자 브뤼노 라투르의 개념에서 영감을 받아, 탈인간중심주의 관점에서 환경 문제를 다루는 행사를 소개합니다.
 
 ## 📋 주요 기능
@@ -94,6 +96,11 @@ samuluiuihoe/
 - **메타데이터**: 모든 페이지에 최적화된 제목, 설명, 키워드 설정
 - **OpenGraph/Twitter Cards**: 소셜 미디어 공유 최적화
 - **사이트맵/robots.txt**: 검색엔진 크롤링 최적화
+
+### 검색 노출 성과
+
+- **Google**: "사물의 의회" 검색 시 최상위 노출
+- **Naver**: "사물의 의회 2025" 검색 시 최상위 노출
 
 ## 🔄 배포
 
