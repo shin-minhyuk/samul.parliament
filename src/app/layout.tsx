@@ -4,7 +4,14 @@ import { BannerProvider } from "@/context/BannerContext";
 import MainLayout from "@/components/MainLayout";
 import { Analytics } from "@vercel/analytics/react";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://samuluiuihoe.vercel.app"),
   title: "사물의 의회 2025 | 미래의 공존을 위한 새로운 논의",
   description:
     "비인간 존재들의 권리와 발언권을 고민하는 '사물의 의회 2025'에서 자연과 기술이 조화롭게 공존하는 미래를 함께 만들어갑니다.",
@@ -66,11 +73,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
   },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || "",
