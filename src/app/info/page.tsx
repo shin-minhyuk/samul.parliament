@@ -145,7 +145,7 @@ export default function InfoPage() {
                   <li>노동자</li>
                   <li>농민</li>
                   <li>미래세대</li>
-                  <li>사회적 약자(빈민, 노인 등)</li>
+                  <li>사회적 약자 (빈민, 노인 등)</li>
                 </ul>
               </div>
               <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
@@ -157,7 +157,7 @@ export default function InfoPage() {
                   <li>산림</li>
                   <li>해양</li>
                   <li>동물</li>
-                  <li>기술(AI, 지구공학)</li>
+                  <li>기술 (AI, 지구공학)</li>
                 </ul>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function InfoPage() {
             <p className="mb-4">
               1) 비인간 존재들의 정치적 대표를 위해 법적으로 어떤 변화가
               필요한가? <br />
-              2) 기존 탄소중립기본법 개정 vs. 새로운 법/헌법 제정 기후위기에
+              2) 기존 탄소중립기본법 개정 vs 새로운 법/헌법 제정 기후위기에
               대응하기 위해 각 이해관계자 그룹이 법에 담기를 원하는 내용은?
               <br />
               3) 비인간 대표를 비례대표제로 선출해 국회에 보내는 것에 대한
@@ -190,9 +190,6 @@ export default function InfoPage() {
                 <thead>
                   <tr className="border-ocean-deep/20 border-b">
                     <th className="text-ocean-deep px-4 py-2 text-left">
-                      단계
-                    </th>
-                    <th className="text-ocean-deep px-4 py-2 text-left">
                       기간
                     </th>
                     <th className="text-ocean-deep px-4 py-2 text-left">
@@ -202,21 +199,30 @@ export default function InfoPage() {
                 </thead>
                 <tbody className="whitespace-nowrap">
                   <tr className="border-ocean-deep/20 border-b">
-                    <td className="px-4 py-3">1단계</td>
-                    <td className="px-4 py-3">1월 ~ 8월</td>
-                    <td className="px-4 py-3">
-                      준비 단계, 회의 준비, 참여자 섭외, 예비모임
-                    </td>
+                    <td className="px-4 py-3">1월 ~ 5월</td>
+                    <td className="px-4 py-3">추진계획 준비, 소책자 작성</td>
                   </tr>
                   <tr className="border-ocean-deep/20 border-b">
-                    <td className="px-4 py-3">2단계</td>
-                    <td className="px-4 py-3">9월 ~ 10월</td>
-                    <td className="px-4 py-3">사물의 의회 개최</td>
+                    <td className="px-4 py-3">6월 ~ 8월</td>
+                    <td className="px-4 py-3">참여자 100명 섭외 및 모집</td>
+                  </tr>
+                  <tr className="border-ocean-deep/20 border-b">
+                    <td className="px-4 py-3">8월 ~ 9월</td>
+                    <td className="px-4 py-3">행사 홍보</td>
+                  </tr>
+                  <tr className="border-ocean-deep/20 border-b">
+                    <td className="px-4 py-3">9월 말</td>
+                    <td className="px-4 py-3">참여자 예비모임(소책자 배포)</td>
+                  </tr>
+                  <tr className="border-ocean-deep/20 border-b">
+                    <td className="px-4 py-3">11월 1~2일</td>
+                    <td className="px-4 py-3">사물의 의회 본행사 개최</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3">3단계</td>
                     <td className="px-4 py-3">11월 ~ 12월</td>
-                    <td className="px-4 py-3">결과보고서 작성, 발표</td>
+                    <td className="px-4 py-3">
+                      결과보고서 작성 및 발표(책 발간)
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -230,10 +236,8 @@ export default function InfoPage() {
           </h2>
           <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
             <p className="mb-4">
-              사물의 의회는 위원장, 학술 위원회, 운영 위원회, 인간/비인간
-              대표단, 사무국으로 구성되어 있습니다. 각 조직의 구성원과 역할,
-              의사결정 구조에 대한 자세한 내용은 조직 구성도 페이지에서 확인하실
-              수 있습니다.
+              각 조직의 구성원과 역할, 의사결정 구조에 대한 자세한 내용은 조직
+              구성도 페이지에서 확인하실 수 있습니다.
             </p>
             <div className="flex justify-center">
               <a
