@@ -78,55 +78,6 @@ export default function RecruitmentPage() {
 
         {/* 모집 분야 */}
         <section className="mb-16">
-          <h2 className="text-primary-500 mb-8 text-center text-3xl font-bold">
-            모집 분야
-          </h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {/* 인간 그룹 */}
-            <div className="group rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="bg-ocean-surf rounded-full p-2 text-white">
-                  <Users className="h-6 w-6" />
-                </div>
-                <h3 className="text-ocean-deep text-xl font-bold">인간 그룹</h3>
-              </div>
-              <ul className="mb-4 list-disc space-y-2 pl-5">
-                <li>기업가</li>
-                <li>노동자</li>
-                <li>농민</li>
-                <li>미래세대</li>
-                <li>사회적 약자 (빈민, 노인 등)</li>
-              </ul>
-              <p className="text-sm text-gray-600">
-                다양한 인간 사회의 관점에서 기후위기를 바라보고, 비인간 존재와의
-                공존 방안을 모색할 참가자를 모집합니다.
-              </p>
-            </div>
-
-            {/* 비인간 그룹 */}
-            <div className="group rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="bg-ocean-blue rounded-full p-2 text-white">
-                  <Globe className="h-6 w-6" />
-                </div>
-                <h3 className="text-ocean-deep text-xl font-bold">
-                  비인간 그룹 대변인
-                </h3>
-              </div>
-              <ul className="mb-4 list-disc space-y-2 pl-5">
-                <li>대기</li>
-                <li>산림</li>
-                <li>해양</li>
-                <li>동물</li>
-                <li>기술 (AI, 지구공학)</li>
-              </ul>
-              <p className="text-sm text-gray-600">
-                비인간 존재들의 목소리를 대변하고, 그들의 권리와 행위성을
-                인정받기 위한 논의를 이끌어갈 대변인을 모집합니다.
-              </p>
-            </div>
-          </div>
-
           <div className="bg-ocean-surf/10 mt-8 rounded-xl p-6">
             <h3 className="text-ocean-deep mb-3 text-xl font-bold">
               지원 자격

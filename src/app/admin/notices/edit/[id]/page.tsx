@@ -60,8 +60,6 @@ export default function EditNoticePage() {
       // Firebase 연동 시 아래 코드로 대체
       await updateNotice(id, data);
 
-      console.log("공지사항 수정:", { id, ...data });
-
       // 임시 알림
       alert("공지사항이 수정되었습니다. (Firebase 연동 시 실제로 저장됩니다)");
       router.push("/admin/notices");

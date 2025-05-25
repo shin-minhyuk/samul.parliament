@@ -1,3 +1,4 @@
+import { Globe, Users } from "lucide-react";
 import React from "react";
 
 export default function InfoPage() {
@@ -121,26 +122,127 @@ export default function InfoPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
-            진행 방식
+          <h2 className="text-ocean-surf mb-4 text-xl font-bold">
+            행사 일정 및 절차(안)
           </h2>
           <div className="prose prose-lg max-w-none">
-            <p className="mb-4">
-              <strong>본 연구는 아래 3가지 단계로 이루어집니다.</strong>
-              <br />
-              1) 사물의 의회를 열기 위한 준비 단계 <br />
-              2) 실제 사물의 의회를 개최하는 단계 <br />
-              3) 행사 이후에 보고서 등의 결과물을 만들어 내는 단계
-            </p>
+            <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+              {/* 1일차 */}
+              <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
+                <h3 className="text-ocean-deep mb-4 text-xl font-bold">
+                  1일차 (2025.11.01)
+                </h3>
+                <div className="space-y-3">
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      10:00~11:00
+                    </div>
+                    <div className="text-gray-700">그룹별 1차 숙의</div>
+                  </div>
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      11:00~12:00
+                    </div>
+                    <div className="text-gray-700">
+                      그룹별 발표 (10개 그룹, 각 6분)
+                    </div>
+                  </div>
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      12:00~13:00
+                    </div>
+                    <div className="text-gray-700">점심</div>
+                  </div>
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      13:00~14:00
+                    </div>
+                    <div className="text-gray-700">
+                      휴식 및 문화행사 (공연/전시)
+                    </div>
+                  </div>
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      14:00~16:00
+                    </div>
+                    <div className="text-gray-700">
+                      1차 전체 토론 (World Café 형식)
+                    </div>
+                  </div>
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      16:00~17:00
+                    </div>
+                    <div className="text-gray-700">질의응답 및 1일차 평가</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2일차 */}
+              <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
+                <h3 className="text-ocean-deep mb-4 text-xl font-bold">
+                  2일차 (2025.11.02)
+                </h3>
+                <div className="space-y-3">
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      10:00~11:00
+                    </div>
+                    <div className="text-gray-700">그룹별 2차 숙의</div>
+                  </div>
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      11:00~12:00
+                    </div>
+                    <div className="text-gray-700">그룹별 발표</div>
+                  </div>
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      12:00~14:00
+                    </div>
+                    <div className="text-gray-700">점심 및 휴식</div>
+                  </div>
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      14:00~15:00
+                    </div>
+                    <div className="text-gray-700">
+                      대표자 무대 토론 (10개 그룹)
+                    </div>
+                  </div>
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      15:00~16:00
+                    </div>
+                    <div className="text-gray-700">최종 결론 작성</div>
+                  </div>
+                  <div className="border-mint-400 border-l-4 pl-4">
+                    <div className="text-ocean-deep font-semibold">
+                      16:00~17:00
+                    </div>
+                    <div className="text-gray-700">
+                      전체 결론 발표 및 기자회견
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <h3 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
               참여 그룹
             </h3>
-            <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
-                <h4 className="text-ocean-deep mb-2 text-lg font-bold">
-                  인간 그룹
-                </h4>
-                <ul className="list-disc space-y-1 pl-5">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {/* 인간 그룹 */}
+              <div className="group rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="bg-ocean-surf rounded-full p-2 text-white">
+                    <Users className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-ocean-deep text-xl font-bold">
+                    인간 그룹
+                  </h3>
+                </div>
+                <ul className="mb-4 list-disc space-y-2 pl-5">
                   <li>기업가</li>
                   <li>노동자</li>
                   <li>농민</li>
@@ -148,11 +250,18 @@ export default function InfoPage() {
                   <li>사회적 약자 (빈민, 노인 등)</li>
                 </ul>
               </div>
-              <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
-                <h4 className="text-ocean-deep mb-2 text-lg font-bold">
-                  비인간 그룹
-                </h4>
-                <ul className="list-disc space-y-1 pl-5">
+
+              {/* 비인간 그룹 */}
+              <div className="group rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="bg-ocean-blue rounded-full p-2 text-white">
+                    <Globe className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-ocean-deep text-xl font-bold">
+                    비인간 그룹 대변인
+                  </h3>
+                </div>
+                <ul className="mb-4 list-disc space-y-2 pl-5">
                   <li>대기</li>
                   <li>산림</li>
                   <li>해양</li>
@@ -161,7 +270,7 @@ export default function InfoPage() {
                 </ul>
               </div>
             </div>
-            <p className="mb-4">
+            <p className="my-4">
               각 그룹은 당사자, 과학자, 예술가, 활동가, 시민 등 10명으로
               구성됩니다.
             </p>
@@ -182,7 +291,7 @@ export default function InfoPage() {
 
         <section className="mb-12">
           <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
-            연구 일정
+            행사 일정
           </h2>
           <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
             <div className="overflow-x-auto">
@@ -211,7 +320,7 @@ export default function InfoPage() {
                     <td className="px-4 py-3">행사 홍보</td>
                   </tr>
                   <tr className="border-ocean-deep/20 border-b">
-                    <td className="px-4 py-3">9월 말</td>
+                    <td className="px-4 py-3">9월 27일</td>
                     <td className="px-4 py-3">참여자 예비모임(소책자 배포)</td>
                   </tr>
                   <tr className="border-ocean-deep/20 border-b">

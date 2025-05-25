@@ -24,7 +24,7 @@ export default function KakaoMap({
       return;
     }
 
-    console.log("Kakao Maps 초기화 시작...");
+    // console.log("Kakao Maps 초기화 시작...");
 
     // Kakao Maps API 로드
     const mapScript = document.createElement("script");
@@ -40,11 +40,11 @@ export default function KakaoMap({
     document.head.appendChild(mapScript);
 
     const onLoadKakaoMap = () => {
-      console.log("Kakao Maps 스크립트 로드됨, 지도 초기화 시작");
+      // console.log("Kakao Maps 스크립트 로드됨, 지도 초기화 시작");
 
       try {
         window.kakao.maps.load(() => {
-          console.log("Kakao Maps API 로드 완료");
+          // console.log("Kakao Maps API 로드 완료");
 
           if (mapRef.current) {
             // 지도 생성
@@ -53,9 +53,9 @@ export default function KakaoMap({
               level: 3,
             };
 
-            console.log("지도 생성 중...");
+            // console.log("지도 생성 중...");
             const map = new window.kakao.maps.Map(mapRef.current, mapOptions);
-            console.log("지도 생성 완료");
+            // console.log("지도 생성 완료");
 
             // 마커 생성
             const markerPosition = new window.kakao.maps.LatLng(
@@ -66,7 +66,7 @@ export default function KakaoMap({
               position: markerPosition,
             });
             marker.setMap(map);
-            console.log("마커 생성 완료");
+            // console.log("마커 생성 완료");
 
             // 마커에 정보창 추가
             if (markerTitle) {
@@ -94,7 +94,7 @@ export default function KakaoMap({
 
               // 초기에 정보창 표시
               infowindow.open(map, marker);
-              console.log("정보창 생성 완료");
+              // console.log("정보창 생성 완료");
             }
           }
         });

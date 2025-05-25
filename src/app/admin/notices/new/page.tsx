@@ -15,7 +15,6 @@ export default function NewNoticePage() {
     try {
       // Firebase 연동 시 주석 해제
       await createNotice(data);
-      console.log("새 공지사항 생성:", data);
 
       // 임시 알림
       alert(
