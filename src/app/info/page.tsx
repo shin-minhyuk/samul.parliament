@@ -230,26 +230,6 @@ export default function InfoPage() {
           </div>
         </section>
 
-        <section className="mb-12">
-          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
-            조직 구성
-          </h2>
-          <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
-            <p className="mb-4">
-              각 조직의 구성원과 역할, 의사결정 구조에 대한 자세한 내용은 조직
-              구성도 페이지에서 확인하실 수 있습니다.
-            </p>
-            <div className="flex justify-center">
-              <a
-                href="/organization"
-                className="bg-primary-500 hover:bg-nature-forest mt-2 inline-block rounded-full px-6 py-3 font-semibold text-white transition-all"
-              >
-                조직 구성도 보기
-              </a>
-            </div>
-          </div>
-        </section>
-
         {/* <section>
           <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
             참고 문헌
