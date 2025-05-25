@@ -31,12 +31,30 @@ export default function RecruitmentPage() {
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 <div>
                   <h3 className="mb-3 text-xl font-semibold">행사 일정</h3>
+                  <div className="mb-2 flex items-start gap-3">
+                    <Clock className="mt-1 h-5 w-5 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium">
+                        예비 모임{" "}
+                        <span className="text-sm text-red-400">필수 참여</span>
+                      </p>
+                      <p className="text-sm text-gray-200">
+                        2025년 9월 27일 (토)
+                      </p>
+
+                      <p className="text-sm text-gray-200">
+                        예비 모임에서는 정치적 대표로서의 역할 교육과 토론 준비
+                        워크숍이 진행됩니다.
+                      </p>
+                    </div>
+                  </div>
+
                   <div className="flex items-start gap-3">
                     <Clock className="mt-1 h-5 w-5 flex-shrink-0" />
                     <div>
                       <p className="font-medium">본 회의</p>
-                      <p>2025년 10월 15일 (월)</p>
-                      <p>12:00 - 18:00 KST</p>
+                      <p>2025년 11월 1일 ~ 2일 (토, 일)</p>
+                      <p>10:00 - 17:00 KST</p>
                     </div>
                   </div>
                 </div>
@@ -46,9 +64,7 @@ export default function RecruitmentPage() {
                     <Clock className="mt-1 h-5 w-5 flex-shrink-0" />
                     <div>
                       <p className="font-medium">1차 모집</p>
-                      <p>2025년 5월 1일 ~ 6월 30일</p>
-                      <p className="mt-2 font-medium">2차 모집 (필요시)</p>
-                      <p>2025년 7월 15일 ~ 8월 15일</p>
+                      <p>2025년 6월 1일 ~ 6월 30일</p>
                     </div>
                   </div>
                 </div>
@@ -76,10 +92,11 @@ export default function RecruitmentPage() {
                 <h3 className="text-ocean-deep text-xl font-bold">인간 그룹</h3>
               </div>
               <ul className="mb-4 list-disc space-y-2 pl-5">
-                <li>도시 / 농촌 대표</li>
-                <li>기업 / 노동자 대표</li>
-                <li>기후피해자 / 기후운동가</li>
-                <li>노인 / 아동 / 청소년 / 장애인</li>
+                <li>기업가</li>
+                <li>노동자</li>
+                <li>농민</li>
+                <li>미래세대</li>
+                <li>사회적 약자 (빈민, 노인 등)</li>
               </ul>
               <p className="text-sm text-gray-600">
                 다양한 인간 사회의 관점에서 기후위기를 바라보고, 비인간 존재와의
@@ -98,10 +115,11 @@ export default function RecruitmentPage() {
                 </h3>
               </div>
               <ul className="mb-4 list-disc space-y-2 pl-5">
-                <li>대기 / 숲 / 흙 / 바다</li>
-                <li>동물 / 미생물</li>
-                <li>화석연료 / 재생에너지</li>
-                <li>쓰레기(플라스틱) / 기술</li>
+                <li>대기</li>
+                <li>산림</li>
+                <li>해양</li>
+                <li>동물</li>
+                <li>기술 (AI, 지구공학)</li>
               </ul>
               <p className="text-sm text-gray-600">
                 비인간 존재들의 목소리를 대변하고, 그들의 권리와 행위성을
@@ -117,7 +135,9 @@ export default function RecruitmentPage() {
             <ul className="list-disc space-y-1 pl-5">
               <li>기후위기와 인간중심주의에 대한 관심이 있는 모든 분</li>
               <li>비인간 존재의 권리와 발언권에 대해 고민해보신 분</li>
-              <li>2025년 9월~10월 예정된 모임과 본 회의에 참석 가능한 분</li>
+              <li>
+                2025년 9월~11월 예정된 예비 모임과 본 회의에 모두 참석 가능한 분
+              </li>
               <li>
                 특정 분야의 전문 지식이 없어도 관심과 열정이 있으면 지원 가능
               </li>
@@ -162,11 +182,10 @@ export default function RecruitmentPage() {
                 <FileText className="text-primary-500 h-6 w-6" />
               </div>
               <h3 className="text-ocean-deep mb-2 text-lg font-bold">
-                연구 참여
+                참가비 지급
               </h3>
               <p className="text-sm text-gray-600">
-                사물의 의회 결과를 바탕으로 한 학술 논문이나 보고서의 공동
-                저자로 참여할 기회가 제공됩니다.
+                사물의 의회 참가자에게는 소정의 활동비 10만원을 지급합니다.
               </p>
             </div>
           </div>
@@ -185,7 +204,7 @@ export default function RecruitmentPage() {
                   <div>
                     <h3 className="text-xl font-semibold">지원서 작성</h3>
                     <p>
-                      아래 지원하기 버튼을 통해 온라인 지원서를 작성해주세요.
+                      아래 지원하기 버튼을 통해 구글폼 지원서를 작성해주세요.
                     </p>
                   </div>
                 </div>
@@ -213,7 +232,7 @@ export default function RecruitmentPage() {
               </div>
               <div className="flex flex-col items-center gap-4 md:flex-row">
                 <a
-                  href="https://www.instagram.com/samul.parliament"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdt5BSpFw3mS9wZzWVzcqvDcWHw8BP2i8o-2r0i9R151562iw/viewform"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary-600 rounded-full bg-white px-8 py-3 font-semibold transition-all hover:bg-white/90"
@@ -232,56 +251,6 @@ export default function RecruitmentPage() {
                 >
                   장소 안내 보기
                 </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section>
-          <h2 className="text-primary-500 mb-8 text-center text-3xl font-bold">
-            자주 묻는 질문
-          </h2>
-          <div className="rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm">
-            <div className="divide-y">
-              <div className="py-4">
-                <h3 className="text-ocean-deep mb-2 text-lg font-semibold">
-                  전문 지식이 없어도 참여할 수 있나요?
-                </h3>
-                <p className="text-gray-600">
-                  네, 특정 분야의 전문 지식이 없어도 기후위기와 인간중심주의에
-                  대한 관심과 열정이 있다면 누구나 지원 가능합니다. 다양한
-                  배경과 관점을 가진 참가자들의 참여를 환영합니다.
-                </p>
-              </div>
-              <div className="py-4">
-                <h3 className="text-ocean-deep mb-2 text-lg font-semibold">
-                  비인간 존재를 어떻게 대변하나요?
-                </h3>
-                <p className="text-gray-600">
-                  비인간 존재 대변인은 해당 존재의 관점에서 생각하고 발언합니다.
-                  관련 분야의 연구 자료와 생태학적 지식을 바탕으로 비인간 존재의
-                  이해관계와 요구사항을 대변하게 됩니다. 사전에 관련 자료와
-                  가이드라인이 제공됩니다.
-                </p>
-              </div>
-              <div className="py-4">
-                <h3 className="text-ocean-deep mb-2 text-lg font-semibold">
-                  참가 비용이 있나요?
-                </h3>
-                <p className="text-gray-600">
-                  참가비는 없습니다. 자유롭게 참가하실 수 있습니다.
-                </p>
-              </div>
-              <div className="py-4">
-                <h3 className="text-ocean-deep mb-2 text-lg font-semibold">
-                  회의 결과물은 어떻게 활용되나요?
-                </h3>
-                <p className="text-gray-600">
-                  사물의 의회에서 도출된 결과물은 학술 논문, 정책 제안서,
-                  기후헌법 초안 등 다양한 형태로 발표될 예정입니다. 참가자들은
-                  이러한 결과물의 공동 저자로 참여할 기회가 제공됩니다.
-                </p>
               </div>
             </div>
           </div>
