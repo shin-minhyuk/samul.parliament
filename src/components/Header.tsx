@@ -3,10 +3,10 @@
 import { Menu, Clock, X } from "lucide-react";
 import { useState } from "react";
 import Sidebar from "./Sidebar";
-import Link from "next/link";
 import { useBanner } from "@/context/BannerContext";
 import { Button } from "./Button";
 import { openExternalLink } from "@/util/url";
+import Logo from "./Logo";
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -48,12 +48,7 @@ export default function Header() {
           </div>
 
           {/* Center - Title */}
-          <div
-            className="text-primary-500 hover:text-primary-400 mb-1 -rotate-4 text-xl md:text-3xl"
-            style={{ fontFamily: "var(--font-logo)" }}
-          >
-            <Link href="/">사물의 의회</Link>
-          </div>
+          <Logo className="mb-1" />
 
           {/* Right - Apply Button */}
           <div className="w-[100px] text-end">

@@ -1,9 +1,9 @@
 "use client";
 
-import { ArrowRight, Leaf, Users, Globe } from "lucide-react";
 import { openExternalLink } from "@/util/url";
 import { Button } from "@/components/Button";
-import Link from "next/link";
+import Image from "next/image";
+import Logo from "@/components/Logo";
 
 export default function Home() {
   return (
@@ -47,6 +47,217 @@ export default function Home() {
             >
               <p className="text-sm text-nowrap md:text-base">지원하기</p>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#E4F3FF] px-6 py-10">
+        <div className="mx-auto max-w-[1200px] text-center">
+          <h1 className="mb-3 text-3xl font-semibold">
+            <span className="mb-3 block">사물의 의회 주최</span>
+          </h1>
+
+          <p className="mb-20 text-lg font-semibold">
+            다양한 조직들이 함께 만드는 새로운 기후 민주주의
+          </p>
+        </div>
+
+        <div className="relative mx-auto overflow-hidden">
+          {/* 양쪽 그라데이션 효과 */}
+          <div className="absolute top-0 left-0 z-10 h-full w-1/4 bg-gradient-to-r from-[#E4F3FF] to-transparent" />
+          <div className="absolute top-0 right-0 z-10 h-full w-1/4 bg-gradient-to-l from-[#E4F3FF] to-transparent" />
+
+          <div className="w-full overflow-hidden">
+            <div
+              className="flex"
+              style={{
+                animation: "marquee-scroll 6s linear infinite",
+                width: "max-content",
+              }}
+            >
+              <Image
+                src="/images/주최_기후몸연구소.png"
+                alt="주최_기후몸연구소"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Logo className="flex h-[80px] w-[200px] shrink-0 items-center justify-center object-contain pr-10 md:text-2xl" />
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>경희대학교</p>
+                <p>기후-몸연구소</p>
+              </div>
+              <Image
+                src="/images/주최_기후몸연구소.png"
+                alt="주최_기후몸연구소"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Logo className="flex h-[80px] w-[200px] shrink-0 items-center justify-center object-contain pr-10 md:text-2xl" />
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>경희대학교</p>
+                <p>기후-몸연구소</p>
+              </div>
+              <Image
+                src="/images/주최_기후몸연구소.png"
+                alt="주최_기후몸연구소"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Logo className="h-[80px] w-[200px] shrink-0 object-contain pr-10 md:text-2xl" />
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>경희대학교</p>
+                <p>기후-몸연구소</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#E4F3FF] px-6 py-10">
+        <div className="mx-auto max-w-[1200px] text-center">
+          <h1 className="mb-3 text-3xl font-semibold">
+            <span className="mb-3 block">사물의 의회 주최</span>
+          </h1>
+
+          <p className="mb-20 text-lg font-semibold">
+            다양한 조직들이 함께 만드는 새로운 기후 민주주의
+          </p>
+        </div>
+
+        <div className="relative mx-auto overflow-hidden">
+          {/* 양쪽 그라데이션 효과 */}
+          <div className="absolute top-0 left-0 z-10 h-full w-1/4 bg-gradient-to-r from-[#E4F3FF] to-transparent" />
+          <div className="absolute top-0 right-0 z-10 h-full w-1/4 bg-gradient-to-l from-[#E4F3FF] to-transparent" />
+
+          <div className="w-full overflow-hidden">
+            <div
+              className="flex"
+              style={{
+                animation: "marquee-scroll 14s linear infinite",
+                width: "max-content",
+              }}
+            >
+              <Image
+                src="/images/후원_기후변화행동연구소.png"
+                alt="후원_기후변화행동연구소"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Image
+                src="/images/후원_녹색서울시민위원회.png"
+                alt="후원_녹색서울시민위원회"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Image
+                src="/images/후원_우리학교.jpg"
+                alt="후원_우리학교"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Image
+                src="/images/후원_참여연대.jpg"
+                alt="후원_참여연대"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>가치를 꿈꾸는</p>
+                <p>과학교사모임</p>
+              </div>
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>신유물론연구회</p>
+              </div>
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>성공회대</p>
+                <p>농림생태환경연구소</p>
+              </div>
+              <Image
+                src="/images/후원_기후변화행동연구소.png"
+                alt="후원_기후변화행동연구소"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Image
+                src="/images/후원_녹색서울시민위원회.png"
+                alt="후원_녹색서울시민위원회"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Image
+                src="/images/후원_우리학교.jpg"
+                alt="후원_우리학교"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Image
+                src="/images/후원_참여연대.jpg"
+                alt="후원_참여연대"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>가치를 꿈꾸는</p>
+                <p>과학교사모임</p>
+              </div>
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>신유물론연구회</p>
+              </div>
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>성공회대</p>
+                <p>농림생태환경연구소</p>
+              </div>
+              <Image
+                src="/images/후원_기후변화행동연구소.png"
+                alt="후원_기후변화행동연구소"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Image
+                src="/images/후원_녹색서울시민위원회.png"
+                alt="후원_녹색서울시민위원회"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Image
+                src="/images/후원_우리학교.jpg"
+                alt="후원_우리학교"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <Image
+                src="/images/후원_참여연대.jpg"
+                alt="후원_참여연대"
+                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+                width={200}
+                height={80}
+              />
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>가치를 꿈꾸는</p>
+                <p>과학교사모임</p>
+              </div>
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>신유물론연구회</p>
+              </div>
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
+                <p>성공회대</p>
+                <p>농림생태환경연구소</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

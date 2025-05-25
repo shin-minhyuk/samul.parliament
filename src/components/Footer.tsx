@@ -1,21 +1,21 @@
-import { Mail, MapPin } from "lucide-react";
-import Link from "next/link";
+import { Mail } from "lucide-react";
+// import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="bg-ocean-deep/5 border-ocean-deep/10 border-t">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* 로고 및 설명 */}
-          <div>
+          {/* <div>
             <h3 className="text-ocean-blue mb-4 font-semibold">사물의 의회</h3>
             <p className="text-sm text-gray-600">
               우리는 자연과 기술이 조화롭게 공존하는 미래를 만들어갑니다.
             </p>
-          </div>
+          </div> */}
 
           {/* 빠른 링크 */}
-          <div>
+          {/* <div>
             <h4 className="text-ocean-blue mb-4 font-semibold">빠른 링크</h4>
             <ul className="space-y-2 text-sm text-gray-600">
               <li>
@@ -39,7 +39,7 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* 연락처 */}
           <div>
@@ -53,34 +53,7 @@ export default function Footer() {
                 <Mail className="h-4 w-4" />
                 <span>samul.parliament@gmail.com</span>
               </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" />
-                <span>서울특별시 강남구 테헤란로</span>
-              </li>
             </ul>
-          </div>
-
-          {/* 뉴스레터 */}
-          <div>
-            <h4 className="text-ocean-blue mb-4 font-semibold">
-              뉴스레터 구독
-            </h4>
-            <p className="mb-4 text-sm text-gray-600">
-              최신 소식과 업데이트를 받아보세요.
-            </p>
-            <form className="flex gap-2">
-              <input
-                type="email"
-                placeholder="이메일 주소"
-                className="border-ocean-deep/20 focus:border-ocean-blue w-full rounded-lg border px-3 py-2 text-sm focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="bg-primary-500 hover:bg-ocean-blue rounded-lg px-4 py-2 text-sm whitespace-nowrap text-white transition-colors"
-              >
-                구독
-              </button>
-            </form>
           </div>
         </div>
 
