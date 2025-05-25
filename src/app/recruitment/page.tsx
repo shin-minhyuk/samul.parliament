@@ -63,8 +63,7 @@ export default function RecruitmentPage() {
                   <div className="flex items-start gap-3">
                     <Clock className="mt-1 h-5 w-5 flex-shrink-0" />
                     <div>
-                      <p className="font-medium">1차 모집</p>
-                      <p>2025년 6월 1일 ~ 6월 30일</p>
+                      <p className="font-medium">2025년 6월 1일 ~ 6월 30일</p>
                     </div>
                   </div>
                 </div>
