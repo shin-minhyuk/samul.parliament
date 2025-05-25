@@ -1,13 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import {
-  Leaf,
-  Users,
-  Globe,
-  Clock,
-  FileText,
-  MessageCircle,
-} from "lucide-react";
+import { Leaf, Users, Clock, FileText, MessageCircle } from "lucide-react";
 
 export default function RecruitmentPage() {
   return (
