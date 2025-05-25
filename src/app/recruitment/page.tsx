@@ -240,12 +240,6 @@ export default function RecruitmentPage() {
                   지원하기
                 </a>
                 <Link
-                  href="/guidelines"
-                  className="rounded-full bg-white/20 px-8 py-3 font-semibold text-white transition-all hover:bg-white/30"
-                >
-                  모집 요강 보기
-                </Link>
-                <Link
                   href="/location"
                   className="rounded-full bg-white/20 px-8 py-3 font-semibold text-white transition-all hover:bg-white/30"
                 >
