@@ -8,7 +8,7 @@ export default function InfoPage() {
           사물의 의회 소개
         </h1>
 
-        <section className="mb-12">
+        {/* <section className="mb-12">
           <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
             연구 배경
           </h2>
@@ -74,6 +74,50 @@ export default function InfoPage() {
               이해가 필요하다는 것을 드러내는데 기여할 것입니다.
             </p>
           </div>
+        </section> */}
+
+        <section className="mb-12">
+          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
+            사물의 의회란?
+          </h2>
+          <div className="prose prose-lg max-w-none">
+            <p className="mb-4">
+              사물의 의회(Parliament of Things)는 프랑스 철학자 브뤼노 라투르가
+              제안한 개념으로, 인간과 비인간 존재가 함께 정치적 목소리를 내는
+              탈인간중심적 민주주의 모델입니다. 인간만이 아닌,
+              대기·동물·기술·산림·해양 등 다양한 비인간 존재들의 권리와
+              이해관계도 정치적으로 대표되어야 한다는 생각에서 출발했습니다.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
+            행사의 목적
+          </h2>
+          <div className="prose prose-lg max-w-none">
+            <p className="mb-4">
+              인간 중심의 기존 법과 제도의 한계를 넘어, 기후위기에 대응할 수
+              있는 탈인간중심적 법 규범을 모색합니다. 국내 최초로 사물의 의회를
+              개최하여 기후민주주의의 새로운 가능성을 실험합니다.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
+            행사의 필요성
+          </h2>
+          <div className="prose prose-lg max-w-none">
+            <p className="mb-4">
+              기후위기는 인간 중심 근대문명의 필연적 결과입니다. 인간만이
+              주체이고, 자연은 대상이라는 오래된 사고방식은 대기, 산림, 해양 등
+              비인간 존재들을 착취와 오용의 대상으로 삼아왔습니다. 사물의 의회는
+              인간뿐 아니라 비인간 존재들도 정치적으로 대표되는 새로운 민주주의
+              공간을 지향합니다. 이 실험은 한국 사회에 기후위기를 극복하기 위한
+              근본적 전환의 계기를 제공할 것입니다.
+            </p>
+          </div>
         </section>
 
         <section className="mb-12">
@@ -82,9 +126,11 @@ export default function InfoPage() {
           </h2>
           <div className="prose prose-lg max-w-none">
             <p className="mb-4">
-              본 연구는 1) 사물의 의회를 열기 위한 준비 단계와 2) 실제 사물의
-              의회를 개최하는 단계 그리고 3) 행사 이후에 보고서 등의 결과물을
-              만들어 내는 단계인 세 단계로 나누어 진행됩니다.
+              <strong>본 연구는 아래 3가지 단계로 이루어집니다.</strong>
+              <br />
+              1) 사물의 의회를 열기 위한 준비 단계 <br />
+              2) 실제 사물의 의회를 개최하는 단계 <br />
+              3) 행사 이후에 보고서 등의 결과물을 만들어 내는 단계
             </p>
             <h3 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
               참여 그룹
@@ -95,11 +141,11 @@ export default function InfoPage() {
                   인간 그룹
                 </h4>
                 <ul className="list-disc space-y-1 pl-5">
-                  <li>도시 / 농촌</li>
-                  <li>기업 / 노동자</li>
-                  <li>기후피해자 / 기후운동가</li>
-                  <li>노인 / 아동 / 청소년</li>
-                  <li>장애인</li>
+                  <li>기업가</li>
+                  <li>노동자</li>
+                  <li>농민</li>
+                  <li>미래세대</li>
+                  <li>사회적 약자(빈민, 노인 등)</li>
                 </ul>
               </div>
               <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
@@ -107,26 +153,29 @@ export default function InfoPage() {
                   비인간 그룹
                 </h4>
                 <ul className="list-disc space-y-1 pl-5">
-                  <li>대기 / 숲 / 흙 / 바다</li>
-                  <li>동물 / 미생물</li>
-                  <li>화석연료 / 재생에너지</li>
-                  <li>쓰레기(플라스틱)</li>
-                  <li>기술</li>
+                  <li>대기</li>
+                  <li>산림</li>
+                  <li>해양</li>
+                  <li>동물</li>
+                  <li>기술(AI, 지구공학)</li>
                 </ul>
               </div>
             </div>
             <p className="mb-4">
-              각 그룹은 당사자, 사회과학자, 활동가, 시민, 학생으로 구성됩니다.
+              각 그룹은 당사자, 과학자, 예술가, 활동가, 시민 등 10명으로
+              구성됩니다.
             </p>
             <h3 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
-              회의 진행
+              주요 토론 주제
             </h3>
             <p className="mb-4">
-              사물의 회의 본 회의는 주말 이틀 동안 진행됩니다. 1일차에 1차
-              그룹회의과 2일차에 2차 그룹회의를 통해 기후 관련 이해 관계
-              요구사항, NDC(Nationally Determined Contribution) 의견 및 기후헌법
-              조항을 도출하여 작성하고 공개발표합니다. 그리고 기자회견을
-              진행합니다.
+              1) 비인간 존재들의 정치적 대표를 위해 법적으로 어떤 변화가
+              필요한가? <br />
+              2) 기존 탄소중립기본법 개정 vs. 새로운 법/헌법 제정 기후위기에
+              대응하기 위해 각 이해관계자 그룹이 법에 담기를 원하는 내용은?
+              <br />
+              3) 비인간 대표를 비례대표제로 선출해 국회에 보내는 것에 대한
+              의견은?
             </p>
           </div>
         </section>
@@ -197,7 +246,7 @@ export default function InfoPage() {
           </div>
         </section>
 
-        <section>
+        {/* <section>
           <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
             참고 문헌
           </h2>
@@ -225,7 +274,7 @@ export default function InfoPage() {
               </li>
             </ul>
           </div>
-        </section>
+        </section> */}
       </div>
     </div>
   );

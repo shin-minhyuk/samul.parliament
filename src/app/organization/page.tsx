@@ -18,7 +18,7 @@ export default function OrganizationPage() {
             <div className="flex flex-col items-center">
               <div className="bg-ocean-deep mb-6 w-64 rounded-lg p-4 text-center text-white">
                 <h3 className="text-xl font-bold">위원장</h3>
-                <p>김태우 (서울대학교 인류학과)</p>
+                <p>김환석 (국민대학교 사회학과)</p>
               </div>
 
               <div className="bg-ocean-deep mb-6 h-10 w-1"></div>
@@ -49,21 +49,18 @@ export default function OrganizationPage() {
           {/* 상세 구성원 */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             <div className="bg-ocean-deep/5 rounded-lg p-5 shadow-md">
-              <h3 className="text-ocean-deep mb-4 text-xl font-bold">
-                위원장
-              </h3>
+              <h3 className="text-ocean-deep mb-4 text-xl font-bold">위원장</h3>
               <div className="space-y-3">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">김태우</span>
+                    <span className="font-semibold">김환석</span>
                     <span className="text-sm text-gray-600">
-                      서울대학교 인류학과
+                      국민대학교 사회학과
                     </span>
                   </div>
                   <p className="mt-2 text-sm text-gray-600">
-                    『몸이 기후다: 존재론적 인류학의 기후 실천』 저자로,
-                    기후위기와 인간중심주의에 대한 연구를 진행하고 있습니다.
-                    사물의 의회 프로젝트의 총괄 책임을 맡고 있습니다.
+                    기후위기와 생태계급에 관한 신유물론적 관점 연구를 진행하고
+                    있습니다. 사물의 의회 프로젝트의 총괄 책임을 맡고 있습니다.
                   </p>
                 </div>
               </div>
@@ -76,30 +73,30 @@ export default function OrganizationPage() {
               <div className="space-y-3">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">김환석</span>
-                    <span className="text-sm text-gray-600">
-                      국민대학교 사회학과
-                    </span>
-                  </div>
-                  <p className="mt-1 text-sm text-gray-600">
-                    기후위기와 생태계급에 관한 신유물론적 관점 연구
-                  </p>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold">김상준</span>
+                    <span className="font-semibold">김명심</span>
                     <span className="text-sm text-gray-600">
                       경희대학교 사회학과
                     </span>
                   </div>
                   <p className="mt-1 text-sm text-gray-600">
-                    『붕새의 날개 문명의 진로』 저자, 문명론적 관점에서 기후위기
-                    연구
+                    기후위기와 생태계급에 관한 연구
                   </p>
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">김홍중</span>
+                    <span className="font-semibold">김태우</span>
+                    <span className="text-sm text-gray-600">
+                      서울대학교 인류학과
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm text-gray-600">
+                    『몸이 기후다: 존재론적 인류학의 기후 실천』 저자,
+                    기후위기와 인간중심주의 연구
+                  </p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold">김병수</span>
                     <span className="text-sm text-gray-600">
                       서울대학교 사회학과
                     </span>
@@ -118,7 +115,7 @@ export default function OrganizationPage() {
               <div className="space-y-3">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">김도희</span>
+                    <span className="font-semibold">김지연</span>
                     <span className="text-sm text-gray-600">환경운동가</span>
                   </div>
                   <p className="mt-1 text-sm text-gray-600">
@@ -128,7 +125,7 @@ export default function OrganizationPage() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">박지원</span>
+                    <span className="font-semibold">김추령</span>
                     <span className="text-sm text-gray-600">
                       기후위기 대응 네트워크
                     </span>
@@ -139,7 +136,7 @@ export default function OrganizationPage() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">이지속</span>
+                    <span className="font-semibold">남종영</span>
                     <span className="text-sm text-gray-600">
                       지속가능발전연구소
                     </span>
@@ -158,7 +155,7 @@ export default function OrganizationPage() {
               <div className="space-y-3">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">이하늘</span>
+                    <span className="font-semibold">박병상</span>
                     <span className="text-sm text-gray-600">대기 연구자</span>
                   </div>
                   <p className="mt-1 text-sm text-gray-600">
@@ -167,7 +164,7 @@ export default function OrganizationPage() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">정숲봄</span>
+                    <span className="font-semibold">박진희</span>
                     <span className="text-sm text-gray-600">생태학자</span>
                   </div>
                   <p className="mt-1 text-sm text-gray-600">
@@ -176,7 +173,7 @@ export default function OrganizationPage() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">한바다</span>
+                    <span className="font-semibold">조천호</span>
                     <span className="text-sm text-gray-600">해양 생물학자</span>
                   </div>
                   <p className="mt-1 text-sm text-gray-600">
@@ -185,7 +182,7 @@ export default function OrganizationPage() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">조미생</span>
+                    <span className="font-semibold">재하</span>
                     <span className="text-sm text-gray-600">미생물학자</span>
                   </div>
                   <p className="mt-1 text-sm text-gray-600">
@@ -246,9 +243,7 @@ export default function OrganizationPage() {
             </div>
 
             <div className="bg-ocean-deep/5 rounded-lg p-5 shadow-md">
-              <h3 className="text-ocean-deep mb-4 text-xl font-bold">
-                사무국
-              </h3>
+              <h3 className="text-ocean-deep mb-4 text-xl font-bold">사무국</h3>
               <div className="space-y-3">
                 <div>
                   <div className="flex items-center gap-2">
