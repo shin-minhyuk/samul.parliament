@@ -86,10 +86,9 @@ export default function Home() {
       </section> */}
 
       {/* 서브 배너 */}
-      <section className="py-24">
+      {/* <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {/* 카드 1 */}
             <div className="group rounded-2xl bg-white/80 p-8 shadow-lg backdrop-blur-sm transition-all hover:scale-105">
               <div className="bg-ocean-blue/10 mb-6 inline-block rounded-full p-3">
                 <Leaf className="text-ocean-deep h-8 w-8" />
@@ -109,7 +108,6 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 카드 2 */}
             <div className="group rounded-2xl bg-white/80 p-8 shadow-lg backdrop-blur-sm transition-all hover:scale-105">
               <div className="bg-ocean-blue/10 mb-6 inline-block rounded-full p-3">
                 <Users className="text-ocean-deep h-8 w-8" />
@@ -130,7 +128,6 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 카드 3 */}
             <div className="group rounded-2xl bg-white/80 p-8 shadow-lg backdrop-blur-sm transition-all hover:scale-105">
               <div className="bg-ocean-blue/10 mb-6 inline-block rounded-full p-3">
                 <Globe className="text-ocean-deep h-8 w-8" />
@@ -152,7 +149,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
