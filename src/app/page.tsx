@@ -54,12 +54,8 @@ export default function Home() {
       <section className="bg-[#E4F3FF] px-6 py-10">
         <div className="mx-auto max-w-[1200px] text-center">
           <h1 className="mb-3 text-3xl font-semibold">
-            <span className="mb-3 block">사물의 의회 주최</span>
+            <span className="mb-5 block">주최</span>
           </h1>
-
-          <p className="mb-20 text-lg font-semibold">
-            다양한 조직들이 함께 만드는 새로운 기후 민주주의
-          </p>
         </div>
 
         <div className="relative mx-auto overflow-hidden">
@@ -119,12 +115,8 @@ export default function Home() {
       <section className="bg-[#E4F3FF] px-6 py-10">
         <div className="mx-auto max-w-[1200px] text-center">
           <h1 className="mb-3 text-3xl font-semibold">
-            <span className="mb-3 block">사물의 의회 주최</span>
+            <span className="mb-5 block">후원</span>
           </h1>
-
-          <p className="mb-20 text-lg font-semibold">
-            다양한 조직들이 함께 만드는 새로운 기후 민주주의
-          </p>
         </div>
 
         <div className="relative mx-auto overflow-hidden">
