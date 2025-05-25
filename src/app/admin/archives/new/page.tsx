@@ -21,14 +21,69 @@ export default function NewArchivePage() {
 
   // 폼 데이터 상태
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState<ArchiveCategory>("event");
-  const [type, setType] = useState<ArchiveType>("image");
-  const [url, setUrl] = useState("");
-  const [thumbnailUrl, setThumbnailUrl] = useState("");
+  const [category, setCategory] = useState<ArchiveCategory>("reference");
+  const [type, setType] = useState<ArchiveType>("text");
+
+  // 타입별 상태 관리
+  const [imageUrl, setImageUrl] = useState("");
+  const [videoUrl, setVideoUrl] = useState("");
+  const [videoThumbnailUrl, setVideoThumbnailUrl] = useState("");
+
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
+
+  // 유튜브 비디오 ID 추출 함수
+  const extractYouTubeVideoId = (url: string): string | null => {
+    const patterns = [
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+      /youtube\.com\/v\/([^&\n?#]+)/,
+    ];
+
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match) {
+        return match[1];
+      }
+    }
+    return null;
+  };
+
+  // 유튜브 썸네일 URL 생성 함수
+  const getYouTubeThumbnail = (videoId: string): string => {
+    return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  };
+
+  // 비디오 URL 변경 핸들러
+  const handleVideoUrlChange = (url: string) => {
+    setVideoUrl(url);
+
+    // 유튜브 URL인 경우 자동으로 썸네일 설정
+    const videoId = extractYouTubeVideoId(url);
+    if (videoId) {
+      const thumbnailUrl = getYouTubeThumbnail(videoId);
+      setVideoThumbnailUrl(thumbnailUrl);
+    }
+  };
+
+  // 타입 변경 핸들러
+  const handleTypeChange = (newType: ArchiveType) => {
+    // 현재 타입이 같은 경우 변경하지 않음
+    if (type === newType) return;
+
+    // 타입 변경
+    setType(newType);
+
+    // 타입이 변경될 때 관련 필드 초기화
+    if (newType === "text" || newType === "video" || newType === "image") {
+      // 모든 타입 변경 시 관련 필드 초기화
+      setImageUrl("");
+      setVideoUrl("");
+      setVideoThumbnailUrl("");
+      setSelectedFile(null);
+      setPreviewUrl(null);
+    }
+  };
 
   // 파일 선택 핸들러
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,45 +126,52 @@ export default function NewArchivePage() {
 
     try {
       // 필수 필드 검증
-      if (!title.trim() || !date || !description.trim()) {
-        throw new Error("제목, 날짜, 설명은 필수 항목입니다.");
+      if (!title.trim() || !description.trim()) {
+        throw new Error("제목과 설명은 필수 항목입니다.");
       }
 
-      if (type === "image" && !selectedFile && !url) {
+      if (type === "image" && !selectedFile && !imageUrl) {
         throw new Error("이미지 타입은 파일 업로드 또는 URL이 필요합니다.");
       }
 
-      if (type === "video" && !url) {
+      if (type === "video" && !videoUrl) {
         throw new Error("영상 타입은 영상 URL이 필요합니다.");
       }
 
       // 이미지 업로드 (이미지 타입이고 파일을 선택한 경우)
-      let imageUrl = url;
-      if (type === "image" && selectedFile) {
-        // 프로그레스 시뮬레이션
-        const progressInterval = setInterval(() => {
-          setUploadProgress((prev) => {
-            if (prev >= 90) clearInterval(progressInterval);
-            return Math.min(prev + 10, 90);
-          });
-        }, 300);
+      let finalUrl = "";
+      if (type === "image") {
+        if (selectedFile) {
+          // 프로그레스 시뮬레이션
+          const progressInterval = setInterval(() => {
+            setUploadProgress((prev) => {
+              if (prev >= 90) clearInterval(progressInterval);
+              return Math.min(prev + 10, 90);
+            });
+          }, 300);
 
-        const uploadResult = await uploadArchiveImage(selectedFile);
-        clearInterval(progressInterval);
-        setUploadProgress(100);
+          const uploadResult = await uploadArchiveImage(selectedFile);
+          clearInterval(progressInterval);
+          setUploadProgress(100);
 
-        imageUrl = uploadResult.url;
+          finalUrl = uploadResult.url;
+        } else {
+          finalUrl = imageUrl;
+        }
+      } else if (type === "video") {
+        finalUrl = videoUrl;
       }
 
       // 아카이브 항목 생성
       const newArchiveItem: Omit<ArchiveItem, "id"> = {
         title,
-        date,
         description,
         category,
         type,
-        url: imageUrl || url,
-        ...(type === "video" && thumbnailUrl ? { thumbnailUrl } : {}),
+        url: finalUrl,
+        ...(type === "video" && videoThumbnailUrl
+          ? { thumbnailUrl: videoThumbnailUrl }
+          : {}),
         ...(tags.length > 0 ? { tags } : {}),
       };
 
@@ -165,21 +227,6 @@ export default function NewArchivePage() {
             />
           </div>
 
-          {/* 날짜 */}
-          <div className="mb-4">
-            <label htmlFor="date" className="mb-2 block font-medium">
-              날짜 <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="date"
-              id="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="w-full rounded-md border border-gray-300 p-2"
-              required
-            />
-          </div>
-
           {/* 설명 */}
           <div className="mb-4">
             <label htmlFor="description" className="mb-2 block font-medium">
@@ -205,10 +252,10 @@ export default function NewArchivePage() {
               onChange={(e) => setCategory(e.target.value as ArchiveCategory)}
               className="w-full rounded-md border border-gray-300 p-2"
             >
-              <option value="event">행사</option>
-              <option value="research">연구</option>
-              <option value="media">미디어</option>
-              <option value="other">기타</option>
+              <option value="reference">참고자료</option>
+              <option value="preliminary">예비모임</option>
+              <option value="main">본회의</option>
+              <option value="result">결과물</option>
             </select>
           </div>
 
@@ -221,9 +268,19 @@ export default function NewArchivePage() {
               <label className="flex items-center">
                 <input
                   type="radio"
+                  value="text"
+                  checked={type === "text"}
+                  onChange={() => handleTypeChange("text")}
+                  className="mr-2"
+                />
+                텍스트
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="radio"
                   value="image"
                   checked={type === "image"}
-                  onChange={() => setType("image")}
+                  onChange={() => handleTypeChange("image")}
                   className="mr-2"
                 />
                 사진
@@ -233,7 +290,7 @@ export default function NewArchivePage() {
                   type="radio"
                   value="video"
                   checked={type === "video"}
-                  onChange={() => setType("video")}
+                  onChange={() => handleTypeChange("video")}
                   className="mr-2"
                 />
                 영상
@@ -302,8 +359,8 @@ export default function NewArchivePage() {
                 <input
                   type="text"
                   id="imageUrl"
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
                   placeholder="https://example.com/image.jpg"
                   className="w-full rounded-md border border-gray-300 p-2 text-sm"
                 />
@@ -312,7 +369,7 @@ export default function NewArchivePage() {
                 </p>
               </div>
             </div>
-          ) : (
+          ) : type === "video" ? (
             <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
               <h3 className="mb-3 font-medium">영상 정보</h3>
 
@@ -327,15 +384,14 @@ export default function NewArchivePage() {
                 <input
                   type="text"
                   id="videoUrl"
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                  placeholder="https://www.youtube.com/embed/videoId"
+                  value={videoUrl}
+                  onChange={(e) => handleVideoUrlChange(e.target.value)}
+                  placeholder="https://www.youtube.com/watch?v=... 또는 https://youtu.be/..."
                   className="w-full rounded-md border border-gray-300 p-2"
                   required={type === "video"}
                 />
                 <p className="mt-1 text-xs text-gray-500">
-                  YouTube 영상은 공유 &gt; 퍼가기에서 iframe 소스의 src 속성
-                  값을 입력하세요.
+                  YouTube URL을 입력하면 썸네일이 자동으로 설정됩니다.
                 </p>
               </div>
 
@@ -350,14 +406,39 @@ export default function NewArchivePage() {
                 <input
                   type="text"
                   id="thumbnailUrl"
-                  value={thumbnailUrl}
-                  onChange={(e) => setThumbnailUrl(e.target.value)}
+                  value={videoThumbnailUrl || ""}
+                  onChange={(e) => setVideoThumbnailUrl(e.target.value)}
                   placeholder="https://example.com/thumbnail.jpg"
                   className="w-full rounded-md border border-gray-300 p-2 text-sm"
                 />
+                <p className="mt-1 text-xs text-gray-500">
+                  YouTube URL을 입력하면 자동으로 설정됩니다. 수동으로 변경도
+                  가능합니다.
+                </p>
               </div>
+
+              {/* 썸네일 미리보기 */}
+              {videoThumbnailUrl && (
+                <div className="mb-2">
+                  <label className="mb-2 block text-sm font-medium">
+                    썸네일 미리보기
+                  </label>
+                  <div className="relative h-32 w-56 overflow-hidden rounded border">
+                    <img
+                      src={videoThumbnailUrl}
+                      alt="Video thumbnail"
+                      className="h-full w-full object-cover"
+                      onError={(e) => {
+                        // 썸네일 로드 실패 시 기본 이미지로 대체
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = "none";
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          ) : null}
 
           {/* 태그 입력 */}
           <div className="mb-6">

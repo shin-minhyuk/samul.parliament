@@ -3,12 +3,11 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, Tag, Calendar, X, ChevronRight } from "lucide-react";
+import { Search, Tag, X, ChevronRight } from "lucide-react";
 import { ARCHIVE_CATEGORIES, ARCHIVE_TYPES } from "@/constants/const";
 import { getArchiveItems } from "@/services/archiveService";
 import { ArchiveItem, ArchiveCategory, ArchiveType } from "@/types";
 import { QueryDocumentSnapshot, DocumentData } from "firebase/firestore";
-import { formatArchiveDate } from "@/util/date";
 
 export default function ArchivePage() {
   const [activeCategory, setActiveCategory] = useState<ArchiveCategory | "all">(
@@ -120,7 +119,9 @@ export default function ArchivePage() {
 
     // 날짜순 정렬 (최신순)
     result = [...result].sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+      (a, b) =>
+        new Date(b.createdAt || "").getTime() -
+        new Date(a.createdAt || "").getTime(),
     );
 
     setFilteredItems(result);
@@ -345,10 +346,6 @@ export default function ArchivePage() {
                         <h3 className="mb-1 text-lg font-semibold">
                           {item.title}
                         </h3>
-                        <div className="mb-2 flex items-center text-xs text-gray-500">
-                          <Calendar size={12} className="mr-1" />
-                          {formatArchiveDate(item.date)}
-                        </div>
                         <p className="mb-3 line-clamp-2 text-sm text-gray-600">
                           {item.description}
                         </p>

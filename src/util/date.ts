@@ -29,13 +29,3 @@ export function formatEventTime(timeString?: string): string {
   const [hours, minutes] = timeString.split(":");
   return `${hours}:${minutes}`;
 }
-
-// 날짜 포맷 함수
-export function formatArchiveDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}

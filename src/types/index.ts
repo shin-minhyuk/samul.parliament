@@ -39,22 +39,22 @@ export interface ScheduleEvent {
 export interface ArchiveItem {
   id: string;
   title: string;
-  date: string; // YYYY-MM-DD 형식
+  date?: string; // YYYY-MM-DD 형식 (선택 사항으로 변경)
   description: string;
-  type: "image" | "video";
-  url: string; // 이미지 경로 또는 비디오 URL
+  type: "image" | "video" | "text";
+  url: string; // 이미지 경로 또는 비디오 URL (text 타입일 경우 빈 문자열)
   thumbnailUrl?: string; // 썸네일 이미지 경로 (비디오의 경우)
   tags?: string[]; // 태그 목록
-  category?: "event" | "research" | "media" | "other"; // 카테고리
+  category?: "reference" | "preliminary" | "main" | "result"; // 카테고리
   createdAt?: Date;
   updatedAt?: Date;
 }
 
 // 아카이브 카테고리 타입
-export type ArchiveCategory = "event" | "research" | "media" | "other";
+export type ArchiveCategory = "reference" | "preliminary" | "main" | "result";
 
 // 아카이브 타입
-export type ArchiveType = "image" | "video";
+export type ArchiveType = "image" | "video" | "text";
 
 // 카테고리 타입 정의
 export interface Category {

@@ -146,10 +146,10 @@ export default function AdminArchivesPage() {
             className="rounded-md border border-gray-300 px-3 py-2 text-sm"
           >
             <option value="all">전체</option>
-            <option value="event">행사</option>
-            <option value="research">연구</option>
-            <option value="media">미디어</option>
-            <option value="other">기타</option>
+            <option value="reference">참고자료</option>
+            <option value="preliminary">예비모임</option>
+            <option value="main">본회의</option>
+            <option value="result">결과물</option>
           </select>
         </div>
 
@@ -163,6 +163,7 @@ export default function AdminArchivesPage() {
             className="rounded-md border border-gray-300 px-3 py-2 text-sm"
           >
             <option value="all">전체</option>
+            <option value="text">텍스트</option>
             <option value="image">사진</option>
             <option value="video">영상</option>
           </select>
@@ -253,7 +254,7 @@ export default function AdminArchivesPage() {
                           className="object-cover"
                         />
                       </div>
-                    ) : (
+                    ) : archive.type === "video" ? (
                       <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded bg-gray-200">
                         {archive.thumbnailUrl ? (
                           <Image
@@ -267,6 +268,10 @@ export default function AdminArchivesPage() {
                           <ExternalLink size={24} className="text-gray-400" />
                         )}
                       </div>
+                    ) : (
+                      <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded bg-gray-100">
+                        <span className="text-xs text-gray-500">텍스트</span>
+                      </div>
                     )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -278,35 +283,41 @@ export default function AdminArchivesPage() {
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-500">{archive.date}</div>
+                    <div className="text-sm text-gray-500">
+                      {archive.date || "-"}
+                    </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-500">
-                      {archive.category === "event" && (
+                      {archive.category === "reference" && (
                         <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
-                          행사
+                          참고자료
                         </span>
                       )}
-                      {archive.category === "research" && (
+                      {archive.category === "preliminary" && (
                         <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
-                          연구
+                          예비모임
                         </span>
                       )}
-                      {archive.category === "media" && (
+                      {archive.category === "main" && (
                         <span className="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800">
-                          미디어
+                          본회의
                         </span>
                       )}
-                      {archive.category === "other" && (
+                      {archive.category === "result" && (
                         <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-                          기타
+                          결과물
                         </span>
                       )}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-500">
-                      {archive.type === "image" ? (
+                      {archive.type === "text" ? (
+                        <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
+                          텍스트
+                        </span>
+                      ) : archive.type === "image" ? (
                         <span className="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
                           사진
                         </span>

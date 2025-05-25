@@ -36,14 +36,14 @@ export async function getArchiveItems(
     if (lastDoc) {
       archiveQuery = query(
         collection(db, COLLECTION_NAME),
-        orderBy("date", "desc"),
+        orderBy("createdAt", "desc"),
         startAfter(lastDoc),
         limit(pageSize),
       );
     } else {
       archiveQuery = query(
         collection(db, COLLECTION_NAME),
-        orderBy("date", "desc"),
+        orderBy("createdAt", "desc"),
         limit(pageSize),
       );
     }

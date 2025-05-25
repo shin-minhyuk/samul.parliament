@@ -4,11 +4,34 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
-import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, Tag } from "lucide-react";
 import { ARCHIVE_TYPES } from "@/constants/const";
 import { getArchiveItemById } from "@/services/archiveService";
 import { ArchiveItem } from "@/types";
-import { formatArchiveDate } from "@/util/date";
+
+// YouTube URL을 embed URL로 변환하는 함수
+const convertToEmbedUrl = (url: string): string => {
+  // 이미 embed URL인 경우 그대로 반환
+  if (url.includes("/embed/")) {
+    return url;
+  }
+
+  // YouTube URL 패턴 매칭
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/v\/)([^&\n?#]+)/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) {
+      const videoId = match[1];
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+  }
+
+  // YouTube URL이 아닌 경우 원본 URL 반환
+  return url;
+};
 
 export default function ArchiveDetailPage() {
   const params = useParams();
@@ -97,10 +120,6 @@ export default function ArchiveDetailPage() {
             <span className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700">
               {ARCHIVE_TYPES.find((t) => t.id === archiveItem.type)?.name}
             </span>
-            <div className="flex items-center text-sm text-gray-500">
-              <Calendar size={16} className="mr-1" />
-              {formatArchiveDate(archiveItem.date)}
-            </div>
           </div>
           <h1 className="mb-4 text-2xl font-bold">{archiveItem.title}</h1>
           <p className="text-gray-600">{archiveItem.description}</p>
@@ -139,11 +158,20 @@ export default function ArchiveDetailPage() {
           {archiveItem.type === "video" && (
             <div className="aspect-video w-full">
               <iframe
-                src={archiveItem.url}
+                src={convertToEmbedUrl(archiveItem.url)}
                 title={archiveItem.title}
-                className="h-full w-full"
+                className="h-full w-full rounded-lg"
                 allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               ></iframe>
+            </div>
+          )}
+
+          {archiveItem.type === "text" && (
+            <div className="prose max-w-none">
+              <div className="whitespace-pre-wrap text-gray-700">
+                {archiveItem.description}
+              </div>
             </div>
           )}
         </div>
@@ -185,9 +213,6 @@ export default function ArchiveDetailPage() {
                   <h3 className="line-clamp-1 text-sm font-medium">
                     {item.title}
                   </h3>
-                  <p className="mt-1 line-clamp-1 text-xs text-gray-500">
-                    {formatArchiveDate(item.date)}
-                  </p>
                 </div>
               </Link>
             ))}

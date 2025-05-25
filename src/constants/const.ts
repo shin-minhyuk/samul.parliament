@@ -18,15 +18,16 @@ export const EVENT_TYPES = [
 // 아카이브 카테고리 정의
 export const ARCHIVE_CATEGORIES = [
   { id: "all", name: "전체" },
-  { id: "event", name: "행사" },
-  { id: "research", name: "연구" },
-  { id: "media", name: "미디어" },
-  { id: "other", name: "기타" },
+  { id: "reference", name: "참고자료" },
+  { id: "preliminary", name: "예비모임" },
+  { id: "main", name: "본회의" },
+  { id: "result", name: "결과물" },
 ];
 
 // 아카이브 타입 정의
 export const ARCHIVE_TYPES = [
   { id: "all", name: "전체" },
+  { id: "text", name: "텍스트" },
   { id: "image", name: "사진" },
   { id: "video", name: "영상" },
 ];
