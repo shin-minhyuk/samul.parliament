@@ -21,8 +21,8 @@ export default function Header() {
             <div className="flex animate-pulse items-center justify-center gap-2">
               <Clock className="h-4 w-4" />
               <p>
-                <span className="font-semibold">컨퍼런스 일정:</span> 2025년
-                10월 15일 (월) 12:00 - 18:00 KST
+                <span className="font-semibold">본회의 일정:</span> 2025년 11월
+                1일 ~ 2일 (토, 일) 10:00 - 17:00 KST
               </p>
               <button
                 onClick={() => setIsBannerVisible(false)}

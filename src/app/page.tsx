@@ -12,11 +12,13 @@ export default function Home() {
       <section className="flex min-h-[400px] items-center justify-center overflow-hidden px-4 md:h-[600px]">
         <div className="animate-slide-up">
           <div className="group hover:animate-wiggle flex flex-col gap-2 text-center md:gap-4 md:text-left">
-            <h2 className="text-4xl md:text-7xl">2025 Environment</h2>
+            <h2 className="text-4xl md:text-7xl">2025 사물의 의회</h2>
             <h1 className="text-primary-500 group-hover:text-primary-400 transform text-5xl font-[900] transition-all duration-100 md:text-8xl">
-              사물과 인간
+              인간과 비인간
             </h1>
-            <h2 className="text-3xl md:text-7xl">함께 논의하는 새로운 미래</h2>
+            <h2 className="text-[22px] md:text-5xl">
+              함께 만드는 새로운 기후 민주주의
+            </h2>
           </div>
         </div>
       </section>
@@ -33,9 +35,6 @@ export default function Home() {
                 비인간 존재들의 <span className="text-ocean-surf">권리</span>와{" "}
                 <span className="text-ocean-surf">발언권</span>을 고민하다
               </h2>
-              <p className="text-base font-bold opacity-50 md:text-xl">
-                2025 사물의 의회 주제 : 미래의 공존을 위한 새로운 논의
-              </p>
             </div>
 
             {/* 참가버튼 */}
@@ -53,8 +52,7 @@ export default function Home() {
       </section>
 
       {/* 비디오 섹션 */}
-      <section className="relative h-screen w-full overflow-hidden">
-        {/* 배경 비디오 */}
+      {/* <section className="relative h-screen w-full overflow-hidden">
         <div className="absolute inset-0">
           <video
             autoPlay
@@ -67,11 +65,9 @@ export default function Home() {
             <source src="/videos/20250309_0200.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          {/* 비디오 오버레이 - 더 진한 그라데이션 효과 */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
         </div>
 
-        {/* 비디오 위 콘텐츠 */}
         <div className="relative z-10 flex h-full items-center justify-center px-4 text-white">
           <div className="max-w-4xl space-y-8 text-center">
             <h2 className="text-5xl font-bold drop-shadow-lg">
@@ -87,7 +83,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 서브 배너 */}
       <section className="py-24">
