@@ -58,15 +58,15 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="relative mx-auto flex items-center justify-center overflow-hidden">
+        <div className="relative mx-auto flex items-center justify-center gap-10">
           <Image
             src="/images/주최_기후몸연구소.png"
             alt="주최_기후몸연구소"
-            className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+            className="h-[60px] w-[160px] shrink-0 object-contain md:h-[80px] md:w-[200px]"
             width={200}
             height={80}
           />
-          <Logo className="flex h-[80px] w-[200px] shrink-0 items-center justify-center object-contain pr-10 md:text-2xl" />
+          <Logo className="flex md:text-2xl" />
         </div>
       </section>
 
