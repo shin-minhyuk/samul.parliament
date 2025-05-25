@@ -58,57 +58,15 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="relative mx-auto overflow-hidden">
-          {/* 양쪽 그라데이션 효과 */}
-          <div className="absolute top-0 left-0 z-10 h-full w-1/4 bg-gradient-to-r from-[#E4F3FF] to-transparent" />
-          <div className="absolute top-0 right-0 z-10 h-full w-1/4 bg-gradient-to-l from-[#E4F3FF] to-transparent" />
-
-          <div className="w-full overflow-hidden">
-            <div
-              className="flex"
-              style={{
-                animation: "marquee-scroll 6s linear infinite",
-                width: "max-content",
-              }}
-            >
-              <Image
-                src="/images/주최_기후몸연구소.png"
-                alt="주최_기후몸연구소"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Logo className="flex h-[80px] w-[200px] shrink-0 items-center justify-center object-contain pr-10 md:text-2xl" />
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>경희대학교</p>
-                <p>기후-몸연구소</p>
-              </div>
-              <Image
-                src="/images/주최_기후몸연구소.png"
-                alt="주최_기후몸연구소"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Logo className="flex h-[80px] w-[200px] shrink-0 items-center justify-center object-contain pr-10 md:text-2xl" />
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>경희대학교</p>
-                <p>기후-몸연구소</p>
-              </div>
-              <Image
-                src="/images/주최_기후몸연구소.png"
-                alt="주최_기후몸연구소"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Logo className="h-[80px] w-[200px] shrink-0 object-contain pr-10 md:text-2xl" />
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>경희대학교</p>
-                <p>기후-몸연구소</p>
-              </div>
-            </div>
-          </div>
+        <div className="relative mx-auto flex items-center justify-center overflow-hidden">
+          <Image
+            src="/images/주최_기후몸연구소.png"
+            alt="주최_기후몸연구소"
+            className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
+            width={200}
+            height={80}
+          />
+          <Logo className="flex h-[80px] w-[200px] shrink-0 items-center justify-center object-contain pr-10 md:text-2xl" />
         </div>
       </section>
 
@@ -167,9 +125,9 @@ export default function Home() {
               <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
                 <p>신유물론연구회</p>
               </div>
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>성공회대</p>
-                <p>농림생태환경연구소</p>
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-center text-xl font-semibold">
+                성공회대 <br />
+                농림생태환경연구소
               </div>
               <Image
                 src="/images/후원_기후변화행동연구소.png"
@@ -206,9 +164,9 @@ export default function Home() {
               <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
                 <p>신유물론연구회</p>
               </div>
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>성공회대</p>
-                <p>농림생태환경연구소</p>
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-center text-xl font-semibold">
+                성공회대 <br />
+                농림생태환경연구소
               </div>
               <Image
                 src="/images/후원_기후변화행동연구소.png"
@@ -245,9 +203,9 @@ export default function Home() {
               <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
                 <p>신유물론연구회</p>
               </div>
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>성공회대</p>
-                <p>농림생태환경연구소</p>
+              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-center text-xl font-semibold">
+                성공회대 <br />
+                농림생태환경연구소
               </div>
             </div>
           </div>
