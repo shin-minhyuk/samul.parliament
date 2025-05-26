@@ -1,6 +1,6 @@
 # 사물의 의회 2025
 
-[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://samuluiuihoe.vercel.app)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://samulparliament.com)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -168,10 +168,36 @@ const EXCLUDED_PATHS = [
 
 ## 🔄 배포
 
-이 프로젝트는 Vercel을 통해 자동으로 배포됩니다:
+### 도메인 설정
 
-- `main` 브랜치에 변경사항이 푸시되면 자동 배포
-- 각 PR마다 미리보기 배포 생성
+이 프로젝트는 가비아에서 구매한 커스텀 도메인을 사용합니다:
+
+- **메인 도메인**: [samulparliament.com](https://samulparliament.com)
+- **기존 Vercel 도메인**: [samuluiuihoe.vercel.app](https://samuluiuihoe.vercel.app)
+
+### 배포 환경
+
+1. **Vercel 자동 배포**:
+
+   - `main` 브랜치에 변경사항이 푸시되면 자동 배포
+   - 각 PR마다 미리보기 배포 생성
+
+2. **도메인 연결 과정**:
+
+   - 가비아에서 `samulparliament.com` 도메인 구매
+   - Vercel 대시보드에서 커스텀 도메인 추가
+   - 가비아 DNS 설정에서 A 레코드 및 CNAME 레코드 설정
+   - SSL 인증서 자동 발급 및 적용
+
+3. **301 리다이렉트 설정**:
+   - 기존 Vercel 도메인(`samuluiuihoe.vercel.app`)에서 새 도메인(`samulparliament.com`)으로 301 영구 리다이렉트 설정
+   - SEO 점수 유지 및 기존 링크 호환성 보장
+
+### 도메인 관리
+
+- **DNS 관리**: 가비아 DNS 관리 콘솔
+- **SSL 인증서**: Vercel에서 자동 관리
+- **CDN**: Vercel Edge Network 활용 (자동적용)
 
 ## 🤝 기여하기
 
