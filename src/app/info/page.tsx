@@ -83,11 +83,22 @@ export default function InfoPage() {
           </h2>
           <div className="prose prose-lg max-w-none">
             <p className="mb-4">
-              사물의 의회(Parliament of Things)는 프랑스 철학자 브뤼노 라투르가
-              제안한 개념으로, 인간과 비인간 존재가 함께 정치적 목소리를 내는
-              탈인간중심적 민주주의 모델입니다. 인간만이 아닌,
-              대기·동물·기술·산림·해양 등 다양한 비인간 존재들의 권리와
-              이해관계도 정치적으로 대표되어야 한다는 생각에서 출발했습니다.
+              <strong className="text-ocean-deep">
+                사물의 의회(Parliament of Things)
+              </strong>
+              는 프랑스 과학기술학자{" "}
+              <strong className="text-ocean-blue">브뤼노 라투르</strong>가
+              제안한 개념으로,{" "}
+              <span className="bg-mint-400/20 rounded px-2 py-1 font-semibold">
+                인간과 비인간 존재가 함께 정치적 목소리를 내는 탈인간중심적
+                민주주의 모델
+              </span>
+              입니다. 인간만이 아닌,{" "}
+              <strong className="text-ocean-blue">
+                대기·동물·기술·산림·해양
+              </strong>{" "}
+              등 다양한 비인간 존재들의 권리와 이해관계도 정치적으로 대표되어야
+              한다는 생각에서 출발했습니다.
             </p>
           </div>
         </section>
@@ -98,9 +109,19 @@ export default function InfoPage() {
           </h2>
           <div className="prose prose-lg max-w-none">
             <p className="mb-4">
-              인간 중심의 기존 법과 제도의 한계를 넘어, 기후위기에 대응할 수
-              있는 탈인간중심적 법 규범을 모색합니다. 국내 최초로 사물의 의회를
-              개최하여 기후민주주의의 새로운 가능성을 실험합니다.
+              인간 중심의 기존 법과 제도의 한계를 넘어,{" "}
+              <span className="bg-ocean-blue/20 rounded px-2 py-1 font-semibold">
+                기후위기에 대응할 수 있는 탈인간중심적 법 규범을 모색
+              </span>
+              합니다.{" "}
+              <strong className="text-ocean-blue">
+                국내 최초로 사물의 의회를 개최
+              </strong>
+              하여{" "}
+              <span className="bg-mint-400/20 rounded px-2 py-1 font-semibold">
+                기후민주주의의 새로운 가능성을 실험
+              </span>
+              합니다.
             </p>
           </div>
         </section>
@@ -111,12 +132,24 @@ export default function InfoPage() {
           </h2>
           <div className="prose prose-lg max-w-none">
             <p className="mb-4">
-              기후위기는 인간 중심 근대문명의 필연적 결과입니다. 인간만이
-              주체이고, 자연은 대상이라는 오래된 사고방식은 대기, 산림, 해양 등
-              비인간 존재들을 착취와 오용의 대상으로 삼아왔습니다. 사물의 의회는
-              인간뿐 아니라 비인간 존재들도 정치적으로 대표되는 새로운 민주주의
-              공간을 지향합니다. 이 실험은 한국 사회에 기후위기를 극복하기 위한
-              근본적 전환의 계기를 제공할 것입니다.
+              <strong className="text-red-600">
+                기후위기는 인간 중심적 근대문명의 필연적 결과
+              </strong>
+              입니다.{" "}
+              <span className="rounded bg-gray-100 px-2 py-1">
+                인간만이 주체이고, 자연은 대상이라는 근대적 사고방식
+              </span>
+              은 <strong className="text-ocean-blue">대기, 산림, 해양</strong>{" "}
+              등 비인간 존재들을 착취와 오용의 대상으로 삼아왔습니다.{" "}
+              <span className="bg-ocean-surf/20 rounded px-2 py-1 font-semibold">
+                사물의 의회는 인간뿐 아니라 비인간 존재들도 정치적으로 대표되는
+                새로운 민주주의 공간을 지향
+              </span>
+              합니다. 이 실험은 한국 사회에{" "}
+              <strong className="text-ocean-deep">
+                기후위기를 극복하기 위한 근본적 전환의 계기
+              </strong>
+              를 제공할 것입니다.
             </p>
           </div>
         </section>
@@ -277,15 +310,59 @@ export default function InfoPage() {
             <h3 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
               주요 토론 주제
             </h3>
-            <p className="mb-4">
-              1) 비인간 존재들의 정치적 대표를 위해 법적으로 어떤 변화가
-              필요한가? <br />
-              2) 기존 탄소중립기본법 개정 vs 새로운 법/헌법 제정 기후위기에
-              대응하기 위해 각 이해관계자 그룹이 법에 담기를 원하는 내용은?
-              <br />
-              3) 비인간 대표를 비례대표제로 선출해 국회에 보내는 것에 대한
-              의견은?
-            </p>
+            <div className="space-y-4">
+              <div className="from-ocean-blue/10 to-mint-400/10 border-ocean-blue rounded-lg border-l-4 bg-gradient-to-r p-6 shadow-md backdrop-blur-sm">
+                <div className="flex items-start gap-3">
+                  <div className="bg-ocean-blue flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
+                    1
+                  </div>
+                  <div>
+                    <h4 className="text-ocean-deep mb-2 font-semibold">
+                      법적 변화의 필요성
+                    </h4>
+                    <p className="text-gray-700">
+                      기후위기에 대한 비인간들의 목소리를 의회정치에 대표하기
+                      위하여 어떤 법적 변화가 필요하다고 생각하나요?
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="from-mint-400/10 to-ocean-surf/10 border-mint-400 rounded-lg border-l-4 bg-gradient-to-r p-6 shadow-md backdrop-blur-sm">
+                <div className="flex items-start gap-3">
+                  <div className="bg-ocean-deep flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
+                    2
+                  </div>
+                  <div>
+                    <h4 className="text-ocean-deep mb-2 font-semibold">
+                      법제도 개선 방향
+                    </h4>
+                    <p className="text-gray-700">
+                      기존 탄소중립기본법 개정 vs 새로운 법/헌법 제정 중
+                      기후위기에 대응하기 위해 각 이해관계자 그룹들은 법에 어떤
+                      내용이 담기기를 원하나요?
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="from-ocean-surf/10 to-ocean-blue/10 border-ocean-surf rounded-lg border-l-4 bg-gradient-to-r p-6 shadow-md backdrop-blur-sm">
+                <div className="flex items-start gap-3">
+                  <div className="bg-ocean-surf flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
+                    3
+                  </div>
+                  <div>
+                    <h4 className="text-ocean-deep mb-2 font-semibold">
+                      비인간 대표성 확보
+                    </h4>
+                    <p className="text-gray-700">
+                      비인간 대표를 비례대표제로 선출해 국회에 보내는 것에 대해
+                      어떻게 생각하나요?
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
