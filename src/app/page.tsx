@@ -41,7 +41,9 @@ export default function Home() {
             <Button
               type="button"
               onClick={() =>
-                openExternalLink("https://www.instagram.com/samul.parliament")
+                openExternalLink(
+                  "https://docs.google.com/forms/d/e/1FAIpQLSdt5BSpFw3mS9wZzWVzcqvDcWHw8BP2i8o-2r0i9R151562iw/viewform",
+                )
               }
               className="animate-rotate-in absolute right-0 bottom-[-40px] left-0 mx-auto h-[80px] w-[80px] p-0 hover:scale-105 md:bottom-[-50px] md:h-[100px] md:w-[100px]"
             >
