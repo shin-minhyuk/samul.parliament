@@ -189,4 +189,4 @@ const EXCLUDED_PATHS = [
 
 사물의 의회 조직위원회 - samul.parliament@gmail.com
 
-프로젝트 링크: [https://samuluiuihoe.vercel.app](https://samuluiuihoe.vercel.app)
+프로젝트 링크: [https://samulparliament.com/](https://samulparliament.com/)
