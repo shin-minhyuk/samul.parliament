@@ -51,7 +51,7 @@ export default function AddFaqPage() {
         question,
         answer,
         category,
-        tags: tags.length > 0 ? tags : undefined,
+        ...(tags.length > 0 && { tags }),
       };
 
       await createFaq(newFaq);

@@ -79,7 +79,7 @@ export default function EditFaqPage() {
         question,
         answer,
         category,
-        tags: tags.length > 0 ? tags : undefined,
+        ...(tags.length > 0 && { tags }),
       };
 
       await updateFaq(faqId, updatedFaq);
