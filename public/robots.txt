@@ -1,4 +1,4 @@
-# https://samuluiuihoe.vercel.app/robots.txt
+# https://samulparliament.com/robots.txt
 # 사물의 의회 2025 사이트에 대한 크롤링 규칙
 
 # 모든 검색엔진
@@ -13,6 +13,6 @@ Allow: /
 Disallow: /admin/
 
 # sitemap 위치
-Sitemap: https://samuluiuihoe.vercel.app/sitemap.xml
+Sitemap: https://samulparliament.com/sitemap.xml
 
 # 네이버 검색 최적화
