@@ -11,7 +11,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://samuluiuihoe.vercel.app"),
+  metadataBase: new URL("https://samulparliament.com"),
   title: "사물의 의회 2025 | 미래의 공존을 위한 새로운 논의",
   description:
     "비인간 존재들의 권리와 발언권을 고민하는 '사물의 의회 2025'에서 자연과 기술이 조화롭게 공존하는 미래를 함께 만들어갑니다.",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "사물의 의회 2025 | 미래의 공존을 위한 새로운 논의",
     description:
       "비인간 존재들의 권리와 발언권을 고민하는 '사물의 의회 2025'에서 자연과 기술이 조화롭게 공존하는 미래를 함께 만들어갑니다.",
-    url: "https://samuluiuihoe.vercel.app",
+    url: "https://samulparliament.com",
     siteName: "사물의 의회",
     images: [
       {
@@ -81,9 +81,9 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://samuluiuihoe.vercel.app",
+    canonical: "https://samulparliament.com",
     languages: {
-      "ko-KR": "https://samuluiuihoe.vercel.app",
+      "ko-KR": "https://samulparliament.com",
     },
   },
   category: "환경,지속가능성,사회운동",
