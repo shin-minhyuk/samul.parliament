@@ -32,8 +32,8 @@ export default function Home() {
                 함께 고민하는 시간
               </h3>
               <h2 className="text-2xl font-bold md:text-5xl">
-                비인간 존재들의 <span className="text-ocean-surf">권리</span>와{" "}
-                <span className="text-ocean-surf">발언권</span>을 고민하다
+                비인간 존재들의 <span className="text-ocean-surf">목소리</span>
+                를 <span className="text-ocean-surf">대변</span>하고 싶다면?
               </h2>
             </div>
 
