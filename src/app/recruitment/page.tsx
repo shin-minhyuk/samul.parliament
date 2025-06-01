@@ -52,11 +52,32 @@ export default function RecruitmentPage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="mb-3 text-xl font-semibold">모집 기간</h3>
-                  <div className="flex items-start gap-3">
-                    <Clock className="mt-1 h-5 w-5 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">2025년 6월 1일 ~ 6월 30일</p>
+                  <h3 className="mb-3 text-xl font-semibold">모집 일정</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <Clock className="mt-1 h-5 w-5 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium">모집 기간</p>
+                        <p className="text-sm text-gray-200">
+                          2025년 6월 16일 ~ 7월 31일
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <FileText className="mt-1 h-5 w-5 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium">선정 과정</p>
+                        <p className="text-sm text-gray-200">
+                          서류 심사 후 전화 인터뷰 예정
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <MessageCircle className="mt-1 h-5 w-5 flex-shrink-0" />
+                      <div>
+                        <p className="font-medium">참가자 선정 결과 발표</p>
+                        <p className="text-sm text-gray-200">2025년 8월 31일</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -82,8 +103,10 @@ export default function RecruitmentPage() {
                 2025년 9월~11월 예정된 예비 모임과 본 회의에 모두 참석 가능한 분
               </li>
               <li>
-                특정 분야의 전문 지식이 없어도 관심과 열정이 있으면 지원 가능
+                특정 분야의 전문 지식이 없어도 본 프로젝트에 관심과 열정이
+                있으면 지원 가능
               </li>
+              <li>고1 이상 또는 만 15세 이상 (학교 밖 청소년 포함)</li>
             </ul>
           </div>
         </section>
@@ -156,8 +179,13 @@ export default function RecruitmentPage() {
                     2
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold">서류 심사</h3>
-                    <p>제출된 지원서를 바탕으로 1차 서류 심사를 진행합니다.</p>
+                    <h3 className="text-xl font-semibold">
+                      서류 심사 및 전화 인터뷰
+                    </h3>
+                    <p>
+                      제출해 주신 지원서를 검토한 후, 전화 인터뷰를 진행할
+                      예정입니다.
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -165,9 +193,9 @@ export default function RecruitmentPage() {
                     3
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold">최종 선발</h3>
+                    <h3 className="text-xl font-semibold">최종 선정</h3>
                     <p>
-                      최종 선발된 참가자에게는 상세한 참가 안내와 사전 자료가
+                      최종 선정된 참가자에게는 상세한 참가 안내와 사전 자료가
                       제공됩니다.
                     </p>
                   </div>

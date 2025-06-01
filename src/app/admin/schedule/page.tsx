@@ -212,17 +212,19 @@ export default function AdminSchedulePage() {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-                >
+                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                   일정
                 </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase"
-                >
-                  날짜 및 시간
+                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <button
+                    onClick={() =>
+                      setSortOrder(sortOrder === "asc" ? "desc" : "asc")
+                    }
+                    className="flex items-center space-x-1 hover:text-gray-700"
+                  >
+                    <span>날짜 및 시간</span>
+                    <ArrowUpDown className="h-3 w-3" />
+                  </button>
                 </th>
                 <th
                   scope="col"
@@ -270,9 +272,11 @@ export default function AdminSchedulePage() {
                     </td>
                     <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-500">
                       <div>{formatDate(schedule.date)}</div>
-                      {schedule.time && (
+                      {(schedule.startTime || schedule.endTime) && (
                         <div className="text-xs text-gray-400">
-                          {schedule.time}
+                          {schedule.startTime && schedule.endTime
+                            ? `${schedule.startTime} - ${schedule.endTime}`
+                            : schedule.startTime || schedule.endTime}
                         </div>
                       )}
                     </td>

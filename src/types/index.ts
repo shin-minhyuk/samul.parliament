@@ -27,7 +27,8 @@ export interface ScheduleEvent {
   title: string;
   description: string;
   date: string;
-  time: string;
+  startTime: string;
+  endTime: string;
   location: string;
   type: string;
   important?: boolean;

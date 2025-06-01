@@ -163,10 +163,16 @@ export default function SchedulePage() {
 
                       <div className="mb-4 space-y-2 text-sm text-gray-600">
                         {/* 시간 */}
-                        {event.time && (
+                        {(event.startTime || event.endTime) && (
                           <div className="flex items-center">
                             <Clock className="mr-2 h-4 w-4" />
-                            <span>{formatEventTime(event.time)}</span>
+                            <span>
+                              {event.startTime && event.endTime
+                                ? `${formatEventTime(event.startTime)} - ${formatEventTime(event.endTime)}`
+                                : formatEventTime(
+                                    event.startTime || event.endTime,
+                                  )}
+                            </span>
                           </div>
                         )}
 

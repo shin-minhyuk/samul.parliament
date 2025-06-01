@@ -27,7 +27,8 @@ export default function AddScheduleEventPage() {
   >({
     title: "",
     date: new Date().toISOString().split("T")[0], // 오늘 날짜를 기본값으로
-    time: "",
+    startTime: "",
+    endTime: "",
     location: "",
     description: "",
     type: "other",
@@ -127,7 +128,7 @@ export default function AddScheduleEventPage() {
           </div>
 
           {/* 날짜 및 시간 */}
-          <div className="mb-4 grid gap-4 md:grid-cols-2">
+          <div className="mb-4 grid gap-4 md:grid-cols-3">
             <div>
               <label
                 htmlFor="date"
@@ -148,17 +149,34 @@ export default function AddScheduleEventPage() {
             </div>
             <div>
               <label
-                htmlFor="time"
+                htmlFor="startTime"
                 className="mb-2 flex items-center font-medium"
               >
                 <Clock className="mr-2 h-4 w-4" />
-                시간
+                시작 시간
               </label>
               <input
                 type="time"
-                id="time"
-                name="time"
-                value={formData.time}
+                id="startTime"
+                name="startTime"
+                value={formData.startTime}
+                onChange={handleChange}
+                className="w-full rounded-md border border-gray-300 p-2"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="endTime"
+                className="mb-2 flex items-center font-medium"
+              >
+                <Clock className="mr-2 h-4 w-4" />
+                종료 시간
+              </label>
+              <input
+                type="time"
+                id="endTime"
+                name="endTime"
+                value={formData.endTime}
                 onChange={handleChange}
                 className="w-full rounded-md border border-gray-300 p-2"
               />

@@ -14,7 +14,7 @@ export default function InfoPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="mx-auto max-w-4xl">
         <h1 className="text-ocean-deep mb-8 text-4xl font-bold md:text-5xl">
-          사물의 의회 소개
+          2025 사물의 의회 프로젝트
         </h1>
 
         {/* <section className="mb-12">
@@ -103,7 +103,7 @@ export default function InfoPage() {
 
         <section className="mb-12">
           <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
-            행사의 목적
+            프로젝트의 목적
           </h2>
           <div className="prose prose-lg max-w-none">
             <p className="mb-4">
@@ -117,7 +117,7 @@ export default function InfoPage() {
 
         <section className="mb-12">
           <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
-            행사의 필요성
+            프로젝트의 필요성
           </h2>
           <div className="prose prose-lg max-w-none">
             <p className="mb-4">
@@ -127,7 +127,7 @@ export default function InfoPage() {
               입니다. 인간만이 주체이고, 자연은 대상이라는 근대적 사고방식 은
               대기, 산림, 해양 등 비인간 존재들을 착취와 오용의 대상으로
               삼아왔습니다. 사물의 의회는 인간뿐 아니라 비인간 존재들도
-              정치적으로 대표되는 새로운 민주주의 공간을 지향 합니다. 이 실험은
+              정치적으로 대표되는 새로운 민주주의 공간을 지향합니다. 이 실험은
               한국 사회에 기후위기를 극복하기 위한 근본적 전환의 계기 를 제공할
               것입니다.
             </p>
@@ -136,7 +136,7 @@ export default function InfoPage() {
 
         <section className="mb-12">
           <h2 className="text-ocean-surf mb-4 text-xl font-bold">
-            행사 일정 및 절차(안)
+            프로젝트 일정 및 절차(안)
           </h2>
           <div className="prose prose-lg max-w-none">
             <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -170,17 +170,13 @@ export default function InfoPage() {
                     <div className="text-ocean-deep font-semibold">
                       13:00~14:00
                     </div>
-                    <div className="text-gray-700">
-                      휴식 및 문화행사 (공연/전시)
-                    </div>
+                    <div className="text-gray-700">휴식 및 문화행사</div>
                   </div>
                   <div className="border-mint-400 border-l-4 pl-4">
                     <div className="text-ocean-deep font-semibold">
                       14:00~16:00
                     </div>
-                    <div className="text-gray-700">
-                      1차 전체 토론 (World Café 형식)
-                    </div>
+                    <div className="text-gray-700">1차 전체 토론</div>
                   </div>
                   <div className="border-mint-400 border-l-4 pl-4">
                     <div className="text-ocean-deep font-semibold">
@@ -207,129 +203,33 @@ export default function InfoPage() {
                     <div className="text-ocean-deep font-semibold">
                       11:00~12:00
                     </div>
-                    <div className="text-gray-700">그룹별 발표</div>
+                    <div className="text-gray-700">
+                      그룹별 발표 (10개 그룹, 각 6분)
+                    </div>
                   </div>
                   <div className="border-mint-400 border-l-4 pl-4">
                     <div className="text-ocean-deep font-semibold">
                       12:00~14:00
                     </div>
-                    <div className="text-gray-700">점심 및 휴식</div>
+                    <div className="text-gray-700">점심</div>
                   </div>
                   <div className="border-mint-400 border-l-4 pl-4">
                     <div className="text-ocean-deep font-semibold">
                       14:00~15:00
                     </div>
-                    <div className="text-gray-700">
-                      대표자 무대 토론 (10개 그룹)
-                    </div>
+                    <div className="text-gray-700">휴식 및 문화행사</div>
                   </div>
                   <div className="border-mint-400 border-l-4 pl-4">
                     <div className="text-ocean-deep font-semibold">
                       15:00~16:00
                     </div>
-                    <div className="text-gray-700">최종 결론 작성</div>
+                    <div className="text-gray-700">2차 전체 토론</div>
                   </div>
                   <div className="border-mint-400 border-l-4 pl-4">
                     <div className="text-ocean-deep font-semibold">
                       16:00~17:00
                     </div>
-                    <div className="text-gray-700">
-                      전체 결론 발표 및 기자회견
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <h3 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
-              참여 그룹
-            </h3>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {/* 인간 그룹 */}
-              <div className="group rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="bg-ocean-surf rounded-full p-2 text-white">
-                    <Users className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-ocean-deep text-xl font-bold">
-                    인간 그룹
-                  </h3>
-                </div>
-                <ul className="mb-4 list-disc space-y-2 pl-5">
-                  <li>기업가</li>
-                  <li>노동자</li>
-                  <li>농민</li>
-                  <li>미래세대</li>
-                  <li>사회적 약자 (빈민, 노인 등)</li>
-                </ul>
-              </div>
-
-              {/* 비인간 그룹 */}
-              <div className="group rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="bg-ocean-blue rounded-full p-2 text-white">
-                    <Globe className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-ocean-deep text-xl font-bold">
-                    비인간 그룹 대변인
-                  </h3>
-                </div>
-                <ul className="mb-4 list-disc space-y-2 pl-5">
-                  <li>대기</li>
-                  <li>산림</li>
-                  <li>해양</li>
-                  <li>동물</li>
-                  <li>기술 (AI, 지구공학)</li>
-                </ul>
-              </div>
-            </div>
-            <p className="my-4">
-              각 그룹은 당사자, 과학자, 예술가, 활동가, 시민 등 10명으로
-              구성됩니다.
-            </p>
-            <h3 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
-              주요 토론 주제
-            </h3>
-            <div className="space-y-4">
-              <div className="from-ocean-blue/10 to-mint-400/10 border-ocean-blue rounded-lg border-l-4 bg-gradient-to-r p-6 shadow-md backdrop-blur-sm">
-                <div className="flex items-start gap-3">
-                  <div className="bg-ocean-blue flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
-                    1
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">
-                      기후위기에 대한 비인간들의 목소리를 의회정치에 대표하기
-                      위하여 어떤 법적 변화가 필요하다고 생각하나요?
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="from-mint-400/10 to-ocean-surf/10 border-mint-400 rounded-lg border-l-4 bg-gradient-to-r p-6 shadow-md backdrop-blur-sm">
-                <div className="flex items-start gap-3">
-                  <div className="bg-ocean-deep flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
-                    2
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">
-                      기존 탄소중립기본법 개정 vs 새로운 법/헌법 제정 중
-                      기후위기에 대응하기 위해 각 이해관계자 그룹들은 법에 어떤
-                      내용이 담기기를 원하나요?
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="from-ocean-surf/10 to-ocean-blue/10 border-ocean-surf rounded-lg border-l-4 bg-gradient-to-r p-6 shadow-md backdrop-blur-sm">
-                <div className="flex items-start gap-3">
-                  <div className="bg-ocean-surf flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
-                    3
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-700">
-                      비인간 대표를 비례대표제로 선출해 국회에 보내는 것에 대해
-                      어떻게 생각하나요?
-                    </p>
+                    <div className="text-gray-700">전체 결론 발표</div>
                   </div>
                 </div>
               </div>
@@ -339,7 +239,105 @@ export default function InfoPage() {
 
         <section className="mb-12">
           <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">
-            행사 일정
+            본회의 소개
+          </h2>
+
+          <h3 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
+            참여 그룹
+          </h3>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {/* 인간 그룹 */}
+            <div className="group rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="bg-ocean-surf rounded-full p-2 text-white">
+                  <Users className="h-6 w-6" />
+                </div>
+                <h3 className="text-ocean-deep text-xl font-bold">인간 그룹</h3>
+              </div>
+              <ul className="mb-4 list-disc space-y-2 pl-5">
+                <li>기업가</li>
+                <li>노동자</li>
+                <li>농민</li>
+                <li>미래세대</li>
+                <li>사회적 약자 (빈민, 노인 등)</li>
+              </ul>
+            </div>
+
+            {/* 비인간 그룹 */}
+            <div className="group rounded-xl bg-white/80 p-6 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="bg-ocean-blue rounded-full p-2 text-white">
+                  <Globe className="h-6 w-6" />
+                </div>
+                <h3 className="text-ocean-deep text-xl font-bold">
+                  비인간 그룹 대변인
+                </h3>
+              </div>
+              <ul className="mb-4 list-disc space-y-2 pl-5">
+                <li>대기</li>
+                <li>산림</li>
+                <li>해양</li>
+                <li>동물</li>
+                <li>기술 (AI, 지구공학)</li>
+              </ul>
+            </div>
+          </div>
+          <p className="my-4">
+            각 그룹은 당사자, 과학자, 예술가, 활동가, 시민 등 10명으로
+            구성됩니다.
+          </p>
+          <h3 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
+            주요 토론 주제
+          </h3>
+          <div className="space-y-4">
+            <div className="from-ocean-blue/10 to-mint-400/10 border-ocean-blue rounded-lg border-l-4 bg-gradient-to-r p-6 shadow-md backdrop-blur-sm">
+              <div className="flex items-start gap-3">
+                <div className="bg-ocean-blue flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
+                  1
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-700">
+                    기후위기에 대한 비인간들의 목소리를 의회정치에 대표하기
+                    위하여 어떤 법적 변화가 필요하다고 생각하나요?
+                  </p>
+                  <p className="font-semibold text-gray-700">
+                    예시) 기존 탄소중립기본법 개정 vs 새로운 법/헌법 제정
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="from-mint-400/10 to-ocean-surf/10 border-mint-400 rounded-lg border-l-4 bg-gradient-to-r p-6 shadow-md backdrop-blur-sm">
+              <div className="flex items-start gap-3">
+                <div className="bg-ocean-deep flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
+                  2
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-700">
+                    기후위기에 대응하기 위해 각 이해관계자 그룹들은 법에 어떤
+                    내용이 담기기를 원하나요?
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="from-ocean-surf/10 to-ocean-blue/10 border-ocean-surf rounded-lg border-l-4 bg-gradient-to-r p-6 shadow-md backdrop-blur-sm">
+              <div className="flex items-start gap-3">
+                <div className="bg-ocean-surf flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
+                  3
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-700">
+                    비인간 대표를 비례대표제로 선출해 국회에 보내는 것에 대해
+                    어떻게 생각하나요?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 className="text-ocean-surf mt-6 mb-2 text-xl font-bold">
+            행사 일정 및 절차(안)
           </h2>
           <div className="rounded-lg bg-white/80 p-6 shadow-md backdrop-blur-sm">
             <div className="overflow-x-auto">
@@ -361,7 +359,7 @@ export default function InfoPage() {
                   </tr>
                   <tr className="border-ocean-deep/20 border-b">
                     <td className="px-4 py-3">6월 ~ 8월</td>
-                    <td className="px-4 py-3">참여자 100명 섭외 및 모집</td>
+                    <td className="px-4 py-3">참가자 100명 섭외 및 모집</td>
                   </tr>
                   <tr className="border-ocean-deep/20 border-b">
                     <td className="px-4 py-3">8월 ~ 9월</td>
@@ -369,11 +367,11 @@ export default function InfoPage() {
                   </tr>
                   <tr className="border-ocean-deep/20 border-b">
                     <td className="px-4 py-3">9월 27일</td>
-                    <td className="px-4 py-3">참여자 예비모임(소책자 배포)</td>
+                    <td className="px-4 py-3">참가자 예비모임(소책자 배포)</td>
                   </tr>
                   <tr className="border-ocean-deep/20 border-b">
                     <td className="px-4 py-3">11월 1~2일</td>
-                    <td className="px-4 py-3">사물의 의회 본행사 개최</td>
+                    <td className="px-4 py-3">사물의 의회 본 회의 개최</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3">11월 ~ 12월</td>

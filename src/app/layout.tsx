@@ -12,7 +12,7 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://samulparliament.com"),
-  title: "사물의 의회 2025 | 미래의 공존을 위한 새로운 논의",
+  title: "사물의 의회 2025 | 기후위기 시대, 생각의 중심을 바꿔보자",
   description:
     "비인간 존재들의 권리와 발언권을 고민하는 '사물의 의회 2025'에서 자연과 기술이 조화롭게 공존하는 미래를 함께 만들어갑니다.",
   keywords: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   creator: "사물의 의회",
   publisher: "사물의 의회",
   openGraph: {
-    title: "사물의 의회 2025 | 미래의 공존을 위한 새로운 논의",
+    title: "사물의 의회 2025 | 기후위기 시대, 생각의 중심을 바꿔보자",
     description:
       "비인간 존재들의 권리와 발언권을 고민하는 '사물의 의회 2025'에서 자연과 기술이 조화롭게 공존하는 미래를 함께 만들어갑니다.",
     url: "https://samulparliament.com",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "사물의 의회 2025 | 미래의 공존을 위한 새로운 논의",
+    title: "사물의 의회 2025 | 기후위기 시대, 생각의 중심을 바꿔보자",
     description: "비인간 존재들의 권리와 발언권을 고민하는 '사물의 의회 2025'",
     images: ["/images/twitter-image.png"],
   },

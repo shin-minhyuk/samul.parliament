@@ -3,17 +3,18 @@
 import React from "react";
 import Link from "next/link";
 import { MapPin, Info } from "lucide-react";
+import dynamic from "next/dynamic";
 // import dynamic from "next/dynamic";
 
 // 클라이언트 컴포넌트를 동적으로 불러옵니다 (SSR 비활성화)
-// const KakaoMap = dynamic(() => import("@/components/KakaoMap"), {
-//   ssr: false,
-//   loading: () => (
-//     <div className="flex h-full w-full items-center justify-center bg-gray-200">
-//       <p className="text-gray-500">지도를 불러오는 중...</p>
-//     </div>
-//   ),
-// });
+const KakaoMap = dynamic(() => import("@/components/KakaoMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full items-center justify-center bg-gray-200">
+      <p className="text-gray-500">지도를 불러오는 중...</p>
+    </div>
+  ),
+});
 
 export default function LocationPage() {
   return (
@@ -37,23 +38,23 @@ export default function LocationPage() {
               <div className="flex flex-col gap-4 md:flex-row md:gap-8">
                 <div className="flex-1">
                   <h3 className="mb-3 text-xl font-semibold">
-                    서울특별시 (7월 중 확정 예정)
+                    성공회대 미가엘관
                   </h3>
-                  {/* <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3">
                     <MapPin className="mt-1 h-5 w-5 flex-shrink-0" />
                     <div>
-                      <p>서울특별시 성동구 서울숲2길 32-14</p>
-                      <p>서울숲 컨퍼런스센터 그랜드홀</p>
+                      <p>서울특별시 구로구 연동로 320</p>
+                      <p>성공회대 미가엘관</p>
                       <p className="mt-2 text-sm">
-                        자연과 도시가 공존하는 서울숲 내에 위치한 친환경
-                        컨퍼런스 공간입니다.
+                        온수역 2번 출구에서 821m 거리에 위치합니다.
                       </p>
                     </div>
-                  </div> */}
+                  </div>
                 </div>
                 <div className="flex-1">
                   <h3 className="mb-3 text-xl font-semibold">행사 일정</h3>
                   <p>2025년 9월 27일 (토)</p>
+                  <p>10:00~17:00 KST</p>
                   <p className="mt-2 text-sm">
                     * 행사 30분 전부터 입장 가능합니다.
                   </p>
@@ -107,31 +108,31 @@ export default function LocationPage() {
         </section>
 
         {/* 지도 */}
-        {/* <section className="mb-16">
+        <section className="mb-16">
           <h2 className="text-ocean-deep mb-8 text-center text-3xl font-bold">
             위치 안내
           </h2>
           <div className="overflow-hidden rounded-xl bg-white shadow-lg">
             <div className="relative h-[400px] w-full">
               <KakaoMap
-                latitude={37.5443}
-                longitude={127.0444}
-                markerTitle="서울숲 컨퍼런스센터"
+                latitude={37.4875}
+                longitude={126.8261}
+                markerTitle="성공회대 미가엘관"
               />
             </div>
             <div className="p-6">
               <div className="flex items-center gap-2">
                 <MapPin className="text-ocean-surf h-5 w-5" />
                 <h3 className="text-ocean-deep text-lg font-bold">
-                  서울숲 컨퍼런스센터
+                  성공회대 미가엘관
                 </h3>
               </div>
               <p className="mt-2 text-gray-600">
-                서울특별시 성동구 서울숲2길 32-14
+                서울 구로구 연동로 320 ( 온수역 2번 출구에서 821m )
               </p>
               <div className="mt-4 flex gap-2">
                 <a
-                  href="https://map.kakao.com/link/to/서울숲%20컨퍼런스센터,37.5443,127.0444"
+                  href="https://kko.kakao.com/UTs_0QkaWr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-primary-500 hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
@@ -139,7 +140,8 @@ export default function LocationPage() {
                   카카오맵으로 보기
                 </a>
                 <a
-                  href="https://maps.google.com/maps?q=37.5443,127.0444"
+                  // href="https://maps.google.com/maps?q=37.4875,126.8261"
+                  href="https://maps.app.goo.gl/nmHLZTNQWh6HHGqu7"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-ocean-blue hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
@@ -149,7 +151,7 @@ export default function LocationPage() {
               </div>
             </div>
           </div>
-        </section> */}
+        </section>
 
         {/* 교통편 안내 */}
         {/* <section className="mb-16">
