@@ -3,18 +3,17 @@
 import React from "react";
 import Link from "next/link";
 import { MapPin, Info } from "lucide-react";
-import dynamic from "next/dynamic";
 // import dynamic from "next/dynamic";
 
 // 클라이언트 컴포넌트를 동적으로 불러옵니다 (SSR 비활성화)
-const KakaoMap = dynamic(() => import("@/components/KakaoMap"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-full w-full items-center justify-center bg-gray-200">
-      <p className="text-gray-500">지도를 불러오는 중...</p>
-    </div>
-  ),
-});
+// const KakaoMap = dynamic(() => import("@/components/KakaoMap"), {
+//   ssr: false,
+//   loading: () => (
+//     <div className="flex h-full w-full items-center justify-center bg-gray-200">
+//       <p className="text-gray-500">지도를 불러오는 중...</p>
+//     </div>
+//   ),
+// });
 
 export default function LocationPage() {
   return (
@@ -31,7 +30,7 @@ export default function LocationPage() {
         </div>
 
         {/* 예비 모임 개요 */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <div className="bg-ocean-deep relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
             <div className="relative z-10">
               <h2 className="mb-6 text-3xl font-bold">예비 모임 장소</h2>
@@ -61,7 +60,32 @@ export default function LocationPage() {
                 </div>
               </div>
             </div>
-            {/* 배경 장식 */}
+            <div className="absolute top-0 right-0 -z-0 h-64 w-64 opacity-10">
+              <MapPin className="h-full w-full" />
+            </div>
+          </div>
+        </section> */}
+
+        <section className="mb-16">
+          <div className="bg-ocean-deep relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
+            <div className="relative z-10">
+              <h2 className="mb-6 text-3xl font-bold">예비 모임 장소</h2>
+              <div className="flex flex-col gap-4 md:flex-row md:gap-8">
+                <div className="flex-1">
+                  <h3 className="mb-3 text-xl font-semibold">
+                    서울특별시 (7월 중 확정 예정)
+                  </h3>
+                </div>
+                <div className="flex-1">
+                  <h3 className="mb-3 text-xl font-semibold">행사 일정</h3>
+                  <p>2025년 9월 20일 (토)</p>
+                  <p>10:00~17:00 KST</p>
+                  <p className="mt-2 text-sm">
+                    * 행사 30분 전부터 입장 가능합니다.
+                  </p>
+                </div>
+              </div>
+            </div>
             <div className="absolute top-0 right-0 -z-0 h-64 w-64 opacity-10">
               <MapPin className="h-full w-full" />
             </div>
@@ -108,7 +132,7 @@ export default function LocationPage() {
         </section>
 
         {/* 지도 */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <h2 className="text-ocean-deep mb-8 text-center text-3xl font-bold">
             위치 안내
           </h2>
@@ -140,7 +164,6 @@ export default function LocationPage() {
                   카카오맵으로 보기
                 </a>
                 <a
-                  // href="https://maps.google.com/maps?q=37.4875,126.8261"
                   href="https://maps.app.goo.gl/nmHLZTNQWh6HHGqu7"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -151,7 +174,7 @@ export default function LocationPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* 교통편 안내 */}
         {/* <section className="mb-16">
