@@ -134,7 +134,7 @@ export default function InfoPage() {
           </div>
         </section>
 
-        <section className="mb-12">
+        {/* <section className="mb-12">
           <h2 className="text-ocean-surf mb-2 text-xl font-bold">
             프로젝트 일정 및 절차(안)
           </h2>
@@ -165,7 +165,7 @@ export default function InfoPage() {
                     <td className="px-4 py-3">행사 홍보</td>
                   </tr>
                   <tr className="border-ocean-deep/20 border-b">
-                    <td className="px-4 py-3">9월 27일</td>
+                    <td className="px-4 py-3">9월 20일</td>
                     <td className="px-4 py-3">참가자 예비모임(소책자 배포)</td>
                   </tr>
                   <tr className="border-ocean-deep/20 border-b">
@@ -182,7 +182,7 @@ export default function InfoPage() {
               </table>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="mb-12">
           <h2 className="text-ocean-deep mb-4 text-2xl font-bold md:text-3xl">

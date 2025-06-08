@@ -53,7 +53,7 @@ export default function LocationPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="mb-3 text-xl font-semibold">행사 일정</h3>
-                  <p>2025년 9월 27일 (토)</p>
+                  <p>2025년 9월 20일 (토)</p>
                   <p>10:00~17:00 KST</p>
                   <p className="mt-2 text-sm">
                     * 행사 30분 전부터 입장 가능합니다.

@@ -32,7 +32,7 @@ export default function RecruitmentPage() {
                         <span className="text-sm text-red-400">필수 참여</span>
                       </p>
                       <p className="text-sm text-gray-200">
-                        2025년 9월 27일 (토)
+                        2025년 9월 20일 (토)
                       </p>
 
                       <p className="text-sm text-gray-200">
