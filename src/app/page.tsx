@@ -100,13 +100,6 @@ export default function Home() {
                 height={80}
               />
               <Image
-                src="/images/후원_녹색서울시민위원회.png"
-                alt="후원_녹색서울시민위원회"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Image
                 src="/images/후원_우리학교.jpg"
                 alt="후원_우리학교"
                 className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
@@ -139,13 +132,6 @@ export default function Home() {
                 height={80}
               />
               <Image
-                src="/images/후원_녹색서울시민위원회.png"
-                alt="후원_녹색서울시민위원회"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Image
                 src="/images/후원_우리학교.jpg"
                 alt="후원_우리학교"
                 className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
@@ -173,13 +159,6 @@ export default function Home() {
               <Image
                 src="/images/후원_기후변화행동연구소.png"
                 alt="후원_기후변화행동연구소"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Image
-                src="/images/후원_녹색서울시민위원회.png"
-                alt="후원_녹색서울시민위원회"
                 className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
                 width={200}
                 height={80}
