@@ -59,7 +59,7 @@ export default function RecruitmentPage() {
                       <div>
                         <p className="font-medium">모집 기간</p>
                         <p className="text-sm text-gray-200">
-                          2025년 6월 16일 ~ 7월 31일
+                          2025년 6월 17일 ~ 7월 31일
                         </p>
                       </div>
                     </div>
