@@ -1,8 +1,3 @@
-"use client";
-
-import React from "react";
-import Link from "next/link";
-import { MapPin, Info } from "lucide-react";
 // import dynamic from "next/dynamic";
 
 // 클라이언트 컴포넌트를 동적으로 불러옵니다 (SSR 비활성화)
@@ -15,22 +10,8 @@ import { MapPin, Info } from "lucide-react";
 //   ),
 // });
 
-export default function LocationPage() {
-  return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-12 text-center">
-          <h1 className="text-ocean-deep mb-4 text-4xl font-bold md:text-5xl">
-            사물의 의회 장소 안내
-          </h1>
-          <p className="mx-auto max-w-3xl text-lg text-gray-600">
-            인간과 비인간 존재들이 함께 모여 소통할 수 있는 공간, 사물의 의회가
-            열릴 장소를 안내합니다.
-          </p>
-        </div>
-
-        {/* 예비 모임 개요 */}
-        {/* <section className="mb-16">
+/* 예비 모임 개요 */
+/* <section className="mb-16">
           <div className="bg-ocean-deep relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
             <div className="relative z-10">
               <h2 className="mb-6 text-3xl font-bold">예비 모임 장소</h2>
@@ -64,45 +45,9 @@ export default function LocationPage() {
               <MapPin className="h-full w-full" />
             </div>
           </div>
-        </section> */}
+        </section> */
 
-        <section className="mb-16">
-          <div className="bg-ocean-deep relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
-            <div className="relative z-10">
-              <h2 className="mb-6 text-3xl font-bold">예비 모임 장소</h2>
-              <div className="flex flex-col gap-4 md:flex-row md:gap-8">
-                <div className="flex-1">
-                  <h3 className="mb-3 text-xl font-semibold">
-                    서울특별시 (7월 중 확정 예정)
-                  </h3>
-                </div>
-                <div className="flex-1">
-                  <h3 className="mb-3 text-xl font-semibold">행사 일정</h3>
-                  <p>2025년 9월 20일 (토)</p>
-                  <p>10:00~17:00 KST</p>
-                  <p className="mt-2 text-sm">
-                    * 행사 30분 전부터 입장 가능합니다.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="absolute top-0 right-0 -z-0 h-64 w-64 opacity-10">
-              <MapPin className="h-full w-full" />
-            </div>
-          </div>
-        </section>
-
-        {/* 본회의 개요 */}
-        <section className="mb-16">
-          <div className="bg-ocean-deep relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
-            <div className="relative z-10">
-              <h2 className="mb-6 text-3xl font-bold">본회의 장소</h2>
-              <div className="flex flex-col gap-4 md:flex-row md:gap-8">
-                <div className="flex-1">
-                  <h3 className="mb-3 text-xl font-semibold">
-                    서울특별시 (7월 중 확정 예정)
-                  </h3>
-                  {/* <div className="flex items-start gap-3">
+/* <div className="flex items-start gap-3">
                     <MapPin className="mt-1 h-5 w-5 flex-shrink-0" />
                     <div>
                       <p>서울특별시 성동구 서울숲2길 32-14</p>
@@ -112,27 +57,10 @@ export default function LocationPage() {
                         컨퍼런스 공간입니다.
                       </p>
                     </div>
-                  </div> */}
-                </div>
-                <div className="flex-1">
-                  <h3 className="mb-3 text-xl font-semibold">행사 일정</h3>
-                  <p>2025년 11월 1일 ~ 2일 (토, 일)</p>
-                  <p>10:00 - 17:00 KST</p>
-                  <p className="mt-2 text-sm">
-                    * 행사 30분 전부터 입장 가능합니다.
-                  </p>
-                </div>
-              </div>
-            </div>
-            {/* 배경 장식 */}
-            <div className="absolute top-0 right-0 -z-0 h-64 w-64 opacity-10">
-              <MapPin className="h-full w-full" />
-            </div>
-          </div>
-        </section>
+                  </div> */
 
-        {/* 지도 */}
-        {/* <section className="mb-16">
+/* 지도 */
+/* <section className="mb-16">
           <h2 className="text-ocean-deep mb-8 text-center text-3xl font-bold">
             위치 안내
           </h2>
@@ -174,10 +102,10 @@ export default function LocationPage() {
               </div>
             </div>
           </div>
-        </section> */}
+        </section> */
 
-        {/* 교통편 안내 */}
-        {/* <section className="mb-16">
+/* 교통편 안내 */
+/* <section className="mb-16">
           <h2 className="text-ocean-deep mb-8 text-center text-3xl font-bold">
             교통편 안내
           </h2>
@@ -250,37 +178,324 @@ export default function LocationPage() {
               </ul>
             </div>
           </div>
-        </section> */}
+        </section> */
 
-        {/* 추가 정보 */}
-        <section>
-          <div className="bg-primary-500/10 rounded-xl p-6">
-            <div className="mb-4 flex items-center gap-3">
-              <div className="bg-ocean-deep rounded-full p-2 text-white">
-                <Info className="h-6 w-6" />
-              </div>
-              <h3 className="text-ocean-deep text-xl font-bold">
-                추가 안내사항
-              </h3>
+"use client";
+
+import Link from "next/link";
+import {
+  MapPin,
+  Info,
+  Calendar,
+  Clock,
+  Mail,
+  Users,
+  Coffee,
+  CheckCircle,
+  Navigation,
+  Building,
+} from "lucide-react";
+
+export default function LocationPage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div className="container mx-auto px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          {/* Header */}
+          <div className="mb-16 text-center">
+            <div className="mb-6">
+              <span className="from-ocean-deep/10 text-ocean-deep border-ocean-deep/20 inline-block rounded-full border bg-gradient-to-r to-blue-600/10 px-4 py-2 text-sm font-semibold md:text-base">
+                장소 안내
+              </span>
             </div>
-            <ul className="list-disc space-y-2 pl-5 text-gray-600">
-              <li>행사 당일 안내 데스크에서 참가자 등록 후 입장해 주세요.</li>
-              <li>중식과 다과가 제공됩니다.</li>
-              <li>
-                행사 관련 문의사항은 이메일(samul.parliament@gmail.com)로
-                연락주세요.
-              </li>
-            </ul>
-            <div className="mt-6 flex justify-center">
-              <Link
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdt5BSpFw3mS9wZzWVzcqvDcWHw8BP2i8o-2r0i9R151562iw/viewform"
-                className="bg-primary-500 hover:bg-nature-forest rounded-full px-8 py-3 font-semibold text-white transition-all"
-              >
-                참가 신청하기
-              </Link>
-            </div>
+            <h1 className="from-ocean-deep mb-6 bg-gradient-to-r to-blue-600 bg-clip-text text-5xl font-bold text-transparent md:text-6xl">
+              사물의 의회
+            </h1>
+            <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">
+              장소 안내
+            </h2>
+            <div className="from-ocean-deep mx-auto mb-8 h-1 w-32 rounded-full bg-gradient-to-r to-blue-600"></div>
+            <p className="mx-auto max-w-4xl text-xl leading-relaxed text-gray-600">
+              인간과 비인간 존재들이 함께 모여 소통할 수 있는 공간,{" "}
+              <span className="text-ocean-deep font-semibold">사물의 의회</span>
+              가 열릴 장소를 안내합니다.
+            </p>
           </div>
-        </section>
+
+          {/* 예비 모임 장소 */}
+          <section className="mb-16">
+            <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-2xl md:p-12">
+              <div className="from-ocean-deep/10 absolute top-0 right-0 h-40 w-40 translate-x-20 -translate-y-20 rounded-full bg-gradient-to-br to-blue-600/10"></div>
+              <div className="relative">
+                <div className="mb-8 flex items-center gap-4">
+                  <div className="from-ocean-deep rounded-2xl bg-gradient-to-r to-blue-600 p-4 text-white">
+                    <Building className="h-8 w-8" />
+                  </div>
+                  <h2 className="text-ocean-deep text-3xl font-bold md:text-4xl">
+                    예비 모임 장소
+                  </h2>
+                </div>
+
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                  {/* 장소 정보 */}
+                  <div className="from-ocean-deep/5 border-ocean-deep/10 rounded-2xl border bg-gradient-to-br to-blue-600/5 p-6">
+                    <div className="mb-6 flex items-center gap-3">
+                      <div className="from-ocean-deep rounded-lg bg-gradient-to-r to-blue-600 p-2 text-white">
+                        <MapPin className="h-5 w-5" />
+                      </div>
+                      <h3 className="text-ocean-deep text-xl font-bold">
+                        위치
+                      </h3>
+                    </div>
+                    <div className="rounded-xl border border-slate-100 bg-white p-6 shadow-md">
+                      <div className="text-center">
+                        <div className="from-ocean-deep/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r to-blue-600/20">
+                          <Navigation className="text-ocean-deep h-8 w-8" />
+                        </div>
+                        <h4 className="mb-2 text-lg font-bold text-gray-800">
+                          서울특별시
+                        </h4>
+                        <div className="inline-block rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-700">
+                          7월 중 확정 예정
+                        </div>
+                        <p className="mt-3 text-sm text-gray-600">
+                          구체적인 장소는 7월 중에 확정되어 안내드릴 예정입니다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 일정 정보 */}
+                  <div className="rounded-2xl border border-blue-600/10 bg-gradient-to-br from-blue-600/5 to-indigo-600/5 p-6">
+                    <div className="mb-6 flex items-center gap-3">
+                      <div className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 p-2 text-white">
+                        <Calendar className="h-5 w-5" />
+                      </div>
+                      <h3 className="text-ocean-deep text-xl font-bold">
+                        행사 일정
+                      </h3>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-md">
+                        <div className="mb-2 flex items-center gap-3">
+                          <Calendar className="h-4 w-4 text-blue-600" />
+                          <span className="font-bold text-gray-800">날짜</span>
+                        </div>
+                        <p className="text-ocean-deep font-semibold">
+                          2025년 9월 20일 (토)
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-md">
+                        <div className="mb-2 flex items-center gap-3">
+                          <Clock className="h-4 w-4 text-indigo-600" />
+                          <span className="font-bold text-gray-800">시간</span>
+                        </div>
+                        <p className="text-ocean-deep mb-2 font-semibold">
+                          10:00~17:00 KST
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          * 행사 30분 전부터 입장 가능합니다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 본회의 장소 */}
+          <section className="mb-16">
+            <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-2xl md:p-12">
+              <div className="absolute top-0 right-0 h-40 w-40 translate-x-20 -translate-y-20 rounded-full bg-gradient-to-br from-blue-600/10 to-indigo-600/10"></div>
+              <div className="relative">
+                <div className="mb-8 flex items-center gap-4">
+                  <div className="rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 p-4 text-white">
+                    <Users className="h-8 w-8" />
+                  </div>
+                  <h2 className="text-ocean-deep text-3xl font-bold md:text-4xl">
+                    본회의 장소
+                  </h2>
+                </div>
+
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                  {/* 장소 정보 */}
+                  <div className="rounded-2xl border border-blue-600/10 bg-gradient-to-br from-blue-600/5 to-indigo-600/5 p-6">
+                    <div className="mb-6 flex items-center gap-3">
+                      <div className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 p-2 text-white">
+                        <MapPin className="h-5 w-5" />
+                      </div>
+                      <h3 className="text-ocean-deep text-xl font-bold">
+                        위치
+                      </h3>
+                    </div>
+                    <div className="rounded-xl border border-slate-100 bg-white p-6 shadow-md">
+                      <div className="text-center">
+                        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600/20 to-indigo-600/20">
+                          <Navigation className="h-8 w-8 text-blue-600" />
+                        </div>
+                        <h4 className="mb-2 text-lg font-bold text-gray-800">
+                          서울특별시
+                        </h4>
+                        <div className="inline-block rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-700">
+                          7월 중 확정 예정
+                        </div>
+                        <p className="mt-3 text-sm text-gray-600">
+                          구체적인 장소는 7월 중에 확정되어 안내드릴 예정입니다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 일정 정보 */}
+                  <div className="rounded-2xl border border-indigo-600/10 bg-gradient-to-br from-indigo-600/5 to-purple-600/5 p-6">
+                    <div className="mb-6 flex items-center gap-3">
+                      <div className="rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 p-2 text-white">
+                        <Calendar className="h-5 w-5" />
+                      </div>
+                      <h3 className="text-ocean-deep text-xl font-bold">
+                        행사 일정
+                      </h3>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-md">
+                        <div className="mb-2 flex items-center gap-3">
+                          <Calendar className="h-4 w-4 text-indigo-600" />
+                          <span className="font-bold text-gray-800">날짜</span>
+                        </div>
+                        <p className="text-ocean-deep font-semibold">
+                          2025년 11월 1일 ~ 2일 (토, 일)
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-md">
+                        <div className="mb-2 flex items-center gap-3">
+                          <Clock className="h-4 w-4 text-purple-600" />
+                          <span className="font-bold text-gray-800">시간</span>
+                        </div>
+                        <p className="text-ocean-deep mb-2 font-semibold">
+                          10:00 - 17:00 KST
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          * 행사 30분 전부터 입장 가능합니다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 추가 안내사항 */}
+          <section className="mb-16">
+            <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-xl md:p-12">
+              <div className="from-ocean-deep/10 absolute top-0 right-0 h-32 w-32 translate-x-16 -translate-y-16 rounded-full bg-gradient-to-br to-blue-600/10"></div>
+              <div className="relative">
+                <div className="mb-8 flex items-center gap-4">
+                  <div className="from-ocean-deep rounded-xl bg-gradient-to-r to-blue-600 p-3 text-white">
+                    <Info className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-ocean-deep text-2xl font-bold md:text-3xl">
+                    추가 안내사항
+                  </h3>
+                </div>
+
+                <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+                  {[
+                    {
+                      icon: CheckCircle,
+                      title: "참가자 등록",
+                      description:
+                        "행사 당일 안내 데스크에서 참가자 등록 후 입장해 주세요.",
+                      color: "from-green-500 to-emerald-500",
+                    },
+                    {
+                      icon: Coffee,
+                      title: "식사 제공",
+                      description: "중식과 다과가 제공됩니다.",
+                      color: "from-amber-500 to-orange-500",
+                    },
+                    {
+                      icon: Mail,
+                      title: "문의사항",
+                      description: "행사 관련 문의사항은 이메일로 연락주세요.",
+                      color: "from-blue-500 to-indigo-500",
+                    },
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="group rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-50 to-blue-50 p-6 transition-all duration-300 hover:shadow-lg"
+                    >
+                      <div
+                        className={`bg-gradient-to-r ${item.color} mb-4 w-fit rounded-2xl p-3 transition-transform duration-300 group-hover:scale-110`}
+                      >
+                        <item.icon className="h-6 w-6 text-white" />
+                      </div>
+                      <h4 className="mb-2 font-bold text-gray-800">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm leading-relaxed text-gray-600">
+                        {item.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-indigo-50 p-6">
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 p-2">
+                      <Mail className="h-5 w-5 text-white" />
+                    </div>
+                    <h4 className="font-bold text-gray-800">연락처</h4>
+                  </div>
+                  <div className="rounded-xl border border-slate-100 bg-white p-4">
+                    <p className="text-ocean-deep font-semibold">
+                      samul.parliament@gmail.com
+                    </p>
+                    <p className="mt-1 text-sm text-gray-600">
+                      행사 관련 문의사항이 있으시면 언제든지 연락주세요.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 참가 신청 CTA */}
+          <section>
+            <div className="from-ocean-deep relative overflow-hidden rounded-3xl bg-gradient-to-r to-blue-700 p-8 text-white shadow-2xl md:p-12">
+              {/* 배경 패턴 */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-10 left-10 h-32 w-32 rounded-full border border-white/20"></div>
+                <div className="absolute right-10 bottom-10 h-24 w-24 rounded-full border border-white/20"></div>
+                <div className="absolute top-1/2 left-1/4 h-16 w-16 rounded-full border border-white/20"></div>
+              </div>
+
+              <div className="relative text-center">
+                <div className="mb-6">
+                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-white/20">
+                    <Users className="h-10 w-10" />
+                  </div>
+                  <h3 className="mb-4 text-3xl font-bold md:text-4xl">
+                    지금 참가 신청하세요!
+                  </h3>
+                  <p className="mx-auto max-w-2xl text-xl leading-relaxed text-blue-100">
+                    인간과 비인간이 함께하는 새로운 민주주의 실험에 참여해보세요
+                  </p>
+                </div>
+
+                <Link
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdt5BSpFw3mS9wZzWVzcqvDcWHw8BP2i8o-2r0i9R151562iw/viewform"
+                  className="group text-ocean-deep inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-4 text-lg font-bold shadow-lg transition-all hover:scale-105 hover:bg-blue-50"
+                >
+                  <CheckCircle className="h-6 w-6" />
+                  참가 신청하기
+                  <div className="bg-ocean-deep h-2 w-2 rounded-full transition-transform duration-300 group-hover:translate-x-1"></div>
+                </Link>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );
