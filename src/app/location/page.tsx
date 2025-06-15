@@ -1,108 +1,4 @@
-// import dynamic from "next/dynamic";
-
-// 클라이언트 컴포넌트를 동적으로 불러옵니다 (SSR 비활성화)
-// const KakaoMap = dynamic(() => import("@/components/KakaoMap"), {
-//   ssr: false,
-//   loading: () => (
-//     <div className="flex h-full w-full items-center justify-center bg-gray-200">
-//       <p className="text-gray-500">지도를 불러오는 중...</p>
-//     </div>
-//   ),
-// });
-
 /* 예비 모임 개요 */
-/* <section className="mb-16">
-          <div className="bg-ocean-deep relative overflow-hidden rounded-xl p-8 text-white shadow-xl">
-            <div className="relative z-10">
-              <h2 className="mb-6 text-3xl font-bold">예비 모임 장소</h2>
-              <div className="flex flex-col gap-4 md:flex-row md:gap-8">
-                <div className="flex-1">
-                  <h3 className="mb-3 text-xl font-semibold">
-                    성공회대 미가엘관
-                  </h3>
-                  <div className="flex items-start gap-3">
-                    <MapPin className="mt-1 h-5 w-5 flex-shrink-0" />
-                    <div>
-                      <p>서울특별시 구로구 연동로 320</p>
-                      <p>성공회대 미가엘관</p>
-                      <p className="mt-2 text-sm">
-                        온수역 2번 출구에서 821m 거리에 위치합니다.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="mb-3 text-xl font-semibold">행사 일정</h3>
-                  <p>2025년 9월 20일 (토)</p>
-                  <p>10:00~17:00 KST</p>
-                  <p className="mt-2 text-sm">
-                    * 행사 30분 전부터 입장 가능합니다.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="absolute top-0 right-0 -z-0 h-64 w-64 opacity-10">
-              <MapPin className="h-full w-full" />
-            </div>
-          </div>
-        </section> */
-
-/* <div className="flex items-start gap-3">
-                    <MapPin className="mt-1 h-5 w-5 flex-shrink-0" />
-                    <div>
-                      <p>서울특별시 성동구 서울숲2길 32-14</p>
-                      <p>서울숲 컨퍼런스센터 그랜드홀</p>
-                      <p className="mt-2 text-sm">
-                        자연과 도시가 공존하는 서울숲 내에 위치한 친환경
-                        컨퍼런스 공간입니다.
-                      </p>
-                    </div>
-                  </div> */
-
-/* 지도 */
-/* <section className="mb-16">
-          <h2 className="text-ocean-deep mb-8 text-center text-3xl font-bold">
-            위치 안내
-          </h2>
-          <div className="overflow-hidden rounded-xl bg-white shadow-lg">
-            <div className="relative h-[400px] w-full">
-              <KakaoMap
-                latitude={37.4875}
-                longitude={126.8261}
-                markerTitle="성공회대 미가엘관"
-              />
-            </div>
-            <div className="p-6">
-              <div className="flex items-center gap-2">
-                <MapPin className="text-ocean-surf h-5 w-5" />
-                <h3 className="text-ocean-deep text-lg font-bold">
-                  성공회대 미가엘관
-                </h3>
-              </div>
-              <p className="mt-2 text-gray-600">
-                서울 구로구 연동로 320 ( 온수역 2번 출구에서 821m )
-              </p>
-              <div className="mt-4 flex gap-2">
-                <a
-                  href="https://kko.kakao.com/UTs_0QkaWr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-primary-500 hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
-                >
-                  카카오맵으로 보기
-                </a>
-                <a
-                  href="https://maps.app.goo.gl/nmHLZTNQWh6HHGqu7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-ocean-blue hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
-                >
-                  구글맵으로 보기
-                </a>
-              </div>
-            </div>
-          </div>
-        </section> */
 
 /* 교통편 안내 */
 /* <section className="mb-16">
@@ -195,6 +91,16 @@ import {
   Navigation,
   Building,
 } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const KakaoMap = dynamic(() => import("@/components/KakaoMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full items-center justify-center bg-gray-200">
+      <p className="text-gray-500">지도를 불러오는 중...</p>
+    </div>
+  ),
+});
 
 export default function LocationPage() {
   return (
@@ -221,7 +127,6 @@ export default function LocationPage() {
               가 열릴 장소를 안내합니다.
             </p>
           </div>
-
           {/* 예비 모임 장소 */}
           <section className="mb-16">
             <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-2xl md:p-12">
@@ -253,13 +158,14 @@ export default function LocationPage() {
                           <Navigation className="text-ocean-deep h-8 w-8" />
                         </div>
                         <h4 className="mb-2 text-lg font-bold text-gray-800">
-                          서울특별시
+                          서울특별시 성동구 서울숲2길 32-14
                         </h4>
                         <div className="inline-block rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-700">
-                          7월 중 확정 예정
+                          2025년 9월 20일 (토)
                         </div>
                         <p className="mt-3 text-sm text-gray-600">
-                          구체적인 장소는 7월 중에 확정되어 안내드릴 예정입니다.
+                          자연과 도시가 공존하는 서울숲 내에 위치한 친환경
+                          컨퍼런스 공간입니다.
                         </p>
                       </div>
                     </div>
@@ -304,6 +210,49 @@ export default function LocationPage() {
             </div>
           </section>
 
+          <section className="mb-16">
+            <h2 className="text-ocean-deep mb-8 text-center text-3xl font-bold">
+              위치 안내
+            </h2>
+            <div className="overflow-hidden rounded-xl bg-white shadow-lg">
+              <div className="relative h-[400px] w-full">
+                <KakaoMap
+                  latitude={37.4875}
+                  longitude={126.8261}
+                  markerTitle="성공회대 미가엘관"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2">
+                  <MapPin className="text-ocean-surf h-5 w-5" />
+                  <h3 className="text-ocean-deep text-lg font-bold">
+                    성공회대 미가엘관
+                  </h3>
+                </div>
+                <p className="mt-2 text-gray-600">
+                  서울 구로구 연동로 320 ( 온수역 2번 출구에서 821m )
+                </p>
+                <div className="mt-4 flex gap-2">
+                  <a
+                    href="https://kko.kakao.com/UTs_0QkaWr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-primary-500 hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
+                  >
+                    카카오맵으로 보기
+                  </a>
+                  <a
+                    href="https://maps.app.goo.gl/nmHLZTNQWh6HHGqu7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-ocean-blue hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
+                  >
+                    구글맵으로 보기
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
           {/* 본회의 장소 */}
           <section className="mb-16">
             <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-2xl md:p-12">
@@ -385,7 +334,6 @@ export default function LocationPage() {
               </div>
             </div>
           </section>
-
           {/* 추가 안내사항 */}
           <section className="mb-16">
             <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-xl md:p-12">
@@ -460,7 +408,6 @@ export default function LocationPage() {
               </div>
             </div>
           </section>
-
           {/* 참가 신청 CTA */}
           <section>
             <div className="from-ocean-deep relative overflow-hidden rounded-3xl bg-gradient-to-r to-blue-700 p-8 text-white shadow-2xl md:p-12">

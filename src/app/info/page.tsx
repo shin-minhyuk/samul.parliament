@@ -347,9 +347,13 @@ export default function InfoPage() {
                           activity: "그룹별 발표 (10개 그룹, 각 6분)",
                         },
                         { time: "12:00~13:00", activity: "점심" },
-                        { time: "13:00~15:00", activity: "휴식 및 문화행사" },
-                        { time: "15:00~16:00", activity: "2차 전체 토론" },
-                        { time: "16:00~17:00", activity: "전체 결론 발표" },
+                        { time: "13:00~14:00", activity: "휴식 및 문화행사" },
+                        { time: "14:00~15:00", activity: "2차 전체 토론" },
+                        {
+                          time: "15:00~16:00",
+                          activity: "그룹별 결론 작성 및 취합",
+                        },
+                        { time: "16:00~17:00", activity: "전체결론 발표" },
                       ].map((item, index) => (
                         <div
                           key={index}
