@@ -4,37 +4,104 @@ import { openExternalLink } from "@/util/url";
 import { Button } from "@/components/Button";
 import Image from "next/image";
 import Logo from "@/components/Logo";
+import { Calendar, Users, Award } from "lucide-react";
 
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* 히어로 배너 */}
-      <section className="flex min-h-[400px] items-center justify-center overflow-hidden px-4 md:h-[600px]">
-        <div className="animate-slide-up">
-          <div className="group hover:animate-wiggle flex flex-col gap-2 text-center md:gap-4 md:text-left">
-            <h2 className="text-4xl md:text-7xl">2025 사물의 의회</h2>
-            <h1 className="text-primary-500 group-hover:text-primary-400 transform text-5xl font-[900] transition-all duration-100 md:text-8xl">
+      <section className="relative flex min-h-[400px] items-center justify-center overflow-hidden px-4 md:h-[600px]">
+        {/* 배경 장식 요소 */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="from-ocean-deep/10 absolute -top-40 -right-40 h-80 w-80 rounded-full bg-gradient-to-br to-blue-600/10 blur-3xl"></div>
+          <div className="to-ocean-deep/10 absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-gradient-to-tr from-indigo-500/10 blur-3xl"></div>
+        </div>
+
+        <div className="animate-slide-up relative z-10">
+          <div className="group hover:animate-wiggle flex flex-col gap-3 text-center md:gap-6">
+            <div className="mb-4">
+              <span className="from-ocean-deep/10 text-ocean-deep border-ocean-deep/20 inline-block rounded-full border bg-gradient-to-r to-blue-600/10 px-4 py-2 text-sm font-semibold md:text-base">
+                2025년 개최
+              </span>
+            </div>
+            <h2 className="text-4xl font-bold text-gray-800 md:text-6xl">
+              사물의 의회
+            </h2>
+            <h1 className="text-primary-500 group-hover:text-primary-400 from-ocean-deep transform bg-gradient-to-r to-blue-600 bg-clip-text text-5xl font-[900] text-transparent transition-all duration-300 md:text-8xl">
               인간과 비인간
             </h1>
-            <h2 className="text-[22px] md:text-5xl">
-              함께 만드는 새로운 기후 민주주의
+            <h2 className="mx-auto max-w-4xl text-xl leading-relaxed font-medium text-gray-700 md:text-4xl">
+              함께 만드는 새로운{" "}
+              <span className="text-ocean-deep font-bold">기후 민주주의</span>
             </h2>
           </div>
         </div>
       </section>
 
+      {/* 포스터 섹션 */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+              행사 포스터
+            </h2>
+            <div className="from-ocean-deep mx-auto h-1 w-24 rounded-full bg-gradient-to-r to-blue-600"></div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {[1, 2, 3].map((index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl"
+              >
+                <div className="from-ocean-deep/5 flex aspect-[3/4] items-center justify-center bg-gradient-to-br to-blue-600/5">
+                  <div className="p-8 text-center">
+                    <div className="from-ocean-deep mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r to-blue-600 transition-transform duration-300 group-hover:scale-110">
+                      <Calendar className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold text-gray-800">
+                      포스터 {index}
+                    </h3>
+                    <p className="text-gray-600">
+                      포스터 이미지가 여기에 표시됩니다
+                    </p>
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 서브 배너 */}
-      <section className="h-[320px] md:h-[440px]">
-        <div>
-          <div className="bg-ocean-deep border-ocean-surf relative flex h-[280px] items-center justify-center border-y-[12px] px-4 text-white md:h-[360px] md:border-y-[20px]">
-            <div className="animate-slide-up flex flex-col gap-4 text-center">
-              <h3 className="text-lg font-semibold md:text-2xl">
-                함께 고민하는 시간
-              </h3>
-              <h2 className="text-2xl font-bold md:text-5xl">
-                비인간 존재들의 <span className="text-ocean-surf">목소리</span>
-                를 <span className="text-ocean-surf">대변</span>하고 싶다면?
+      <section className="relative py-16 md:py-20">
+        <div className="relative">
+          <div className="from-ocean-deep relative flex min-h-[320px] items-center justify-center bg-gradient-to-r to-blue-700 px-4 text-white md:min-h-[400px]">
+            {/* 배경 패턴 */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-10 left-10 h-32 w-32 rounded-full border border-white/20"></div>
+              <div className="absolute right-10 bottom-10 h-24 w-24 rounded-full border border-white/20"></div>
+              <div className="absolute top-1/2 left-1/4 h-16 w-16 rounded-full border border-white/20"></div>
+            </div>
+
+            <div className="animate-slide-up relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+              <div className="mb-2 flex items-center justify-center gap-2">
+                <Users className="text-ocean-surf h-6 w-6" />
+                <h3 className="text-ocean-surf text-lg font-semibold md:text-xl">
+                  함께 고민하는 시간
+                </h3>
+              </div>
+              <h2 className="text-2xl leading-tight font-bold md:text-5xl">
+                비인간 존재들의{" "}
+                <span className="text-ocean-surf font-black">목소리</span>를
+                <br className="hidden md:block" />
+                <span className="text-ocean-surf font-black">대변</span>하고
+                싶다면?
               </h2>
+              <p className="mx-auto max-w-2xl text-lg text-blue-100 md:text-xl">
+                새로운 기후 민주주의를 함께 만들어가는 여정에 참여해보세요
+              </p>
             </div>
 
             {/* 참가버튼 */}
@@ -45,253 +112,171 @@ export default function Home() {
                   "https://docs.google.com/forms/d/e/1FAIpQLSdt5BSpFw3mS9wZzWVzcqvDcWHw8BP2i8o-2r0i9R151562iw/viewform",
                 )
               }
-              className="animate-rotate-in absolute right-0 bottom-[-40px] left-0 mx-auto h-[80px] w-[80px] p-0 hover:scale-105 md:bottom-[-50px] md:h-[100px] md:w-[100px]"
+              className="animate-rotate-in from-ocean-surf hover:from-ocean-surf/90 absolute right-0 bottom-[-50px] left-0 mx-auto h-[100px] w-[100px] bg-gradient-to-r to-blue-400 p-0 shadow-2xl transition-all duration-300 hover:scale-110 hover:to-blue-400/90 md:bottom-[-60px] md:h-[120px] md:w-[120px]"
             >
-              <p className="text-sm text-nowrap md:text-base">지원하기</p>
+              <div className="text-center">
+                <p className="text-sm font-bold text-nowrap md:text-base">
+                  지원하기
+                </p>
+              </div>
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#E4F3FF] px-6 py-10">
-        <div className="mx-auto max-w-[1200px] text-center">
-          <h1 className="mb-3 text-3xl font-semibold">
-            <span className="mb-5 block">주최</span>
-          </h1>
-        </div>
+      {/* 주최 섹션 */}
+      <section className="bg-gradient-to-br from-blue-50 to-indigo-50 px-6 py-16 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <div className="mb-6 inline-flex items-center gap-3">
+              <div className="from-ocean-deep rounded-lg bg-gradient-to-r to-blue-600 p-2">
+                <Award className="h-6 w-6 text-white" />
+              </div>
+              <h1 className="text-3xl font-bold text-gray-800 md:text-4xl">
+                주최
+              </h1>
+            </div>
+            <div className="from-ocean-deep mx-auto h-1 w-24 rounded-full bg-gradient-to-r to-blue-600"></div>
+          </div>
 
-        <div className="relative mx-auto flex items-center justify-center gap-10">
-          <Image
-            src="/images/주최_기후몸연구소.png"
-            alt="주최_기후몸연구소"
-            className="h-[60px] w-[160px] shrink-0 object-contain md:h-[80px] md:w-[200px]"
-            width={200}
-            height={80}
-          />
-          <Logo className="flex md:text-2xl" />
-        </div>
-      </section>
-
-      <section className="bg-[#E4F3FF] px-6 py-10">
-        <div className="mx-auto max-w-[1200px] text-center">
-          <h1 className="mb-3 text-3xl font-semibold">
-            <span className="mb-5 block">후원</span>
-          </h1>
-        </div>
-
-        <div className="relative mx-auto overflow-hidden">
-          {/* 양쪽 그라데이션 효과 */}
-          <div className="absolute top-0 left-0 z-10 h-full w-1/4 bg-gradient-to-r from-[#E4F3FF] to-transparent" />
-          <div className="absolute top-0 right-0 z-10 h-full w-1/4 bg-gradient-to-l from-[#E4F3FF] to-transparent" />
-
-          <div className="w-full overflow-hidden">
-            <div
-              className="flex"
-              style={{
-                animation: "marquee-scroll 14s linear infinite",
-                width: "max-content",
-              }}
-            >
-              <Image
-                src="/images/후원_기후변화행동연구소.png"
-                alt="후원_기후변화행동연구소"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Image
-                src="/images/후원_우리학교.jpg"
-                alt="후원_우리학교"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Image
-                src="/images/후원_참여연대.jpg"
-                alt="후원_참여연대"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>가치를 꿈꾸는</p>
-                <p>과학교사모임</p>
+          <div className="rounded-2xl border border-slate-100 bg-white p-8 shadow-lg md:p-12">
+            <div className="flex flex-col items-center justify-center gap-8 md:flex-row md:gap-16">
+              <div className="group transition-transform duration-300 hover:scale-105">
+                <Image
+                  src="/images/주최_기후몸연구소.png"
+                  alt="주최_기후몸연구소"
+                  className="h-[80px] w-[200px] object-contain md:h-[100px] md:w-[250px]"
+                  width={250}
+                  height={100}
+                />
               </div>
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>신유물론연구회</p>
-              </div>
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-center text-xl font-semibold">
-                성공회대 <br />
-                농림생태환경연구소
-              </div>
-              <Image
-                src="/images/후원_기후변화행동연구소.png"
-                alt="후원_기후변화행동연구소"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Image
-                src="/images/후원_우리학교.jpg"
-                alt="후원_우리학교"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Image
-                src="/images/후원_참여연대.jpg"
-                alt="후원_참여연대"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>가치를 꿈꾸는</p>
-                <p>과학교사모임</p>
-              </div>
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>신유물론연구회</p>
-              </div>
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-center text-xl font-semibold">
-                성공회대 <br />
-                농림생태환경연구소
-              </div>
-              <Image
-                src="/images/후원_기후변화행동연구소.png"
-                alt="후원_기후변화행동연구소"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Image
-                src="/images/후원_우리학교.jpg"
-                alt="후원_우리학교"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <Image
-                src="/images/후원_참여연대.jpg"
-                alt="후원_참여연대"
-                className="h-[80px] w-[200px] shrink-0 object-contain pr-10"
-                width={200}
-                height={80}
-              />
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>가치를 꿈꾸는</p>
-                <p>과학교사모임</p>
-              </div>
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-2xl font-semibold">
-                <p>신유물론연구회</p>
-              </div>
-              <div className="flex h-[80px] w-[200px] shrink-0 flex-col items-center justify-center object-contain pr-10 text-center text-xl font-semibold">
-                성공회대 <br />
-                농림생태환경연구소
+              <div className="hidden h-16 w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent md:block"></div>
+              <div className="group transition-transform duration-300 hover:scale-105">
+                <Logo className="flex text-xl font-bold md:text-3xl" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 비디오 섹션 */}
-      {/* <section className="relative h-screen w-full overflow-hidden">
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="h-full w-full object-cover"
-            aria-label="자연과 기술이 조화롭게 공존하는 미래를 보여주는 영상"
-          >
-            <source src="/videos/20250309_0200.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
-        </div>
+      {/* 후원 섹션 */}
+      <section className="bg-gradient-to-br from-indigo-50 to-blue-50 px-6 py-16 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <div className="mb-6 inline-flex items-center gap-3">
+              <div className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 p-2">
+                <Users className="h-6 w-6 text-white" />
+              </div>
+              <h1 className="text-3xl font-bold text-gray-800 md:text-4xl">
+                후원
+              </h1>
+            </div>
+            <div className="mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"></div>
+          </div>
 
-        <div className="relative z-10 flex h-full items-center justify-center px-4 text-white">
-          <div className="max-w-4xl space-y-8 text-center">
-            <h2 className="text-5xl font-bold drop-shadow-lg">
-              자연과 기술의 조화
-            </h2>
-            <p className="text-xl leading-relaxed font-medium tracking-wide drop-shadow-lg">
-              우리는 자연과 기술이 조화롭게 공존하는 미래를 꿈꿉니다.
-              <br className="hidden md:block" />더 나은 미래를 위한 우리의
-              여정에 함께해주세요.
-            </p>
-            <button className="hover:text-primary-500 mt-4 rounded-full bg-white/20 px-8 py-3 font-semibold backdrop-blur-sm transition-all hover:bg-white">
-              <Link href="/info">더 알아보기</Link>
-            </button>
+          <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg">
+            <div className="relative overflow-hidden py-8">
+              {/* 양쪽 그라데이션 효과 */}
+              <div className="absolute top-0 left-0 z-10 h-full w-1/6 bg-gradient-to-r from-white to-transparent" />
+              <div className="absolute top-0 right-0 z-10 h-full w-1/6 bg-gradient-to-l from-white to-transparent" />
+
+              <div className="w-full overflow-hidden">
+                <div
+                  className="flex items-center"
+                  style={{
+                    animation: "marquee-scroll 20s linear infinite",
+                    width: "max-content",
+                  }}
+                >
+                  {/* 첫 번째 세트 */}
+                  <div className="flex items-center gap-12 pr-12">
+                    <div className="group transition-transform duration-300 hover:scale-105">
+                      <Image
+                        src="/images/후원_기후변화행동연구소.png"
+                        alt="후원_기후변화행동연구소"
+                        className="h-[80px] w-[200px] object-contain"
+                        width={200}
+                        height={80}
+                      />
+                    </div>
+                    <div className="group transition-transform duration-300 hover:scale-105">
+                      <Image
+                        src="/images/후원_우리학교.jpg"
+                        alt="후원_우리학교"
+                        className="h-[80px] w-[200px] object-contain"
+                        width={200}
+                        height={80}
+                      />
+                    </div>
+                    <div className="group transition-transform duration-300 hover:scale-105">
+                      <Image
+                        src="/images/후원_참여연대.jpg"
+                        alt="후원_참여연대"
+                        className="h-[80px] w-[200px] object-contain"
+                        width={200}
+                        height={80}
+                      />
+                    </div>
+                    <div className="group flex h-[80px] w-[200px] flex-col items-center justify-center text-xl font-bold text-gray-800 transition-transform duration-300 hover:scale-105">
+                      <p>가치를 꿈꾸는</p>
+                      <p>과학교사모임</p>
+                    </div>
+                    <div className="group flex h-[80px] w-[200px] flex-col items-center justify-center text-xl font-bold text-gray-800 transition-transform duration-300 hover:scale-105">
+                      <p>신유물론연구회</p>
+                    </div>
+                    <div className="group flex h-[80px] w-[200px] flex-col items-center justify-center text-center text-lg font-bold text-gray-800 transition-transform duration-300 hover:scale-105">
+                      성공회대 <br />
+                      농림생태환경연구소
+                    </div>
+                  </div>
+
+                  {/* 두 번째 세트 (반복) */}
+                  <div className="flex items-center gap-12 pr-12">
+                    <div className="group transition-transform duration-300 hover:scale-105">
+                      <Image
+                        src="/images/후원_기후변화행동연구소.png"
+                        alt="후원_기후변화행동연구소"
+                        className="h-[80px] w-[200px] object-contain"
+                        width={200}
+                        height={80}
+                      />
+                    </div>
+                    <div className="group transition-transform duration-300 hover:scale-105">
+                      <Image
+                        src="/images/후원_우리학교.jpg"
+                        alt="후원_우리학교"
+                        className="h-[80px] w-[200px] object-contain"
+                        width={200}
+                        height={80}
+                      />
+                    </div>
+                    <div className="group transition-transform duration-300 hover:scale-105">
+                      <Image
+                        src="/images/후원_참여연대.jpg"
+                        alt="후원_참여연대"
+                        className="h-[80px] w-[200px] object-contain"
+                        width={200}
+                        height={80}
+                      />
+                    </div>
+                    <div className="group flex h-[80px] w-[200px] flex-col items-center justify-center text-xl font-bold text-gray-800 transition-transform duration-300 hover:scale-105">
+                      <p>가치를 꿈꾸는</p>
+                      <p>과학교사모임</p>
+                    </div>
+                    <div className="group flex h-[80px] w-[200px] flex-col items-center justify-center text-xl font-bold text-gray-800 transition-transform duration-300 hover:scale-105">
+                      <p>신유물론연구회</p>
+                    </div>
+                    <div className="group flex h-[80px] w-[200px] flex-col items-center justify-center text-center text-lg font-bold text-gray-800 transition-transform duration-300 hover:scale-105">
+                      성공회대 <br />
+                      농림생태환경연구소
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </section> */}
-
-      {/* 서브 배너 */}
-      {/* <section className="py-24">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="group rounded-2xl bg-white/80 p-8 shadow-lg backdrop-blur-sm transition-all hover:scale-105">
-              <div className="bg-ocean-blue/10 mb-6 inline-block rounded-full p-3">
-                <Leaf className="text-ocean-deep h-8 w-8" />
-              </div>
-              <h3 className="text-primary-500 mb-4 text-2xl font-bold">
-                환경 보호
-              </h3>
-              <p className="mb-6 text-gray-600">
-                지속 가능한 미래를 위한 환경 보호 활동과 기술 혁신을 논의합니다.
-              </p>
-              <Link
-                href="/info"
-                className="group/link text-ocean-blue inline-flex items-center"
-              >
-                자세히 보기
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-              </Link>
-            </div>
-
-            <div className="group rounded-2xl bg-white/80 p-8 shadow-lg backdrop-blur-sm transition-all hover:scale-105">
-              <div className="bg-ocean-blue/10 mb-6 inline-block rounded-full p-3">
-                <Users className="text-ocean-deep h-8 w-8" />
-              </div>
-              <h3 className="text-primary-500 mb-4 text-2xl font-bold">
-                커뮤니티
-              </h3>
-              <p className="mb-6 text-gray-600">
-                환경 보호에 관심 있는 사람들이 모여 아이디어를 공유하고
-                토론합니다.
-              </p>
-              <Link
-                href="https://www.instagram.com/samul.parliament"
-                className="group/link text-ocean-blue inline-flex items-center"
-              >
-                자세히 보기
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-              </Link>
-            </div>
-
-            <div className="group rounded-2xl bg-white/80 p-8 shadow-lg backdrop-blur-sm transition-all hover:scale-105">
-              <div className="bg-ocean-blue/10 mb-6 inline-block rounded-full p-3">
-                <Globe className="text-ocean-deep h-8 w-8" />
-              </div>
-              <h3 className="text-primary-500 mb-4 text-2xl font-bold">
-                글로벌 협력
-              </h3>
-              <p className="mb-6 text-gray-600">
-                전 세계의 환경 전문가들과 함께 글로벌 환경 문제 해결방안을
-                모색합니다.
-              </p>
-              <Link
-                href="/organization"
-                className="group/link text-ocean-blue inline-flex items-center"
-              >
-                자세히 보기
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section> */}
+      </section>
     </div>
   );
 }
