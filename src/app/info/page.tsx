@@ -88,7 +88,9 @@ export default function InfoPage() {
                     인간 중심의 기존 법과 제도의 한계를 넘어, 기후위기에 대응할
                     수 있는 탈인간중심적 법 규범을 모색 합니다.{" "}
                     <MarkedText>국내 최초로 사물의 의회를 개최</MarkedText>
-                    하여 기후민주주의의 새로운 가능성을 실험 합니다.
+                    하여{" "}
+                    <MarkedText>기후민주주의의 새로운 가능성을 실험</MarkedText>
+                    합니다.
                   </p>
                 </div>
               </div>
@@ -151,7 +153,7 @@ export default function InfoPage() {
                         <Users className="h-8 w-8" />
                       </div>
                       <h3 className="text-ocean-deep text-2xl font-bold">
-                        인간 그룹
+                        인간 그룹 대변인
                       </h3>
                     </div>
                     <div className="grid grid-cols-1 gap-3">
