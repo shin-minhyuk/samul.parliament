@@ -225,7 +225,7 @@ export default function LocationPage() {
                 <div className="flex items-center gap-2">
                   <MapPin className="text-ocean-surf h-5 w-5" />
                   <h3 className="text-ocean-deep text-lg font-bold">
-                    성공회대
+                    성공회대학교
                   </h3>
                 </div>
                 <p className="mt-2 text-gray-600">
