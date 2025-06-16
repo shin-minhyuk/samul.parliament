@@ -55,12 +55,14 @@ export default function InfoPage() {
                 <div className="prose prose-lg max-w-none">
                   <p className="text-lg leading-relaxed text-gray-700">
                     사물의 의회(Parliament of Things)는 프랑스 과학기술학자{" "}
-                    <MarkedText>브뤼노 라투르</MarkedText>가 제안한 개념으로,
-                    인간과 비인간 존재가 함께 정치적 목소리를 내는 탈인간중심적
-                    민주주의 모델 입니다. 인간만이 아닌,
-                    대기·동물·기술·산림·해양 등 다양한 비인간 존재들의 권리와
-                    이해관계도 정치적으로 대표되어야 한다는 생각에서
-                    출발했습니다.
+                    브뤼노 라투르가 제안한 개념으로,
+                    <MarkedText>
+                      인간과 비인간 존재가 함께 정치적 목소리를 내는
+                      탈인간중심적 민주주의 모델 입니다.
+                    </MarkedText>{" "}
+                    인간만이 아닌, 대기·동물·기술·산림·해양 등 다양한 비인간
+                    존재들의 권리와 이해관계도 정치적으로 대표되어야 한다는
+                    생각에서 출발했습니다.
                   </p>
                 </div>
               </div>

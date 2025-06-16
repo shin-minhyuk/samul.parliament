@@ -158,7 +158,7 @@ export default function LocationPage() {
                           <Navigation className="text-ocean-deep h-8 w-8" />
                         </div>
                         <h4 className="mb-2 text-lg font-bold text-gray-800">
-                          서울특별시 성동구 서울숲2길 32-14
+                          서울특별시 구로구 연동로 320
                         </h4>
                         <div className="inline-block rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-700">
                           2025년 9월 20일 (토)
@@ -226,7 +226,7 @@ export default function LocationPage() {
                 <div className="flex items-center gap-2">
                   <MapPin className="text-ocean-surf h-5 w-5" />
                   <h3 className="text-ocean-deep text-lg font-bold">
-                    성공회대 미가엘관
+                    성공회대
                   </h3>
                 </div>
                 <p className="mt-2 text-gray-600">
