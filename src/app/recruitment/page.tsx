@@ -233,14 +233,14 @@ export default function RecruitmentPage() {
                   icon: MessageCircle,
                   title: "목소리를 낼 기회",
                   description:
-                    "인간중심주의를 넘어 비인간 존재들과의 공존에 대한 여러분의 생각을 표현하고 논의할 수 있는 장이 제공됩니다.",
+                    "인간중심주의를 넘어 비인간 존재들과의 공존에 대한 여러분의 생각을 표현하고 논의할 수 있는 장을 제공합니다.",
                   gradient: "from-ocean-deep to-blue-600",
                 },
                 {
                   icon: Users,
                   title: "네트워킹",
                   description:
-                    "다양한 분야의 전문가, 활동가, 시민들과 교류하고 네트워크를 형성할 수 있는 기회가 제공됩니다.",
+                    "다양한 분야의 전문가, 활동가, 시민들과 교류하고 네트워크를 형성할 수 있는 자료를 제공합니다.",
                   gradient: "from-blue-600 to-indigo-600",
                 },
                 {

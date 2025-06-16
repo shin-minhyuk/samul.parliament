@@ -94,7 +94,7 @@ export default function Home() {
               </div>
               <h2 className="text-2xl leading-tight font-bold md:text-5xl">
                 비인간 존재들의{" "}
-                <span className="text-ocean-surf font-black">목소리</span>를
+                <span className="text-ocean-surf font-black">목소리</span>를{" "}
                 <br className="hidden md:block" />
                 <span className="text-ocean-surf font-black">대변</span>하고
                 싶다면?

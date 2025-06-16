@@ -87,21 +87,21 @@ export default function OrganizationPage() {
             {/* 실무간사 */}
             <div className="lg:col-span-1">
               <div className="group relative h-full overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-2xl">
-                <div className="from-ocean-deep/10 absolute top-0 right-0 h-20 w-20 translate-x-10 -translate-y-10 rounded-full bg-gradient-to-br to-blue-600/10"></div>
+                <div className="to-ocean-deep/10 absolute top-0 right-0 h-24 w-24 translate-x-12 -translate-y-12 rounded-full bg-gradient-to-br from-blue-600/10"></div>
                 <div className="relative flex h-full flex-col">
                   <div className="mb-4 flex items-center gap-3">
-                    <div className="from-ocean-deep rounded-lg bg-gradient-to-r to-blue-600 p-2 text-white">
-                      <User className="h-5 w-5" />
+                    <div className="to-ocean-deep rounded-lg bg-gradient-to-r from-blue-600 p-2 text-white">
+                      <Settings className="h-5 w-5" />
                     </div>
                     <h3 className="text-ocean-deep text-xl font-bold">
                       실무간사
                     </h3>
                   </div>
-                  <div className="flex flex-1 flex-col gap-3">
-                    <div className="from-ocean-deep/20 mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br to-blue-600/20">
-                      <User className="text-ocean-deep h-7 w-7" />
+                  <div className="flex flex-1 items-start gap-4">
+                    <div className="to-ocean-deep/20 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600/20">
+                      <User className="text-ocean-deep h-8 w-8" />
                     </div>
-                    <div className="text-center">
+                    <div className="flex-1">
                       <h4 className="mb-2 text-lg font-bold text-gray-900">
                         재하
                       </h4>
