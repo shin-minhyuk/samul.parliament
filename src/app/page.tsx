@@ -20,11 +20,6 @@ export default function Home() {
 
         <div className="animate-slide-up relative z-10">
           <div className="group hover:animate-wiggle flex flex-col gap-3 text-center md:gap-6">
-            <div className="mb-4">
-              <span className="from-ocean-deep/10 text-ocean-deep border-ocean-deep/20 inline-block rounded-full border bg-gradient-to-r to-blue-600/10 px-4 py-2 text-sm font-semibold md:text-base">
-                2025년 개최
-              </span>
-            </div>
             <h2 className="text-4xl font-bold text-gray-800 md:text-6xl">
               사물의 의회
             </h2>
@@ -43,13 +38,6 @@ export default function Home() {
 
       <section className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
-              행사 포스터
-            </h2>
-            <div className="from-ocean-deep mx-auto h-1 w-24 rounded-full bg-gradient-to-r to-blue-600"></div>
-          </div>
-
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {/* 첫 번째 카드 - Info 페이지로 이동 */}
             <Link href="/info" className="group">
