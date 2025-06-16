@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     siteName: "사물의 의회",
     images: [
       {
-        url: "/images/twitter-image.png",
+        url: "/images/twitter-image.jpeg",
         width: 1200,
         height: 630,
         alt: "사물의 의회 2025",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "사물의 의회 2025 | 기후위기 시대, 생각의 중심을 바꿔보자",
     description: "비인간 존재들의 권리와 발언권을 고민하는 '사물의 의회 2025'",
-    images: ["/images/twitter-image.png"],
+    images: ["/images/twitter-image.jpeg"],
   },
   robots: {
     index: true,
