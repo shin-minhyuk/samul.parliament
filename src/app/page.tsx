@@ -152,7 +152,7 @@ export default function Home() {
               </div>
               <div className="hidden h-16 w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent md:block"></div>
               <div className="group transition-transform duration-300 hover:scale-105">
-                <Logo className="flex text-xl font-bold md:text-3xl" />
+                <Logo className="flex text-xl md:text-3xl" />
               </div>
             </div>
           </div>
