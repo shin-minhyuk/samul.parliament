@@ -164,8 +164,7 @@ export default function LocationPage() {
                           2025년 9월 20일 (토)
                         </div>
                         <p className="mt-3 text-sm text-gray-600">
-                          자연과 도시가 공존하는 서울숲 내에 위치한 친환경
-                          컨퍼런스 공간입니다.
+                          성공회대학교 미가엘관
                         </p>
                       </div>
                     </div>
