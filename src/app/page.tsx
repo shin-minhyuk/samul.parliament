@@ -4,7 +4,8 @@ import { openExternalLink } from "@/util/url";
 import { Button } from "@/components/Button";
 import Image from "next/image";
 import Logo from "@/components/Logo";
-import { Calendar, Users, Award } from "lucide-react";
+import { Users, Award, ArrowRight, Info } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -27,7 +28,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-gray-800 md:text-6xl">
               사물의 의회
             </h2>
-            <h1 className="text-primary-500 group-hover:text-primary-400 from-ocean-deep transform bg-gradient-to-r to-blue-600 bg-clip-text text-5xl font-[900] text-transparent transition-all duration-300 md:text-8xl">
+            <h1 className="group-hover:text-primary-400 from-ocean-deep transform bg-gradient-to-r to-blue-600 bg-clip-text text-5xl font-[900] text-transparent transition-all duration-300 md:text-8xl">
               인간과 비인간
             </h1>
             <h2 className="mx-auto max-w-4xl text-xl leading-relaxed font-medium text-gray-700 md:text-4xl">
@@ -39,6 +40,7 @@ export default function Home() {
       </section>
 
       {/* 포스터 섹션 */}
+
       <section className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
@@ -49,27 +51,63 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {[1, 2, 3].map((index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl"
-              >
-                <div className="from-ocean-deep/5 flex aspect-[3/4] items-center justify-center bg-gradient-to-br to-blue-600/5">
-                  <div className="p-8 text-center">
-                    <div className="from-ocean-deep mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r to-blue-600 transition-transform duration-300 group-hover:scale-110">
-                      <Calendar className="h-8 w-8 text-white" />
-                    </div>
-                    <h3 className="mb-2 text-xl font-bold text-gray-800">
-                      포스터 {index}
-                    </h3>
-                    <p className="text-gray-600">
-                      포스터 이미지가 여기에 표시됩니다
-                    </p>
+            {/* 첫 번째 카드 - Info 페이지로 이동 */}
+            <Link href="/info" className="group">
+              <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <div className="from-ocean-deep/10 flex aspect-[3/4] flex-col items-center justify-center bg-gradient-to-br to-blue-600/10 p-8">
+                  <div className="from-ocean-deep mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-r to-blue-600 transition-transform duration-300 group-hover:scale-110">
+                    <Info className="h-10 w-10 text-white" />
+                  </div>
+                  <h3 className="mb-4 text-center text-2xl font-bold text-gray-800">
+                    프로젝트 소개
+                  </h3>
+                  <p className="mb-6 text-center leading-relaxed text-gray-600">
+                    사물의 의회 프로젝트에 대한 자세한 정보를 확인해보세요
+                  </p>
+                  <div className="text-ocean-deep flex items-center gap-2 font-semibold transition-all duration-300 group-hover:gap-3">
+                    <span>자세히 보기</span>
+                    <ArrowRight className="h-4 w-4" />
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                <div className="from-ocean-deep/20 absolute inset-0 bg-gradient-to-t to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
               </div>
-            ))}
+            </Link>
+
+            {/* 두 번째 카드 - 포스터 이미지 */}
+            <div className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl">
+              <div className="from-ocean-deep/5 flex aspect-[3/4] items-center justify-center bg-gradient-to-br to-blue-600/5">
+                <Image
+                  src="/images/poster_1.png"
+                  alt="사물의 의회 포스터"
+                  width={1000}
+                  height={1000}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            </div>
+
+            {/* 세 번째 카드 - 참가자 모집 페이지로 이동 */}
+            <Link href="/recruitment" className="group">
+              <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                <div className="flex aspect-[3/4] flex-col items-center justify-center bg-gradient-to-br from-blue-600/10 to-indigo-600/10 p-8">
+                  <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 transition-transform duration-300 group-hover:scale-110">
+                    <Users className="h-10 w-10 text-white" />
+                  </div>
+                  <h3 className="mb-4 text-center text-2xl font-bold text-gray-800">
+                    참가자 모집
+                  </h3>
+                  <p className="mb-6 text-center leading-relaxed text-gray-600">
+                    2025 사물의 의회에 참여할 참가자를 모집하고 있습니다
+                  </p>
+                  <div className="flex items-center gap-2 font-semibold text-blue-600 transition-all duration-300 group-hover:gap-3">
+                    <span>지원하기</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
