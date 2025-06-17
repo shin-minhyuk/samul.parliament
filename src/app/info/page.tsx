@@ -375,6 +375,9 @@ export default function InfoPage() {
                   </div>
                 </div>
               </div>
+              <p className="mt-8 text-center text-sm text-gray-500">
+                ※ 위 일정계획은 추후의 사정에 따라 수정될 수 있습니다.
+              </p>
             </div>
           </section>
         </div>
