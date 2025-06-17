@@ -210,7 +210,7 @@ export default function AdminArchivesPage() {
           </div>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-lg border bg-white shadow">
+        <div className="overflow-x-auto rounded-lg border bg-white shadow">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
@@ -224,7 +224,7 @@ export default function AdminArchivesPage() {
                   제목
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                  날짜
+                  날짜ㅂ
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                   카테고리
@@ -274,7 +274,7 @@ export default function AdminArchivesPage() {
                       </div>
                     )}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-6 py-4">
                     <div className="text-sm font-medium text-gray-900">
                       {archive.title}
                     </div>
