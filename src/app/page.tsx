@@ -169,7 +169,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center gap-8 md:flex-row md:gap-16">
               <div className="group transition-transform duration-300 hover:scale-105">
                 <Image
-                  src="/images/주최_기후몸연구소.png"
+                  src="/images/주최_기후몸연구소.jpg"
                   alt="주최_기후몸연구소"
                   className="h-[80px] w-[200px] object-contain md:h-[100px] md:w-[250px]"
                   width={250}
@@ -210,7 +210,7 @@ export default function Home() {
                 <div
                   className="flex items-center"
                   style={{
-                    animation: "marquee-scroll 20s linear infinite",
+                    animation: "marquee-scroll 12s linear infinite",
                     width: "max-content",
                   }}
                 >

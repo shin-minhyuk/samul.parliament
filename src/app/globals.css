@@ -138,6 +138,6 @@ h6 {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-33.333%));
+    transform: translateX(calc(-50%));
   }
 }
