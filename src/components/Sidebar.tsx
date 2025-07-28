@@ -11,6 +11,7 @@ import {
   FolderArchive,
   HelpCircle,
   Calendar,
+  MessageSquare,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -48,6 +49,11 @@ const MENU_ITEMS: MenuItem[] = [
     title: "장소 안내",
     icon: <MapPin size={20} />,
     href: "/location",
+  },
+  {
+    title: "커뮤니티",
+    icon: <MessageSquare size={20} />,
+    href: "/board",
   },
   {
     title: "공지사항",
