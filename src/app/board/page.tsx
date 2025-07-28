@@ -10,7 +10,7 @@ import { Plus, Image as ImageIcon, User, Calendar } from "lucide-react";
 import Link from "next/link";
 
 export default function BoardPage() {
-  const { user } = useAuth();
+  const { userProfile } = useAuth();
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -74,7 +74,7 @@ export default function BoardPage() {
           </p>
         </div>
 
-        {user && (
+        {userProfile && (
           <Link href="/board/new">
             <Button className="flex items-center gap-2">
               <Plus className="h-4 w-4" />
@@ -107,7 +107,7 @@ export default function BoardPage() {
             아직 게시글이 없습니다
           </h3>
           <p className="mb-6 text-gray-500">첫 번째 게시글을 작성해보세요!</p>
-          {user && (
+          {userProfile && (
             <Link href="/board/new">
               <Button>글쓰기</Button>
             </Link>
