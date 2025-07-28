@@ -23,22 +23,40 @@ export default function AdminArchivesPage() {
     ArchiveCategory | "all"
   >("all");
   const [selectedType, setSelectedType] = useState<ArchiveType | "all">("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [totalCount, setTotalCount] = useState(0);
+  const itemsPerPage = 20;
 
   useEffect(() => {
     fetchArchives();
   }, []);
 
-  const fetchArchives = async () => {
+  const fetchArchives = async (page = 1) => {
     try {
       setLoading(true);
-      // Firebase 연동
-      const result = await getArchiveItems(100);
-      setArchives(result.archives);
-      setLoading(false);
+      const result = await getArchiveItems(page, itemsPerPage);
+
+      if (page === 1) {
+        setArchives(result.archives);
+      } else {
+        setArchives((prev) => [...prev, ...result.archives]);
+      }
+
+      setTotalCount(result.total);
+      setHasMore(result.archives.length === itemsPerPage);
+      setCurrentPage(page);
     } catch (error) {
       console.error("Error fetching archives:", error);
       setError("아카이브 항목을 불러오는 중 오류가 발생했습니다.");
+    } finally {
       setLoading(false);
+    }
+  };
+
+  const loadMoreArchives = () => {
+    if (hasMore && !loading) {
+      fetchArchives(currentPage + 1);
     }
   };
 
@@ -48,32 +66,28 @@ export default function AdminArchivesPage() {
     }
 
     try {
-      // 이미지 파일 이름 추출 (image 타입이고 Firebase Storage URL인 경우만)
+      // Supabase Storage에서 이미지 파일명 추출
       let imageFileName: string | undefined = undefined;
 
-      // Firebase Storage URL인지 확인 (firebasestorage.googleapis.com이 포함된 경우)
-      const isFirebaseStorageUrl = url.includes(
-        "firebasestorage.googleapis.com",
-      );
+      // Supabase Storage URL인지 확인
+      const isSupabaseStorageUrl =
+        url.includes("supabase") && url.includes("/storage/");
 
-      if (type === "image" && isFirebaseStorageUrl && url) {
-        // Firebase Storage URL에서 파일명 추출
+      if (type === "image" && isSupabaseStorageUrl && url) {
+        // Supabase Storage URL에서 파일명 추출
+        // URL 형태: https://PROJECT_ID.supabase.co/storage/v1/object/public/archive-images/filename.jpg
         const urlParts = url.split("/");
         const fileNameWithParams = urlParts[urlParts.length - 1];
-        // 파라미터 제거
         imageFileName = fileNameWithParams.split("?")[0];
       }
 
       await deleteArchiveItem(id, imageFileName);
       setArchives(archives.filter((archive) => archive.id !== id));
+      setTotalCount((prev) => prev - 1);
       alert("아카이브 항목이 삭제되었습니다.");
     } catch (error) {
       console.error("Error deleting archive:", error);
-      // 이미지 삭제 오류가 발생해도 Firestore 문서는 삭제 성공할 수 있으므로 UI는 업데이트
-      setArchives(archives.filter((archive) => archive.id !== id));
-      alert(
-        "아카이브 항목은 삭제되었지만, 이미지 삭제 중 오류가 발생했습니다.",
-      );
+      alert("아카이브 항목 삭제 중 오류가 발생했습니다.");
     }
   };
 
@@ -113,7 +127,12 @@ export default function AdminArchivesPage() {
         <ChevronLeft size={16} className="mr-1" /> 대시보드로 돌아가기
       </Link>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">아카이브 관리</h1>
+        <div>
+          <h1 className="text-2xl font-bold">아카이브 관리</h1>
+          <p className="text-sm text-gray-600">
+            총 {totalCount}개의 아카이브 항목
+          </p>
+        </div>
         <Link
           href="/admin/archives/new"
           className="inline-flex items-center rounded-md bg-blue-500 px-4 py-2 text-white transition-colors hover:bg-blue-600"
@@ -170,7 +189,7 @@ export default function AdminArchivesPage() {
         </div>
       </div>
 
-      {loading ? (
+      {loading && currentPage === 1 ? (
         <div className="flex justify-center py-12">
           <div className="text-center">
             <div className="mb-4 h-12 w-12 animate-spin rounded-full border-t-4 border-solid border-blue-500"></div>
@@ -210,151 +229,165 @@ export default function AdminArchivesPage() {
           </div>
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-lg border bg-white shadow">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                  ID
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                  썸네일
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                  제목
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                  날짜ㅂ
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                  카테고리
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                  타입
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                  작업
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200 bg-white">
-              {filteredArchives.map((archive) => (
-                <tr key={archive.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{archive.id}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {archive.type === "image" ? (
-                      <div className="relative h-12 w-12 overflow-hidden rounded">
-                        <Image
-                          src={archive.url}
-                          alt={archive.title}
-                          width={48}
-                          height={48}
-                          className="object-cover"
-                        />
-                      </div>
-                    ) : archive.type === "video" ? (
-                      <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded bg-gray-200">
-                        {archive.thumbnailUrl ? (
+        <>
+          <div className="overflow-x-auto rounded-lg border bg-white shadow">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                    ID
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                    썸네일
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                    제목
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                    날짜
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                    카테고리
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                    타입
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                    작업
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 bg-white">
+                {filteredArchives.map((archive) => (
+                  <tr key={archive.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-900">{archive.id}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {archive.type === "image" ? (
+                        <div className="relative h-12 w-12 overflow-hidden rounded">
                           <Image
-                            src={archive.thumbnailUrl}
+                            src={archive.url}
                             alt={archive.title}
                             width={48}
                             height={48}
                             className="object-cover"
                           />
-                        ) : (
-                          <ExternalLink size={24} className="text-gray-400" />
+                        </div>
+                      ) : archive.type === "video" ? (
+                        <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded bg-gray-200">
+                          {archive.thumbnailUrl ? (
+                            <Image
+                              src={archive.thumbnailUrl}
+                              alt={archive.title}
+                              width={48}
+                              height={48}
+                              className="object-cover"
+                            />
+                          ) : (
+                            <ExternalLink size={24} className="text-gray-400" />
+                          )}
+                        </div>
+                      ) : (
+                        <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded bg-gray-100">
+                          <span className="text-xs text-gray-500">텍스트</span>
+                        </div>
+                      )}
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="text-sm font-medium text-gray-900">
+                        {archive.title}
+                      </div>
+                      <div className="mt-1 line-clamp-1 text-xs text-gray-500">
+                        {archive.description}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-500">
+                        {archive.date || "-"}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-500">
+                        {archive.category === "reference" && (
+                          <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
+                            참고자료
+                          </span>
+                        )}
+                        {archive.category === "preliminary" && (
+                          <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
+                            예비모임
+                          </span>
+                        )}
+                        {archive.category === "main" && (
+                          <span className="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800">
+                            본회의
+                          </span>
+                        )}
+                        {archive.category === "result" && (
+                          <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
+                            결과물
+                          </span>
                         )}
                       </div>
-                    ) : (
-                      <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded bg-gray-100">
-                        <span className="text-xs text-gray-500">텍스트</span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-500">
+                        {archive.type === "text" ? (
+                          <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
+                            텍스트
+                          </span>
+                        ) : archive.type === "image" ? (
+                          <span className="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
+                            사진
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center rounded-full bg-pink-100 px-2.5 py-0.5 text-xs font-medium text-pink-800">
+                            영상
+                          </span>
+                        )}
                       </div>
-                    )}
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm font-medium text-gray-900">
-                      {archive.title}
-                    </div>
-                    <div className="mt-1 line-clamp-1 text-xs text-gray-500">
-                      {archive.description}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-500">
-                      {archive.date || "-"}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-500">
-                      {archive.category === "reference" && (
-                        <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
-                          참고자료
-                        </span>
-                      )}
-                      {archive.category === "preliminary" && (
-                        <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
-                          예비모임
-                        </span>
-                      )}
-                      {archive.category === "main" && (
-                        <span className="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800">
-                          본회의
-                        </span>
-                      )}
-                      {archive.category === "result" && (
-                        <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-                          결과물
-                        </span>
-                      )}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-500">
-                      {archive.type === "text" ? (
-                        <span className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-                          텍스트
-                        </span>
-                      ) : archive.type === "image" ? (
-                        <span className="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
-                          사진
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center rounded-full bg-pink-100 px-2.5 py-0.5 text-xs font-medium text-pink-800">
-                          영상
-                        </span>
-                      )}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex space-x-2">
-                      <Link
-                        href={`/admin/archives/edit/${archive.id}`}
-                        className="rounded p-1 text-blue-500 hover:bg-blue-100"
-                      >
-                        <Edit size={18} />
-                      </Link>
-                      <button
-                        onClick={() =>
-                          handleDeleteArchive(
-                            archive.id,
-                            archive.type,
-                            archive.url,
-                          )
-                        }
-                        className="rounded p-1 text-red-500 hover:bg-red-100"
-                      >
-                        <Trash2 size={18} />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex space-x-2">
+                        <Link
+                          href={`/admin/archives/edit/${archive.id}`}
+                          className="rounded p-1 text-blue-500 hover:bg-blue-100"
+                        >
+                          <Edit size={18} />
+                        </Link>
+                        <button
+                          onClick={() =>
+                            handleDeleteArchive(
+                              archive.id,
+                              archive.type,
+                              archive.url,
+                            )
+                          }
+                          className="rounded p-1 text-red-500 hover:bg-red-100"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {hasMore && (
+            <div className="mt-6 flex justify-center">
+              <button
+                onClick={loadMoreArchives}
+                disabled={loading}
+                className="rounded-md bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 disabled:opacity-50"
+              >
+                {loading ? "로딩 중..." : "더 보기"}
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

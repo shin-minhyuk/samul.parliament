@@ -49,13 +49,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         .single();
 
       if (error) {
-        console.error("Error fetching user profile:", error);
+        console.error("❌ Error fetching user profile:", error);
         return null;
       }
 
       return profile;
     } catch (error) {
-      console.error("Error fetching user profile:", error);
+      console.error("💥 Exception in getUserProfile:", error);
       return null;
     }
   };
@@ -63,20 +63,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     // 현재 세션 가져오기
     const getSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+      try {
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
 
-      const currentUser = session?.user || null;
+        if (sessionError) {
+          console.error("❌ Session 에러:", sessionError);
+          setLoading(false);
+          return;
+        }
 
-      if (currentUser) {
-        const profile = await getUserProfile(currentUser.id);
-        setUserProfile(profile);
-      } else {
-        setUserProfile(null);
+        const currentUser = session?.user || null;
+
+        if (currentUser) {
+          const profile = await getUserProfile(currentUser.id);
+          setUserProfile(profile);
+        } else {
+          setUserProfile(null);
+        }
+
+        setLoading(false);
+      } catch (error) {
+        console.error("💥 getSession 에러:", error);
+        setLoading(false);
       }
-
-      setLoading(false);
     };
 
     getSession();
@@ -97,7 +109,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       setLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signOut = async () => {

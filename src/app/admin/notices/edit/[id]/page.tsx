@@ -4,8 +4,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, Loader2 } from "lucide-react";
-import NoticeForm from "@/components/admin/NoticeForm";
-// Firebase 연동 시 주석 해제
 import { getNoticeById, updateNotice } from "@/services/noticeService";
 import { Notice } from "@/types";
 
@@ -18,6 +16,18 @@ export default function EditNoticePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // 폼 상태
+  const [formData, setFormData] = useState({
+    title: "",
+    content: "",
+    date: "",
+    important: false,
+    category: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+
   useEffect(() => {
     fetchNotice();
   }, [id]);
@@ -25,11 +35,7 @@ export default function EditNoticePage() {
   const fetchNotice = async () => {
     setLoading(true);
     try {
-      // Firebase 연동 시 아래 코드로 대체
       const fetchedNotice = await getNoticeById(id);
-
-      // 임시로 정적 데이터에서 공지사항 찾기
-      // const fetchedNotice = NOTICES.find((n) => n.id === Number(id));
 
       if (!fetchedNotice) {
         setError("공지사항을 찾을 수 없습니다.");
@@ -37,13 +43,14 @@ export default function EditNoticePage() {
         return;
       }
 
-      // 타입 변환
-      setNotice({
-        id: String(fetchedNotice.id),
+      // Notice 상태와 폼 데이터 둘 다 설정
+      setNotice(fetchedNotice);
+      setFormData({
         title: fetchedNotice.title,
         content: fetchedNotice.content,
         date: fetchedNotice.date,
-        important: fetchedNotice.important,
+        important: fetchedNotice.important || false,
+        category: fetchedNotice.category || "",
       });
       setLoading(false);
     } catch (error) {
@@ -53,19 +60,57 @@ export default function EditNoticePage() {
     }
   };
 
-  const handleSubmit = async (
-    data: Omit<Notice, "id" | "createdAt" | "updatedAt">,
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
-    try {
-      // Firebase 연동 시 아래 코드로 대체
-      await updateNotice(id, data);
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-      // 임시 알림
-      alert("공지사항이 수정되었습니다. (Firebase 연동 시 실제로 저장됩니다)");
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: checked,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormError(null);
+
+    try {
+      // 양식 검증
+      if (!formData.title) {
+        throw new Error("제목을 입력해주세요.");
+      }
+
+      if (!formData.content) {
+        throw new Error("내용을 입력해주세요.");
+      }
+
+      if (!formData.date) {
+        throw new Error("날짜를 입력해주세요.");
+      }
+
+      await updateNotice(id, formData);
+      alert("공지사항이 수정되었습니다.");
       router.push("/admin/notices");
     } catch (error) {
-      console.error("Error updating notice:", error);
-      throw new Error("공지사항 수정 중 오류가 발생했습니다.");
+      if (error instanceof Error) {
+        setFormError(error.message);
+      } else {
+        setFormError("공지사항 수정 중 오류가 발생했습니다.");
+      }
+      console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -131,11 +176,125 @@ export default function EditNoticePage() {
       </div>
 
       <div className="rounded-lg border bg-white p-6 shadow-sm">
-        <NoticeForm
-          initialData={notice}
-          isEditing={true}
-          onSubmit={handleSubmit}
-        />
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {formError && (
+            <div className="rounded-lg border border-red-300 bg-red-50 p-4 text-red-800">
+              {formError}
+            </div>
+          )}
+
+          <div>
+            <label
+              htmlFor="title"
+              className="mb-2 block font-medium text-gray-700"
+            >
+              제목 <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="date"
+              className="mb-2 block font-medium text-gray-700"
+            >
+              날짜 <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="category"
+              className="mb-2 block font-medium text-gray-700"
+            >
+              카테고리
+            </label>
+            <select
+              id="category"
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+            >
+              <option value="">선택하세요</option>
+              <option value="event">행사</option>
+              <option value="announcement">공지</option>
+              <option value="recruitment">모집</option>
+              <option value="news">소식</option>
+            </select>
+          </div>
+
+          <div>
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="important"
+                name="important"
+                checked={formData.important}
+                onChange={handleCheckboxChange}
+                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              />
+              <label
+                htmlFor="important"
+                className="ml-2 block text-sm text-gray-700"
+              >
+                중요 공지사항으로 표시
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label
+              htmlFor="content"
+              className="mb-2 block font-medium text-gray-700"
+            >
+              내용 <span className="text-red-500">*</span>
+            </label>
+            <textarea
+              id="content"
+              name="content"
+              value={formData.content}
+              onChange={handleChange}
+              rows={10}
+              className="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+              required
+            />
+          </div>
+
+          <div className="flex justify-end space-x-3">
+            <button
+              type="button"
+              onClick={() => router.push("/admin/notices")}
+              className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+            >
+              취소
+            </button>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none disabled:bg-blue-300"
+            >
+              {isSubmitting ? "저장 중..." : "수정하기"}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

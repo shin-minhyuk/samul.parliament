@@ -27,28 +27,35 @@ export async function getNotices(
   page = 1,
   pageSize = 10,
 ): Promise<{ notices: Notice[]; total: number; hasMore: boolean }> {
-  const offset = (page - 1) * pageSize;
+  try {
+    const offset = (page - 1) * pageSize;
 
-  const {
-    data: notices,
-    error,
-    count,
-  } = await supabase
-    .from("notices")
-    .select("*", { count: "exact" })
-    .order("date", { ascending: false })
-    .range(offset, offset + pageSize - 1);
+    const {
+      data: notices,
+      error,
+      count,
+    } = await supabase
+      .from("notices")
+      .select("*", { count: "exact" })
+      .order("date", { ascending: false })
+      .range(offset, offset + pageSize - 1);
 
-  if (error) {
-    console.error("Error fetching notices:", error);
-    throw new Error("공지사항을 불러오는데 실패했습니다.");
+    if (error) {
+      console.error("Supabase 에러 상세:", error);
+      throw new Error(`공지사항을 불러오는데 실패했습니다: ${error.message}`);
+    }
+
+    const result = {
+      notices: notices || [],
+      total: count || 0,
+      hasMore: (count || 0) > offset + pageSize,
+    };
+
+    return result;
+  } catch (error) {
+    console.error("getNotices 함수에서 예외 발생:", error);
+    throw error;
   }
-
-  return {
-    notices: notices || [],
-    total: count || 0,
-    hasMore: (count || 0) > offset + pageSize,
-  };
 }
 
 // 공지사항 상세 조회
