@@ -19,7 +19,7 @@ export default function SchedulePage() {
     const fetchEvents = async () => {
       try {
         setLoading(true);
-        const { events: fetchedEvents } = await getScheduleEvents(50); // 한 번에 최대 50개 일정 불러오기
+        const { events: fetchedEvents } = await getScheduleEvents(1, 50); // 한 번에 최대 50개 일정 불러오기
         setEvents(fetchedEvents);
         setLoading(false);
       } catch (err) {

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { getFaqs, deleteFaq } from "@/services/faqService";
 import { FAQ } from "@/types";
-import { FAQ_CATEGORIES } from "@/constants/const"; // Import FAQ categories
+import { FAQ_CATEGORIES } from "@/constants/const";
 
 export default function AdminFaqsPage() {
   const [faqs, setFaqs] = useState<FAQ[]>([]);
@@ -57,7 +57,6 @@ export default function AdminFaqsPage() {
     setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
   };
 
-  // Get category name from ID
   const getCategoryName = (categoryId: string): string => {
     const category = FAQ_CATEGORIES.find((c) => c.id === categoryId);
     return category ? category.name : categoryId;
@@ -87,7 +86,10 @@ export default function AdminFaqsPage() {
         <ChevronLeft size={16} className="mr-1" /> 대시보드로 돌아가기
       </Link>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">FAQ 관리</h1>
+        <div>
+          <h1 className="text-2xl font-bold">FAQ 관리</h1>
+          <p className="text-sm text-gray-600">총 {faqs.length}개의 FAQ</p>
+        </div>
         <Link
           href="/admin/faqs/new"
           className="inline-flex items-center rounded-md bg-blue-500 px-4 py-2 text-white transition-colors hover:bg-blue-600"

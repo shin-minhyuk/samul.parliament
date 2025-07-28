@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { onAuthStateChanged, User } from "firebase/auth";
-import { auth } from "../firebase";
+import { useAuth } from "@/context/AuthContext";
 import { LogoutButton } from "./auth";
 
 interface AdminAuthCheckProps {
@@ -15,26 +14,16 @@ export default function AdminAuthCheck({
   children,
   excludePaths = [],
 }: AdminAuthCheckProps) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { userProfile, loading, isAdmin } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center">
         <div className="text-center">
           <div className="mb-4 h-12 w-12 animate-spin rounded-full border-t-4 border-solid border-blue-500"></div>
-          <p>로딩 중...</p>
+          <p>권한을 확인하는 중...</p>
         </div>
       </div>
     );
@@ -45,13 +34,13 @@ export default function AdminAuthCheck({
     return <>{children}</>;
   }
 
-  // 로그인되지 않은 경우 로그인 페이지로 리디렉션
-  if (!user) {
+  // 로그인되지 않았거나 admin 권한이 없는 경우
+  if (!userProfile || !isAdmin) {
     router.push("/admin");
     return null;
   }
 
-  // 로그인된 경우 관리자 UI와 함께 자식 컴포넌트 렌더링
+  // admin 권한이 있는 경우 관리자 UI와 함께 자식 컴포넌트 렌더링
   return (
     <>
       <div className="bg-white shadow">
@@ -63,7 +52,10 @@ export default function AdminAuthCheck({
               </h1>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">{user.email}</span>
+              <span className="text-sm text-gray-600">{userProfile.email}</span>
+              <span className="rounded bg-green-100 px-2 py-1 text-xs text-green-800">
+                {userProfile.role}
+              </span>
               <LogoutButton />
             </div>
           </div>

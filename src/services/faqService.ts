@@ -1,114 +1,121 @@
-import { db } from "@/app/firebase";
-import {
-  collection,
-  doc,
-  getDocs,
-  getDoc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  query,
-  orderBy,
-  serverTimestamp,
-} from "firebase/firestore";
+import { supabase } from "@/lib/supabase";
 import { FAQ } from "@/types";
 
-const COLLECTION_NAME = "faqs";
+// admin 권한 확인 함수
+async function checkAdminPermission() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("로그인이 필요합니다.");
+  }
+
+  const { data: userProfile, error } = await supabase
+    .from("users")
+    .select("role")
+    .eq("id", user.id)
+    .single();
+
+  if (error || userProfile?.role !== "admin") {
+    throw new Error("관리자 권한이 필요합니다.");
+  }
+}
 
 // FAQ 목록 조회 (생성일 순)
 export async function getFaqs(): Promise<FAQ[]> {
-  try {
-    const q = query(
-      collection(db, COLLECTION_NAME),
-      orderBy("createdAt", "asc"),
-    );
-    const snapshot = await getDocs(q);
-    const faqs: FAQ[] = snapshot.docs.map((doc) => {
-      const data = doc.data();
-      return {
-        id: doc.id,
-        question: data.question,
-        answer: data.answer,
-        category: data.category || "uncategorized", // 카테고리가 없을 경우 기본값
-        tags: data.tags || [],
-        createdAt: data.createdAt?.toDate(),
-        updatedAt: data.updatedAt?.toDate(),
-      };
-    });
-    return faqs;
-  } catch (error) {
-    console.error("Error getting FAQs: ", error);
-    throw error;
+  const { data: faqs, error } = await supabase
+    .from("faqs")
+    .select("*")
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    console.error("Error fetching FAQs:", error);
+    throw new Error("FAQ를 불러오는데 실패했습니다.");
   }
+
+  return faqs || [];
 }
 
 // FAQ 상세 조회
 export async function getFaqById(id: string): Promise<FAQ | null> {
-  try {
-    const docRef = doc(db, COLLECTION_NAME, id);
-    const docSnap = await getDoc(docRef);
+  const { data: faq, error } = await supabase
+    .from("faqs")
+    .select("*")
+    .eq("id", id)
+    .single();
 
-    if (!docSnap.exists()) {
-      return null;
+  if (error) {
+    if (error.code === "PGRST116") {
+      return null; // 데이터를 찾을 수 없음
     }
-
-    const data = docSnap.data();
-    return {
-      id: docSnap.id,
-      question: data.question,
-      answer: data.answer,
-      category: data.category || "uncategorized",
-      tags: data.tags || [],
-      createdAt: data.createdAt?.toDate(),
-      updatedAt: data.updatedAt?.toDate(),
-    } as FAQ;
-  } catch (error) {
-    console.error(`Error getting FAQ with ID ${id}: `, error);
-    throw error;
+    console.error(`Error getting FAQ with ID ${id}:`, error);
+    throw new Error("FAQ를 불러오는데 실패했습니다.");
   }
+
+  return faq;
 }
 
-// FAQ 생성
+// FAQ 생성 (admin만 가능)
 export async function createFaq(
   faq: Omit<FAQ, "id" | "createdAt" | "updatedAt">,
 ): Promise<string> {
-  try {
-    const docRef = await addDoc(collection(db, COLLECTION_NAME), {
-      ...faq,
-      createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp(),
-    });
-    return docRef.id;
-  } catch (error) {
-    console.error("Error creating FAQ: ", error);
-    throw error;
+  await checkAdminPermission();
+
+  const { data: newFaq, error } = await supabase
+    .from("faqs")
+    .insert({
+      question: faq.question,
+      answer: faq.answer,
+      category: faq.category || "uncategorized",
+      tags: faq.tags || [],
+    })
+    .select()
+    .single();
+
+  if (error) {
+    console.error("Error creating FAQ:", error);
+    throw new Error("FAQ 생성에 실패했습니다.");
   }
+
+  return newFaq.id;
 }
 
-// FAQ 수정
+// FAQ 수정 (admin만 가능)
 export async function updateFaq(
   id: string,
   faq: Partial<Omit<FAQ, "id" | "createdAt" | "updatedAt">>,
 ): Promise<void> {
-  try {
-    const docRef = doc(db, COLLECTION_NAME, id);
-    await updateDoc(docRef, {
-      ...faq,
-      updatedAt: serverTimestamp(),
-    });
-  } catch (error) {
-    console.error(`Error updating FAQ with ID ${id}: `, error);
-    throw error;
+  await checkAdminPermission();
+
+  const updateData: Partial<{
+    question: string;
+    answer: string;
+    category: string;
+    tags: string[];
+  }> = {};
+
+  if (faq.question !== undefined) updateData.question = faq.question;
+  if (faq.answer !== undefined) updateData.answer = faq.answer;
+  if (faq.category !== undefined) updateData.category = faq.category;
+  if (faq.tags !== undefined) updateData.tags = faq.tags;
+
+  const { error } = await supabase.from("faqs").update(updateData).eq("id", id);
+
+  if (error) {
+    console.error(`Error updating FAQ with ID ${id}:`, error);
+    throw new Error("FAQ 수정에 실패했습니다.");
   }
 }
 
-// FAQ 삭제
+// FAQ 삭제 (admin만 가능)
 export async function deleteFaq(id: string): Promise<void> {
-  try {
-    const docRef = doc(db, COLLECTION_NAME, id);
-    await deleteDoc(docRef);
-  } catch (error) {
-    console.error(`Error deleting FAQ with ID ${id}: `, error);
-    throw error;
+  await checkAdminPermission();
+
+  const { error } = await supabase.from("faqs").delete().eq("id", id);
+
+  if (error) {
+    console.error(`Error deleting FAQ with ID ${id}:`, error);
+    throw new Error("FAQ 삭제에 실패했습니다.");
   }
 }
