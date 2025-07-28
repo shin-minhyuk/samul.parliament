@@ -7,7 +7,6 @@ import { Search, Tag, X, ChevronRight } from "lucide-react";
 import { ARCHIVE_CATEGORIES, ARCHIVE_TYPES } from "@/constants/const";
 import { getArchiveItems } from "@/services/archiveService";
 import { ArchiveItem, ArchiveCategory, ArchiveType } from "@/types";
-import { QueryDocumentSnapshot, DocumentData } from "firebase/firestore";
 
 export default function ArchivePage() {
   const [activeCategory, setActiveCategory] = useState<ArchiveCategory | "all">(
@@ -20,66 +19,71 @@ export default function ArchivePage() {
   const [filteredItems, setFilteredItems] = useState<ArchiveItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [lastVisible, setLastVisible] = useState<
-    QueryDocumentSnapshot<DocumentData> | undefined
-  >(undefined);
-  const [allLoaded, setAllLoaded] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [allTags, setAllTags] = useState<string[]>([]);
   const itemsPerLoad = 6;
 
   // 처음 페이지 로드시 데이터 가져오기
   useEffect(() => {
-    fetchArchives();
+    fetchArchives(1, true);
   }, []);
 
   // 아카이브 항목 가져오기 함수
-  const fetchArchives = async () => {
+  const fetchArchives = async (
+    page: number = 1,
+    isInitial: boolean = false,
+  ) => {
     try {
-      setLoading(true);
-      const { archives: fetchedArchives, lastVisible: lastDoc } =
-        await getArchiveItems(itemsPerLoad, lastVisible);
-
-      if (
-        fetchedArchives.length === 0 ||
-        fetchedArchives.length < itemsPerLoad
-      ) {
-        setAllLoaded(true);
+      if (isInitial) {
+        setLoading(true);
+      } else {
+        setLoadingMore(true);
       }
 
-      let newArchives: ArchiveItem[];
-      if (!lastVisible) {
-        // 처음 로드
-        newArchives = fetchedArchives;
+      const { archives: fetchedArchives, hasMore: moreAvailable } =
+        await getArchiveItems(page, itemsPerLoad);
+
+      if (page === 1) {
+        // 첫 번째 페이지 로드
         setArchives(fetchedArchives);
       } else {
-        // 추가 로드
-        newArchives = [...archives, ...fetchedArchives];
-        setArchives(newArchives);
+        // 추가 페이지 로드
+        setArchives((prev) => [...prev, ...fetchedArchives]);
       }
 
-      setLastVisible(lastDoc);
+      setHasMore(moreAvailable);
+      setCurrentPage(page);
 
       // 모든 태그 추출
+      const allArchives =
+        page === 1 ? fetchedArchives : [...archives, ...fetchedArchives];
       const tags = Array.from(
-        new Set(newArchives.flatMap((item) => item.tags || [])),
+        new Set(allArchives.flatMap((item) => item.tags || [])),
       ).sort();
       setAllTags(tags);
 
-      setLoading(false);
+      if (isInitial) {
+        setLoading(false);
+      } else {
+        setLoadingMore(false);
+      }
     } catch (error) {
       console.error("아카이브 항목을 불러오는 중 오류가 발생했습니다:", error);
       setError("아카이브 항목을 불러오는 중 오류가 발생했습니다.");
-      setLoading(false);
+      if (isInitial) {
+        setLoading(false);
+      } else {
+        setLoadingMore(false);
+      }
     }
   };
 
   // 더 보기 버튼 클릭 핸들러
   const handleLoadMore = async () => {
-    if (!allLoaded && !loadingMore) {
-      setLoadingMore(true);
-      await fetchArchives();
-      setLoadingMore(false);
+    if (hasMore && !loadingMore) {
+      await fetchArchives(currentPage + 1, false);
     }
   };
 
@@ -368,7 +372,7 @@ export default function ArchivePage() {
               </div>
 
               {/* 더 보기 버튼 */}
-              {!allLoaded && filteredItems.length === archives.length && (
+              {hasMore && filteredItems.length === archives.length && (
                 <div className="mt-10 flex justify-center">
                   <button
                     onClick={handleLoadMore}

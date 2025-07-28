@@ -6,59 +6,65 @@ import Link from "next/link";
 import { formatDate } from "@/util/date";
 import { getNotices } from "@/services/noticeService";
 import { Notice } from "@/types";
-import { QueryDocumentSnapshot, DocumentData } from "firebase/firestore";
 
 export default function NoticesPage() {
   // 상태 정의
   const [notices, setNotices] = useState<Notice[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [lastVisible, setLastVisible] = useState<
-    QueryDocumentSnapshot<DocumentData> | undefined
-  >(undefined);
-  const [allLoaded, setAllLoaded] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
   const noticesPerLoad = 3; // 한 번에 로드할 공지사항 수
 
   // 처음 페이지 로드시 데이터 가져오기
   useEffect(() => {
-    fetchNotices();
+    fetchNotices(1, true);
   }, []);
 
   // 공지사항 가져오기 함수
-  const fetchNotices = async () => {
+  const fetchNotices = async (page: number = 1, isInitial: boolean = false) => {
     try {
-      setLoading(true);
-      const { notices: fetchedNotices, lastVisible: lastDoc } =
-        await getNotices(noticesPerLoad, lastVisible);
-
-      if (
-        fetchedNotices.length === 0 ||
-        fetchedNotices.length < noticesPerLoad
-      ) {
-        setAllLoaded(true);
+      if (isInitial) {
+        setLoading(true);
+      } else {
+        setLoadingMore(true);
       }
 
-      if (!lastVisible) {
-        // 처음 로드
+      const { notices: fetchedNotices, hasMore: moreAvailable } =
+        await getNotices(page, noticesPerLoad);
+
+      if (page === 1) {
+        // 첫 번째 페이지 로드
         setNotices(fetchedNotices);
       } else {
-        // 추가 로드
+        // 추가 페이지 로드
         setNotices((prev) => [...prev, ...fetchedNotices]);
       }
 
-      setLastVisible(lastDoc);
-      setLoading(false);
+      setHasMore(moreAvailable);
+      setCurrentPage(page);
+
+      if (isInitial) {
+        setLoading(false);
+      } else {
+        setLoadingMore(false);
+      }
     } catch (error) {
       console.error("공지사항을 불러오는 중 오류가 발생했습니다:", error);
       setError("공지사항을 불러오는 중 오류가 발생했습니다.");
-      setLoading(false);
+      if (isInitial) {
+        setLoading(false);
+      } else {
+        setLoadingMore(false);
+      }
     }
   };
 
   // 더 보기 버튼 클릭 핸들러
-  const handleLoadMore = () => {
-    if (!allLoaded && !loading) {
-      fetchNotices();
+  const handleLoadMore = async () => {
+    if (hasMore && !loadingMore) {
+      await fetchNotices(currentPage + 1, false);
     }
   };
 
@@ -144,25 +150,25 @@ export default function NoticesPage() {
         )}
 
         {/* 더 보기 버튼 */}
-        {!allLoaded && notices.length > 0 && (
+        {hasMore && notices.length > 0 && (
           <div className="mt-8 flex justify-center">
             <button
               onClick={handleLoadMore}
-              disabled={loading}
+              disabled={loadingMore}
               className={`flex items-center gap-2 rounded-full px-6 py-2 font-medium text-white transition-all ${
-                loading
+                loadingMore
                   ? "cursor-not-allowed bg-gray-400"
                   : "bg-nature-spring hover:bg-nature-forest"
               }`}
             >
-              {loading ? "로딩 중..." : "더 보기"}
-              {!loading && <ChevronRight className="h-4 w-4" />}
+              {loadingMore ? "로딩 중..." : "더 보기"}
+              {!loadingMore && <ChevronRight className="h-4 w-4" />}
             </button>
           </div>
         )}
 
         {/* 모든 공지사항이 로드되었을 때 메시지 표시 */}
-        {allLoaded && notices.length > 0 && (
+        {!hasMore && notices.length > 0 && (
           <div className="mt-8 text-center text-gray-500">
             모든 공지사항을 확인하셨습니다.
           </div>
