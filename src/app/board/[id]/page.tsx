@@ -128,7 +128,7 @@ function CommentItem({
 export default function PostDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const { user } = useAuth();
+  const { userProfile } = useAuth();
   const postId = params.id as string;
 
   const [post, setPost] = useState<Post | null>(null);
@@ -257,7 +257,7 @@ export default function PostDetailPage() {
 
   if (!post) return null;
 
-  const isAuthor = user?.id === post.author_id;
+  const isAuthor = userProfile?.id === post.author_id;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -352,7 +352,7 @@ export default function PostDetailPage() {
               <CommentItem
                 key={comment.id}
                 comment={comment}
-                user={user}
+                user={userProfile}
                 onReply={handleReply}
                 onDelete={handleDeleteComment}
               />
@@ -366,7 +366,7 @@ export default function PostDetailPage() {
         )}
 
         {/* 댓글 작성 폼 */}
-        {user ? (
+        {userProfile ? (
           <form
             id="comment-form"
             onSubmit={handleSubmitComment}
@@ -409,7 +409,7 @@ export default function PostDetailPage() {
 
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-sm text-gray-500">
-                    {user.user_metadata?.name || user.email}
+                    {userProfile.name || userProfile.email}
                   </span>
 
                   <Button

@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function NewPostPage() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { userProfile } = useAuth();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState<File | null>(null);
@@ -19,7 +19,7 @@ export default function NewPostPage() {
   const [error, setError] = useState<string | null>(null);
 
   // 로그인하지 않은 사용자는 접근 불가
-  if (!user) {
+  if (!userProfile) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="py-16 text-center">
@@ -208,7 +208,7 @@ export default function NewPostPage() {
           <p className="text-sm text-gray-600">
             작성자:{" "}
             <span className="font-medium">
-              {user.user_metadata?.name || user.email}
+              {userProfile.name || userProfile.email}
             </span>
           </p>
         </div>

@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function EditPostPage() {
   const params = useParams();
   const router = useRouter();
-  const { user } = useAuth();
+  const { userProfile } = useAuth();
   const postId = params.id as string;
 
   const [post, setPost] = useState<Post | null>(null);
@@ -31,7 +31,7 @@ export default function EditPostPage() {
         const postData = await getPost(postId);
 
         // 권한 체크
-        if (user?.id !== postData.author_id) {
+        if (userProfile?.id !== postData.author_id) {
           setError("이 게시글을 편집할 권한이 없습니다.");
           return;
         }
@@ -51,13 +51,13 @@ export default function EditPostPage() {
       }
     };
 
-    if (postId && user) {
+    if (postId && userProfile) {
       loadPost();
     }
-  }, [postId, user]);
+  }, [postId, userProfile]);
 
   // 로그인하지 않은 사용자는 접근 불가
-  if (!user) {
+  if (!userProfile) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="py-16 text-center">
@@ -277,7 +277,7 @@ export default function EditPostPage() {
           <p className="text-sm text-gray-600">
             작성자:{" "}
             <span className="font-medium">
-              {user.user_metadata?.name || user.email}
+              {userProfile.name || userProfile.email}
             </span>
           </p>
         </div>

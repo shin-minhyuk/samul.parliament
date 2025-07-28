@@ -7,7 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { userProfile } = useAuth();
 
   const handleKakaoLogin = async () => {
     try {
@@ -28,7 +28,7 @@ export default function LoginPage() {
     }
   };
 
-  if (user) {
+  if (userProfile) {
     return router.replace("/");
   }
 
