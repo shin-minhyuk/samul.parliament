@@ -80,7 +80,7 @@ function CommentItem({
                       onDelete(comment.id);
                       setShowMenu(false);
                     }}
-                    className="flex w-full items-center gap-2 px-4 py-2 text-left text-red-600 hover:bg-red-50"
+                    className="flex w-full items-center gap-2 px-4 py-2 text-left whitespace-nowrap text-red-600 hover:bg-red-50"
                   >
                     <Trash2 className="h-4 w-4" />
                     삭제
