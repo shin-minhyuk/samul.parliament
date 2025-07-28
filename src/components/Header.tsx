@@ -1,16 +1,25 @@
 "use client";
 
-import { Menu, Clock, X } from "lucide-react";
+import { Menu, Clock, X, LogOut } from "lucide-react";
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 import { useBanner } from "@/context/BannerContext";
-import { Button } from "./Button";
-import { openExternalLink } from "@/util/url";
+import { useAuth } from "@/context/AuthContext";
 import Logo from "./Logo";
+import Link from "next/link";
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { isBannerVisible, setIsBannerVisible } = useBanner();
+  const { user, loading, signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error("로그아웃 에러:", error);
+    }
+  };
 
   return (
     <>
@@ -47,22 +56,36 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Center - Title */}
-          <Logo className="mb-1" />
+          {/* Center - Title and Navigation */}
+          <div className="flex items-center gap-8">
+            <Logo className="mb-1" />
+          </div>
 
-          {/* Right - Apply Button */}
-          <div className="w-[100px] text-end">
-            <Button
-              type="button"
-              className="text-sm hover:scale-105"
-              onClick={() =>
-                openExternalLink(
-                  "https://docs.google.com/forms/d/e/1FAIpQLSdt5BSpFw3mS9wZzWVzcqvDcWHw8BP2i8o-2r0i9R151562iw/viewform",
-                )
-              }
-            >
-              지원하기
-            </Button>
+          {/* Right - Login/User Info */}
+          <div className="flex w-[100px] items-center justify-end text-end">
+            {loading ? (
+              <div className="h-8 w-16 animate-pulse rounded bg-gray-200"></div>
+            ) : user ? (
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 text-sm text-gray-600">
+                  {user.user_metadata?.name || "사용자"}
+                </div>
+                <button
+                  onClick={handleSignOut}
+                  className="text-ocean-deep hover:bg-ocean-deep/10 rounded-lg p-1 transition-colors"
+                  title="로그아웃"
+                >
+                  <LogOut className="h-4 w-4" />
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/auth/login"
+                className="rounded-full bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-900 hover:scale-105 hover:bg-gray-300"
+              >
+                로그인
+              </Link>
+            )}
           </div>
         </div>
       </header>
