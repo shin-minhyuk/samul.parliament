@@ -11,7 +11,7 @@ import Link from "next/link";
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { isBannerVisible, setIsBannerVisible } = useBanner();
-  const { user, loading, signOut } = useAuth();
+  const { userProfile, loading, signOut } = useAuth();
 
   const handleSignOut = async () => {
     try {
@@ -65,10 +65,10 @@ export default function Header() {
           <div className="flex w-[100px] items-center justify-end text-end">
             {loading ? (
               <div className="h-8 w-16 animate-pulse rounded bg-gray-200"></div>
-            ) : user ? (
+            ) : userProfile ? (
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1 text-sm text-gray-600">
-                  {user.user_metadata?.name || "사용자"}
+                  {userProfile.name || "사용자"}
                 </div>
                 <button
                   onClick={handleSignOut}

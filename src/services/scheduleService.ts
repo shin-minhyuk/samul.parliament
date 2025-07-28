@@ -1,224 +1,241 @@
-import {
-  collection,
-  doc,
-  getDocs,
-  getDoc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  query,
-  orderBy,
-  limit,
-  startAfter,
-  DocumentData,
-  QueryDocumentSnapshot,
-  serverTimestamp,
-  Timestamp,
-  where,
-} from "firebase/firestore";
-import { db } from "@/app/firebase";
+import { supabase } from "@/lib/supabase";
 import { ScheduleEvent } from "@/types";
 
-const COLLECTION_NAME = "schedules";
+// admin 권한 확인 함수
+async function checkAdminPermission() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("로그인이 필요합니다.");
+  }
+
+  const { data: userProfile, error } = await supabase
+    .from("users")
+    .select("role")
+    .eq("id", user.id)
+    .single();
+
+  if (error || userProfile?.role !== "admin") {
+    throw new Error("관리자 권한이 필요합니다.");
+  }
+}
 
 // 일정 목록 조회 (페이지네이션)
 export async function getScheduleEvents(
+  page = 1,
   pageSize = 10,
-  lastDoc?: QueryDocumentSnapshot<DocumentData>,
-) {
-  try {
-    let eventsQuery;
+): Promise<{ events: ScheduleEvent[]; total: number; hasMore: boolean }> {
+  const offset = (page - 1) * pageSize;
 
-    if (lastDoc) {
-      eventsQuery = query(
-        collection(db, COLLECTION_NAME),
-        orderBy("date", "asc"),
-        startAfter(lastDoc),
-        limit(pageSize),
-      );
-    } else {
-      eventsQuery = query(
-        collection(db, COLLECTION_NAME),
-        orderBy("date", "asc"),
-        limit(pageSize),
-      );
-    }
+  const {
+    data: events,
+    error,
+    count,
+  } = await supabase
+    .from("schedules")
+    .select("*", { count: "exact" })
+    .order("date", { ascending: true })
+    .range(offset, offset + pageSize - 1);
 
-    const snapshot = await getDocs(eventsQuery);
-    const lastVisible = snapshot.docs[snapshot.docs.length - 1];
-
-    const events = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...(doc.data() as Omit<ScheduleEvent, "id">),
-      date: doc.data().date.toDate().toISOString().split("T")[0],
-    }));
-
-    return { events, lastVisible };
-  } catch (error) {
-    console.error("Error getting schedule events: ", error);
-    throw error;
+  if (error) {
+    console.error("Error fetching schedule events:", error);
+    throw new Error("일정을 불러오는데 실패했습니다.");
   }
+
+  // 날짜 형식 변환
+  const formattedEvents =
+    events?.map((event) => ({
+      ...event,
+      startTime: event.start_time,
+      endTime: event.end_time,
+    })) || [];
+
+  return {
+    events: formattedEvents,
+    total: count || 0,
+    hasMore: (count || 0) > offset + pageSize,
+  };
 }
 
 // 일정 상세 조회
-export async function getScheduleEventById(id: string) {
-  try {
-    const docRef = doc(db, COLLECTION_NAME, id);
-    const docSnap = await getDoc(docRef);
+export async function getScheduleEventById(
+  id: string,
+): Promise<ScheduleEvent | null> {
+  const { data: event, error } = await supabase
+    .from("schedules")
+    .select("*")
+    .eq("id", id)
+    .single();
 
-    if (!docSnap.exists()) {
-      return null;
+  if (error) {
+    if (error.code === "PGRST116") {
+      return null; // 데이터를 찾을 수 없음
     }
-
-    const data = docSnap.data();
-    return {
-      id: docSnap.id,
-      ...data,
-      date: data.date.toDate().toISOString().split("T")[0],
-    } as ScheduleEvent;
-  } catch (error) {
-    console.error("Error getting schedule event: ", error);
-    throw error;
+    console.error("Error getting schedule event:", error);
+    throw new Error("일정을 불러오는데 실패했습니다.");
   }
+
+  return {
+    ...event,
+    startTime: event.start_time,
+    endTime: event.end_time,
+  };
 }
 
-// 일정 생성
-export async function createScheduleEvent(event: Omit<ScheduleEvent, "id">) {
-  try {
-    // 날짜를 Firestore Timestamp로 변환
-    const eventData = {
-      ...event,
-      date: Timestamp.fromDate(new Date(event.date)),
-      createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp(),
-    };
+// 일정 생성 (admin만 가능)
+export async function createScheduleEvent(
+  event: Omit<ScheduleEvent, "id" | "createdAt" | "updatedAt">,
+): Promise<string> {
+  await checkAdminPermission();
 
-    const docRef = await addDoc(collection(db, COLLECTION_NAME), eventData);
-    return docRef.id;
-  } catch (error) {
-    console.error("Error creating schedule event: ", error);
-    throw error;
+  const { data: newEvent, error } = await supabase
+    .from("schedules")
+    .insert({
+      title: event.title,
+      description: event.description,
+      date: event.date,
+      start_time: event.startTime,
+      end_time: event.endTime,
+      location: event.location,
+      type: event.type,
+      important: event.important || false,
+    })
+    .select()
+    .single();
+
+  if (error) {
+    console.error("Error creating schedule event:", error);
+    throw new Error("일정 생성에 실패했습니다.");
   }
+
+  return newEvent.id;
 }
 
-// 일정 수정
+// 일정 수정 (admin만 가능)
 export async function updateScheduleEvent(
   id: string,
-  event: Partial<Omit<ScheduleEvent, "id">>,
-) {
-  try {
-    // Firestore 업데이트에 필요한 객체 생성
-    const baseUpdateData = {
-      ...event,
-      updatedAt: serverTimestamp(),
-    };
+  event: Partial<Omit<ScheduleEvent, "id" | "createdAt" | "updatedAt">>,
+): Promise<boolean> {
+  await checkAdminPermission();
 
-    // 날짜 필드 제외 (별도 처리)
-    const { date, ...updateFields } = baseUpdateData;
+  const updateData: Partial<{
+    title: string;
+    description: string;
+    date: string;
+    start_time: string;
+    end_time: string;
+    location: string;
+    type: string;
+    important: boolean;
+  }> = {};
 
-    const docRef = doc(db, COLLECTION_NAME, id);
+  if (event.title !== undefined) updateData.title = event.title;
+  if (event.description !== undefined)
+    updateData.description = event.description;
+  if (event.date !== undefined) updateData.date = event.date;
+  if (event.startTime !== undefined) updateData.start_time = event.startTime;
+  if (event.endTime !== undefined) updateData.end_time = event.endTime;
+  if (event.location !== undefined) updateData.location = event.location;
+  if (event.type !== undefined) updateData.type = event.type;
+  if (event.important !== undefined) updateData.important = event.important;
 
-    // 기본 필드 업데이트
-    await updateDoc(docRef, updateFields);
+  const { error } = await supabase
+    .from("schedules")
+    .update(updateData)
+    .eq("id", id);
 
-    // 날짜가 있는 경우 별도로 업데이트
-    if (date) {
-      await updateDoc(docRef, {
-        date: Timestamp.fromDate(new Date(date)),
-      });
-    }
-
-    return true;
-  } catch (error) {
-    console.error("Error updating schedule event: ", error);
-    throw error;
+  if (error) {
+    console.error("Error updating schedule event:", error);
+    throw new Error("일정 수정에 실패했습니다.");
   }
+
+  return true;
 }
 
-// 일정 삭제
-export async function deleteScheduleEvent(id: string) {
-  try {
-    const docRef = doc(db, COLLECTION_NAME, id);
-    await deleteDoc(docRef);
-    return true;
-  } catch (error) {
-    console.error("Error deleting schedule event: ", error);
-    throw error;
+// 일정 삭제 (admin만 가능)
+export async function deleteScheduleEvent(id: string): Promise<boolean> {
+  await checkAdminPermission();
+
+  const { error } = await supabase.from("schedules").delete().eq("id", id);
+
+  if (error) {
+    console.error("Error deleting schedule event:", error);
+    throw new Error("일정 삭제에 실패했습니다.");
   }
+
+  return true;
 }
 
 // 특정 기간의 일정 조회
 export async function getScheduleEventsByDateRange(
   startDate: string,
   endDate: string,
-) {
-  try {
-    const eventsQuery = query(
-      collection(db, COLLECTION_NAME),
-      where("date", ">=", Timestamp.fromDate(new Date(startDate))),
-      where("date", "<=", Timestamp.fromDate(new Date(endDate))),
-      orderBy("date", "asc"),
-    );
+): Promise<ScheduleEvent[]> {
+  const { data: events, error } = await supabase
+    .from("schedules")
+    .select("*")
+    .gte("date", startDate)
+    .lte("date", endDate)
+    .order("date", { ascending: true });
 
-    const snapshot = await getDocs(eventsQuery);
-
-    const events = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...(doc.data() as Omit<ScheduleEvent, "id">),
-      date: doc.data().date.toDate().toISOString().split("T")[0],
-    }));
-
-    return events;
-  } catch (error) {
-    console.error("Error getting schedule events by date range: ", error);
-    throw error;
+  if (error) {
+    console.error("Error getting schedule events by date range:", error);
+    throw new Error("일정을 불러오는데 실패했습니다.");
   }
+
+  return (
+    events?.map((event) => ({
+      ...event,
+      startTime: event.start_time,
+      endTime: event.end_time,
+    })) || []
+  );
 }
 
 // 특정 타입의 일정 조회
-export async function getScheduleEventsByType(type: string) {
-  try {
-    const eventsQuery = query(
-      collection(db, COLLECTION_NAME),
-      where("type", "==", type),
-      orderBy("date", "asc"),
-    );
+export async function getScheduleEventsByType(
+  type: string,
+): Promise<ScheduleEvent[]> {
+  const { data: events, error } = await supabase
+    .from("schedules")
+    .select("*")
+    .eq("type", type)
+    .order("date", { ascending: true });
 
-    const snapshot = await getDocs(eventsQuery);
-
-    const events = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...(doc.data() as Omit<ScheduleEvent, "id">),
-      date: doc.data().date.toDate().toISOString().split("T")[0],
-    }));
-
-    return events;
-  } catch (error) {
-    console.error("Error getting schedule events by type: ", error);
-    throw error;
+  if (error) {
+    console.error("Error getting schedule events by type:", error);
+    throw new Error("일정을 불러오는데 실패했습니다.");
   }
+
+  return (
+    events?.map((event) => ({
+      ...event,
+      startTime: event.start_time,
+      endTime: event.end_time,
+    })) || []
+  );
 }
 
 // 중요 일정만 조회
-export async function getImportantScheduleEvents() {
-  try {
-    const eventsQuery = query(
-      collection(db, COLLECTION_NAME),
-      where("important", "==", true),
-      orderBy("date", "asc"),
-    );
+export async function getImportantScheduleEvents(): Promise<ScheduleEvent[]> {
+  const { data: events, error } = await supabase
+    .from("schedules")
+    .select("*")
+    .eq("important", true)
+    .order("date", { ascending: true });
 
-    const snapshot = await getDocs(eventsQuery);
-
-    const events = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...(doc.data() as Omit<ScheduleEvent, "id">),
-      date: doc.data().date.toDate().toISOString().split("T")[0],
-    }));
-
-    return events;
-  } catch (error) {
-    console.error("Error getting important schedule events: ", error);
-    throw error;
+  if (error) {
+    console.error("Error getting important schedule events:", error);
+    throw new Error("중요 일정을 불러오는데 실패했습니다.");
   }
+
+  return (
+    events?.map((event) => ({
+      ...event,
+      startTime: event.start_time,
+      endTime: event.end_time,
+    })) || []
+  );
 }
