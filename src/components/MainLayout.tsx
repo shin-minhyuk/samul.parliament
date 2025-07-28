@@ -18,7 +18,9 @@ export default function MainLayout({
   return (
     <>
       <Header />
-      <main className={`flex-grow ${isBannerVisible ? "pt-24" : "pt-16"}`}>
+      <main
+        className={`flex min-h-screen flex-col ${isBannerVisible ? "pt-24" : "pt-16"}`}
+      >
         {children}
       </main>
       <Footer />
