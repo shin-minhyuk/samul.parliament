@@ -1,18 +1,28 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
 
+interface UserProfile {
+  id: string;
+  email: string;
+  name: string | null;
+  role: string;
+  created_at: string;
+  updated_at: string;
+}
+
 interface AuthContextType {
-  user: User | null;
+  userProfile: UserProfile | null;
   loading: boolean;
+  isAdmin: boolean;
   signOut: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({
-  user: null,
+  userProfile: null,
   loading: true,
+  isAdmin: false,
   signOut: async () => {},
 });
 
@@ -27,8 +37,28 @@ export const useAuth = () => {
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const getUserProfile = async (userId: string) => {
+    try {
+      const { data: profile, error } = await supabase
+        .from("users")
+        .select("*")
+        .eq("id", userId)
+        .single();
+
+      if (error) {
+        console.error("Error fetching user profile:", error);
+        return null;
+      }
+
+      return profile;
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+      return null;
+    }
+  };
 
   useEffect(() => {
     // 현재 세션 가져오기
@@ -36,7 +66,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const {
         data: { session },
       } = await supabase.auth.getSession();
-      setUser(session?.user || null);
+
+      const currentUser = session?.user || null;
+
+      if (currentUser) {
+        const profile = await getUserProfile(currentUser.id);
+        setUserProfile(profile);
+      } else {
+        setUserProfile(null);
+      }
+
       setLoading(false);
     };
 
@@ -46,7 +85,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
-      setUser(session?.user || null);
+      const currentUser = session?.user || null;
+
+      if (currentUser) {
+        const profile = await getUserProfile(currentUser.id);
+        setUserProfile(profile);
+      } else {
+        setUserProfile(null);
+      }
+
       setLoading(false);
     });
 
@@ -55,11 +102,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const signOut = async () => {
     await supabase.auth.signOut();
+    setUserProfile(null);
   };
 
   const value = {
-    user,
+    userProfile,
     loading,
+    isAdmin: userProfile?.role === "admin",
     signOut,
   };
 

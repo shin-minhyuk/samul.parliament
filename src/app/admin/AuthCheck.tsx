@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
-import { User } from "@supabase/supabase-js";
+import { useAuth } from "@/context/AuthContext";
 import { LogoutButton } from "./auth";
 
 interface AdminAuthCheckProps {
@@ -11,88 +10,13 @@ interface AdminAuthCheckProps {
   excludePaths?: string[];
 }
 
-interface UserProfile {
-  role: string;
-}
-
 export default function AdminAuthCheck({
   children,
   excludePaths = [],
 }: AdminAuthCheckProps) {
-  const [user, setUser] = useState<User | null>(null);
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { userProfile, loading, isAdmin } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
-
-  useEffect(() => {
-    checkAuthAndRole();
-
-    // Auth 상태 변화 리스너
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === "SIGNED_OUT" || !session) {
-        setUser(null);
-        setUserProfile(null);
-        setLoading(false);
-      } else if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
-        await checkAuthAndRole();
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const checkAuthAndRole = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-
-      // 현재 로그인된 사용자 확인
-      const {
-        data: { user },
-        error: userError,
-      } = await supabase.auth.getUser();
-
-      if (userError) {
-        throw userError;
-      }
-
-      if (!user) {
-        setUser(null);
-        setUserProfile(null);
-        setLoading(false);
-        return;
-      }
-
-      setUser(user);
-
-      // 사용자의 role 확인
-      const { data: profile, error: profileError } = await supabase
-        .from("users")
-        .select("role")
-        .eq("id", user.id)
-        .single();
-
-      if (profileError) {
-        throw profileError;
-      }
-
-      if (!profile) {
-        setError("사용자 프로필을 찾을 수 없습니다.");
-        setUserProfile(null);
-      } else {
-        setUserProfile(profile);
-      }
-    } catch (error) {
-      console.error("Auth check error:", error);
-      setError("권한 확인 중 오류가 발생했습니다.");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (loading) {
     return (
@@ -110,8 +34,8 @@ export default function AdminAuthCheck({
     return <>{children}</>;
   }
 
-  // 에러가 있거나 로그인되지 않은 경우 또는 admin 권한이 없는 경우
-  if (error || !user || !userProfile || userProfile.role !== "admin") {
+  // 로그인되지 않았거나 admin 권한이 없는 경우
+  if (!userProfile || !isAdmin) {
     router.push("/admin");
     return null;
   }
@@ -128,7 +52,7 @@ export default function AdminAuthCheck({
               </h1>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">{user.email}</span>
+              <span className="text-sm text-gray-600">{userProfile.email}</span>
               <span className="rounded bg-green-100 px-2 py-1 text-xs text-green-800">
                 {userProfile.role}
               </span>
