@@ -17,7 +17,9 @@ export default function Header() {
     try {
       await signOut();
     } catch (error) {
-      console.error("로그아웃 에러:", error);
+      if (process.env.NODE_ENV === "development") {
+        console.error("로그아웃 에러:", error);
+      }
     }
   };
 

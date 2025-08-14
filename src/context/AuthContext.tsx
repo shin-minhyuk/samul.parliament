@@ -49,14 +49,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         .single();
 
       if (error) {
-        console.error("❌ Error fetching user profile:", error);
-        return null;
+        if (process.env.NODE_ENV === "development") {
+          console.error("❌ Error fetching user profile:", error);
+        }
+        throw error;
       }
 
       return profile;
     } catch (error) {
-      console.error("💥 Exception in getUserProfile:", error);
-      return null;
+      if (process.env.NODE_ENV === "development") {
+        console.error("💥 Exception in getUserProfile:", error);
+      }
+      throw error;
     }
   };
 
@@ -70,7 +74,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         } = await supabase.auth.getSession();
 
         if (sessionError) {
-          console.error("❌ Session 에러:", sessionError);
+          if (process.env.NODE_ENV === "development") {
+            console.error("❌ Session 에러:", sessionError);
+          }
           setLoading(false);
           return;
         }
@@ -78,15 +84,44 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         const currentUser = session?.user || null;
 
         if (currentUser) {
-          const profile = await getUserProfile(currentUser.id);
-          setUserProfile(profile);
+          try {
+            if (process.env.NODE_ENV === "development") {
+              console.log(
+                "🔍 Attempting to get profile for user:",
+                currentUser.id,
+              );
+              console.log("🌐 Environment:", process.env.NODE_ENV);
+              console.log(
+                "🔗 Current URL:",
+                typeof window !== "undefined" ? window.location.href : "server",
+              );
+            }
+
+            const profile = await getUserProfile(currentUser.id);
+
+            if (process.env.NODE_ENV === "development") {
+              console.log("✅ Profile loaded successfully:", profile);
+            }
+
+            setUserProfile(profile);
+          } catch (error) {
+            if (process.env.NODE_ENV === "development") {
+              console.error("❌ Failed to get user profile:", error);
+            }
+            setUserProfile(null);
+          }
         } else {
+          if (process.env.NODE_ENV === "development") {
+            console.log("🚫 No current user");
+          }
           setUserProfile(null);
         }
 
         setLoading(false);
       } catch (error) {
-        console.error("💥 getSession 에러:", error);
+        if (process.env.NODE_ENV === "development") {
+          console.error("💥 getSession 에러:", error);
+        }
         setLoading(false);
       }
     };
@@ -100,8 +135,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const currentUser = session?.user || null;
 
       if (currentUser) {
-        const profile = await getUserProfile(currentUser.id);
-        setUserProfile(profile);
+        try {
+          const profile = await getUserProfile(currentUser.id);
+          setUserProfile(profile);
+        } catch (error) {
+          if (process.env.NODE_ENV === "development") {
+            console.error("Failed to get user profile on auth change:", error);
+          }
+          setUserProfile(null);
+        }
       } else {
         setUserProfile(null);
       }

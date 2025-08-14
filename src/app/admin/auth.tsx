@@ -21,7 +21,9 @@ export default function AdminAuth() {
       await signOut();
       router.push("/");
     } catch (error) {
-      console.error("Logout error:", error);
+      if (process.env.NODE_ENV === "development") {
+        console.error("Logout error:", error);
+      }
     }
   };
 
@@ -112,7 +114,9 @@ export function LogoutButton() {
       await signOut();
       router.push("/");
     } catch (error) {
-      console.error("Logout error:", error);
+      if (process.env.NODE_ENV === "development") {
+        console.error("Logout error:", error);
+      }
     }
   };
 
