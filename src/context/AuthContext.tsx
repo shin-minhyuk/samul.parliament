@@ -42,6 +42,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const getUserProfile = async (userId: string) => {
     try {
+      // 배포 환경 디버깅
+      console.log("🔍 getUserProfile 시작:", userId);
+
       const { data: profile, error } = await supabase
         .from("users")
         .select("*")
@@ -55,11 +58,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         throw error;
       }
 
+      // 배포 환경 디버깅
+      console.log("✅ getUserProfile 성공:", profile);
       return profile;
     } catch (error) {
-      if (process.env.NODE_ENV === "development") {
-        console.error("💥 Exception in getUserProfile:", error);
-      }
+      // 배포 환경 디버깅
+      console.error("💥 Exception in getUserProfile:", error);
       throw error;
     }
   };
@@ -67,6 +71,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     // 현재 세션 가져오기
     const getSession = async () => {
+      // 배포 환경 디버깅을 위해 임시로 모든 환경에서 로그 출력
+      console.log(
+        "🚀 AuthContext: getSession 시작 (ENV:",
+        process.env.NODE_ENV,
+        ")",
+      );
       try {
         const {
           data: { session },
@@ -84,19 +94,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         const currentUser = session?.user || null;
 
         if (currentUser) {
-          try {
-            if (process.env.NODE_ENV === "development") {
-              console.log(
-                "🔍 Attempting to get profile for user:",
-                currentUser.id,
-              );
-              console.log("🌐 Environment:", process.env.NODE_ENV);
-              console.log(
-                "🔗 Current URL:",
-                typeof window !== "undefined" ? window.location.href : "server",
-              );
-            }
+          if (process.env.NODE_ENV === "development") {
+            console.log(
+              "🔍 Attempting to get profile for user:",
+              currentUser.id,
+            );
+            console.log("🌐 Environment:", process.env.NODE_ENV);
+            console.log(
+              "🔗 Current URL:",
+              typeof window !== "undefined" ? window.location.href : "server",
+            );
+          }
 
+          try {
             const profile = await getUserProfile(currentUser.id);
 
             if (process.env.NODE_ENV === "development") {
@@ -117,6 +127,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           setUserProfile(null);
         }
 
+        // 배포 환경 디버깅
+        console.log("✅ AuthContext: getSession 완료");
         setLoading(false);
       } catch (error) {
         if (process.env.NODE_ENV === "development") {

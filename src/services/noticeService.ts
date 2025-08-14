@@ -41,15 +41,7 @@ export async function getNotices(
       .range(offset, offset + pageSize - 1);
 
     if (error) {
-      console.error("Supabase 에러 상세:", error);
-      // 테이블이 존재하지 않거나 접근 권한이 없는 경우 빈 배열 반환
-      if (error.code === "42P01" || error.code === "42501") {
-        return {
-          notices: [],
-          total: 0,
-          hasMore: false,
-        };
-      }
+      console.error("Error fetching notices:", error);
       throw new Error(`공지사항을 불러오는데 실패했습니다: ${error.message}`);
     }
 
@@ -62,12 +54,7 @@ export async function getNotices(
     return result;
   } catch (error) {
     console.error("getNotices 함수에서 예외 발생:", error);
-    // 에러가 발생해도 빈 배열 반환하여 페이지가 로딩되도록 함
-    return {
-      notices: [],
-      total: 0,
-      hasMore: false,
-    };
+    throw error;
   }
 }
 

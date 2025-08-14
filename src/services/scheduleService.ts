@@ -42,14 +42,6 @@ export async function getScheduleEvents(
 
     if (error) {
       console.error("Error fetching schedule events:", error);
-      // 테이블이 존재하지 않거나 접근 권한이 없는 경우 빈 배열 반환
-      if (error.code === "42P01" || error.code === "42501") {
-        return {
-          events: [],
-          total: 0,
-          hasMore: false,
-        };
-      }
       throw new Error("일정을 불러오는데 실패했습니다.");
     }
 
@@ -68,12 +60,7 @@ export async function getScheduleEvents(
     };
   } catch (error) {
     console.error("getScheduleEvents 함수에서 예외 발생:", error);
-    // 에러가 발생해도 빈 배열 반환하여 페이지가 로딩되도록 함
-    return {
-      events: [],
-      total: 0,
-      hasMore: false,
-    };
+    throw error;
   }
 }
 
