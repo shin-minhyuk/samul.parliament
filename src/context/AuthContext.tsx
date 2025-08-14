@@ -52,9 +52,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         .single();
 
       if (error) {
-        if (process.env.NODE_ENV === "development") {
-          console.error("❌ Error fetching user profile:", error);
-        }
+        console.error("❌ Error fetching user profile:", error);
         throw error;
       }
 
@@ -62,7 +60,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       console.log("✅ getUserProfile 성공:", profile);
       return profile;
     } catch (error) {
-      // 배포 환경 디버깅
       console.error("💥 Exception in getUserProfile:", error);
       throw error;
     }
@@ -115,9 +112,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
             setUserProfile(profile);
           } catch (error) {
-            if (process.env.NODE_ENV === "development") {
-              console.error("❌ Failed to get user profile:", error);
+            console.error(
+              "❌ 사용자 프로필 로드 실패 - 자동 로그아웃 처리:",
+              error,
+            );
+
+            // 프로필 로드 실패 시 자동 로그아웃
+            try {
+              await supabase.auth.signOut();
+              console.log("🚪 자동 로그아웃 완료");
+            } catch (signOutError) {
+              console.error("❌ 로그아웃 중 오류:", signOutError);
             }
+
             setUserProfile(null);
           }
         } else {
@@ -151,9 +158,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           const profile = await getUserProfile(currentUser.id);
           setUserProfile(profile);
         } catch (error) {
-          if (process.env.NODE_ENV === "development") {
-            console.error("Failed to get user profile on auth change:", error);
+          console.error(
+            "❌ 인증 상태 변경 시 프로필 로드 실패 - 자동 로그아웃 처리:",
+            error,
+          );
+
+          // 프로필 로드 실패 시 자동 로그아웃
+          try {
+            await supabase.auth.signOut();
+            console.log("🚪 자동 로그아웃 완료 (onAuthStateChange)");
+          } catch (signOutError) {
+            console.error("❌ 로그아웃 중 오류:", signOutError);
           }
+
           setUserProfile(null);
         }
       } else {
