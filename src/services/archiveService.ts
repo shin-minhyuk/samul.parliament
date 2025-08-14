@@ -27,28 +27,46 @@ export async function getArchiveItems(
   page = 1,
   pageSize = 10,
 ): Promise<{ archives: ArchiveItem[]; total: number; hasMore: boolean }> {
-  const offset = (page - 1) * pageSize;
+  try {
+    const offset = (page - 1) * pageSize;
 
-  const {
-    data: archives,
-    error,
-    count,
-  } = await supabase
-    .from("archives")
-    .select("*", { count: "exact" })
-    .order("created_at", { ascending: false })
-    .range(offset, offset + pageSize - 1);
+    const {
+      data: archives,
+      error,
+      count,
+    } = await supabase
+      .from("archives")
+      .select("*", { count: "exact" })
+      .order("created_at", { ascending: false })
+      .range(offset, offset + pageSize - 1);
 
-  if (error) {
-    console.error("Error fetching archives:", error);
-    throw new Error("아카이브를 불러오는데 실패했습니다.");
+    if (error) {
+      console.error("Error fetching archives:", error);
+      // 테이블이 존재하지 않거나 접근 권한이 없는 경우 빈 배열 반환
+      if (error.code === "42P01" || error.code === "42501") {
+        return {
+          archives: [],
+          total: 0,
+          hasMore: false,
+        };
+      }
+      throw new Error("아카이브를 불러오는데 실패했습니다.");
+    }
+
+    return {
+      archives: archives || [],
+      total: count || 0,
+      hasMore: (count || 0) > offset + pageSize,
+    };
+  } catch (error) {
+    console.error("getArchiveItems 함수에서 예외 발생:", error);
+    // 에러가 발생해도 빈 배열 반환하여 페이지가 로딩되도록 함
+    return {
+      archives: [],
+      total: 0,
+      hasMore: false,
+    };
   }
-
-  return {
-    archives: archives || [],
-    total: count || 0,
-    hasMore: (count || 0) > offset + pageSize,
-  };
 }
 
 // 아카이브 항목 상세 조회

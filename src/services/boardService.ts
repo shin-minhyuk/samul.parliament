@@ -299,3 +299,55 @@ export async function deleteComment(id: string): Promise<void> {
     throw new Error("댓글 삭제에 실패했습니다.");
   }
 }
+
+// 관리자용 게시글 삭제 (작성자 확인 없음)
+export async function adminDeletePost(id: string): Promise<void> {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("로그인이 필요합니다.");
+  }
+
+  // 관리자 권한 확인 (admin 이메일 또는 role 확인)
+  const isAdmin =
+    user.email?.includes("admin") || user.user_metadata?.role === "admin";
+
+  if (!isAdmin) {
+    throw new Error("관리자 권한이 필요합니다.");
+  }
+
+  const { error } = await supabase.from("posts").delete().eq("id", id);
+
+  if (error) {
+    console.error("Error deleting post:", error);
+    throw new Error("게시글 삭제에 실패했습니다.");
+  }
+}
+
+// 관리자용 댓글 삭제 (작성자 확인 없음)
+export async function adminDeleteComment(id: string): Promise<void> {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("로그인이 필요합니다.");
+  }
+
+  // 관리자 권한 확인
+  const isAdmin =
+    user.email?.includes("admin") || user.user_metadata?.role === "admin";
+
+  if (!isAdmin) {
+    throw new Error("관리자 권한이 필요합니다.");
+  }
+
+  const { error } = await supabase.from("comments").delete().eq("id", id);
+
+  if (error) {
+    console.error("Error deleting comment:", error);
+    throw new Error("댓글 삭제에 실패했습니다.");
+  }
+}

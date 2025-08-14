@@ -24,17 +24,27 @@ async function checkAdminPermission() {
 
 // FAQ 목록 조회 (생성일 순)
 export async function getFaqs(): Promise<FAQ[]> {
-  const { data: faqs, error } = await supabase
-    .from("faqs")
-    .select("*")
-    .order("created_at", { ascending: true });
+  try {
+    const { data: faqs, error } = await supabase
+      .from("faqs")
+      .select("*")
+      .order("created_at", { ascending: true });
 
-  if (error) {
-    console.error("Error fetching FAQs:", error);
-    throw new Error("FAQ를 불러오는데 실패했습니다.");
+    if (error) {
+      console.error("Error fetching FAQs:", error);
+      // 테이블이 존재하지 않거나 접근 권한이 없는 경우 빈 배열 반환
+      if (error.code === "42P01" || error.code === "42501") {
+        return [];
+      }
+      throw new Error("FAQ를 불러오는데 실패했습니다.");
+    }
+
+    return faqs || [];
+  } catch (error) {
+    console.error("getFaqs 함수에서 예외 발생:", error);
+    // 에러가 발생해도 빈 배열 반환하여 페이지가 로딩되도록 함
+    return [];
   }
-
-  return faqs || [];
 }
 
 // FAQ 상세 조회
