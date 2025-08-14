@@ -44,6 +44,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     try {
       // 배포 환경 디버깅
       console.log("🔍 getUserProfile 시작:", userId);
+      console.log("📡 Supabase 쿼리 시작...");
 
       const { data: profile, error } = await supabase
         .from("users")
@@ -103,8 +104,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
             );
           }
 
+          // 5초 타임아웃으로 프로필 로드 시도
+          const profileTimeout = setTimeout(async () => {
+            console.error("⏰ 프로필 로드 5초 초과 - 자동 로그아웃 처리");
+            try {
+              await supabase.auth.signOut();
+              console.log("🚪 타임아웃으로 인한 자동 로그아웃 완료");
+            } catch (signOutError) {
+              console.error("❌ 로그아웃 중 오류:", signOutError);
+            }
+            setUserProfile(null);
+            setLoading(false);
+          }, 3000);
+
           try {
             const profile = await getUserProfile(currentUser.id);
+            clearTimeout(profileTimeout);
 
             if (process.env.NODE_ENV === "development") {
               console.log("✅ Profile loaded successfully:", profile);
@@ -112,6 +127,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
             setUserProfile(profile);
           } catch (error) {
+            clearTimeout(profileTimeout);
             console.error(
               "❌ 사용자 프로필 로드 실패 - 자동 로그아웃 처리:",
               error,
