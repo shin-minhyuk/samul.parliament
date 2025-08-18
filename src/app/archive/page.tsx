@@ -160,16 +160,6 @@ export default function ArchivePage() {
         </p>
       </div>
 
-      {/* 로딩 상태 표시 */}
-      {loading && archives.length === 0 && (
-        <div className="flex justify-center py-12">
-          <div className="text-center">
-            <div className="mb-4 h-12 w-12 animate-spin rounded-full border-t-4 border-solid border-blue-500"></div>
-            <p>아카이브 항목을 불러오는 중...</p>
-          </div>
-        </div>
-      )}
-
       {/* 에러 메시지 표시 */}
       {error && (
         <div className="mb-8 rounded-lg bg-red-50 p-4 text-red-700">

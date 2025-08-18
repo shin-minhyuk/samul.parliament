@@ -5,7 +5,6 @@ import { ChevronDown, ChevronUp, Search } from "lucide-react";
 import { FAQ } from "@/types";
 import { getFaqs } from "@/services/faqService";
 import { FAQ_CATEGORIES } from "@/constants/const";
-import { Loader2 } from "lucide-react";
 
 export default function FaqPage() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
@@ -13,12 +12,10 @@ export default function FaqPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const [faqs, setFaqs] = useState<FAQ[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchFaqs = async () => {
-      setLoading(true);
       setError(null);
       try {
         const fetchedFaqs = await getFaqs();
@@ -28,8 +25,6 @@ export default function FaqPage() {
         setError(
           "FAQ 데이터를 불러오는 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
         );
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -111,12 +106,7 @@ export default function FaqPage() {
         </div>
 
         <div className="space-y-4">
-          {loading ? (
-            <div className="flex h-64 items-center justify-center">
-              <Loader2 className="text-primary h-8 w-8 animate-spin" />
-              <p className="ml-2">FAQ를 불러오는 중...</p>
-            </div>
-          ) : error ? (
+          {error ? (
             <div className="rounded-lg bg-red-50 p-8 text-center text-red-600">
               <p className="text-lg">오류 발생</p>
               <p className="mt-2 text-sm">{error}</p>

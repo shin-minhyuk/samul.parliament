@@ -11,21 +11,17 @@ export default function SchedulePage() {
   // 상태 관리
   const [activeType, setActiveType] = useState<string>("all");
   const [events, setEvents] = useState<ScheduleEvent[]>([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   // 데이터 로드
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        setLoading(true);
         const { events: fetchedEvents } = await getScheduleEvents(1, 50); // 한 번에 최대 50개 일정 불러오기
         setEvents(fetchedEvents);
-        setLoading(false);
       } catch (err) {
         console.error("일정을 불러오는 중 오류가 발생했습니다:", err);
         setError("일정을 불러오는 중 오류가 발생했습니다.");
-        setLoading(false);
       }
     };
 
@@ -54,18 +50,6 @@ export default function SchedulePage() {
   const sortedDates = Object.keys(groupedEvents).sort(
     (a, b) => new Date(a).getTime() - new Date(b).getTime(),
   );
-
-  // 로딩 상태 화면
-  if (loading) {
-    return (
-      <div className="container mx-auto flex items-center justify-center py-16 md:py-24">
-        <div className="text-center">
-          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-t-4 border-solid border-blue-500"></div>
-          <p>일정을 불러오는 중...</p>
-        </div>
-      </div>
-    );
-  }
 
   // 에러 화면
   if (error) {
