@@ -106,11 +106,11 @@ export default function OrganizationPage() {
                         재하
                       </h4>
                       <p className="text-ocean-deep mb-2 text-sm font-medium">
-                        경희대학교 한의과대학 석사 수료
+                        경희대학교 기후-몸연구소 연구원
                       </p>
                       <p className="text-sm leading-relaxed text-gray-600">
-                        경희대학교 기후-몸연구소 연구원. 한의학을 바탕으로 몸,
-                        마음, 세계의 연결망에 대해 연구하고 있다.
+                        한의학을 바탕으로 몸, 마음, 세계의 연결망에 대해
+                        연구하고 있다.
                       </p>
                     </div>
                   </div>

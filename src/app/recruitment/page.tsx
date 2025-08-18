@@ -84,8 +84,11 @@ export default function RecruitmentPage() {
                                 필수 참여
                               </span>
                             </div>
-                            <p className="text-ocean-deep mb-2 font-semibold">
+                            <p className="text-ocean-deep mb-1 font-semibold">
                               2025년 9월 20일 (토)
+                            </p>
+                            <p className="mb-2 text-sm text-gray-600">
+                              10:00 - 17:00 KST
                             </p>
                             <p className="text-sm leading-relaxed text-gray-600">
                               정치적 대표로서의 역할 교육과 토론 준비 워크숍이
