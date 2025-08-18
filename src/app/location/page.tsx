@@ -283,13 +283,13 @@ export default function LocationPage() {
                           <Navigation className="h-8 w-8 text-blue-600" />
                         </div>
                         <h4 className="mb-2 text-lg font-bold text-gray-800">
-                          서울특별시
+                          서울시청
                         </h4>
-                        <div className="inline-block rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-700">
-                          7월 중 확정 예정
+                        <div className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
+                          장소 확정
                         </div>
                         <p className="mt-3 text-sm text-gray-600">
-                          구체적인 장소는 7월 중에 확정되어 안내드릴 예정입니다.
+                          서울특별시 중구 세종대로 110
                         </p>
                       </div>
                     </div>
@@ -333,6 +333,52 @@ export default function LocationPage() {
               </div>
             </div>
           </section>
+
+          {/* 본회의 위치 안내 */}
+          <section className="mb-16">
+            <h2 className="text-ocean-deep mb-8 text-center text-3xl font-bold">
+              본회의 위치 안내
+            </h2>
+            <div className="overflow-hidden rounded-xl bg-white shadow-lg">
+              <div className="relative h-[400px] w-full">
+                <KakaoMap
+                  latitude={37.5663}
+                  longitude={126.9779}
+                  markerTitle="서울시청"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2">
+                  <MapPin className="text-ocean-surf h-5 w-5" />
+                  <h3 className="text-ocean-deep text-lg font-bold">
+                    서울시청
+                  </h3>
+                </div>
+                <p className="mt-2 text-gray-600">
+                  서울특별시 중구 세종대로 110 (시청역 5번 출구에서 도보 2분)
+                </p>
+                <div className="mt-4 flex gap-2">
+                  <a
+                    href="https://map.kakao.com/link/map/서울시청,37.5663,126.9779"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-primary-500 hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
+                  >
+                    카카오맵으로 보기
+                  </a>
+                  <a
+                    href="https://maps.app.goo.gl/KjrZQ8WG3rKzK5pz6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-ocean-blue hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
+                  >
+                    구글맵으로 보기
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* 추가 안내사항 */}
           <section className="mb-16">
             <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-xl md:p-12">
