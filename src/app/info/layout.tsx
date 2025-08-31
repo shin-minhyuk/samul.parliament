@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     description: "사물의 의회 2025 프로젝트에 대한 자세한 정보를 확인해보세요.",
     url: "https://samulparliament.com/info",
   },
+  other: {
+    // 네이버 검색 최적화
+    NaverBot: "All",
+    Yeti: "All",
+  },
 };
 
 export default function InfoLayout({

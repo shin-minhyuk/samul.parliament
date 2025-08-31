@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     description: "사물의 의회 2025의 최신 공지사항과 소식을 확인하세요.",
     url: "https://samulparliament.com/notices",
   },
+  other: {
+    // 네이버 검색 최적화
+    NaverBot: "All",
+    Yeti: "All",
+  },
 };
 
 export default function NoticesLayout({

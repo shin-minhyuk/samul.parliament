@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     description: "사물의 의회 2025 행사 장소와 오시는 길을 안내합니다.",
     url: "https://samulparliament.com/location",
   },
+  other: {
+    // 네이버 검색 최적화
+    NaverBot: "All",
+    Yeti: "All",
+  },
 };
 
 export default function LocationLayout({

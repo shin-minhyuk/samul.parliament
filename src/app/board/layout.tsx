@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     description: "사물의 의회 참가자들과 소통하고 의견을 나누는 공간입니다.",
     url: "https://samulparliament.com/board",
   },
+  other: {
+    // 네이버 검색 최적화
+    NaverBot: "All",
+    Yeti: "All",
+  },
 };
 
 export default function BoardLayout({

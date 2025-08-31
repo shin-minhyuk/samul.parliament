@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     description: "사물의 의회 2025에 대해 자주 묻는 질문과 답변을 확인하세요.",
     url: "https://samulparliament.com/faq",
   },
+  other: {
+    // 네이버 검색 최적화
+    NaverBot: "All",
+    Yeti: "All",
+  },
 };
 
 export default function FaqLayout({ children }: { children: React.ReactNode }) {

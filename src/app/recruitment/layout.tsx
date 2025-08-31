@@ -13,6 +13,11 @@ export const metadata: Metadata = {
       "사물의 의회 2025에 참여할 참가자를 모집합니다. 새로운 기후 민주주의를 함께 만들어갈 분들의 지원을 기다립니다.",
     url: "https://samulparliament.com/recruitment",
   },
+  other: {
+    // 네이버 검색 최적화
+    NaverBot: "All",
+    Yeti: "All",
+  },
 };
 
 export default function RecruitmentLayout({

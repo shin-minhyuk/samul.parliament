@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     description: "사물의 의회 2025의 전체 일정을 확인하세요.",
     url: "https://samulparliament.com/schedule",
   },
+  other: {
+    // 네이버 검색 최적화
+    NaverBot: "All",
+    Yeti: "All",
+  },
 };
 
 export default function ScheduleLayout({

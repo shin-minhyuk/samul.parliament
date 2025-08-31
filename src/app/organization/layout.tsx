@@ -13,6 +13,11 @@ export const metadata: Metadata = {
       "사물의 의회 2025를 기획하고 운영하는 조직위원회를 소개합니다.",
     url: "https://samulparliament.com/organization",
   },
+  other: {
+    // 네이버 검색 최적화
+    NaverBot: "All",
+    Yeti: "All",
+  },
 };
 
 export default function OrganizationLayout({

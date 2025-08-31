@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     description: "사물의 의회 활동 기록을 사진, 영상으로 확인하세요.",
     url: "https://samulparliament.com/archive",
   },
+  other: {
+    // 네이버 검색 최적화
+    NaverBot: "All",
+    Yeti: "All",
+  },
 };
 
 export default function ArchiveLayout({

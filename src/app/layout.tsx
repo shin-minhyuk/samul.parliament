@@ -78,10 +78,20 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  other: {
+    // 네이버 검색 최적화
+    "naver-site-verification": "naver8a42e47827d022dd24e629b3fc9fb98f",
+    // 네이버 블로그 검색 최적화
+    NaverBot: "All",
+    Yeti: "All",
+  },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || "",
     other: {
-      "naver-site-verification": [process.env.NAVER_SITE_VERIFICATION || ""],
+      "naver-site-verification": [
+        process.env.NAVER_SITE_VERIFICATION ||
+          "naver8a42e47827d022dd24e629b3fc9fb98f",
+      ],
     },
   },
   alternates: {
