@@ -75,7 +75,13 @@ export default function Home() {
             </div>
 
             {/* 세 번째 카드 - 참가자 모집 페이지로 이동 */}
-            <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            <button
+              type="button"
+              onClick={() => {
+                alert("2025년 사물의 의회 참가자 모집이 마감되었습니다.");
+              }}
+              className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            >
               <div className="flex aspect-[3/4] flex-col items-center justify-center bg-gradient-to-br from-blue-600/10 to-indigo-600/10 p-8">
                 <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 transition-transform duration-300 group-hover:scale-110">
                   <Users className="h-10 w-10 text-white" />
@@ -92,7 +98,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-            </div>
+            </button>
           </div>
         </div>
       </section>
@@ -130,6 +136,9 @@ export default function Home() {
             {/* 참가버튼 */}
             <Button
               type="button"
+              onClick={() => {
+                alert("2025년 사물의 의회 참가자 모집이 마감되었습니다.");
+              }}
               className="animate-rotate-in from-ocean-surf hover:from-ocean-surf/90 absolute right-0 bottom-[-50px] left-0 mx-auto h-[100px] w-[100px] bg-gradient-to-r to-blue-400 p-0 shadow-2xl transition-all duration-300 hover:scale-110 hover:to-blue-400/90 md:bottom-[-60px] md:h-[120px] md:w-[120px]"
             >
               <div className="text-center">
