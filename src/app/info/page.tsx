@@ -231,24 +231,23 @@ export default function InfoPage() {
                   {
                     number: 1,
                     question:
-                      "기후위기에 대한 비인간들의 목소리를 의회정치에 대표하기 위하여 어떤 법적 변화가 필요하다고 생각하나요?",
+                      "기후위기에 올바로 대응하기 위해 각 이해관계자 그룹은 법에 어떤 내용이 담기기를 원하시나요?",
                     example:
-                      "예시) 기존 탄소중립기본법 개정 vs 새로운 법/헌법 제정",
+                      "(각 그룹당 최대 5개 요구안을 도출할 수 있습니다.)",
                     gradient: "from-ocean-deep to-blue-600",
                   },
                   {
                     number: 2,
                     question:
-                      "기후위기에 대응하기 위해 각 이해관계자 그룹들은 법에 어떤 내용이 담기기를 원하나요?",
-                    example: "",
+                      "위와 같은 요구안들을 기후법에 담으려면 다음 중 어떠한 법적 변화가 필요하다고 생각하시나요?",
+                    example: "(요구안별로 각각 표시해주세요.)",
                     gradient: "from-blue-600 to-indigo-600",
-                  },
-                  {
-                    number: 3,
-                    question:
-                      "비인간 대표를 비례대표제로 선출해 국회에 보내는 것에 대해 어떻게 생각하나요?",
-                    example: "",
-                    gradient: "from-indigo-600 to-ocean-deep",
+                    subItems: [
+                      "1) 기존 법률에서 수용이 가능",
+                      "2) 기존 법률의 개정이 필요",
+                      "3) 새로운 법률의 제정이 필요",
+                      "4) 헌법의 개정이 필요",
+                    ],
                   },
                 ].map((topic, index) => (
                   <div
@@ -270,6 +269,21 @@ export default function InfoPage() {
                           <p className="text-ocean-deep from-ocean-deep/10 border-ocean-deep/20 rounded-lg border bg-gradient-to-r to-blue-600/10 p-3 font-medium">
                             {topic.example}
                           </p>
+                        )}
+                        {topic.subItems && (
+                          <div className="mt-4 space-y-2">
+                            {topic.subItems.map((item, itemIndex) => (
+                              <div
+                                key={itemIndex}
+                                className="flex items-center gap-3 rounded-lg bg-gray-50 p-3"
+                              >
+                                <div className="h-2 w-2 rounded-full bg-blue-600"></div>
+                                <span className="font-medium text-gray-700">
+                                  {item}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
                         )}
                       </div>
                     </div>
