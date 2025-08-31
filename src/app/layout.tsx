@@ -95,6 +95,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
+    canonical: "https://samulparliament.com",
     languages: {
       "ko-KR": "https://samulparliament.com",
     },
