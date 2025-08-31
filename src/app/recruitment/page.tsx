@@ -337,15 +337,10 @@ export default function RecruitmentPage() {
                 </div>
 
                 <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                  <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSdt5BSpFw3mS9wZzWVzcqvDcWHw8BP2i8o-2r0i9R151562iw/viewform"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group text-ocean-deep flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-lg font-bold shadow-lg transition-all hover:scale-105 hover:bg-blue-50"
-                  >
-                    지원하기
+                  <div className="group text-ocean-deep flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-lg font-bold shadow-lg transition-all hover:scale-105 hover:bg-blue-50">
+                    지원마감
                     <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </a>
+                  </div>
                   <Link
                     href="/location"
                     className="group flex items-center gap-2 rounded-2xl bg-white/20 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all hover:bg-white/30"
