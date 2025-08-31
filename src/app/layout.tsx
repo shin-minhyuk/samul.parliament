@@ -13,7 +13,10 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://samulparliament.com"),
-  title: "사물의 의회 2025 | 기후위기 시대, 생각의 중심을 바꿔보자",
+  title: {
+    default: "사물의 의회 2025 | 기후위기 시대, 생각의 중심을 바꿔보자",
+    template: "%s | 사물의 의회 2025",
+  },
   description:
     "비인간 존재들의 권리와 발언권을 고민하는 '사물의 의회 2025'에서 자연과 기술이 조화롭게 공존하는 미래를 함께 만들어갑니다.",
   keywords: [
@@ -82,7 +85,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://samulparliament.com",
     languages: {
       "ko-KR": "https://samulparliament.com",
     },
