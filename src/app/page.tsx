@@ -19,16 +19,16 @@ export default function Home() {
 
         <div className="animate-slide-up relative z-10">
           <div className="group hover:animate-wiggle flex flex-col gap-3 text-center md:gap-6">
-            <h2 className="text-4xl font-bold text-gray-800 md:text-6xl">
+            <h1 className="text-4xl font-bold text-gray-800 md:text-6xl">
               사물의 의회
-            </h2>
-            <h1 className="group-hover:text-primary-400 from-ocean-deep transform bg-gradient-to-r to-blue-600 bg-clip-text text-5xl font-[900] text-transparent transition-all duration-300 md:text-8xl">
-              인간과 비인간
             </h1>
-            <h2 className="mx-auto max-w-4xl text-xl leading-relaxed font-medium text-gray-700 md:text-4xl">
+            <p className="group-hover:text-primary-400 from-ocean-deep transform bg-gradient-to-r to-blue-600 bg-clip-text text-5xl font-[900] text-transparent transition-all duration-300 md:text-8xl">
+              인간과 비인간
+            </p>
+            <p className="mx-auto max-w-4xl text-xl leading-relaxed font-medium text-gray-700 md:text-4xl">
               함께 만드는 새로운{" "}
               <span className="text-ocean-deep font-bold">기후 민주주의</span>
-            </h2>
+            </p>
           </div>
         </div>
       </section>
@@ -45,9 +45,9 @@ export default function Home() {
                   <div className="from-ocean-deep mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-r to-blue-600 transition-transform duration-300 group-hover:scale-110">
                     <Info className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="mb-4 text-center text-2xl font-bold text-gray-800">
+                  <h2 className="mb-4 text-center text-2xl font-bold text-gray-800">
                     프로젝트 소개
-                  </h3>
+                  </h2>
                   <p className="mb-6 text-center leading-relaxed text-gray-600">
                     사물의 의회 프로젝트에 대한 자세한 정보를 확인해보세요
                   </p>
@@ -86,9 +86,9 @@ export default function Home() {
                 <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 transition-transform duration-300 group-hover:scale-110">
                   <Users className="h-10 w-10 text-white" />
                 </div>
-                <h3 className="mb-4 text-center text-2xl font-bold text-gray-800">
+                <h2 className="mb-4 text-center text-2xl font-bold text-gray-800">
                   참가자 모집
-                </h3>
+                </h2>
                 <p className="mb-6 text-center leading-relaxed text-gray-600">
                   2025 사물의의회 참가자 모집이 완료되었습니다
                 </p>
@@ -117,9 +117,9 @@ export default function Home() {
             <div className="animate-slide-up relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
               <div className="mb-2 flex items-center justify-center gap-2">
                 <Users className="text-ocean-surf h-6 w-6" />
-                <h3 className="text-ocean-surf text-lg font-semibold md:text-xl">
+                <p className="text-ocean-surf text-lg font-semibold md:text-xl">
                   함께 고민하는 시간
-                </h3>
+                </p>
               </div>
               <h2 className="text-2xl leading-tight font-bold md:text-5xl">
                 비인간 존재들의{" "}
@@ -159,9 +159,9 @@ export default function Home() {
               <div className="from-ocean-deep rounded-lg bg-gradient-to-r to-blue-600 p-2">
                 <Award className="h-6 w-6 text-white" />
               </div>
-              <h1 className="text-3xl font-bold text-gray-800 md:text-4xl">
+              <h2 className="text-3xl font-bold text-gray-800 md:text-4xl">
                 주최
-              </h1>
+              </h2>
             </div>
             <div className="from-ocean-deep mx-auto h-1 w-24 rounded-full bg-gradient-to-r to-blue-600"></div>
           </div>
@@ -194,9 +194,9 @@ export default function Home() {
               <div className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 p-2">
                 <Users className="h-6 w-6 text-white" />
               </div>
-              <h1 className="text-3xl font-bold text-gray-800 md:text-4xl">
+              <h2 className="text-3xl font-bold text-gray-800 md:text-4xl">
                 후원
-              </h1>
+              </h2>
             </div>
             <div className="mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"></div>
           </div>
