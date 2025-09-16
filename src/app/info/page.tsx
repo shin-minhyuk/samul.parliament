@@ -306,27 +306,45 @@ export default function InfoPage() {
                 <div className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-8 shadow-xl transition-all duration-300 hover:shadow-2xl">
                   <div className="from-ocean-deep/10 absolute top-0 right-0 h-24 w-24 translate-x-12 -translate-y-12 rounded-full bg-gradient-to-br to-blue-600/10"></div>
                   <div className="relative">
-                    <div className="mb-6 flex items-center gap-3">
-                      <div className="from-ocean-deep rounded-lg bg-gradient-to-r to-blue-600 p-2 text-white">
-                        <Clock className="h-5 w-5" />
+                    <div className="mb-6 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="from-ocean-deep rounded-lg bg-gradient-to-r to-blue-600 p-2 text-white">
+                          <Clock className="h-5 w-5" />
+                        </div>
+                        <h3 className="text-ocean-deep text-xl font-bold">
+                          1일차 (2025.11.01)
+                        </h3>
                       </div>
-                      <h3 className="text-ocean-deep text-xl font-bold">
-                        1일차 (2025.11.01)
-                      </h3>
+                      <span className="text-ocean-deep text-sm font-medium">
+                        사회: 박진희
+                      </span>
                     </div>
                     <div className="space-y-4">
                       {[
-                        { time: "10:00~11:00", activity: "그룹별 1차 숙의" },
+                        { time: "10:00~10:05", activity: "개회사(조직위원장)" },
                         {
-                          time: "11:00~12:00",
-                          activity: "그룹별 발표 (10개 그룹, 각 6분)",
+                          time: "10:05~10:10",
+                          activity: "인사말(녹색위 환경교육분과 위원장)",
                         },
-                        { time: "12:00~13:00", activity: "점심" },
-                        { time: "13:00~14:00", activity: "휴식 및 문화행사" },
-                        { time: "14:00~16:00", activity: "1차 전체 토론" },
+                        { time: "10:10~12:00", activity: "그룹별 숙의" },
+                        { time: "12:00~13:30", activity: "점심 시간" },
+                        {
+                          time: "13:30~14:30",
+                          activity:
+                            "그룹별 숙의 결과발표(각 그룹 5개 요구안 도출)",
+                        },
+                        {
+                          time: "14:30~15:00",
+                          activity:
+                            "전체토론을 위한 그룹대표 10명(=외교관) 선출",
+                        },
+                        {
+                          time: "15:00~16:00",
+                          activity: "1차 전체토론(그룹대표 10명의 무대토론)",
+                        },
                         {
                           time: "16:00~17:00",
-                          activity: "질의응답 및 1일차 평가",
+                          activity: "그룹별 수정결론 작성",
                         },
                       ].map((item, index) => (
                         <div
