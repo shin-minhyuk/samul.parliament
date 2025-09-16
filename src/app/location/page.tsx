@@ -86,7 +86,7 @@ export default function LocationPage() {
                           2025년 9월 20일 (토)
                         </div>
                         <p className="mt-3 text-sm text-gray-600">
-                          성공회대 미가엘관 M301
+                          성미가엘성당 1층 피츠버그홀
                         </p>
                       </div>
                     </div>
@@ -140,14 +140,14 @@ export default function LocationPage() {
                 <KakaoMap
                   latitude={37.4875}
                   longitude={126.8261}
-                  markerTitle="성공회대 미가엘관 M301"
+                  markerTitle="성미가엘성당 1층 피츠버그홀"
                 />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2">
                   <MapPin className="text-ocean-surf h-5 w-5" />
                   <h3 className="text-ocean-deep text-lg font-bold">
-                    성공회대 미가엘관 M301
+                    성미가엘성당 1층 피츠버그홀
                   </h3>
                 </div>
                 <p className="mt-2 text-gray-600">
