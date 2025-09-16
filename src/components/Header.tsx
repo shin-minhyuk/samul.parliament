@@ -1,27 +1,14 @@
 "use client";
 
-import { Menu, Clock, X, LogOut } from "lucide-react";
+import { Menu, Clock, X } from "lucide-react";
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 import { useBanner } from "@/context/BannerContext";
-import { useAuth } from "@/context/AuthContext";
 import Logo from "./Logo";
-import Link from "next/link";
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { isBannerVisible, setIsBannerVisible } = useBanner();
-  const { userProfile, signOut } = useAuth();
-
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-    } catch (error) {
-      if (process.env.NODE_ENV === "development") {
-        console.error("로그아웃 에러:", error);
-      }
-    }
-  };
 
   return (
     <>
@@ -63,30 +50,8 @@ export default function Header() {
             <Logo className="mb-1" />
           </div>
 
-          {/* Right - Login/User Info */}
-          <div className="flex w-[100px] items-center justify-end text-end">
-            {userProfile ? (
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1 text-sm text-gray-600">
-                  {userProfile.name || "사용자"}
-                </div>
-                <button
-                  onClick={handleSignOut}
-                  className="text-ocean-deep hover:bg-ocean-deep/10 rounded-lg p-1 transition-colors"
-                  title="로그아웃"
-                >
-                  <LogOut className="h-4 w-4" />
-                </button>
-              </div>
-            ) : (
-              <Link
-                href="/auth/login"
-                className="rounded-full bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-900 hover:scale-105 hover:bg-gray-300"
-              >
-                로그인
-              </Link>
-            )}
-          </div>
+          {/* Right - Empty space for balance */}
+          <div className="w-[100px]"></div>
         </div>
       </header>
 

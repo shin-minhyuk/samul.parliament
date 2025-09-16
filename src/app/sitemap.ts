@@ -65,11 +65,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
-    {
-      url: `${baseUrl}/board`,
-      lastModified: dynamicContentDate, // 게시판은 자주 업데이트됨
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
   ];
 }

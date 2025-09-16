@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { BannerProvider } from "@/context/BannerContext";
-import { AuthProvider } from "@/context/AuthContext";
 import MainLayout from "@/components/MainLayout";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -111,11 +110,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`antialiased`}>
-        <AuthProvider>
-          <BannerProvider>
-            <MainLayout>{children}</MainLayout>
-          </BannerProvider>
-        </AuthProvider>
+        <BannerProvider>
+          <MainLayout>{children}</MainLayout>
+        </BannerProvider>
       </body>
       <Analytics />
     </html>
