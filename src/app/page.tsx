@@ -167,7 +167,7 @@ export default function Home() {
           </div>
 
           <div className="rounded-2xl border border-slate-100 bg-white p-8 shadow-lg md:p-12">
-            <div className="flex flex-col items-center justify-center gap-8 md:flex-row md:gap-16">
+            <div className="flex flex-col items-center justify-center gap-8 md:flex-row md:gap-12">
               <div className="group transition-transform duration-300 hover:scale-105">
                 <Image
                   src="/images/주최_기후몸연구소.jpg"
@@ -178,8 +178,14 @@ export default function Home() {
                 />
               </div>
               <div className="hidden h-16 w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent md:block"></div>
+
               <div className="group transition-transform duration-300 hover:scale-105">
                 <Logo className="flex text-xl md:text-3xl" />
+              </div>
+              <div className="hidden h-16 w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent md:block"></div>
+              <div className="group flex h-[80px] w-[200px] flex-col items-center justify-center text-center text-lg font-bold text-gray-800 transition-transform duration-300 hover:scale-105 md:h-[100px] md:w-[250px] md:text-xl">
+                <p>녹색서울시민위원회</p>
+                <p>환경교육분과</p>
               </div>
             </div>
           </div>
