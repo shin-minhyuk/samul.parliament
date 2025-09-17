@@ -9,9 +9,8 @@ import { createNotice } from "@/services/noticeService";
 // 한국 시간 기준으로 오늘 날짜를 YYYY-MM-DD 형식으로 반환
 function getKoreanToday(): string {
   const now = new Date();
-  const koreanTime = new Date(
-    now.toLocaleString("en-US", { timeZone: "Asia/Seoul" }),
-  );
+  // 한국 시간대 (UTC+9) 적용
+  const koreanTime = new Date(now.getTime() + 9 * 60 * 60 * 1000);
   return koreanTime.toISOString().split("T")[0];
 }
 

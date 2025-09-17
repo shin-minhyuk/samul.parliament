@@ -21,16 +21,11 @@ export default function RecruitmentPage() {
         <div className="mx-auto max-w-6xl">
           {/* Header */}
           <div className="mb-16 text-center">
-            <div className="mb-6">
-              <span className="from-ocean-deep/10 text-ocean-deep border-ocean-deep/20 inline-block rounded-full border bg-gradient-to-r to-blue-600/10 px-4 py-2 text-sm font-semibold md:text-base">
-                참가자 모집 중
-              </span>
-            </div>
             <h1 className="from-ocean-deep mb-6 bg-gradient-to-r to-blue-600 bg-clip-text text-5xl font-bold text-transparent md:text-6xl">
               2025 사물의 의회
             </h1>
             <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">
-              참가자 모집
+              참가자 모집 완료
             </h2>
             <div className="from-ocean-deep mx-auto mb-8 h-1 w-32 rounded-full bg-gradient-to-r to-blue-600"></div>
             <p className="mx-auto max-w-4xl text-xl leading-relaxed text-gray-600">
