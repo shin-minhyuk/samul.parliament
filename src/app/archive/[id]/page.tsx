@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
-import { ArrowLeft, Tag } from "lucide-react";
+import { ArrowLeft, Tag, FileText, Download, ExternalLink } from "lucide-react";
 import { ARCHIVE_TYPES } from "@/constants/const";
 import { getArchiveItemById } from "@/services/archiveService";
 import { ArchiveItem } from "@/types";
@@ -171,6 +171,47 @@ export default function ArchiveDetailPage() {
             <div className="prose max-w-none">
               <div className="whitespace-pre-wrap text-gray-700">
                 {archiveItem.description}
+              </div>
+            </div>
+          )}
+
+          {archiveItem.type === "pdf" && (
+            <div className="rounded-lg border border-red-200 bg-gradient-to-br from-red-50 to-red-100 p-8">
+              <div className="text-center">
+                <FileText className="mx-auto mb-4 h-20 w-20 text-red-500" />
+                <h3 className="mb-2 text-xl font-semibold text-red-800">
+                  PDF 문서
+                </h3>
+                <p className="mb-6 text-red-600">
+                  이 아카이브 항목은 PDF 문서입니다. 아래 버튼을 클릭하여
+                  다운로드하거나 새 창에서 보기를 할 수 있습니다.
+                </p>
+
+                <div className="flex flex-col justify-center gap-3 sm:flex-row">
+                  <a
+                    href={archiveItem.url}
+                    download
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-500 px-6 py-3 font-medium text-white transition-colors hover:bg-red-600"
+                  >
+                    <Download className="h-5 w-5" />
+                    PDF 다운로드
+                  </a>
+                  <a
+                    href={archiveItem.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-600"
+                  >
+                    <ExternalLink className="h-5 w-5" />새 창에서 보기
+                  </a>
+                </div>
+
+                <div className="mt-4 text-sm text-red-600">
+                  <p>
+                    파일이 다운로드되지 않는 경우, 브라우저의 팝업 차단 설정을
+                    확인해주세요.
+                  </p>
+                </div>
               </div>
             </div>
           )}

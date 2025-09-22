@@ -1,7 +1,8 @@
 import { supabase } from "@/lib/supabase";
 import { Notice } from "@/types";
+import { isAdminEmail } from "@/constants/const";
 
-// admin 권한 확인 함수
+// admin 권한 확인 함수 (이메일 기반)
 async function checkAdminPermission() {
   const {
     data: { user },
@@ -11,13 +12,7 @@ async function checkAdminPermission() {
     throw new Error("로그인이 필요합니다.");
   }
 
-  const { data: userProfile, error } = await supabase
-    .from("users")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  if (error || userProfile?.role !== "admin") {
+  if (!user.email || !isAdminEmail(user.email)) {
     throw new Error("관리자 권한이 필요합니다.");
   }
 }

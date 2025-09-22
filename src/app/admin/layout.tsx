@@ -1,6 +1,5 @@
 import React from "react";
-import AdminAuthCheck from "./AuthCheck";
-import { SimpleAuthProvider } from "@/context/SimpleAuthContext";
+import SupabaseAuthCheck from "./SupabaseAuthCheck";
 
 export const metadata = {
   title: "관리자 대시보드 - 사물의 의회",
@@ -13,10 +12,8 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SimpleAuthProvider>
-      <div className="min-h-screen bg-gray-50">
-        <AdminAuthCheck excludePaths={["/admin"]}>{children}</AdminAuthCheck>
-      </div>
-    </SimpleAuthProvider>
+    <div className="min-h-screen bg-gray-50">
+      <SupabaseAuthCheck excludePaths={["/admin"]}>{children}</SupabaseAuthCheck>
+    </div>
   );
 }

@@ -30,4 +30,23 @@ export const ARCHIVE_TYPES = [
   { id: "text", name: "텍스트" },
   { id: "image", name: "사진" },
   { id: "video", name: "영상" },
+  { id: "pdf", name: "PDF" },
 ];
+
+// 관리자 이메일 확인 함수
+export function isAdminEmail(email: string): boolean {
+  // 환경변수에서 관리자 이메일 목록 가져오기
+  const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS;
+
+  if (!adminEmails) {
+    console.warn("NEXT_PUBLIC_ADMIN_EMAILS 환경변수가 설정되지 않았습니다.");
+    return false;
+  }
+
+  // 쉼표로 구분된 이메일 목록을 배열로 변환
+  const emailList = adminEmails
+    .split(",")
+    .map((email) => email.trim().toLowerCase());
+
+  return emailList.includes(email.toLowerCase());
+}

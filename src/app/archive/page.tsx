@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, Tag, X, ChevronRight } from "lucide-react";
+import { Search, Tag, X, ChevronRight, FileText, Download } from "lucide-react";
 import { ARCHIVE_CATEGORIES, ARCHIVE_TYPES } from "@/constants/const";
 import { getArchiveItems } from "@/services/archiveService";
 import { ArchiveItem, ArchiveCategory, ArchiveType } from "@/types";
@@ -28,7 +28,7 @@ export default function ArchivePage() {
   // 처음 페이지 로드시 데이터 가져오기
   useEffect(() => {
     fetchArchives(1, true);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // 아카이브 항목 가져오기 함수
   const fetchArchives = async (
@@ -295,68 +295,136 @@ export default function ArchivePage() {
                     className="overflow-hidden rounded-lg border shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md"
                   >
                     {/* 아이템 미디어 */}
-                    <Link href={`/archive/${item.id}`} className="block">
-                      <div className="relative h-48 bg-gray-100">
-                        {item.type === "image" && (
-                          <div className="relative h-full w-full">
-                            <Image
-                              src={item.url}
-                              alt={item.title}
-                              fill
-                              className="object-cover"
-                            />
+                    {item.type === "pdf" ? (
+                      <div className="relative">
+                        <div className="relative flex h-48 items-center justify-center bg-gradient-to-br from-red-50 to-red-100">
+                          <div className="text-center">
+                            <FileText className="mx-auto mb-3 h-16 w-16 text-red-500" />
+                            <p className="text-sm font-medium text-red-700">
+                              PDF 문서
+                            </p>
                           </div>
-                        )}
-                        {item.type === "video" && (
-                          <div className="relative h-full w-full">
-                            {item.thumbnailUrl ? (
+                          <div className="bg-opacity-90 absolute top-2 right-2 rounded bg-red-500 px-2 py-1 text-xs text-white">
+                            {
+                              ARCHIVE_TYPES.find((t) => t.id === item.type)
+                                ?.name
+                            }
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <h3 className="mb-1 text-lg font-semibold">
+                            {item.title}
+                          </h3>
+                          <p className="mb-3 line-clamp-2 text-sm text-gray-600">
+                            {item.description}
+                          </p>
+                          {item.tags && item.tags.length > 0 && (
+                            <div className="mb-3 flex flex-wrap gap-1">
+                              {item.tags.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          <div className="flex gap-2">
+                            <Link
+                              href={`/archive/${item.id}`}
+                              className="flex-1 rounded bg-blue-500 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-blue-600"
+                            >
+                              자세히 보기
+                            </Link>
+                            <a
+                              href={item.url}
+                              download
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-1 rounded bg-red-500 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-red-600"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Download className="h-4 w-4" />
+                              다운로드
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Link href={`/archive/${item.id}`} className="block">
+                        <div className="relative h-48 bg-gray-100">
+                          {item.type === "image" && (
+                            <div className="relative h-full w-full">
                               <Image
-                                src={item.thumbnailUrl}
+                                src={item.url}
                                 alt={item.title}
                                 fill
                                 className="object-cover"
                               />
-                            ) : (
-                              <div className="flex h-full w-full items-center justify-center bg-gray-200">
-                                <span className="text-gray-500">
-                                  비디오 썸네일
-                                </span>
-                              </div>
-                            )}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="bg-opacity-50 flex h-12 w-12 items-center justify-center rounded-full bg-black">
-                                <div className="ml-1 h-0 w-0 border-t-8 border-b-8 border-l-12 border-t-transparent border-b-transparent border-l-white"></div>
+                            </div>
+                          )}
+                          {item.type === "video" && (
+                            <div className="relative h-full w-full">
+                              {item.thumbnailUrl ? (
+                                <Image
+                                  src={item.thumbnailUrl}
+                                  alt={item.title}
+                                  fill
+                                  className="object-cover"
+                                />
+                              ) : (
+                                <div className="flex h-full w-full items-center justify-center bg-gray-200">
+                                  <span className="text-gray-500">
+                                    비디오 썸네일
+                                  </span>
+                                </div>
+                              )}
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="bg-opacity-50 flex h-12 w-12 items-center justify-center rounded-full bg-black">
+                                  <div className="ml-1 h-0 w-0 border-t-8 border-b-8 border-l-12 border-t-transparent border-b-transparent border-l-white"></div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        )}
-                        <div className="bg-opacity-50 absolute top-2 right-2 rounded bg-black px-2 py-1 text-xs text-white">
-                          {ARCHIVE_TYPES.find((t) => t.id === item.type)?.name}
-                        </div>
-                      </div>
-
-                      {/* 아이템 정보 */}
-                      <div className="p-4">
-                        <h3 className="mb-1 text-lg font-semibold">
-                          {item.title}
-                        </h3>
-                        <p className="mb-3 line-clamp-2 text-sm text-gray-600">
-                          {item.description}
-                        </p>
-                        {item.tags && item.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-1">
-                            {item.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600"
-                              >
-                                {tag}
+                          )}
+                          {item.type === "text" && (
+                            <div className="flex h-full w-full items-center justify-center bg-gray-200">
+                              <span className="text-gray-500">
+                                텍스트 콘텐츠
                               </span>
-                            ))}
+                            </div>
+                          )}
+                          <div className="bg-opacity-50 absolute top-2 right-2 rounded bg-black px-2 py-1 text-xs text-white">
+                            {
+                              ARCHIVE_TYPES.find((t) => t.id === item.type)
+                                ?.name
+                            }
                           </div>
-                        )}
-                      </div>
-                    </Link>
+                        </div>
+
+                        {/* 아이템 정보 (PDF가 아닌 경우) */}
+                        <div className="p-4">
+                          <h3 className="mb-1 text-lg font-semibold">
+                            {item.title}
+                          </h3>
+                          <p className="mb-3 line-clamp-2 text-sm text-gray-600">
+                            {item.description}
+                          </p>
+                          {item.tags && item.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-1">
+                              {item.tags.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </Link>
+                    )}
                   </div>
                 ))}
               </div>
