@@ -66,22 +66,26 @@ export default function AdminArchivesPage() {
     }
 
     try {
-      // Supabase Storage에서 이미지 파일명 추출
-      let imageFileName: string | undefined = undefined;
+      // Supabase Storage에서 파일명 추출
+      let fileName: string | undefined = undefined;
+      let fileType: "image" | "pdf" | undefined = undefined;
 
       // Supabase Storage URL인지 확인
       const isSupabaseStorageUrl =
         url.includes("supabase") && url.includes("/storage/");
 
-      if (type === "image" && isSupabaseStorageUrl && url) {
+      if ((type === "image" || type === "pdf") && isSupabaseStorageUrl && url) {
         // Supabase Storage URL에서 파일명 추출
-        // URL 형태: https://PROJECT_ID.supabase.co/storage/v1/object/public/archive-images/filename.jpg
+        // URL 형태:
+        // - 이미지: https://PROJECT_ID.supabase.co/storage/v1/object/public/archive-images/filename.jpg
+        // - PDF: https://PROJECT_ID.supabase.co/storage/v1/object/public/archive-pdfs/filename.pdf
         const urlParts = url.split("/");
         const fileNameWithParams = urlParts[urlParts.length - 1];
-        imageFileName = fileNameWithParams.split("?")[0];
+        fileName = fileNameWithParams.split("?")[0];
+        fileType = type as "image" | "pdf";
       }
 
-      await deleteArchiveItem(id, imageFileName);
+      await deleteArchiveItem(id, fileName, fileType);
       setArchives(archives.filter((archive) => archive.id !== id));
       setTotalCount((prev) => prev - 1);
       alert("아카이브 항목이 삭제되었습니다.");

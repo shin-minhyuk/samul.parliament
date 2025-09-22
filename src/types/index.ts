@@ -42,8 +42,8 @@ export interface ArchiveItem {
   title: string;
   date?: string; // YYYY-MM-DD 형식 (선택 사항으로 변경)
   description: string;
-  type: "image" | "video" | "text";
-  url: string; // 이미지 경로 또는 비디오 URL (text 타입일 경우 빈 문자열)
+  type: "image" | "video" | "text" | "pdf";
+  url: string; // 이미지 경로, 비디오 URL, 또는 PDF 파일 경로 (text 타입일 경우 빈 문자열)
   thumbnailUrl?: string; // 썸네일 이미지 경로 (비디오의 경우)
   tags?: string[]; // 태그 목록
   category?: "reference" | "preliminary" | "main" | "result"; // 카테고리
@@ -55,7 +55,7 @@ export interface ArchiveItem {
 export type ArchiveCategory = "reference" | "preliminary" | "main" | "result";
 
 // 아카이브 타입
-export type ArchiveType = "image" | "video" | "text";
+export type ArchiveType = "image" | "video" | "text" | "pdf";
 
 // 카테고리 타입 정의
 export interface Category {

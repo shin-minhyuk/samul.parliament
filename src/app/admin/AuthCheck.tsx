@@ -24,8 +24,7 @@ export default function AdminAuthCheck({
 
   // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
   if (!isAuthenticated) {
-    router.push("/admin");
-    return null;
+    return router.push("/admin");
   }
 
   // 인증된 경우 관리자 헤더와 함께 자식 컴포넌트 렌더링

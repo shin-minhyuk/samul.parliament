@@ -8,6 +8,7 @@ import {
   getArchiveItemById,
   updateArchiveItem,
   uploadArchiveImage,
+  uploadArchivePDF,
 } from "@/services/archiveService";
 import { ArchiveItem, ArchiveCategory, ArchiveType } from "@/types";
 
@@ -107,6 +108,9 @@ export default function EditArchivePage() {
         } else if (archiveItem.type === "video") {
           setVideoUrl(archiveItem.url || "");
           setVideoThumbnailUrl(archiveItem.thumbnailUrl || "");
+        } else if (archiveItem.type === "pdf") {
+          // PDF의 경우 기존 URL 정보 저장 (편집 시 참고용)
+          setImageUrl(archiveItem.url || "");
         }
 
         if (archiveItem.tags) {
@@ -127,19 +131,28 @@ export default function EditArchivePage() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      if (file.size > 5 * 1024 * 1024) {
-        alert("파일 크기는 5MB를 초과할 수 없습니다.");
+
+      // 파일 크기 제한 (PDF는 10MB, 이미지는 5MB)
+      const maxSize = type === "pdf" ? 10 * 1024 * 1024 : 5 * 1024 * 1024;
+      const sizeLabel = type === "pdf" ? "10MB" : "5MB";
+
+      if (file.size > maxSize) {
+        alert(`파일 크기는 ${sizeLabel}를 초과할 수 없습니다.`);
         return;
       }
 
       setSelectedFile(file);
 
-      // 미리보기 URL 생성
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+      // 이미지 파일인 경우에만 미리보기 URL 생성
+      if (type === "image") {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPreviewUrl(reader.result as string);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        setPreviewUrl(null);
+      }
     }
   };
 
@@ -176,7 +189,11 @@ export default function EditArchivePage() {
         throw new Error("영상 타입은 영상 URL이 필요합니다.");
       }
 
-      // 이미지 업로드 (이미지 타입이고 파일을 선택한 경우)
+      if (type === "pdf" && !selectedFile && !imageUrl) {
+        throw new Error("PDF 타입은 새 파일 업로드가 필요합니다.");
+      }
+
+      // 파일 업로드 처리
       let finalUrl = "";
       if (type === "image") {
         if (selectedFile) {
@@ -198,6 +215,25 @@ export default function EditArchivePage() {
         }
       } else if (type === "video") {
         finalUrl = videoUrl;
+      } else if (type === "pdf") {
+        if (selectedFile) {
+          // 새 PDF 파일 업로드
+          const progressInterval = setInterval(() => {
+            setUploadProgress((prev) => {
+              if (prev >= 90) clearInterval(progressInterval);
+              return Math.min(prev + 10, 90);
+            });
+          }, 300);
+
+          const uploadResult = await uploadArchivePDF(selectedFile);
+          clearInterval(progressInterval);
+          setUploadProgress(100);
+
+          finalUrl = uploadResult.url;
+        } else {
+          // 기존 PDF URL 유지
+          finalUrl = imageUrl;
+        }
       }
 
       // 아카이브 항목 수정
@@ -343,6 +379,16 @@ export default function EditArchivePage() {
                   className="mr-2"
                 />
                 영상
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  value="pdf"
+                  checked={type === "pdf"}
+                  onChange={() => handleTypeChange("pdf")}
+                  className="mr-2"
+                />
+                PDF
               </label>
             </div>
           </div>
@@ -490,6 +536,73 @@ export default function EditArchivePage() {
                   </div>
                 )}
               </div>
+            </div>
+          ) : type === "pdf" ? (
+            <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
+              <h3 className="mb-3 font-medium">PDF 파일 업로드</h3>
+
+              {/* 현재 PDF 정보 */}
+              {imageUrl && !selectedFile && (
+                <div className="mb-4 rounded border border-green-200 bg-green-50 p-3">
+                  <p className="text-sm font-medium text-green-800">
+                    현재 PDF 파일이 업로드되어 있습니다.
+                  </p>
+                  <a
+                    href={imageUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-blue-600 underline hover:text-blue-800"
+                  >
+                    현재 PDF 보기
+                  </a>
+                </div>
+              )}
+
+              {/* PDF 파일 업로드 */}
+              <div className="mb-4">
+                <label htmlFor="pdf-edit" className="mb-2 block text-sm">
+                  새 PDF 파일 업로드 (최대 10MB)
+                </label>
+                <input
+                  type="file"
+                  id="pdf-edit"
+                  onChange={handleFileChange}
+                  accept="application/pdf,.pdf"
+                  className="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none"
+                  ref={fileInputRef}
+                  disabled={submitting}
+                />
+                <p className="mt-1 text-xs text-gray-500">
+                  새 PDF 파일을 선택하지 않으면 기존 파일이 유지됩니다.
+                </p>
+              </div>
+
+              {/* 선택된 새 파일 정보 */}
+              {selectedFile && (
+                <div className="mb-4 rounded border border-blue-200 bg-blue-50 p-3">
+                  <p className="text-sm font-medium text-blue-800">
+                    새로 선택된 파일: {selectedFile.name}
+                  </p>
+                  <p className="text-xs text-blue-600">
+                    크기: {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
+                  </p>
+                </div>
+              )}
+
+              {/* 업로드 진행 상황 */}
+              {uploadProgress > 0 && (
+                <div className="mb-4">
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                    <div
+                      className="h-full bg-blue-500"
+                      style={{ width: `${uploadProgress}%` }}
+                    ></div>
+                  </div>
+                  <p className="mt-1 text-center text-xs text-gray-500">
+                    {uploadProgress}% 업로드 완료
+                  </p>
+                </div>
+              )}
             </div>
           ) : null}
 

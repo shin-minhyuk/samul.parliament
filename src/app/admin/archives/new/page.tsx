@@ -7,6 +7,7 @@ import { ChevronLeft, X } from "lucide-react";
 import {
   createArchiveItem,
   uploadArchiveImage,
+  uploadArchivePDF,
 } from "@/services/archiveService";
 import { ArchiveItem, ArchiveCategory, ArchiveType } from "@/types";
 
@@ -75,7 +76,12 @@ export default function NewArchivePage() {
     setType(newType);
 
     // 타입이 변경될 때 관련 필드 초기화
-    if (newType === "text" || newType === "video" || newType === "image") {
+    if (
+      newType === "text" ||
+      newType === "video" ||
+      newType === "image" ||
+      newType === "pdf"
+    ) {
       // 모든 타입 변경 시 관련 필드 초기화
       setImageUrl("");
       setVideoUrl("");
@@ -89,19 +95,28 @@ export default function NewArchivePage() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      if (file.size > 5 * 1024 * 1024) {
-        alert("파일 크기는 5MB를 초과할 수 없습니다.");
+
+      // 파일 크기 제한 (PDF는 10MB, 이미지는 5MB)
+      const maxSize = type === "pdf" ? 10 * 1024 * 1024 : 5 * 1024 * 1024;
+      const sizeLabel = type === "pdf" ? "10MB" : "5MB";
+
+      if (file.size > maxSize) {
+        alert(`파일 크기는 ${sizeLabel}를 초과할 수 없습니다.`);
         return;
       }
 
       setSelectedFile(file);
 
-      // 미리보기 URL 생성
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewUrl(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+      // 이미지 파일인 경우에만 미리보기 URL 생성
+      if (type === "image") {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPreviewUrl(reader.result as string);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        setPreviewUrl(null);
+      }
     }
   };
 
@@ -138,7 +153,11 @@ export default function NewArchivePage() {
         throw new Error("영상 타입은 영상 URL이 필요합니다.");
       }
 
-      // 이미지 업로드 (이미지 타입이고 파일을 선택한 경우)
+      if (type === "pdf" && !selectedFile) {
+        throw new Error("PDF 타입은 파일 업로드가 필요합니다.");
+      }
+
+      // 파일 업로드 처리
       let finalUrl = "";
       if (type === "image") {
         if (selectedFile) {
@@ -160,6 +179,22 @@ export default function NewArchivePage() {
         }
       } else if (type === "video") {
         finalUrl = videoUrl;
+      } else if (type === "pdf") {
+        if (selectedFile) {
+          // 프로그레스 시뮬레이션
+          const progressInterval = setInterval(() => {
+            setUploadProgress((prev) => {
+              if (prev >= 90) clearInterval(progressInterval);
+              return Math.min(prev + 10, 90);
+            });
+          }, 300);
+
+          const uploadResult = await uploadArchivePDF(selectedFile);
+          clearInterval(progressInterval);
+          setUploadProgress(100);
+
+          finalUrl = uploadResult.url;
+        }
       }
 
       // 아카이브 항목 생성
@@ -294,6 +329,16 @@ export default function NewArchivePage() {
                   className="mr-2"
                 />
                 영상
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  value="pdf"
+                  checked={type === "pdf"}
+                  onChange={() => handleTypeChange("pdf")}
+                  className="mr-2"
+                />
+                PDF
               </label>
             </div>
           </div>
@@ -435,6 +480,57 @@ export default function NewArchivePage() {
                       }}
                     />
                   </div>
+                </div>
+              )}
+            </div>
+          ) : type === "pdf" ? (
+            <div className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
+              <h3 className="mb-3 font-medium">PDF 파일 업로드</h3>
+
+              {/* PDF 파일 업로드 */}
+              <div className="mb-4">
+                <label htmlFor="pdf" className="mb-2 block text-sm">
+                  PDF 파일 (최대 10MB) <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="file"
+                  id="pdf"
+                  onChange={handleFileChange}
+                  accept="application/pdf,.pdf"
+                  className="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none"
+                  ref={fileInputRef}
+                  disabled={loading}
+                  required={type === "pdf"}
+                />
+                <p className="mt-1 text-xs text-gray-500">
+                  PDF 파일만 업로드 가능합니다. 클릭하면 다운로드됩니다.
+                </p>
+              </div>
+
+              {/* 선택된 파일 정보 */}
+              {selectedFile && (
+                <div className="mb-4 rounded border border-blue-200 bg-blue-50 p-3">
+                  <p className="text-sm font-medium text-blue-800">
+                    선택된 파일: {selectedFile.name}
+                  </p>
+                  <p className="text-xs text-blue-600">
+                    크기: {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
+                  </p>
+                </div>
+              )}
+
+              {/* 업로드 진행 상황 */}
+              {loading && uploadProgress > 0 && (
+                <div className="mb-4">
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
+                    <div
+                      className="h-full bg-blue-500 transition-all"
+                      style={{ width: `${uploadProgress}%` }}
+                    ></div>
+                  </div>
+                  <p className="mt-1 text-center text-xs text-gray-500">
+                    {uploadProgress}%
+                  </p>
                 </div>
               )}
             </div>
