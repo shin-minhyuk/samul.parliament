@@ -377,19 +377,34 @@ export default function InfoPage() {
                     </div>
                     <div className="space-y-4">
                       {[
-                        { time: "10:00~11:00", activity: "그룹별 2차 숙의" },
+                        {
+                          time: "10:00~11:00",
+                          activity:
+                            "5개 팀별 심층토론 - 비인간그룹 요구안(팀별 5개) 숙의",
+                        },
                         {
                           time: "11:00~12:00",
-                          activity: "그룹별 발표 (10개 그룹, 각 6분)",
+                          activity:
+                            "5개 팀별 심층토론 - 인간그룹 요구안(팀별 5개) 숙의",
                         },
-                        { time: "12:00~13:00", activity: "점심" },
-                        { time: "13:00~14:00", activity: "휴식 및 문화행사" },
-                        { time: "14:00~15:00", activity: "2차 전체 토론" },
+                        { time: "12:00~13:00", activity: "점심 시간" },
+                        {
+                          time: "13:00~14:00",
+                          activity: "미술 강연(구인성, 김성헌)",
+                        },
+                        {
+                          time: "14:00~15:00",
+                          activity: "그룹별 최종 수정안(50개) 발표",
+                        },
                         {
                           time: "15:00~16:00",
-                          activity: "그룹별 결론 작성 및 취합",
+                          activity: '"10대 요구안" 투표선정',
                         },
-                        { time: "16:00~17:00", activity: "전체결론 발표" },
+                        {
+                          time: "16:00~17:00",
+                          activity:
+                            '"10대 요구안(다수의견)" 서명식 및 소수 합의안 및 기타 소수의견 발표',
+                        },
                       ].map((item, index) => (
                         <div
                           key={index}
