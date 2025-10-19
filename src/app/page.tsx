@@ -64,7 +64,7 @@ export default function Home() {
             <div className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl">
               <div className="from-ocean-deep/5 flex aspect-[3/4] items-center justify-center bg-gradient-to-br to-blue-600/5">
                 <Image
-                  src="/images/poster_1.png"
+                  src="/images/poster_2.png"
                   alt="사물의 의회 포스터"
                   width={1000}
                   height={1000}
