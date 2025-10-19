@@ -264,8 +264,8 @@ export default function LocationPage() {
             <div className="overflow-hidden rounded-xl bg-white shadow-lg">
               <div className="relative h-[400px] w-full">
                 <KakaoMap
-                  latitude={37.5658}
-                  longitude={126.9751}
+                  latitude={37.5644}
+                  longitude={126.9756}
                   markerTitle="서울특별시청 서소문청사1동"
                 />
               </div>
