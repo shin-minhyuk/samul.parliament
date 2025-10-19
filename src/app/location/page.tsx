@@ -205,13 +205,13 @@ export default function LocationPage() {
                           <Navigation className="h-8 w-8 text-blue-600" />
                         </div>
                         <h4 className="mb-2 text-lg font-bold text-gray-800">
-                          서울시청
+                          서울특별시청 서소문청사1동
                         </h4>
                         <div className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
                           장소 확정
                         </div>
                         <p className="mt-3 text-sm text-gray-600">
-                          서울특별시 중구 세종대로 110
+                          서울 중구 덕수궁길 15
                         </p>
                       </div>
                     </div>
@@ -264,37 +264,37 @@ export default function LocationPage() {
             <div className="overflow-hidden rounded-xl bg-white shadow-lg">
               <div className="relative h-[400px] w-full">
                 <KakaoMap
-                  latitude={37.5663}
-                  longitude={126.9779}
-                  markerTitle="서울시청"
+                  latitude={37.5658}
+                  longitude={126.9751}
+                  markerTitle="서울특별시청 서소문청사1동"
                 />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2">
                   <MapPin className="text-ocean-surf h-5 w-5" />
                   <h3 className="text-ocean-deep text-lg font-bold">
-                    서울시청
+                    서울특별시청 서소문청사1동
                   </h3>
                 </div>
                 <p className="mt-2 text-gray-600">
-                  서울특별시 중구 세종대로 110 (시청역 5번 출구에서 도보 2분)
+                  서울 중구 덕수궁길 15 (시청역 1번 출구에서 도보 3분)
                 </p>
                 <div className="mt-4 flex gap-2">
                   <a
-                    href="https://map.kakao.com/link/map/서울시청,37.5663,126.9779"
+                    href="https://naver.me/xhHKZVF7"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-primary-500 hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
                   >
-                    카카오맵으로 보기
+                    네이버맵으로 보기
                   </a>
                   <a
-                    href="https://maps.app.goo.gl/KjrZQ8WG3rKzK5pz6"
+                    href="https://kko.kakao.com/C1qq0aX0zd"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-ocean-blue hover:bg-nature-forest rounded-full px-4 py-2 text-sm font-medium text-white transition-all"
                   >
-                    구글맵으로 보기
+                    카카오맵으로 보기
                   </a>
                 </div>
               </div>
